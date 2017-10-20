@@ -1,0 +1,195 @@
+@mixin font($font-size) {
+  font-size: $font-size;
+
+  [data-dpr = '2'] & {
+    font-size: $font-size * 2;
+  }
+
+  [data-dpr = '3'] & {
+    font-size: $font-size * 3;
+  }
+}
+
+@function toRem($px) {
+  @return $px / 75px * 1rem;
+}
+
+@mixin clearfix {
+  &:after {
+    clear: both;
+    content: '.';
+    display: block;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+  }
+  *height: 1%;
+}
+
+//@import "../../alerted/style/alertLoding";
+body {
+  background: #f7f7fa;
+}
+
+//页面样式
+.account {
+  padding-top: 44px;
+}
+
+.transactionType {
+  height: toRem(88px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e4e7f0;
+}
+
+.transactionType span:nth-child(1) {
+  color: #808086;
+  @include font(16px);
+  padding-left: toRem(30px);
+  flex: 1;
+}
+
+.transactionType h6:nth-child(2) {
+  color: #808086;
+  @include font(13px);
+  font-weight: normal;
+  margin: 0;
+  margin-right: toRem(30px);
+}
+
+.transactionType span:nth-child(2) {
+  display: flex;
+  background: url('../account/images/add.png') no-repeat;
+  background-size: toRem(30px);
+  padding-left: toRem(40px);
+  margin-right: toRem(30px);
+  color: #3366cc;
+  @include font(13px);
+}
+
+//.transactionType span:nth-child(2):hover{
+//  background:url('../account/images/addClick.png') no-repeat;
+//  background-size:toRem(30px) ;
+//}
+.tradingAccount {
+  background: #ffffff;
+  border-bottom: 1px solid #e4e7f0;
+}
+
+.tradingAccount a {
+  display: flex;
+  align-items: center;
+  height: toRem(88px);
+  margin-left: toRem(30px);
+  border-bottom: 1px solid #e4e7f0;
+}
+
+.tradingAccount a span:nth-child(1) {
+  flex: 1;
+  @include font(16px);
+  color: #1a1a1a;
+}
+
+.tradingAccount a span:nth-child(2) {
+  margin-right: toRem(30px);
+  padding-right: toRem(30px);
+  background: url('../images/chakanxiangqingdefault@2x.png') no-repeat right;
+  background-size: toRem(15px) toRem(29px);
+  color: #808086;
+  @include font(13px);
+}
+
+.tradingAccount a:last-child {
+  border: 0;
+}
+
+.noneBinding {
+  display: flex;
+  width: toRem(130px);
+  height: toRem(76px);
+  margin: toRem(116px) auto toRem(30px) auto;
+}
+
+.noneText {
+  display: flex;
+  justify-content: center;
+  color: #808086;
+  @include font(14px);
+}
+
+.unbundle {
+  display: flex;
+  background: #ffffff;
+  height: toRem(100px);
+  border-bottom: 1px solid #e4e7f0;
+}
+
+.unbundle input[type=password] {
+  border: 0;
+  padding-left: toRem(30px);
+  @include font(16px);
+  outline: none;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: toRem(120px) toRem(30px) 0 toRem(30px);
+  height: toRem(86px);
+  border-radius: toRem(20px);
+  text-align: center;
+  color: #ffffff;
+  @include font(18px);
+  padding: 0;
+}
+
+.click {
+  background: #3366cc;
+}
+
+.unClick {
+  background: #dfdfdf;
+}
+
+/*//alert
+.alert-modal{
+  width:50%;
+}
+.alert-message,.alert-modal{
+  padding:toRem(55px) 0 0 0;
+}
+.alert-btn{
+  padding:toRem(55px) 0;
+}*/
+.alert { //弹出框
+  .alert-title {
+    display: none;
+  }
+  .alert-modal {
+    width: toRem(540px);
+    border-radius: toRem(20px);
+    background-color: #ffffff;
+    padding: 0;
+    .alert-btn {
+      padding: 0;
+      height: toRem(88px);
+      line-height: toRem(88px);
+      @include font(16px);
+    }
+  }
+}
+
+.alert-message {
+  padding: toRem(45px) toRem(30px);
+  text-align: center;
+  font-size: 18px;
+  line-height: toRem(50px);
+  color: #1a1a1a;
+}
+
+.alert-footer {
+  border-top: 1px solid #e4e7f0;
+}

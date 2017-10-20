@@ -1,0 +1,239 @@
+/**
+ * Created by fuyuanwu on 2017/7/13.
+ */
+body {
+  background: #f7f7fa;
+}
+
+input {
+  color: #1a1a1a;
+}
+
+input::placeholder {
+  color: #c0c6cd;
+}
+
+.bung {
+  height: 100px;
+  line-height: 100px;
+}
+
+.header-bung54 {
+  padding-top: 54px;
+  background: #f7f7fa;
+}
+
+.header-bung {
+  padding-top: 44px;
+  background: #f7f7fa;
+}
+
+.deliver {
+  width: 100%;
+  height: 1px;
+  background-color: #e4e7f0;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.bg22 {
+  background-color: #f7f7fa;
+}
+
+.pl15 {
+  padding-left: 15px;
+}
+
+.pr15 {
+  padding-right: 15px;
+}
+
+.pb100 {
+  padding-bottom: 100px;
+}
+
+.bd-top {
+  border-top: 1px solid #e4e7f0;
+}
+
+.bd-bottom {
+  border-bottom: 1px solid #e4e7f0;
+}
+
+.height100p {
+  height: 100%;
+}
+
+.minHeight100p {
+  min-height: calc(100% - 0px);
+}
+
+.w100p {
+  width: 100%;
+}
+
+.alert-modal {
+  padding: 20px 0 0 !important;
+  width: 260px;
+  border-radius: 10px !important;
+
+  .alert-title h4, .alert-title h5 {
+    font-size: 19px;
+  }
+
+  .alert-message input {
+    font-size: 15px;
+  }
+
+  .alert-footer .alert-btn {
+    font-size: 17px;
+  }
+}
+
+
+.divider {
+  display: table;
+  white-space: nowrap;
+  height: auto;
+  overflow: hidden;
+  line-height: 1;
+  text-align: center;
+  padding: 10px 0;
+  color: #666;
+}
+.divider:after, .divider:before {
+  content: '';
+  display: table-cell;
+  position: relative;
+  top: 50%;
+  width: 50%;
+  background-repeat: no-repeat;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABaAAAAACCAYAAACuTHuKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1OThBRDY4OUNDMTYxMUU0OUE3NUVGOEJDMzMzMjE2NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo1OThBRDY4QUNDMTYxMUU0OUE3NUVGOEJDMzMzMjE2NyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjU5OEFENjg3Q0MxNjExRTQ5QTc1RUY4QkMzMzMyMTY3IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU5OEFENjg4Q0MxNjExRTQ5QTc1RUY4QkMzMzMyMTY3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+VU513gAAADVJREFUeNrs0DENACAQBDBIWLGBJQby/mUcJn5sJXQmOQMAAAAAAJqt+2prAAAAAACg2xdgANk6BEVuJgyMAAAAAElFTkSuQmCC);
+}
+.divider:before {
+  background-position: right 2em top 50%;
+}
+.divider:after {
+  background-position: left 2em top 50%;
+}
+
+.alert {
+  .alert-message {
+    p{
+      color: #1a1a1a;
+      font-size: 16px;
+    }
+    .codemsg {
+      border: solid 1px #c0c6cd;
+      height: 50px;
+      line-height: 50px;
+
+      input {
+        width: 55%;
+        height: 30px;
+        line-height: 30px;
+        border: none;
+        outline: none;
+      }
+      input:focus {
+        color: #000;
+      }
+      img {
+        margin-left: 10px;
+        height: 30px;
+        width: 30%;
+        line-height: 25px;
+      }
+    }
+  }
+  .alert-footer {
+    .alert-btn {
+      border-top: 1px solid #e4e7f0;
+      color: #36c;
+    }
+    :nth-child(2) {
+      border-left: 1px solid #e4e7f0;
+    }
+
+  }
+}
+
+.common-nav .navbar-footer .edit {
+  font-size: 15px;
+}
+
+a {
+  cursor: auto;
+}
+
+.infoPC {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-jcsb {
+  justify-content: space-between;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.flex-3 {
+  flex: 3;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.block {
+  display: block;
+}
+
+.relative {
+  position: relative;
+}
+
+.el-picker-panel {
+  a.cell {
+    padding: 0;
+  }
+}
+
+.toast{
+  font-size: 0;
+  .loading {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 1rem;
+    -webkit-animation: rotate 2s linear infinite;
+    -o-animation: rotate 2s linear infinite;
+    animation: rotate 2s linear infinite
+  }
+}
+
+.toast-lg {
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  padding: 2rem;
+}

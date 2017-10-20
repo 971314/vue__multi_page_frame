@@ -1,0 +1,20 @@
+.adver {
+     display: block;
+  	.swipe,.swiper-container {
+	    img {
+	      	width: 100%;
+	    }
+  	}
+   .parent-wrap .pagination .swiper-pagination-bullet-active
+    {
+     background:#fff;
+    }
+
+    .parent-wrap .pagination .swiper-pagination-bullet
+    {
+      background:#CBCBCB;
+      width: 5px;
+      height: 5px;
+    }
+
+}

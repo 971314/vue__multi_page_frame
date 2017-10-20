@@ -1,0 +1,167 @@
+.main-active {
+  margin-top: 10px;
+  height: 142px;
+  width: 100%;
+  border-top: 1px solid #e4e7f0;
+  border-bottom: 1px solid #e4e7f0;
+
+  .main-active-content {
+    height: 142px;
+    width: 100%;
+    padding: 0 0 22px 15px;
+
+    .main-active-header {
+      height: 44px;
+      font-weight: bolder;
+      @include clearfix;
+      .active-header-left {
+        float: left;
+        line-height: 44px;
+        height: 100%;
+        padding-left: 15px;
+        color: #1a1a1a;
+        background-image: url(../images/biaoqian@2x.png);
+        background-repeat: no-repeat;
+        background-size: 3px 15px;
+        background-position: left center;
+        @include font(16px);
+      }
+
+      .active-header-right {
+        height: 100%;
+        line-height: 44px;
+        margin-right: 15px;
+        padding-right: 16px;
+        float: right;
+        color: #808086;
+        background-image: url(../images/moredefaultactive@2x.png);
+        background-repeat: no-repeat;
+        background-size: 6px 11px;
+        background-position: right center;
+        @include font(13px);
+      }
+    }
+
+    .active-swpier-content {
+      height: 88px;
+      width: 100%;
+
+      .swiper-container {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+
+        .swiper-wrapper {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+          transition-timing-function: ease-out;
+          display: flex;
+          transition-property: transform;
+          box-sizing: content-box;
+        }
+        .swiper-slide {
+          width: 152px;
+          margin-right: 8px;
+          height: 100%;
+          position: relative;
+          text-align: center;
+          font-size: 18px;
+          background: #fff;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-shrink: 0;
+
+          .activity-swpier-content {
+            width: 100%;
+            height: 87px;
+            position: relative;
+            z-index: 1004;
+
+            .activity-bg {
+              width: 100%;
+              height: 100%;
+              z-index: 1005;
+              background-image: url(../images/activepeitu1.png);
+              background-repeat: no-repeat;
+              background-position: 0 0;
+              background-size: 151px 87px;
+            }
+            .bg-blur {
+              -webkit-filter: blur(2px); /* Chrome, Opera */
+              -moz-filter: blur(2px);
+              -ms-filter: blur(2px);
+              filter: blur(2px);
+              filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=1.5, MakeShadow=false); /* IE6~IE9 */
+            }
+            .cover-layer {
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              background-color: #1a1a1a;
+              filter: alpha(opacity=45);
+              -moz-opacity: 0.45;
+              -khtml-opacity: 0.45;
+              opacity: 0.45;
+              z-index: 1006;
+            }
+            .center-tips {
+              position: absolute;
+              z-index: 1010;
+              top: 15px;
+              left: 12px;
+              width: 128px;
+              //transform: translate(-50%, -50%);
+
+              .fitst-title-tips {
+                width: 100%;
+                line-height: normal;
+                font-size: 16px;
+                color: #ffffff;
+                text-align: left;
+                //text-overflow: ellipsis;
+                //white-space: nowrap;
+                //overflow: hidden;
+              }
+
+              .two-line {
+                width: 100%;
+                line-height: normal;
+                font-size: 14px;
+                color: #ffffff;
+                text-align: justify;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+              }
+
+              .second-level-tips {
+                margin-top: 4px;
+                line-height: normal;
+                width: 100%;
+                font-size: 14px;
+                color: #ffffff;
+                text-align: left;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+              }
+
+            }
+          }
+          img {
+            width: 100%;
+            height: 87px;
+          }
+        }
+      }
+
+    }
+  }
+}

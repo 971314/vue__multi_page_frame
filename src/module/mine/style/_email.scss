@@ -1,0 +1,28 @@
+.email-container {
+  margin-top: toRem(20px);
+  .input {
+    position: relative;
+    height: toRem(100px);
+    border-top: 1px solid #e4e7f0;
+    border-bottom: 1px solid #e4e7f0;
+    padding: 0 toRem(30px);
+    background-color: #ffffff;
+
+    input {
+      display: block;
+      outline: none;
+      height: 100%;
+      width: 100%;
+      border: none;
+      border-radius: 0;
+      @include font(16px);
+      color: #1a1a1a;
+    }
+    img {
+      position: absolute;
+      top: toRem(35px);
+      right: toRem(30px);
+      height: 14px;
+    }
+  }
+}

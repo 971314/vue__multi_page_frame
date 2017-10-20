@@ -1,0 +1,29 @@
+.agreement {
+  background-color: #fff;
+  min-height: 100%;
+
+  .title {
+    text-align: center;
+    color: #1a1a1a;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 28px;
+    margin-bottom: 30px;
+  }
+
+  .content {
+    padding: 0 15px 80px 15px;
+    p {
+      margin-bottom: 0;
+      font-size: 16px;
+      color: #4c4c55;
+      line-height: 28px;
+      padding: 0 20px;
+      min-height: 28px;
+
+      &.indent {
+        text-indent: 25px;
+      }
+    }
+  }
+}

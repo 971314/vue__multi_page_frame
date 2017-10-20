@@ -1,0 +1,66 @@
+#alert_modal {
+  position: absolute;
+  width:100%;
+  height:50%;
+  //top: 0;
+  & > div.alert_body {
+    position: relative;
+    width: toRem(340px);
+    //height:toRem(600px);
+    max-height: toRem(600px);
+    background: #ffffff;
+    z-index: 1333;
+    top: 80%;
+    left: 50%;
+    margin-top: toRem(-300px);
+    margin-left: toRem(-160px);
+    border-radius: toRem(15px);
+    overflow: hidden;
+    & > div {
+      width: 100%;
+      max-height: toRem(600px);
+      overflow: auto;
+      & > div {
+        overflow: auto;
+        height: toRem(88px);
+        padding:toRem(20px) 0;
+        border-bottom: 1px solid #e4e7f0;
+        text-align: center;
+        font-size: 16px;
+      }
+    }
+  }
+}
+#alert_btn {
+  position: absolute;
+  width:100%;
+  height:50%;
+  //top: 0;
+  & > div.alert_body {
+    position: relative;
+    width: toRem(340px);
+    //height:toRem(600px);
+    max-height: toRem(600px);
+    background: #ffffff;
+    z-index: 1333;
+    top: 80%;
+    left: 50%;
+    margin-top: toRem(-300px);
+    margin-left: toRem(-160px);
+    border-radius: toRem(15px);
+    overflow: hidden;
+    & > div {
+      width: 100%;
+      max-height: toRem(600px);
+      overflow: auto;
+      & > div {
+        overflow: auto;
+        height: toRem(88px);
+        padding:toRem(20px) 0;
+        border-bottom: 1px solid #e4e7f0;
+        text-align: center;
+        font-size: 16px;
+      }
+    }
+  }
+}

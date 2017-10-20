@@ -1,0 +1,144 @@
+.cell {
+  padding: 0;
+  margin: 0;
+}
+
+.info {
+  background-color: #f7f7fa;
+
+  input {
+    border: none;
+    outline: none;
+    height: 100%;
+    line-height: 100%;
+  }
+
+  .dateFace {
+    margin-right: 20px;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .dateBack {
+    opacity: 0;
+    color: transparent;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    height: 100%;
+    width: 100%;
+  }
+
+  .basic-info {
+    padding: 10px 15px;
+    & > div {
+      padding: 10px 0;
+      font-size: 16px;
+
+      .text-left {
+        color: #c0c6cd;
+      }
+      .text-right {
+        color: #808086;
+      }
+    }
+  }
+  .inputInfo {
+    background-color: #ffffff;
+    .inputText {
+      font-size: 16px;
+      border-top: 1px solid #e4e7f0;
+      height: 50px;
+      line-height: 50px;
+      color: #808086;
+      padding-right: 15px;
+
+      &:first-child {
+        border-top: none;
+      }
+
+      input {
+        display: block;
+        width: 100%;
+      }
+
+      .text {
+        padding: 0;
+        font-size: 16px;
+        color: #1a1a1a;
+        text-align: right;
+      }
+      .icon.selected {
+        background: url(../adequacy/images/icon-correct-blue.png) no-repeat right;
+        background-size: 17px 13px;
+      }
+    }
+    .genderSet {
+      .icon {
+        background: url(../adequacy/images/icon-circle-unselected.png) left no-repeat;
+        background-size: 18px 18px;
+        width: 40px;
+        padding-left: 25px;
+        margin-left: 10px;
+        text-align: right;
+
+        &.selected {
+          background: url(../adequacy/images/icon-circle-selected.png) no-repeat left;
+          background-size: 18px 18px;
+        }
+      }
+    }
+    & .arrow {
+      background: url(../adequacy/images/icon-right-grey.png) no-repeat right;
+      background-size: 8px 16px;
+      padding-right: 20px;
+      font-size: 16px;
+    }
+  }
+
+  .itemTitle {
+    font-size: 16px;
+    padding: 13px 15px;
+    color: #808086;
+    background: #f7f7fa;
+
+    border-top: 1px solid #e4e7f0;
+
+    .icon {
+      color: #36c;
+      padding-left: 20px;
+      display: inline-block;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      background: url(../adequacy/images/icon-rect-unselected.png) left no-repeat;
+      background-size: 15px 15px;
+
+      &.selected {
+        background: url(../adequacy/images/icon-rect-selected.png) left no-repeat;
+        background-size: 15px 15px;
+      }
+    }
+  }
+
+  .submitBtn {
+    margin-top: 60px;
+
+    .next {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 11px 0;
+      background: #3366CC;
+      border: none;
+      font-size: 16px;
+      color: #fff;
+    }
+  }
+}
+

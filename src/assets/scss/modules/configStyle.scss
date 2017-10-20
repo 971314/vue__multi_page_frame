@@ -1,0 +1,42 @@
+.base-color {
+  background-color:  $color-bg-up !important;
+}
+/*title栏颜色*/
+.navbar-fixed-top{
+  background-color: $color-bg-up;
+}
+
+/*个人信息btn*/
+.logout{
+  background: $color-bg-up;
+}
+
+/*登录/设置密码-确认按钮*/
+.modal-footer .btn-cfm, .btn-cfm{
+  background-color: $color-bg-up;
+}
+/*登录/设置密码-返回按钮*/
+.btn-rtn{
+  background-color: $color-bg-up;
+}
+.btn-send{
+  border:1px solid $color-bg-up;
+  color:$color-bg-up;
+}
+/*解除关联-按钮*/
+#unbind{
+  background: $color-bg-up;
+}
+/*future-按钮*/
+.btn-3b0, .bgc-fe0000 {
+  background-color: $color-bg-up;
+}
+/*认证首页-登录按钮*/
+.btn-reg{
+  background-color: $color-bg-up;
+}
+/*认证首页-注册按钮*/
+.btn-reg+.btn-cfm {
+  background-color: $color-bg-up;
+}
+

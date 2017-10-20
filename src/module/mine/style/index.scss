@@ -1,0 +1,65 @@
+@mixin font($font-size) {
+  font-size: $font-size;
+
+  [data-dpr = '2'] & {
+    font-size: $font-size * 2;
+  }
+
+  [data-dpr = '3'] & {
+    font-size: $font-size * 3;
+  }
+}
+
+@function toRem($px) {
+  @return $px / 75px * 1rem;
+}
+
+@mixin clearfix {
+  &:after {
+    clear: both;
+    content: '.';
+    display: block;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+  }
+  *height: 1%;
+}
+
+body {
+  background-color: #f7f7fa;
+}
+
+.toast .loading {
+  margin: toRem(40px) 0;
+}
+
+.loading {
+  width: toRem(120px);
+}
+
+.toast {
+  padding: 12px 15px;
+}
+
+.toast-lg {
+  padding: 0 20px;
+}
+
+.alert-message {
+  padding: 0 10px;
+}
+
+.toast-message {
+  @include font(16px);
+}
+
+@import './_mine.scss';
+@import './_userInfo.scss';
+@import './_infoAll.scss';
+@import './_avatar.scss';
+@import './_nickName.scss';
+@import './_sex.scss';
+@import './_job.scss';
+@import './_email.scss';
+@import './_password.scss';

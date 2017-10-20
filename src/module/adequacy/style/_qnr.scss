@@ -1,0 +1,120 @@
+.qnr {
+  .content {
+    padding: 50px 25px;
+    background: #fff;
+    .qnr-progress {
+      .num {
+        color: #3366cc;
+        font-size: 36px;
+        font-weight: bolder;
+      }
+      .total {
+        color: #3366cc;
+        font-size: 15px;
+
+      }
+    }
+    .qnr-title {
+      font-size: 19px;
+      color: #36c;
+      margin-bottom: 24px;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+    .multi {
+      margin-top: -16px;
+      margin-bottom: 10px;
+      .icon-info {
+        background-image: url(../adequacy/images/icon-info.png);
+        background-size: 100% 100%;
+        width: 13px;
+        height: 13px;
+        display: inline-block;
+      }
+      p {
+        color: #c0c6cd;
+        font-size: 13px;
+        display: inline-block;
+      }
+    }
+
+    .qnr-item {
+      border-bottom: 1px #e4e7f0 solid;
+
+      .icon {
+        display: block;
+        font-size: 16px;
+        padding: 15px 25px 15px 0;
+        border-top: 1px #e4e7f0 solid;
+        color: #808086;
+        input {
+          position: absolute;
+          visibility: hidden;
+        }
+        &.selected {
+          color: #1a1a1a;
+          //.icon-right {
+          background: url(../adequacy/images/icon-correct-blue.png) no-repeat right;
+          background-size: 17px 13px;
+          //width: 25px;
+          //height: 20px;
+          //display: block;
+          //float: right;
+          //margin-top: 9px;
+          //}
+        }
+      }
+
+    }
+  }
+  .btnbox {
+    margin: 0;
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    .one {
+      width: 100%
+    }
+
+    .qstn-btn {
+      -webkit-border-radius: 0px;
+      border-radius: 0px;
+    }
+
+    .prev {
+      border-top: solid 1px #c0c6cd;
+    }
+
+    .next {
+      border-top: solid 1px #3366cc;
+    }
+
+    button {
+      margin: 0;
+      padding: 0;
+      border: none;
+      flex: 1;
+      height: 49px;
+      font-size: 18px;
+      color: #fff;
+      background: #36c;
+      &.prev {
+        color: #36c;
+        background: #fff;
+      }
+      &:disabled {
+        background-color: #dfdfdf;
+        border-top: solid 1px #dfdfdf;
+        opacity: 1;
+        color: #fff;
+      }
+      .one {
+        width: 100%
+      }
+    }
+
+  }
+}

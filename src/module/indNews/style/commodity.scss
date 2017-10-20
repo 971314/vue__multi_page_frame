@@ -1,0 +1,19 @@
+.commodityDiv{
+    width:100%;
+    display: flex;
+    line-height: 40px;
+    padding:0 toRem(30px);
+    background:#f7f7fa;
+    position: relative;
+    @include border-px1-bottom-e4e7f0;
+    z-index: 99;
+    span{
+      flex: 1;
+      text-align: center;
+      color:#808086;
+      @include font(13px);
+      &.background{
+        color:#36c;
+      }
+    }
+  }

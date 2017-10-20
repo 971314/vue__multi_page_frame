@@ -1,0 +1,35 @@
+@import '_info.scss';
+
+.infoS {
+  .flex-1.selected {
+    color: #36c;
+  }
+  .btn-group {
+    position: fixed;
+    left: 0;
+    //top: calc(100% - 45px);
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .btn {
+      border: none;
+      outline: none;
+      border-radius: 0;
+      width: 100%;
+      display: block;
+      text-align: center;
+      padding: 11px 0;
+      font-size: 16px;
+      color: #36C;
+      background: #f7f7fa;
+      border-top: 1px solid #c0c6cd;
+    }
+    .next {
+      border-top: 1px solid #3366CC;
+      background: #3366CC;
+      color: #fff;
+    }
+  }
+}

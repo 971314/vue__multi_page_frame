@@ -1,0 +1,71 @@
+
+.account-diagnosis {
+  padding-top: 44px;
+  //.navbar-header {
+  //  padding-left: 10px;
+  //}
+  //.navbar-footer {
+  //  flex: .4;
+  //  padding-right: 10px;
+  //}
+
+  .account-diagnosis-title {
+    text-align: center;
+    color: $color-bg-grounding;
+  }
+
+  .diagnosis-coulmn {
+    height: toRem(86px);
+    line-height: toRem(86px);
+    padding-left: toRem(30px);
+    //font-size: toRem(28px);
+    @include font(14px);
+    color: $color-bg-assistant-text;
+    background-color: $color-bg-nav-text;
+    border-bottom: 1px solid $color-cutline-1px-cutoff;
+    img {
+      vertical-align: middle;
+      height: toRem(26px);
+    }
+    .imgTop {
+      margin-top: toRem(-6px);
+    }
+    .diagnosis-coulmn-header {
+      vertical-align: middle;
+      margin-left: toRem(10px);
+    }
+  }
+
+  .diagnosis-content {
+    height: toRem(164px);
+    padding: toRem(34px) 0;
+    background-color: $color-bg-nav-text;
+    border-bottom: 1px solid $color-cutline-1px-cutoff;
+    @include clearfix;
+
+    .diagnosis-content-item {
+      width: toRem(250px);
+      float: left;
+      color: $color-bg-text;
+      //font-size: toRem(24px);
+      @include font(12px);
+      text-align: center;
+      .img-content {
+        img {
+          height: toRem(52px);
+        }
+      }
+      .item-content {
+        margin-top: toRem(20px);
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .top20 {
+    margin-top: toRem(20px);
+    border-top: 1px solid $color-cutline-1px-cutoff;;
+  }
+
+
+}

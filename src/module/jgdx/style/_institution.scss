@@ -1,0 +1,174 @@
+.header-select {
+  position: relative;
+
+  .header-input {
+    height: 25px;
+    width: 100px;
+  }
+  .search-icon {
+    position: absolute;
+    width: 22px;
+    height: 25px;
+    line-height: 25px;
+    right: 0;
+    top: 0;
+    z-index: 10001;
+    background: url(../images/sousuomoren.png) 0 no-repeat;
+    background-size: 16px 16px;
+    font-size: 15px;
+    color: #c0c6cd;
+  }
+}
+
+.table {
+  .multi-icon {
+    display: inline-block;
+    width: 8px;
+    height: 13px;
+    background-image: url(../images/defaultsort@2x.png);
+    background-repeat: no-repeat;
+    background-size: 8px 11px;
+    vertical-align: middle;
+    margin-left: 2px;
+  }
+  .multi-icon-up {
+    background-image: url(../images/up@2x.png);
+  }
+  .multi-icon-down {
+    background-image: url(../images/down@2x.png);
+  }
+
+}
+
+.pb-jgdx ul {
+  list-style: none;
+}
+
+.pb-jgdx ul li:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.pb-jgdx ul li:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.pb-jgdx .ventor {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 16px;
+  width: 50%;
+  line-height: 30px;
+  font-size: 15px;
+  border: 1px solid #ffffff;
+  border-radius: 2px;
+}
+
+.pb-jgdx .ventor:hover {
+  color: $color-bg-up;
+  background: #ffffff;
+}
+
+.pb-jgdx .active {
+  color: $color-bg-up;
+  background: #ffffff;
+}
+
+.pb-jgdx .common-nav .navbar-body {
+  padding: 0;
+}
+
+.pb-jgdx .common-nav .navbar-header {
+  padding-right: 0;
+}
+
+.pb-jgdx .common-nav .navbar-footer {
+  padding-left: 0;
+}
+
+.share {
+  margin: 0 10px;
+  padding: 5px 0;
+  font-size: 13px;
+  line-height: 17px;
+  color: #808086;
+}
+
+.share .btn-share {
+  float: right;
+  display: block;
+  width: 17px;
+  height: 20px;
+  background: url("../images/sharedefault.png") no-repeat center right;
+  background-size: 17px 17px;
+}
+
+.order {
+  position: relative;
+  line-height: 25px;
+  color: #fff;
+  font-size: 10px;
+}
+
+.order:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 20px;
+  background: #f06c6a;
+}
+
+.order0 {
+  background: url(../images/2gold.png) no-repeat center;
+  background-size: 15px 20px;
+}
+
+.order1 {
+  background: url(../images/2yin.png) no-repeat center;
+  background-size: 15px 20px;
+}
+
+.order2 {
+  background: url(../images/2tong.png) no-repeat center;
+  background-size: 15px 20px;
+}
+
+.icon-tb {
+  width: 30px;
+  background: url(../images/hangqingdefault@2x.png) no-repeat center;
+  background-size: 17.5px 16px;
+}
+.icon-tbck {
+  width: 30px;
+  background: url(../images/hangqingclick@2x.png) no-repeat center;
+  background-size: 17.5px 16px;
+}
+
+.show-more {
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  font-size: 11px;
+  color: #fe0000;
+}
+
+.show-more:before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 12px;
+  margin-right: 3px;
+  background: url(../images/hanlddefault.png) no-repeat center;
+  background-size: 10px 12px;
+}
+
+.th-padding8p {
+  padding-right: 8px;
+}

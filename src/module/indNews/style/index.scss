@@ -1,0 +1,172 @@
+@import "../../activity/plugins/photoswipe.scss";
+@import "../../activity/plugins/default-skin/default-skin.scss";
+
+@mixin font($font-size) {
+  font-size: $font-size;
+
+  [data-dpr = '2'] & {
+    font-size: $font-size * 2;
+  }
+
+  [data-dpr = '3'] & {
+    font-size: $font-size * 3;
+  }
+}
+
+@function toRem($px) {
+  @return $px / 75px * 1rem;
+}
+
+@mixin border-px1-pixel-ratio {
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    &:before {
+      content: "";
+      pointer-events: none; /* 防止点击触发 */
+      box-sizing: border-box;
+      position: absolute;
+      width: 200%;
+      height: calc(200% - 1px);
+      left: 0;
+      top: 0;
+      border: 1px solid #e4e7f0;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+      border-radius: 8px;
+    }
+  }
+}
+
+@mixin border-px1-bottom-e4e7f0 {
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    &:before {
+      content: "";
+      pointer-events: none; /* 防止点击触发 */
+      box-sizing: border-box;
+      position: absolute;
+      width: 200%;
+      height: calc(200% - 1px);
+      left: 0;
+      top: 0;
+      border-bottom: 1px solid #e4e7f0;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+    }
+  }
+}
+
+@mixin border-px1-top-e4e7f0 {
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    &:before {
+      content: "";
+      pointer-events: none; /* 防止点击触发 */
+      box-sizing: border-box;
+      position: absolute;
+      width: 200%;
+      height: calc(200% - 1px);
+      left: 0;
+      top: 0;
+      border-top: 1px solid #e4e7f0;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+    }
+  }
+}
+
+@mixin border-px1-righe-e4e7f0 {
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    &:before {
+      content: "";
+      pointer-events: none; /* 防止点击触发 */
+      box-sizing: border-box;
+      position: absolute;
+      width: 200%;
+      height: calc(200% - 1px);
+      left: 0;
+      top: 0;
+      border-right: 1px solid #e4e7f0;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+    }
+  }
+}
+
+ul, li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+a {
+  color: #1a1a1a;
+}
+
+@import "./nav";
+@import 'newsFlash';
+@import "newsGroup";
+@import "newsView";
+@import "commodity";
+@import "hour";
+@import 'notice';
+@import "noticeGroup";
+@import "noticeView";
+@import '_details.scss';
+@import '../../alerted/style/alertLoding';
+body {
+  background: #f7f7fa;
+}
+
+.noData {
+  padding-top: 173px;
+  height: toRem(179px);
+  width: toRem(179px);
+  margin: 0 auto;
+  img {
+    height: toRem(179px);
+    width: toRem(179px);
+    margin-bottom: toRem(30px);
+  }
+  span {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: #808086;
+    font-size: 15px;
+  }
+}
+
+.alert .alert-footer .alert-btn:nth-of-type(1) {
+  border-right: 0;
+}
+
+.pb-activity-detail .share-a-link .share-btn-icon {
+  height: 19px;
+  width: 17px;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+//.indNews-router-view {
+//  position: absolute;
+//  left: 0;
+//  top: 44px;
+//  width: 100%;
+//  height: 100%;
+//  transition: all .5s cubic-bezier(.55,0,.1,1);
+//}
+
+.indNews-slide-left-enter, .indNews-slide-right-leave-active {
+  opacity: 0;
+  -webkit-transform: translate(100%, 0);
+  transform: translate(100%, 0);
+}
+
+.indNews-slide-left-leave-active, .indNews-slide-right-enter {
+  opacity: 0;
+  -webkit-transform: translate(-100%, 0);
+  transform: translate(-100%, 0);
+}

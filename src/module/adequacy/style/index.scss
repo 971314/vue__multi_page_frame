@@ -1,0 +1,26 @@
+@import './_variable.scss';
+
+input[type='number'] {
+  -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+@import './_adequacy.scss';
+@import './_info.scss';
+@import './_infoS.scss';
+@import './_selectDept.scss';
+@import './_selectProfession.scss';
+@import './_infoSub.scss';
+@import './_infoCard.scss';
+@import './_videoCheck.scss';
+@import './_success.scss';
+@import './_agreement.scss';
+@import './_agreementView.scss';
+@import './_agreementList.scss';
+@import './_qnr.scss';
+@import './_qcm.scss';
+@import './_qrt.scss';
+@import './_common.scss';

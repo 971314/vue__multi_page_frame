@@ -1,0 +1,271 @@
+@import '../../main/style/_moreHeader.scss';
+
+@mixin font($font-size) {
+
+ 	font-size: $font-size;
+
+	[data-dpr = '2'] & {
+		font-size: $font-size * 2;
+	}
+
+	[data-dpr = '3'] & {
+		font-size: $font-size * 3;
+	}
+}
+
+@function toRem($px) {
+ 	@return $px / 75px * 1rem;
+}
+
+body{
+	background-color: #f7f7fa;
+}
+
+.bg-fff{
+    background-color: #fff; 
+}
+
+.bg-efe{
+	background-color: #efeff4;
+}
+
+.pd15{
+	padding: toRem(30px);
+}
+
+.mt-15{
+	margin-top: toRem(20px);
+}
+
+//文字过多显示 省略号
+.ellipsis{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.cmHelperIndex{
+
+	.headerArea{
+		.mine{
+			padding-right: toRem(30px);
+			img{
+				width: toRem(36px);
+				height: toRem(36px);
+			}	
+		}
+	}
+
+	.common-nav{
+		height: toRem(88px);
+    	line-height: toRem(88px);
+	}
+	.container{
+		margin-top: toRem(88px);
+		.main-header-title{
+			padding: 0 toRem(30px);
+			border-bottom: solid toRem(1px) #ddd;
+			.common-header-right{
+				margin-right: 0;
+			}
+		}
+		.myAttention,.cusMag{
+			.group{
+				margin-top: 0;
+				background-image: none; 
+				.cell{
+					padding: toRem(30px); 
+					background-image: none;
+					.cell-body{
+					    width: 100%; 
+						.media-object{
+							//display: inline-grid;
+							padding-right: toRem(30px);
+						}
+						.media-body{ 
+							//display: inline-grid;
+							text-align: left; 
+							h3{
+								margin-bottom: toRem(24px);
+								@extend .ellipsis;	
+							}
+							p{
+								@extend .ellipsis;	
+							}
+
+						} 
+					}
+					
+				}
+			}
+			.group.bb0{
+				border-bottom: 0;
+			}
+			.group.br0{
+				border-right: 0; 
+			}
+		}
+		.myAttention{
+			.group{
+			    padding: 0;
+				border-bottom: 0;
+				border-right: 0;
+				.cell{
+					padding: toRem(29px) toRem(30px);
+					.cell-body{
+						.media-object{
+							position: relative;
+							padding-right: toRem(20px);
+							img{
+								width:toRem(98px);
+								height:toRem(98px);
+							}
+							i{
+								position: absolute;
+							    right: toRem(8px);
+    							top: toRem(-6px);
+								width: toRem(44px);
+								height: toRem(30px);
+								background-image:url(../cmHelperIndex/images/img02.png);
+								background-size: 100%;
+								background-repeat: no-repeat;
+								background-position: center;
+								font-size: toRem(22px);
+								color: #ffffff;
+								font-style: normal;
+    							text-align: center;
+							}
+						} 
+						.media-body{
+							width: 80%;
+							h3{
+								margin-top: toRem(4px);
+								margin-bottom: toRem(10px);
+								font-size: toRem(32px);
+								color: #1a1a1a;
+								font-weight: bolder;
+								span{
+									float: right;
+									font-size: toRem(24px);
+									color: #808086;
+									font-weight: normal;
+								}
+							}
+							p{
+								margin-bottom: 0;
+								font-size: toRem(28px);
+								color: #808086;
+							}
+						}
+					}
+					
+				}
+			}
+		}
+		.cusMag{
+			.group{
+				position: relative;
+				padding: 0;
+				height: toRem(170px);
+				border-right: solid toRem(1px) #e4e7f0;
+    			border-bottom: solid toRem(1px) #e4e7f0;
+				.cell{
+				    padding: 0 toRem(30px);
+				    position: absolute;
+				    width: 100%;
+				    left: 0;
+				    top: 50%;
+				    transform: translate(0,-50%);
+				    -webkit-transform: translate(0,-50%);
+					.cell-body{
+						.media-object{
+							padding-left: 0;
+							padding-right: 0;
+							img{
+								width: toRem(98px);
+								height: toRem(98px);
+							} 
+						}
+						.media-body{
+							text-align: left;
+							h3{
+								margin-bottom: toRem(8px);
+								font-size: toRem(30px);
+								color: #1a1a1a;
+							}
+							p{
+								margin-bottom: 0;
+								font-size: toRem(26px);
+								color: #808086;
+							}
+							img{
+								border:0;
+							}
+						}
+					}
+					
+				}
+			}
+		}
+		.cusTrends{
+			.group{
+				margin: 0;
+				padding: 0;
+				.cell{
+					padding: toRem(25px) toRem(30px);
+					background-image: none;
+					.cell-body{
+						position: relative;
+						padding-left: toRem(24px);
+						font-size: toRem(30px);
+						color: #1a1a1a;
+						@extend .ellipsis;
+						i{
+							position: absolute;
+							display: inline-block;
+							width: toRem(10px);
+							height: toRem(10px);
+							background-color: #F1BB53;
+							border-radius: 50%;
+							left: 0;
+							top: 50%;
+							transform: translate(0,-50%);
+							-webkit-transform: translate(0,-50%);
+						}
+					}
+					.cell-footer{
+						font-size: toRem(24px);
+						color: #808086;
+					}
+				}
+				.cell:first-child{
+					padding-top: toRem(32px);
+				}
+				.cell:last-child{
+					padding-bottom: toRem(32px);
+				}
+			}
+		}
+		.cusTrends.company{
+			.group{
+				.cell{
+					padding-top: toRem(40px);
+					padding-bottom:0;
+					.cell-body{ 
+						padding-left:0;
+						@extend .ellipsis;
+					}
+				}
+				.cell:last-child{ 
+					padding-bottom: toRem(40px);
+				}
+			}
+		}
+		.bottom-tips{
+			padding: toRem(40px); 
+			font-size: toRem(26px);
+			color: #808086;
+		}
+
+	}
+}

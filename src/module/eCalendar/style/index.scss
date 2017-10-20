@@ -1,0 +1,369 @@
+@mixin font($font-size) {
+  font-size: $font-size;
+
+  [data-dpr = '2'] & {
+    font-size: $font-size * 2;
+  }
+
+  [data-dpr = '3'] & {
+    font-size: $font-size * 3;
+  }
+}
+@function toRem($px) {
+  @return $px / 75px * 1rem;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height:0;
+  display: none;
+}
+/*下面的css可以去掉date中上下小三角*/
+::-webkit-inner-spin-button{
+  visibility: hidden;
+}
+body{
+  background-color:#ffffff;
+}
+.common-nav{
+  height:toRem(88px);
+  line-height:toRem(88px);
+}
+.toast{
+  font-size: 0;
+  .loading{
+    margin: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+.toast-lg{
+  padding: 0.7rem;
+}
+
+.needFixPositionFixed{
+  position: fixed;
+}
+
+.eCalendar {
+
+  .style1{
+    position:absolute;
+    display: inline-block;
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:cover;
+  }
+
+  position:relative;
+
+  .slide-mask{
+    z-index: 10000000;
+    background-color: #000000;
+    transition: opacity 0.4s;
+    -webkit-transition: opacity 0.4s;
+    opacity:0;
+    visibility: hidden;
+  }
+
+  .mask-show{
+    visibility: visible;
+    opacity:0.3;
+  }
+
+  .fadeOut{
+    opacity:0;
+    visibility: visible;
+  }
+
+  .picker-area{
+
+    position: relative;
+    padding-right: toRem(30px);
+
+    .calendar-icon{
+      position:absolute;
+      top:toRem(26px);
+      right:toRem(106px);
+      width:toRem(36px);
+      height:toRem(36px);
+      z-index: -1;
+    }
+    .filter-icon{
+      position:absolute;
+      top:toRem(26px);
+      right:toRem(30px);
+      width:toRem(34px);
+      height:toRem(36px);
+    }
+    .date-picker{
+      position: absolute;
+      right: toRem(90px);
+      top: 0;
+      width: toRem(60px);
+      height: toRem(88px);
+      z-index: 10;
+      background-color: transparent;
+      color: transparent;
+      border: 0;
+      outline: none;
+    }
+
+  }
+  .fixed-area{
+      position: fixed;
+      left: 0;
+      z-index: 2;
+      visibility: visible;
+      width: 100%;
+      top: toRem(88px);
+      .date{
+          padding:0 toRem(30px);
+          height:toRem(88px);
+          line-height:toRem(88px);
+          background-color: #ffffff;
+          font-size:toRem(26px);
+          color: #1a1a1a;
+          text-align: left;
+      }
+      ul{
+          margin:0;
+          white-space: nowrap;
+          overflow-x: auto;
+          background-color: #F7F7FA;
+          -webkit-overflow-scrolling : touch;
+          li{
+            display:inline-block;
+            height:toRem(98px);
+            line-height:toRem(49px);
+            padding:0 toRem(29px);
+            color: #808086;
+            list-style:none;
+            .week-day{
+              font-size:toRem(26px);
+            }
+            .week-date{
+              font-size:toRem(36px);
+            }
+          }
+          li.active{
+            height:toRem(96px);
+            line-height:toRem(48px);
+            color: #3366CC;
+            border-bottom:solid toRem(4px) #3366CC;
+          }
+        }
+        ul.week{
+          padding: 0 toRem(30px);
+          height:toRem(100px);
+          border-top: solid toRem(1px) #E4E7F0;
+          border-bottom: solid toRem(1px) #E4E7F0;
+      }
+  }
+
+  .sidelip{
+      left: inherit;
+      right: -75%;
+      z-index: 10000001;
+      width: 75%;
+      transition: right 0.4s;
+      -webkit-transition: right 0.4s;
+
+
+      .title{
+        margin-bottom:0;
+        padding:toRem(66px) toRem(20px) toRem(36px);
+        font-size:toRem(26px);
+        color:#808086;
+      }
+      .title.importance{
+        padding:toRem(36px) toRem(20px);
+        border-top:solid toRem(1px) #E4E7F0;
+      }
+      .options{
+        padding:0 toRem(20px) toRem(52px);
+        overflow: hidden;
+        .op-item{
+          margin:0 5% toRem(34px) 0;
+          padding: toRem(18px) 0;
+          width:30%;
+          float:left;
+          background-color: #F0F1F2;
+          color:#1a1a1a;
+          font-size:toRem(26px);
+          border-radius: toRem(6px);
+        }
+        .op-item.active{
+          color: #2868E8;
+          background-image:url(../eCalendar/images/selected1.png);
+          background-size: 99% 100%;
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+        .op-item.mg0{
+          margin:0;
+        }
+      }
+      .confirm-choose{
+        position:absolute;
+        bottom:0;
+        right:0;
+        width: 100%;
+        .e-btn{
+          padding: 0;
+          width:100%;
+          height:toRem(98px);
+          line-height:toRem(98px);
+          font-size: toRem(36px);
+          outline: none;
+          border:0;
+        }
+        .e-btn.reset{
+          background-color:#ffffff;
+          color:#3366CC;
+          border-top:solid toRem(1px) #C0C6CD;
+        }
+        .e-btn.confirm{
+          color:#ffffff;
+          background-color:#3366CC;
+        }
+        .e-btn.confirm:active{
+          background-color:#5c90f9;
+        }
+      }
+    }
+    .sidelip.slide{
+      right:0;
+
+    }
+
+  .container{
+
+    /* position: absolute;
+    overflow: auto;
+    z-index: 1;
+    top: toRem(278px);
+    left: 0;
+    width: 100%; */
+
+    padding-top: toRem(278px);
+
+    .group{
+      margin:0;
+      background-image: none;
+      .cell{
+        padding:toRem(50px) 0 0;
+        background-image:none;
+        .cell-body{
+          .media{
+            padding:0 toRem(30px);
+          }
+        }
+        .media-body{
+          padding-bottom: toRem(50px);
+          border-bottom: solid toRem(1px) #E4E7F0;
+        }
+        .media-object:first-child{
+          margin-right: toRem(30px);
+          padding-right:0;
+        }
+        .media-body.open-chart{
+          padding-bottom:toRem(24px);
+          border: 0;
+        }
+        .chart-area{
+          padding:toRem(30px) toRem(30px) toRem(20px);
+          background-color:rgba(232,240,250,0.4);
+          border-top:solid 1px #e4e7f0;
+          border-bottom:solid 1px #e4e7f0;
+          .charts{
+            width:100%;
+            height:toRem(400px);
+          }
+          .no-chart-data{
+            width: 100%;
+            height:toRem(400px);
+            line-height:toRem(400px);
+            font-size:toRem(30px);
+            color:#808086;
+          }
+        }
+        .val-chunk{
+          padding-right:toRem(30px);
+          position:relative;
+          .drop-down{
+            @extend .style1;
+            top: toRem(8px);
+            right: 0;
+            width: toRem(20px);
+            height: toRem(12px);
+            background-image:url(../eCalendar/images/drop-down.png);
+          }
+          .drop-up{
+            @extend .drop-down;
+            background-image:url(../eCalendar/images/drop-up.png);
+          }
+        }
+      }
+      .no-data{
+        text-align: center;
+        padding: toRem(150px) 0;
+        border:0;
+        img{
+          width:toRem(179px);
+          height:toRem(179px);
+        }
+        .no-data-tips{
+          margin-top: toRem(30px);
+          font-size:toRem(30px);
+          color:#808086;
+        }
+      }
+      h3{
+        margin-bottom:toRem(30px);
+        padding-right: 45px;
+        font-size:toRem(30px);
+        font-weight: inherit;
+        color:#4c4c55;
+        position:relative;
+        img{
+          @extend .style1;
+          top: 0;
+          right: 0;
+          width: toRem(46px);
+          height: toRem(30px);
+        }
+      }
+      .time-info{
+
+        width:toRem(100px);
+        height:toRem(100px);
+        background:url(../eCalendar/images/time-info.png) no-repeat center center;
+        background-size:toRem(100px);
+
+        .pub-time{
+          height: toRem(64px);
+          line-height: toRem(64px);
+          font-size:toRem(30px);
+          color:#ffffff;
+        }
+        .pub-status{
+          height: toRem(36px);
+          line-height: toRem(36px);
+          font-size:toRem(20px);
+          color:#3366CC;
+          font-weight:normal;
+        }
+      }
+
+      .font-type2{
+        color:#808086;
+        font-size:toRem(24px);
+      }
+      .color3{
+        color:#FE0000;
+      }
+    }
+  }
+
+}

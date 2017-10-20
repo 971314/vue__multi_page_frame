@@ -1,0 +1,48 @@
+.newsGroup {
+  display: flex;
+  flex-wrap: wrap;
+  //margin: 0 toRem(30px);
+  padding: toRem(26px) toRem(30px);
+  //border-bottom: 1px solid #e4e7f0;
+  position:relative;
+  @include border-px1-bottom-e4e7f0;
+  div {
+    padding-bottom: toRem(10px);
+    @include font(15px);
+    width:100%;
+    text-align: justify;
+  }
+  span {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    color: #808086;
+    //text-align: justify;
+    @include font(13px);
+    line-height: 20px;
+    &:nth-of-type(1){
+      margin-bottom: toRem(26px);
+    }
+  }
+
+  .GroupTime {
+    color: #808086;
+    @include font(13px);
+    float: right;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+.isPreview {
+  span {
+    color: #808086;
+  }
+  div {
+    color: #808086;
+  }
+}

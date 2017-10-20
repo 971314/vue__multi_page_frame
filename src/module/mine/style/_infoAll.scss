@@ -1,0 +1,102 @@
+.info-all {
+  .group {
+    margin: 0;
+    padding: 0;
+    padding-left: toRem(30px);
+    border-bottom: 1px solid #e4e7f0;
+    .cell {
+      padding: 0;
+      padding-right: toRem(30px);
+      height: toRem(88px);
+      border-bottom: 1px solid #e4e7f0;
+      background-image: none;
+      &:last-child {
+        border-bottom: none;
+      }
+      .cell-body {
+        @include font(16px);
+        color: #1a1a1a;
+      }
+      .cell-footer {
+        padding: 0;
+        @include font(16px);
+        color: #1a1a1a;
+        .avatar {
+          height: 50px;
+          width: 50px;
+        }
+        span {
+          vertical-align: middle;
+          color: #808086;
+        }
+        .more {
+          margin-left: toRem(20px);
+          height: 14.5px;
+          width: 7.5px;
+        }
+      }
+    }
+    .avatar {
+      height: toRem(176px);
+    }
+  }
+
+  .age-select-title {
+    height: toRem(86px);
+    line-height: toRem(86px);
+    background-color: #f7f7fa;
+    border-top: 1px solid #c0c6cd;
+    padding-right: toRem(30px);
+    text-align: right;
+    color: #3366cc;
+    @include font(15px);
+  }
+  .age-select-content {
+    height: toRem(432px);
+    background-color: #e6e6ec;
+    overflow-y: auto;
+    position: relative;
+    .age-select-item {
+      height: toRem(70px);
+      line-height: toRem(70px);
+      color: #808086;
+      @include font(20px);
+      text-align: center;
+    }
+    .age-select-ative {
+      color: #1a1a1a;
+    }
+  }
+  .picker{
+    height: 216px;
+  }
+  .picker-lg {
+    height: 216px;
+    background: #e6e6ec;
+
+    .picker-mask {
+      background-image: none;
+    }
+    .picker-indicator {
+      background-image: none;
+      height: 35px;
+    }
+    .picker-list {
+      padding-top: 87.5px;
+    }
+    .picker-list-item {
+      color: #808086;
+      @include font(20px);
+      height: 35px;
+      line-height: 35px;
+      text-align: center;
+      padding: 0;
+    }
+    .picker-list-item.active {
+      color: #1a1a1a;
+      @include font(20px);
+      height: 35px;
+      font-weight: normal;
+    }
+  }
+}

@@ -1,0 +1,85 @@
+body{
+	background-color: #f7f7fa;
+}
+
+textarea::-webkit-input-placeholder{
+　　color:#c0c6cd; 
+}
+
+.cmTrends.addAndEdit{
+	.addFollow{
+		padding-right: toRem(30px);
+		font-size: toRem(30px);
+		color: #fff;
+	}
+	.container{
+		overflow: hidden;
+		.group{
+			margin-top: toRem(20px); 
+			padding-left: 0;
+			.cell{
+				padding: toRem(22px) toRem(30px);
+				background-image: none;
+			    border-bottom: solid 1px #e4e7f0;
+				span{
+					font-size: toRem(32px);
+					color: #1a1a1a;
+				}
+				.cell-body{
+					.textarea{
+						padding: toRem(34px) toRem(30px);
+						textarea{
+							padding: 0;
+							font-size: toRem(32px);
+							color: #1a1a1a;
+						}
+						.upload-img{
+							padding: toRem(26px) 0 toRem(34px) 0;
+							.showImgArea{
+								display: inline-block;
+								position: relative;
+								input[type='file']{
+									width: toRem(86px);
+									height: toRem(86px);
+									position: absolute;
+									left: 0;
+									top: 0; 
+									opacity: 0;
+								}
+								img{
+									margin-right: toRem(10px);
+									width: toRem(86px);
+									height: toRem(86px);
+								}	
+							}
+							
+						}
+					}
+
+				}
+				.cell-footer{
+					img{
+						width:toRem(14px);
+						height:toRem(26px);
+					}
+				}
+			}
+			.cell:last-child{
+				border-bottom: 0;
+			}
+		}
+		.result{
+			padding: toRem(30px);
+			font-size: toRem(32px);
+			color:#c0c6cd; 
+			height: toRem(250px);
+    		background-color: #fff;
+    		margin-top: toRem(20px);
+		}
+		.lastEditDate{
+			margin-top: toRem(20px);
+			font-size: toRem(26px);
+			color: #808086; 
+		}
+	}
+}

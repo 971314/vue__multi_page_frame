@@ -1,0 +1,47 @@
+
+
+
+@import './swiper.min.scss';
+@import './_main.scss';
+
+@import './_coAdvert.scss';
+@import './_coCommitFuc.scss';
+@import './_coMainFunc.scss';
+@import './_coNavBarSpe.scss';
+@import './_coNewsListSpe.scss';
+@import './_coNoticeAdv.scss';
+@import './_coInfoBox.scss';
+@import './_coInfoList.scss';
+@import './_coInfoList2.scss';
+@import './_mainActive.scss';
+@import './_moreHeader.scss';
+body {
+  background-color: #f7f7fa;
+}
+.toast .loading {
+  margin: 20px 0;
+}
+
+.loading {
+  width: 60px;
+}
+
+.toast {
+  padding: 12px 15px;
+}
+
+.toast-lg {
+  padding: 0 20px;
+}
+
+.toast-message {
+  font-size: 16px;
+}
+
+
+.toast .loading {
+  height: auto;
+}
+.toast {
+  font-size: 0;
+}

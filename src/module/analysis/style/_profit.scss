@@ -1,0 +1,254 @@
+.profit {
+  background-color: #ffffff;
+  padding-top: 44px;
+  //.navbar-header {
+  //  padding-left: 10px;
+  //}
+  //.navbar-footer {
+  //  flex: .4;
+  //  padding-right: 10px;
+  //}
+
+  .profit-title {
+    text-align: center;
+    color: $color-bg-grounding;
+  }
+
+  .profit-select-group {
+    @include clearfix;
+    border-bottom: 1px solid $color-cutline-1px-cutoff;
+    background-color: $color-bg-grounding;
+    position: relative;
+    .profit-left-select {
+      height: toRem(86px);
+      line-height: toRem(86px);
+      width: 49.9%;
+      float: left;
+      padding-left: toRem(40px);
+      @include clearfix;
+      .left-select-title {
+        height: 100%;
+        float: left;
+        //font-size: toRem(28px);
+        @include font(14px);
+        color: $color-bg-assistant-text;
+      }
+      .left-select-content {
+        height: 100%;
+        float: left;
+        margin-left: toRem(20px);
+        font-size: 0;
+
+        .select-text-current {
+          //font-size: toRem(28px);
+          @include font(14px);
+          color: $color-bg-text;
+          vertical-align: middle;
+        }
+        .choose-active {
+          color: $color-bg-up;
+        }
+        .dropdown-tria {
+          vertical-align: middle;
+          margin-left: toRem(25px);
+          display: inline-block;
+          height: toRem(12px);
+          width: toRem(20px);
+          background-image: url(../images/downchoosedefault@2x.png);
+          background-repeat: no-repeat;
+          background-position: 0 0;
+          background-size: toRem(20px) toRem(12px);
+        }
+        .up-choose {
+          background-image: url(../images/huishou@2x.png);
+        }
+      }
+
+    }
+    .profit-right-select {
+      height: toRem(86px);
+      line-height: toRem(86px);
+      width: 49.9%;
+      float: left;
+      padding-right: toRem(120px);
+      position: relative;
+      .right-select-content {
+        height: 100%;
+        float: right;
+        margin-left: toRem(20px);
+        font-size: 0;
+
+        .select-text-current {
+          //font-size: toRem(28px);
+          @include font(14px);
+          color: $color-bg-text;
+          vertical-align: middle;
+        }
+        .choose-active {
+          color: $color-bg-up;
+        }
+        .dropdown-tria {
+          vertical-align: middle;
+          margin-left: toRem(25px);
+          display: inline-block;
+          height: toRem(12px);
+          width: toRem(20px);
+          background-image: url(../images/downchoosedefault@2x.png);
+          background-repeat: no-repeat;
+          background-position: 0 0;
+          background-size: toRem(20px) toRem(12px);
+        }
+        .up-choose {
+          background-image: url(../images/huishou@2x.png);
+        }
+      }
+    }
+
+    .profit-right-select {
+      width: 49.9%;
+      float: left;
+    }
+
+    .dropdown-selected {
+      position: absolute;
+      z-index: 1011;
+      top: toRem(87px);
+      left: 0;
+      width: 100%;
+      padding: 0 toRem(30px);
+      background-color: $color-bg-grounding;
+      //font-size: toRem(28px);
+      @include font(14px);
+      line-height: 1;
+      .dropdown-selected-option {
+        padding-top: toRem(25px);
+        padding-bottom: toRem(25px);
+        //font-size: toRem(28px);
+        @include font(14px);
+        color: #1a1a1a;
+        position: relative;
+        &:first-child {
+          margin-top: toRem(25px);
+        }
+        &:last-child {
+          padding-bottom: toRem(50px);
+        }
+      }
+      .dropdown-zdy-option {
+        padding-top: toRem(30px);
+        margin-right: toRem(-30px);
+        padding-bottom: toRem(50px);
+        //font-size: toRem(28px);
+        @include font(14px);
+        color: #1a1a1a;
+        border-top: 1px solid $color-cutline-1px-cutoff;
+        position: relative;
+        .dropdown-selected-active {
+          position: absolute;
+          right: toRem(30px);
+          top: toRem(30px);
+          height: toRem(26px);
+          width: toRem(35px);
+          background-image: url(../images/gou@2x.png);
+          background-repeat: no-repeat;
+          background-size: toRem(35px) toRem(26px);
+        }
+      }
+      .profit-option-active {
+        color: $color-bg-up;
+      }
+      .dropdown-selected-active {
+          position: absolute;
+          right: 0;
+          top: toRem(25px);
+          height: toRem(26px);
+          width: toRem(35px);
+          background-image: url(../images/gou@2x.png);
+          background-repeat: no-repeat;
+          background-size: toRem(35px) toRem(26px);
+      }
+    }
+    .dropdown-selected-mask {
+      position: fixed;
+      left: 0;
+      top: toRem(200px);
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 1010;
+    }
+  }
+
+  .profit-charts {
+    height:toRem(650px);
+    z-index: 999;
+    margin-top: toRem(44px);
+  }
+
+  .profit-data-date {
+    padding-top: toRem(50px);
+    padding-left: toRem(40px);
+    //font-size: toRem(24px);
+    @include font(12px);
+    color: $color-bg-assistant-text;
+    line-height: 1;
+  }
+
+  .profit-qcbj {
+    box-shadow: none;
+    margin-top: toRem(56px);
+    height: toRem(98px);
+    line-height: toRem(98px);
+    padding: 0 toRem(30px);
+    font-size: 0;
+    .profit-qcbj-title {
+      box-shadow: none;
+      display: inline-block;
+      font-size: toRem(28px);
+      //@include font(14px);
+    }
+    color: $color-bg-text;
+    input {
+      margin: 0;
+      box-shadow: none;
+      margin-left: toRem(26px);
+      margin-right: toRem(20px);
+      padding-left: toRem(24px);
+      width: toRem(260px);
+      height: toRem(70px);
+      line-height: toRem(70px);
+      color: $color-bg-up;
+      font-size: toRem(28px);
+      //@include font(14px);
+      border: toRem(1px) solid #c0c6cd;
+      outline: none;
+      -webkit-appearance:none;
+      &::-webkit-input-placeholder,
+      &::-moz-placeholder,
+      &:-moz-placeholder,
+      &:-ms-input-placeholder{
+        color: #c0c6cd;
+      }
+
+
+    }
+
+    .profit-computed-button {
+      display: inline-block;
+      background-image: url(../images/computeddefault@2x.png);
+      background-repeat: no-repeat;
+      background-size: toRem(160px) toRem(70px);
+      //margin-left: toRem(50px);
+      margin-left: toRem(69px);
+      width: toRem(160px);
+      height: toRem(70px);
+      line-height: toRem(70px);
+      text-align: center;
+      font-size: toRem(32px);
+      //@include font(16px);
+      color: $color-text-nav-text;
+    }
+  }
+
+
+}

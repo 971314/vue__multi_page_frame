@@ -1,0 +1,82 @@
+@mixin font($font-size) {
+  font-size: $font-size;
+
+  [data-dpr = '2'] & {
+    font-size: $font-size * 2;
+  }
+
+  [data-dpr = '3'] & {
+    font-size: $font-size * 3;
+  }
+}
+
+@function toRem($px) {
+  @return $px / 75px * 1rem;
+}
+
+@mixin clearfix {
+  &:after {
+    clear: both;
+    content: '.';
+    display: block;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+  }
+  *height: 1%;
+}
+
+@mixin bottom-px1-pixel-ratio {
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    &:before {
+      content: "";
+      pointer-events: none; /* 防止点击触发 */
+      box-sizing: border-box;
+      position: absolute;
+      width: 200%;
+      height: calc(200% - 1px);
+      left: 0;
+      top: 0;
+      border-bottom: 1px solid #e4e7f0;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+    }
+  }
+}
+
+@mixin top-px1-pixel-ratio {
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    &:before {
+      content: "";
+      pointer-events: none; /* 防止点击触发 */
+      box-sizing: border-box;
+      position: absolute;
+      width: 200%;
+      height: calc(200% - 1px);
+      left: 0;
+      top: 0;
+      border-top: 1px solid #e4e7f0;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+    }
+  }
+}
+
+@mixin px1-pixel-ratio {
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    &:before {
+      content: "";
+      pointer-events: none; /* 防止点击触发 */
+      box-sizing: border-box;
+      position: absolute;
+      width: 200%;
+      height: calc(200% - 1px);
+      left: 0;
+      top: 0;
+      border-top: 1px solid #e4e7f0;
+      border-bottom: 1px solid #e4e7f0;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+    }
+  }
+}

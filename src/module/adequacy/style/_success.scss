@@ -1,0 +1,17 @@
+.success {
+  .icon-success-warp {
+    margin-top: 65px;
+    img {
+      width: 76px;
+    }
+  }
+  .content {
+    margin-top: 30px;
+
+    > div {
+      padding: 3px 0;
+      font-size: $fontSize33;
+      color: $color18;
+    }
+  }
+}

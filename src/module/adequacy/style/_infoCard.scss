@@ -1,0 +1,58 @@
+.infoCard {
+  min-height: 100%;
+
+  .title {
+    color: $color17;
+    font-size: $fontSize26;
+    padding: 18px 0;
+  }
+
+  .no-file {
+    .img {
+      padding-top: 30px;
+      height: 95px;
+    }
+  }
+  .has-file {
+    .img {
+      max-height: 100%;
+      max-width: 100%;
+    }
+    .label {
+      display: none;
+    }
+  }
+
+  .card-font, .card-reverse {
+    background: #fff;
+    border: $color23 1px solid;
+    height: 195px;
+    text-align: center;
+    position: relative;
+
+    .label {
+      margin-top: 29px;
+      color: $color1;
+      font-size: $fontSize25;
+    }
+
+    input {
+      opacity: 0;
+      color: transparent;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      position: absolute;
+      display: block;
+      left: 0;
+      top: 0;
+      z-index: 999;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .card-reverse {
+    margin-top: 15px;
+  }
+
+}

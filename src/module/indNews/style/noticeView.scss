@@ -1,0 +1,19 @@
+.noticeView {
+  //padding-top: 50px;
+  position:relative;
+  @include border-px1-top-e4e7f0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #fff;
+  .borderBottom{
+    position:relative;
+    @include border-px1-bottom-e4e7f0;
+  }
+}

@@ -1,0 +1,79 @@
+.adequacy {
+  .warp {
+    border-top: 1px solid #e4e7f0;
+    background: #fff;
+
+    > div {
+      display: flex;
+    }
+
+    input {
+      padding: 0;
+    }
+  }
+  .basic-info {
+    .basic {
+      display: block;
+      width: 100%;
+      height: 50px;
+      margin-left: 15px;
+      font-size: 16px;
+      border: none;
+      outline: none;
+      border-bottom: 1px solid #e4e7f0;
+    }
+    .verify {
+      display: block;
+      width: 100%;
+      height: 50px;
+      padding: 0 10px;
+      font-size: 16px;
+      border: none;
+      outline: none;
+      padding-left: 15px;
+    }
+    .verifyGet {
+      height: 30px;
+      width: 100%;
+      background: #fff;
+      color: #36c;
+      border: none;
+      font-size: 15px;
+      border-left: 1px solid #e4e7f0;
+    }
+    .rowbottom {
+      border-bottom: 1px solid #e4e7f0;
+      .item {
+        padding-left: 15px;
+        input {
+          padding: 0;
+        }
+      }
+      .item1 button {
+        padding: 0;
+      }
+    }
+    input:focus {
+      color: #000;
+    }
+  }
+  input::placeholder {
+    color: #c0c6cd;
+  }
+  .start-btn {
+    display: block;
+    width: 90%;
+    text-align: center;
+    margin: 60px auto;
+    height: 43px;
+    background: #3366cc;
+    border: none;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 5px;
+
+    &.disable {
+      background: #dfdfdf;
+    }
+  }
+}

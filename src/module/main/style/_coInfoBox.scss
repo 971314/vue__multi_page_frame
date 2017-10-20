@@ -1,0 +1,86 @@
+.content-box .clearfix {
+  *zoom: 1;
+}
+.content-box{
+  margin-top: 7.5px;
+}
+.content-box .clearfix:after {
+  display: table;
+  content: '';
+  clear: both;
+}
+.content-box {
+  background-color: #fff;
+}
+.content-box .info-header {
+  padding: 6px 10px;
+  line-height: 23px;
+  border-bottom: 1px solid #e4e7f0;
+}
+.content-box .info-header b {
+  border-left:7px red solid;
+  padding-left: 7px;
+  font-weight: 400;
+  text-shadow: 1px 1px 2px #fff;
+}
+.content-box .info-header a {
+  display: inline-block;
+  font-size: 13px;
+  padding: 0px 5px;
+  float: right;
+  position: relative;
+  color: #808086;
+  text-decoration: none;
+}
+.content-box .info-header a .more {
+  position: relative;
+  float: none;
+  top: -1px;
+  margin-left: 10px;
+  display: inline-block;
+  width: 7px;
+  height: 16px;
+  vertical-align: middle;
+}
+.content-box .info-item {
+  display: block;
+  padding: 5px 5px;
+  border-top: 1px #eee solid;
+}
+.content-box .info-item:nth-of-type(1) {
+  border-top: 0;
+}
+.content-box .info-item .text-info {
+  margin-left: 70px;
+}
+.content-box .info-item img {
+  float: left;
+  width: 60px;
+  height: 60px;
+}
+.content-box .text-info p,.text-info h2 {
+  margin: 0;
+  padding: 0;
+  color: black;
+}
+.content-box .text-info h2 {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 16px;
+  height: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.content-box .text-info p {
+  height: 29px;
+  line-height: 14px;
+  font-size: 14px;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;  /*下控制两行溢出后省略号*/
+  overflow: hidden;
+  color: #67676d;
+}

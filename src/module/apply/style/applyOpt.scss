@@ -1,0 +1,44 @@
+.apply_opt {
+  @extend %initial;
+  .conter{
+    padding-left: toRem(30px);
+    background:$color15;
+    &>div{
+      display: flex;
+      align-items:center;
+      height:toRem(120px);
+      color:$color18;
+      font-size: $font33;
+      padding-right: toRem(30px);
+      position: relative;
+      @include border-Bbottom-color23;
+      span{
+        flex: 1;
+      }
+      i{
+        padding:toRem(40px);
+        background:url("../apply/images/icon_moBanShuoMing.png") no-repeat center right;
+        background-size: toRem(31px);
+      }
+    }
+  }
+}
+.alert-modal{
+  width:toRem(640px);
+  padding: toRem(52px) 0;
+  border-radius:toRem(20px);
+  .alert-title{
+    color: $color18;
+    font-size: $font33;
+  }
+  .alert-message{
+    padding:toRem(40px) toRem(60px) 0 toRem(60px);
+    line-height: toRem(44px);
+    color: $color17;
+    font-size: $font23;
+    text-align: left;
+  }
+  .alert-footer{
+    display: none;
+  }
+}

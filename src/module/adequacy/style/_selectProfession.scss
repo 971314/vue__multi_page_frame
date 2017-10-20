@@ -1,0 +1,44 @@
+@import '_info.scss';
+
+.selectProfession {
+  border-top: 1px solid #e4e7f0;
+  margin-top: 10px;
+  background-color: #fff !important;
+  padding-bottom: 120px;
+
+  .list {
+    padding: 0 15px;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .btnConfirm {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #3366CC;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #fff;
+    height: 36px;
+    line-height: 36px;
+  }
+  .item {
+    font-size: 16px;
+    border-top: 1px solid #e4e7f0;
+    padding: 11px 0;
+    color: #808086;
+
+    &:first-child {
+      border-top: none;
+    }
+    &.selected {
+      background: url(../adequacy/images/icon-correct-blue.png) no-repeat right;
+      background-size: 17px 13px;
+    }
+  }
+}

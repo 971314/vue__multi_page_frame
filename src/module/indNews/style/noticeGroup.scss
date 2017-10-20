@@ -1,0 +1,88 @@
+.noticeGroup {
+  display: flex;
+  //margin-left: toRem(30px);
+  padding: toRem(22px) toRem(30px) toRem(26px) toRem(30px);
+  //border-bottom: 1px solid #e4e7f0;
+  position:relative;
+  @include border-px1-bottom-e4e7f0;
+  //height: toRem(170px);
+  .noticeGroupTitle {
+    //display: flex;
+    flex: 2;
+    margin-right: toRem(25px);
+    //height: toRem(110px);
+    font-size: 0;
+    .header {
+      margin-top: -3px;
+      color: #4c4c55;
+      @include font(16px);
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      //word-break: break-all;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      text-align: justify;
+      margin-bottom: toRem(24px);
+    }
+    /*.bottomTime {
+      display: flex;
+      align-items: baseline;
+      color: #808086;
+      @include font(13px);
+      span:nth-child(1) {
+        flex: 0.6;
+      }
+      & > span:nth-child(2) {
+        flex: 0.8;
+      }
+    }*/
+    .time {
+      color: #808086;
+      @include font(13px);
+      margin-bottom: -3px;
+      display: -webkit-box;
+      //position: absolute;
+      //bottom:8px;
+      /*display: flex;
+      padding-left: toRem(40px);
+      background: url("../indNews/images/listShare.png") no-repeat left;
+      background-position-y: 3px;
+      background-size: toRem(26px);
+      line-height: toRem(40px);
+      margin-top: 3px;*/
+      span {
+        //margin-left: toRem(34px);
+      }
+      .i {
+        display: inline-block;
+        width: toRem(73px);
+        height: toRem(28px);
+        background: url("../indNews/images/istop@2x.png") no-repeat right;
+        background-size: toRem(53px) toRem(25px);
+        vertical-align: text-top;
+      }
+    }
+  }
+  img {
+    width: toRem(220px);
+    //height: toRem(138px);
+    height: toRem(136px);
+  }
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+.noticeGroup:last-of-type{
+  //@include border-px1-nobottom;
+    &:before {
+      border-bottom: none;
+    }
+}
+
+.isPreview {
+  .noticeGroupTitle {
+    .header {
+      color: #808086;
+    }
+  }
+}

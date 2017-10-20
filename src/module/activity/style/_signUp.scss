@@ -1,0 +1,294 @@
+html {
+  background: #f7f7fa;
+}
+.pb-sign-up {
+  input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #c0c6cd;
+  }
+  input:-moz-placeholder, textarea:-moz-placeholder {
+    color: #c0c6cd;
+  }
+  input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #c0c6cd;
+  }
+  input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color: #c0c6cd;
+  }
+  //background-color: #ffffff;
+  //padding-top: 44px;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+
+  .sign-up-title {
+    text-align: center;
+    color: $color-bg-grounding;
+  }
+
+  .sign-up-center {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    .sign-up-banner {
+      width: 100%;
+      height: toRem(480px);
+      position: relative;
+      overflow: hidden;
+      z-index: 1003;
+
+      //.sign-up-bg1 {
+      //  position: absolute;
+      //  width: 100%;
+      //  height: 100%;
+      //  z-index: 1004;
+      //  background-image: url(../images/reportbanner.png);
+      //  background-repeat: no-repeat;
+      //  background-position: 0 0;
+      //  background-size: cover;
+      //}
+      .sign-up-bg {
+        position: absolute;
+        top:0;
+        left: 0;
+        width: calc(100% + 10px);
+        height: calc(100% + 10px);
+        margin: -5px;
+        z-index: 1005;
+        background-image: url(../images/activitydefault@2x.png);
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: cover;
+      }
+      .bg-blur {
+        -webkit-filter: blur(2px); /* Chrome, Opera */
+        -moz-filter: blur(2px);
+        -ms-filter: blur(2px);
+        filter: blur(2px);
+        filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=1.5, MakeShadow=false); /* IE6~IE9 */
+      }
+
+      .center-transparent-bg {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: toRem(410px);
+        width: toRem(552px);
+        border-top-left-radius: toRem(8px);
+        border-top-right-radius: toRem(8px);
+        background-color: #1a1a1a;
+        filter: alpha(opacity=40);
+        -moz-opacity: 0.4;
+        -khtml-opacity: 0.4;
+        opacity: 0.4;
+        z-index: 1006;
+      }
+
+      .center-tips-content {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: toRem(410px);
+        width: toRem(552px);
+        border-top-left-radius: toRem(8px);
+        border-top-right-radius: toRem(8px);
+        z-index: 1007;
+        color: #ffffff;
+
+        .banner-content-all {
+          height: 100%;
+          width: 100%;
+          border-top-left-radius: toRem(12px);
+          border-top-right-radius: toRem(12px);
+          padding-top: toRem(30px);
+          position: relative;
+          .banner-content-detail {
+            margin: 0 auto;
+            width: toRem(436px);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            .banner-content-title {
+              color: #ffffff;
+              @include font(20px);
+              font-weight: bolder;
+              text-align: center;
+              line-height: normal;
+            }
+
+            .banner-34px-font {
+              @include font(17px);
+            }
+
+            .px1-banner-splice {
+              margin-top: toRem(20px);
+              margin-bottom: toRem(20px);
+              height: 1px;
+              width: 100%;
+              background-color: #ffffff;
+            }
+
+            .banner-content-info {
+              @include font(14px);
+              color: #ffffff;
+              line-height: normal;
+              .banner-time {
+                background-image: url("../images/reporttime@2x.png");
+                background-repeat: no-repeat;
+                background-position: 0 center;
+                background-size: toRem(32px) toRem(34px);
+                padding-left: toRem(48px);
+              }
+              .banner-location {
+                background-image: url("../images/reportlocation@2x.png");
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: toRem(32px) toRem(34px);
+                padding-left: toRem(48px);
+                margin-top: toRem(10px);
+              }
+              .banner-online {
+                background-image: url("../images/activityonline@2x.png");
+                background-repeat: no-repeat;
+                background-position: left center;
+                background-size: toRem(32px) toRem(34px);
+                padding-left: toRem(48px);
+                margin-top: toRem(10px);
+              }
+              .banner-people {
+                background-image: url("../images/reportpeople@2x.png");
+                background-repeat: no-repeat;
+                background-position: 0 center;
+                background-size: toRem(32px) toRem(34px);
+                padding-left: toRem(48px);
+                margin-top: toRem(10px);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .sign-up-input {
+      margin-top: toRem(20px);
+      width: 100%;
+      line-height: normal;
+      background-color: #ffffff;
+      .sign-input-group {
+        width: 100%;
+        padding-left: toRem(30px);
+        border-top: 1px solid #e4e7f0;
+        border-bottom: 1px solid #e4e7f0;
+
+        .sign-input-item {
+          height: toRem(100px);
+          width: 100%;
+          padding-top: 1px;
+          padding-right: toRem(46px);
+          border-bottom: 1px solid #e4e7f0;
+          position: relative;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          .sign-input-text {
+            margin: 0;
+            padding: 0;
+            border: none;
+            outline: none;
+            color: #1a1a1a;
+            @include font(16px);
+            //height: toRem(100px);
+            height: 100%;
+            width: 100%;
+            &::-webkit-input-placeholder,
+            &::-moz-placeholder,
+            &:-moz-placeholder,
+            &:-ms-input-placeholder {
+              color: #c0c6cd;
+            }
+          }
+
+          .sign-input-important {
+            position: absolute;
+            z-index: 1001;
+            height: toRem(14px);
+            width: toRem(16px);
+            background-image: url(../images/reportimport@2x.png);
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            background-size: toRem(16px) toRem(14px);
+            right: toRem(30px);
+            top: 50%;
+            margin-top: toRem(-7px);
+          }
+        }
+
+        .report-name {
+          background-image: url("../images/reportname@2x.png");
+          background-repeat: no-repeat;
+          background-position: 0 center;
+          background-size: toRem(40px) toRem(44px);
+          padding-left: toRem(60px);
+        }
+        .report-cellphone {
+          background-image: url("../images/reportcellphone@2x.png");
+          background-repeat: no-repeat;
+          background-position: 0 center;
+          background-size: toRem(40px) toRem(44px);
+          padding-left: toRem(60px);
+        }
+        .report-email {
+          background-image: url("../images/reportemail@2x.png");
+          background-repeat: no-repeat;
+          background-position: 0 center;
+          background-size: toRem(40px) toRem(44px);
+          padding-left: toRem(60px);
+        }
+        .report-company {
+          background-image: url("../images/reportcompany@2x.png");
+          background-repeat: no-repeat;
+          background-position: 0 center;
+          background-size: toRem(40px) toRem(44px);
+          padding-left: toRem(60px);
+        }
+        .report-job {
+          background-image: url("../images/reportjob@2x.png");
+          background-repeat: no-repeat;
+          background-position: 0 center;
+          background-size: toRem(40px) toRem(44px);
+          padding-left: toRem(60px);
+        }
+      }
+    }
+  }
+
+  .report-submit {
+    height: toRem(98px);
+    .submit-btn {
+      height: 100%;
+      width: 100%;
+      line-height: toRem(98px);
+      background-color: #3366cc;
+      color: #ffffff;
+      text-align: center;
+      @include font(18px);
+    }
+
+    .disabled-submit-btn {
+      background-color: #dfdfdf;
+    }
+  }
+}

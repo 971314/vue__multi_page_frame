@@ -1,0 +1,73 @@
+.pobo-schedule {
+  @extend %common-wrapper;
+  .pobo-schedule-center {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+
+    .center-backgrand-warpper {
+      height: 100%;
+      width: 100%;
+      background-color: #f7f7fa;
+      .center-schedule-content {
+        background-color: #ffffff;
+        padding-left: toRem(30px);
+        .schedule-item {
+          &:last-child {
+            &:before {
+             border-bottom: none;
+            }
+          }
+          height: toRem(130px);
+          box-sizing: border-box;
+          position: relative;
+          @include bottom-px1-pixel-ratio;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: space-between;
+          align-items: center;
+          padding-right: toRem(30px);
+          .item-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .item-name {
+              flex: 1;
+              color: #1a1a1a;
+              line-height: 1;
+              @include font(16px);
+            }
+            .item-time {
+              flex: 1;
+              line-height: 1;
+              margin-top: toRem(16px);
+              color: #808086;
+              @include font(13px);
+            }
+          }
+
+          .item-right {
+            flex: 1;
+            align-items: center;
+            text-align: right;
+            color: #808086;
+            @include font(16px);
+          }
+
+          .bohui-failed {
+            color: #fb8463;
+          }
+          .kaihu-success {
+            color: #3366cc;
+          }
+
+        }
+      }
+    }
+
+  }
+}

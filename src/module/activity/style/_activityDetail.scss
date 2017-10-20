@@ -1,0 +1,379 @@
+.pb-activity-detail {
+  //padding-top: 44px;
+  //padding-bottom: 49px;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  line-height: normal;
+
+  .pb-common-nav {
+    position: static;
+  }
+
+  .common-nav {
+    .navbar-footer {
+      a {
+        padding: 0;
+      }
+    }
+  }
+  .share-a-link {
+    display: inline-block;
+    height: 100%;
+    width: 17px;
+    margin-right: 15px;
+    text-align: center;
+    .share-btn-icon {
+      height: 19px;
+      width: 17px;
+    }
+  }
+  .share-b-link {
+    width: 25px;
+    display: inline-block;
+    height: 100%;
+    margin-right: 20px;
+    .font-btn-icon {
+      height: 17px;
+      width: 25px;
+    }
+  }
+
+  .activity-detail-text {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-top: toRem(30px);
+    padding-left: toRem(30px);
+    padding-right: toRem(30px);
+    position: relative;
+    .detail-title {
+      color: #1a1a1a;
+      @include font(21px);
+      font-weight: bolder;
+      margin-bottom: toRem(40px);
+      padding-right: toRem(30px);
+      text-align: left;
+      word-break: break-all;
+      line-height: toRem(60px);
+    }
+    .big-title-font {
+      line-height: toRem(72px);
+    }
+
+    .detail-tips {
+      margin-bottom: toRem(46px);
+      @include font(14px);
+      color: #808086;
+
+      .detail-time {
+        background-image: url("../images/detailtime@2x.png");
+        background-repeat: no-repeat;
+        background-position: 0 center;
+        background-size: toRem(32px) toRem(34px);
+        padding-left: toRem(48px);
+      }
+      .detail-location {
+        background-image: url("../images/detaillocation@2x.png");
+        background-repeat: no-repeat;
+        background-position: 0px toRem(4px);
+        background-size: toRem(32px) toRem(34px);
+        padding-left: toRem(48px);
+        margin-top: toRem(15px);
+
+        .blue-color-text {
+          color: #3366cc;
+        }
+      }
+      .detail-online {
+        background-image: url("../images/activityonline@2x@2x.png");
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: toRem(32px) toRem(34px);
+        padding-left: toRem(48px);
+        margin-top: toRem(15px);
+      }
+      .detail-people {
+        background-image: url("../images/detailpeople@2x.png");
+        background-repeat: no-repeat;
+        background-position: 0 center;
+        background-size: toRem(32px) toRem(34px);
+        padding-left: toRem(48px);
+        margin-top: toRem(15px);
+      }
+    }
+
+    .detail-split-line {
+      width: 100%;
+      height: 1px;
+      background-color: #e4e7f0;
+    }
+
+    .detail-img-content {
+      margin-top: toRem(46px);
+
+      .detail-chatu {
+        width: 100%;
+      }
+    }
+
+    .detail-main-content {
+      margin-top: toRem(46px);
+
+      .main-content-title {
+        color: #4c4c55;
+        @include font(17px);
+        font-weight: bolder;
+      }
+      .main-content-content {
+        text-align: left;
+        word-break: break-all;
+        margin-top: toRem(20px);
+        color: #4c4c55;
+        line-height: toRem(58px);
+        @include font(17px);
+
+        p {
+          max-width: 100% !important;
+          font-size: 15px !important;
+          a, em, font {
+            display: inline-block;
+            font-size: 15px !important;
+            max-width: 100% !important;
+            word-break: break-all;
+          }
+          font {
+            word-break: break-all;
+          }
+        }
+
+        img {
+          max-width: 100% !important;
+          height: auto !important;
+        }
+
+        table {
+          max-width: 100% !important;
+          border: 1px solid #c9ced6;
+
+          &:not(:last-child) {
+            margin-bottom: toRem(20px);
+          }
+
+          th,
+          td {
+            border-right: 1px solid #c9ced6;
+            border-bottom: 1px solid #c9ced6;
+
+            &:last-child {
+              border-right: none;
+            }
+
+          }
+          tr {
+            &:last-child {
+              th, td {
+                border-bottom: none;
+              }
+            }
+          }
+        }
+
+      }
+      .big-content-font {
+        line-height: toRem(70px);
+        p, em, font, span, a {
+          font-size: 19px !important;
+          line-height: toRem(70px) !important;
+        }
+      }
+
+      .moren-content-font {
+        p, em, font, span, a {
+          font-size: 17px !important;
+          line-height: toRem(58px) !important;
+        }
+      }
+      .little-content-font {
+        p, em, font, span, a, strong{
+          font-size: 15px !important;
+          line-height: toRem(58px) !important;
+        }
+      }
+    }
+
+    .right-center-tips {
+      position: absolute;
+      z-index: 1007;
+      height: toRem(151px);
+      width: toRem(50px);
+      top: toRem(40px);
+      right: 0;
+      background-image: url(../images/hasreported@2x.png);
+      background-repeat: no-repeat;
+      background-position: 0 0;
+      background-size: cover;
+    }
+  }
+  .baoming-btn {
+    //width: 100%;
+    //position: fixed;
+    //bottom: 0;
+    //right: 0;
+    //left: 0;
+    height: 49px;
+    background-color: #3366cc;
+    color: #ffffff;
+    .detail-btn-group {
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      padding-top: 5px;
+
+      .baoming-btn1 {
+        @include font(18px);
+      }
+
+      .wy-baoming {
+        height: 100%;
+        line-height: 41px;
+      }
+
+      .game-over {
+        height: 100%;
+        line-height: 49px;
+      }
+
+      .baoming-btn2 {
+        @include font(11px);
+        filter: alpha(opacity=80);
+        -moz-opacity: 0.8;
+        -khtml-opacity: 0.8;
+        opacity: 0.8;
+      }
+    }
+    .no-padding-top {
+      padding-top: 0;
+      background-color: #dfdfdf;
+    }
+  }
+
+  .font-change {
+    height: toRem(386px);
+    background-color: #ffffff;
+
+    .font-selected-group {
+      height: toRem(298px);
+      padding: toRem(25px) toRem(30px);
+      text-align: center;
+
+      .font-selected-item {
+        height: toRem(82px);
+        line-height: toRem(82px);
+        color: #1a1a1a;
+        @include font(18px);
+        position: relative;
+
+        .gougou {
+          position: absolute;
+          right: 0;
+          top: toRem(25px);
+          height: toRem(26px);
+          width: toRem(35px);
+          background-image: url(../images/gou@2x.png);
+          background-repeat: no-repeat;
+          background-size: toRem(35px) toRem(26px);
+        }
+      }
+
+      .font-active {
+        color: #3366cc;
+      }
+    }
+    .selected-cancel {
+      height: toRem(88px);
+      line-height: toRem(88px);
+      text-align: center;
+      color: #3366cc;
+      border-top: 1px solid #c0c6cd;
+      @include font(18px);
+    }
+  }
+
+  .wx-share {
+    height: toRem(436px);
+    background-color: #ffffff;
+
+    .share-header-group {
+      height: toRem(348px);
+      .share-header {
+        padding-top: toRem(66px);
+        text-align: center;
+        color: #808086;
+        @include font(18px);
+      }
+
+      .wx-icon-group {
+        margin-top: toRem(28px);
+        padding: 0 toRem(206px);
+        @include clearfix;
+
+        .to-wx-icon {
+          float: left;
+          width: toRem(112px);
+
+          .wx-icon {
+            width: 100%;
+            height: toRem(112px);
+          }
+          .wx-content {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            margin-top: toRem(20px);
+            color: #1a1a1a;
+            @include font(12px);
+          }
+        }
+
+        .to-pyq-icon {
+          float: right;
+          width: toRem(111px);
+
+          .pyq-icon {
+            width: 100%;
+            height: toRem(111px);
+          }
+          .pyq-content {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            margin-top: toRem(20px);
+            color: #1a1a1a;
+            @include font(12px);
+          }
+        }
+
+      }
+
+    }
+
+    .selected-cancel {
+      height: toRem(88px);
+      line-height: toRem(88px);
+      text-align: center;
+      color: #3366cc;
+      border-top: 1px solid #c0c6cd;
+      @include font(18px);
+    }
+  }
+
+}

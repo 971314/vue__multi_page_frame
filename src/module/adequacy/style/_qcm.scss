@@ -1,0 +1,106 @@
+.qcm {
+  background: #fff;
+  .header {
+    input {
+      border: none;
+      outline: 0;
+      color: #fff;
+      background: #36c;
+      font-size: 15px;
+    }
+  }
+  .content {
+    padding: 44px 20px;
+    background: #fff;
+    .qcm-item {
+      border-bottom: 1px #e4e7f0 solid;
+      padding-bottom: 20px;
+      .qcm-title {
+        font-size: 18px;
+        color: #1a1a1a;
+        margin-top: 20px
+      }
+      .icon {
+        display: block;
+        font-size: 16px;
+        padding: 10px 0 0 10px;;
+        color: #808086;
+        //height: auto;
+        line-height: 30px;
+        input {
+          position: absolute;
+          visibility: hidden;
+        }
+        &.selected {
+          color: #36c;
+          background: url(../adequacy/images/icon-correct-red.png) no-repeat 6px 12px;
+          background-size: 25px 20px;
+        }
+        span {
+          display: inline-block;
+          width: 90%;
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+      .icon-info {
+        background-image: url(../adequacy/images/icon-info.png);
+        background-size: 100% 100%;
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+      }
+      .qcm-info {
+        color: #c0c6cd;
+        font-size: 16px;
+        display: inline-block;
+      }
+    }
+  }
+  .btnbox {
+    .btn {
+      display: block;
+      width: 100%;
+      height: 49px;
+      background: #3366cc;
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      -webkit-border-radius: 0px;
+      border-radius: 0px;
+      opacity:1
+    }
+    &.disable {
+      background: #dfdfdf;
+    }
+  }
+}
+
+.modifyAnswer .alert {
+  .alert-message {
+    padding: 0;
+  }
+  .alert-footer {
+    flex-wrap: wrap;
+
+    padding: 10px 16px 16px 16px;
+    .alert-btn {
+      color: #36c;
+      padding: 0;
+      flex: none;
+      width: 43px;
+      height: 43px;
+      border: 1px solid #c0c6cd;
+      margin: 7px;
+      line-height: 43px;
+      border-radius: 4px;
+      font-size: 17px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+  }
+}

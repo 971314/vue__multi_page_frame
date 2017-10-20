@@ -1,0 +1,85 @@
+.videoCheck {
+  .content {
+    padding: 22px 15px;
+    .hint {
+      text-align: center;
+      font-size: $fontSize23;
+      color: $color17;
+    }
+
+    .divider {
+      margin-top: 43px;
+      font-size: $fontSize10;
+      color: $color17;
+    }
+
+    .tags {
+      margin-top: 43px;
+      align-items: center;
+      justify-content: center;
+
+      .flex-1 {
+        text-align: center;
+
+        .tag-text {
+          margin-top: 30px;
+          font-size: $fontSize10;
+          color: $color17;
+        }
+
+        .tag-sun {
+          background: url(../adequacy/images/icon-tag-sun.png) no-repeat center center;
+          height: 40px;
+          background-size: 40px 40px;
+        }
+        .tag-wifi {
+          background: url(../adequacy/images/icon-tag-wifi.png) no-repeat center center;
+          height: 40px;
+          background-size: 40px 30.5px;
+        }
+        .tag-idcard {
+          background: url(../adequacy/images/icon-tag-idcard.png) no-repeat center center;
+          height: 40px;
+          background-size: 41px 29.5px;
+        }
+      }
+
+    }
+
+  }
+
+  .queue-info {
+    margin-top: 34px;
+    color: #808086;
+    font-size: 15px;
+
+    .wait-box {
+      margin-top: 10px;
+    }
+    .queue, .wait {
+      color: #3366CC;
+    }
+  }
+
+  .btnbox {
+    .btn {
+      display: block;
+      width: 100%;
+      height: 49px;
+      background: #3366cc;
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      -webkit-border-radius: 0px;
+      border-radius: 0px;
+      opacity: 1;
+
+      &:disabled {
+        background: #dfdfdf;
+      }
+    }
+  }
+}

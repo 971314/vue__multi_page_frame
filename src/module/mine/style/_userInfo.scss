@@ -1,0 +1,14 @@
+
+.user-main-content {
+  padding-top: 44px;
+
+  .user-info-title {
+    text-align: center;
+    color: $color-bg-grounding;
+  }
+  .save-info {
+    @include font(18px);
+    color: #ffffff;
+    margin-right: toRem(30px);
+  }
+}

@@ -1,0 +1,329 @@
+//条件单设置
+.setDiv {
+  background: #fff;
+  border-top: solid 1px #e4e7f0;
+  border-bottom: solid 1px #e4e7f0;
+  .select-list li {
+    margin: 0;
+    justify-content: center;
+  }
+  input {
+    font-size: 16px;
+  }
+  .setOut{
+    & > ul {
+      padding: 0;
+      & > li {
+        list-style: none;
+        height: toRem(100px);
+        border-bottom: solid 1px #e4e7f0;
+        margin-left: toRem(30px);
+        padding-right: toRem(30px);
+        display: flex;
+        align-items: center;
+        &:first-child {
+          padding-left: toRem(30px);
+          margin: 0;
+        }
+        &:last-child {
+          border: 0;
+        }
+        &:nth-child(4) div:first-child {
+          flex: 1;
+        }
+      }
+    }
+  }
+  .priceInput {
+    width: toRem(240px);
+    height: toRem(70px);
+    border: 1px solid #c0c6cd;
+    //color: #c0c6cd;
+    margin-left: toRem(14px);
+    text-align: center;
+    border-radius: toRem(8px);
+  }
+}
+
+.timeSpan {
+  display: inline-block;
+  margin-left: toRem(14px);
+  border: 1px solid #c0c6cd;
+  border-radius: toRem(8px);
+  height: toRem(52px);
+  line-height: toRem(52px);
+  width: toRem(125px);
+  text-align: center;
+  color: #808086;
+  font-size: 15px;
+}
+
+.setDivOne {
+  width: toRem(400px);
+  height: toRem(70px);
+  line-height: toRem(70px);
+  border-radius: toRem(10px);
+  border: solid 1px #c0c6cd;
+  font-size: 15px;
+  text-align: center;
+}
+
+.setDivTwo {
+  padding-left: toRem(40px);
+  color: #808086;
+  font-size: 16px;
+}
+
+.setDivThree {
+  font-size: 17px;
+  color: #28aa49;
+  font-weight: bold;
+}
+
+.conOne {
+  flex: 1;
+  color: #1a1a1a;
+  font-size: 16px;
+}
+
+.conTwo {
+  text-align: center;
+  border: solid 1px #c0c6cd;
+  border-radius: 5px;
+}
+
+.conSpanThree {
+  //height: toRem(60px);
+  display: inline-block;
+  line-height: 30px;
+  width: toRem(120px);
+  margin-right: -5px;
+  background: #fff;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  font-size: 15px;
+  color: #808086;
+  text-align: center;
+  border-right: none;
+}
+
+.conSpanTwo {
+  //height: toRem(60px);
+  display: inline-block;
+  line-height: 30px;
+  width: toRem(120px);
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  font-size: 15px;
+  color: #808086;
+  text-align: center;
+}
+
+//背景色字体颜色设置/修改
+.backColor {
+  background: #3366CC;
+  color: #fff;
+}
+
+.timeConOne {
+  color: #1a1a1a;
+  font-size: 17px;
+}
+
+.timeConTwo {
+  .time-picker, .time-picker .display-time {
+    width: toRem(240px);
+    color: #1a1a1a;
+    height: toRem(70px);
+    font-size: 15px;
+    border-radius: toRem(8px);
+  }
+  .time-picker .dropdown, .time-picker .dropdown .select-list {
+    width: toRem(240px);
+  }
+  .time-picker .dropdown ul li {
+    text-align: center;
+  }
+  .time-picker .dropdown ul li.active {
+    background: #36c;
+  }
+}
+
+.priceOne {
+  text-align: center;
+  width: toRem(82px);
+  font-size: 17px;
+  height: toRem(40px);
+  line-height: toRem(35px);
+  color: #3366cc;
+  border: solid 1px #3366cc;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.conTypeTwo {
+  width: toRem(286px);
+  text-align: center;
+  border: solid 1px #c0c6cd;
+  border-radius: toRem(8px);
+  display: flex;
+  .conSpanTye {
+    display: inline-block;
+    width: toRem(95px);
+    height: toRem(60px);
+    line-height: toRem(60px);
+    font-size: 15px;
+    &:nth-of-type(1) {
+      border-top-left-radius: toRem(8px);
+      border-bottom-left-radius: toRem(8px);
+    }
+    &:nth-of-type(3) {
+      border-top-right-radius: toRem(8px);
+      border-bottom-right-radius: toRem(8px);
+    }
+  }
+  span:nth-child(2) {
+    border-right: 1px solid #c0c6cd;
+    border-left: 1px solid #c0c6cd;
+  }
+}
+
+.conTypeOne {
+  flex: 1;
+  color: #1a1a1a;
+  font-size: 17px;
+}
+
+.conSpanTyeThreeBlue {
+  display: inline-block;
+  width: toRem(95px);
+  height: toRem(60px);
+  line-height: toRem(60px);
+  font-size: 15px;
+  background: #3366cc;
+  color: #fff;
+}
+
+.pingDayB {
+  display: inline-block;
+  width: toRem(95px);
+  height: toRem(60px);
+  line-height: toRem(60px);
+  font-size: 15px;
+  color: #808086;
+  background: #ddd
+}
+
+.entrustOne {
+  flex: 1;
+  color: #1a1a1a;
+  font-size: 17px;
+}
+
+.commissionInput {
+  height: toRem(70px);
+  line-height: toRem(70px);
+  font-size: 15px;
+  color: #1a1a1a;
+  width: toRem(240px);
+  border-radius: toRem(8px);
+  border: 1px solid #c0c6cd;
+  text-align: center;
+}
+
+.trustSpanOne {
+  width: toRem(82px);
+  font-size: 12px;
+  height: toRem(40px);
+  line-height: toRem(40px);
+  color: #3366cc;
+  border: solid 1px #3366cc;
+  border-radius: 3px;
+  display: inline-block;
+  margin-left: toRem(14px);
+  text-align: center;
+}
+
+.market {
+  height: toRem(70px);
+  line-height: toRem(70px);
+  font-size: 15px;
+  color: #1a1a1a;
+  width: toRem(240px);
+  border-radius: toRem(8px);
+  border: 1px solid #c0c6cd;
+  text-align: center;
+}
+
+.conDivInfo {
+  height: 20px;
+  font-size: 14px;
+  width: 97%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}
+
+.spanRed {
+  color: #fe0000;
+  margin-right: 20px;
+}
+
+.spanBlue {
+  color: #14a238
+}
+
+.btnDiv {
+  text-align: center;
+  margin-top: 46px;
+}
+
+.conBtn {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.btnSubmit {
+  width: 93%;
+  color: #fff;
+  background-color: #3366cc;
+  display: inline-block;
+  padding: 6px 9px;
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+.navThreeTitle {
+  color: #fff;
+  font-size: 15px;
+}
+
+.openingTime {
+  color: #ffffff !important;
+  background: #36c;
+}
+
+.poenTimeKong {
+  display: inline-block;
+  width: toRem(240px);
+  height: toRem(70px);
+  line-height: toRem(70px);
+  border: 1px solid #c0c6cd;
+  border-radius: toRem(8px);
+  font-size: 15px;
+  padding-left: toRem(20px);
+}

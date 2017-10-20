@@ -1,0 +1,243 @@
+.details {
+  width:100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  -webkit-box-flex: 1;
+  position: absolute;
+  .common-nav .navbar-body {
+    flex: .5;
+  }
+  height: 100%;
+  background: #fff;
+  .navFooter {
+    i {
+      display: inline-block;
+      vertical-align: middle;
+      width: toRem(51px);
+      height: 39px;
+      &:first-child {
+        background: url("../indNews/images/fontSwitch.png") no-repeat center;
+        background-size: toRem(51px) toRem(34px);
+        margin-right: toRem(20px);
+      }
+      &:last-child {
+        background: url("../indNews/images/detailsShare.png") no-repeat center;
+        background-size: toRem(34px) toRem(38px);
+        margin-right: 15px;
+      }
+    }
+  }
+  .content {
+    flex: 1;
+    overflow: auto;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    -webkit-overflow-scrolling: touch;
+    padding: 15px toRem(40px) 0 toRem(40px);
+    text-align: justify;
+    .big-title-font {
+      line-height: toRem(72px);
+    }
+    p {
+      max-width: 100% !important;
+      font-size: 15px !important;
+      a, em, font {
+        display: inline-block;
+        font-size: 15px !important;
+        max-width: 100% !important;
+        word-break: break-all;
+      }
+      font {
+        word-break: break-all;
+      }
+    }
+    img {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .big-content-font {
+      line-height: toRem(70px);
+      p, em, font, span, a {
+        font-size: 19px !important;
+        line-height: toRem(70px) !important;
+      }
+    }
+    .moren-content-font {
+      p, em, font, span, a {
+        font-size: 17px !important;
+        line-height: toRem(58px) !important;
+      }
+    }
+    .little-content-font {
+      p, em, font, span, a, strong {
+        font-size: 15px !important;
+        line-height: toRem(58px) !important;
+      }
+    }
+    .title {
+      color: #1a1a1a;
+      @include font(21px);
+      font-weight: bold;
+      word-break: break-all;
+      line-height: toRem(60px);
+    }
+    .subTitle {
+      padding: toRem(20px) 0;
+      color: #808086;
+      @include font(14px);
+      //border-bottom: 1px solid #e4e7f0;
+      position: relative;
+      @include border-px1-bottom-e4e7f0;
+      margin-bottom: toRem(44px);
+    }
+    .mainBody {
+      color: #4c4c55;
+      @include font(17px);
+      word-wrap: break-word;
+      //white-space: pre-wrap;
+      word-break: break-all;
+      text-align: justify;
+      line-height: toRem(54px);
+      img {
+        width: 100%;
+      }
+      table {
+        border-collapse: collapse;
+        td {
+          border-right: 1px solid rgb(204, 204, 204);
+        }
+      }
+    }
+    .accessory {
+      display: block;
+      @include font(14px);
+      padding-left: toRem(51px);
+      background: url("../indNews/images/icon_download.png") no-repeat 0;
+      background-size: toRem(31px);
+      &:first-child {
+        margin-top: toRem(40px);
+      }
+      span:first-child {
+        color: #5c90f9;
+        text-decoration: underline;
+        word-break: break-all
+      }
+      span:last-child {
+        color: #808086;
+        padding-left: toRem(20px);
+      }
+    }
+    .disclaimer {
+      border-top: 1px solid #e4e7f0;
+      margin-top: toRem(40px);
+      padding-top: toRem(28px);
+      color: #808086;
+      @include font(14px);
+      line-height: toRem(45px);
+    }
+  }
+  .fonter {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    //border-top: 1px solid #e4e7f0;
+    @include border-px1-top-e4e7f0;
+    background: #fff;
+    height: toRem(98px);
+    z-index: 999;
+    //margin-bottom: toRem(30px);
+    font-size: 0;
+    & > div {
+      display: inline-block;
+      width: 49.5%;
+      text-align: center;
+      @include font(14px);
+      font-size: 0;
+      margin: toRem(16px) 0;
+      padding: toRem(10px) 0;
+      span {
+        font-size: 15px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      &:first-child {
+        //border-right: 1px solid #e4e7f0;
+        position: relative;
+        @include border-px1-righe-e4e7f0;
+        span.like {
+          background: url("../indNews/images/like.png") no-repeat;
+          background-size: toRem(38px);
+          background-position: 0 center;
+        }
+        span.noLike {
+          background: url("../indNews/images/unLike.png") no-repeat;
+          background-size: toRem(38px);
+          background-position: 0 center;
+        }
+        .like, .noLike {
+          padding-left: toRem(58px);
+          text-align: left;
+        }
+      }
+      &:last-child {
+        span.colorShare {
+          padding-left: toRem(54px);
+          background: url("../indNews/images/colorShare.png") no-repeat;
+          background-size: toRem(34px) toRem(38px);
+          background-position: 0 center;
+          text-align: left;
+        }
+      }
+    }
+  }
+  .font-change {
+    height: toRem(386px);
+    background-color: #ffffff;
+
+    .font-selected-group {
+      height: toRem(298px);
+      padding: toRem(25px) toRem(30px);
+      text-align: center;
+
+      .font-selected-item {
+        height: toRem(82px);
+        line-height: toRem(82px);
+        color: #1a1a1a;
+        @include font(18px);
+        position: relative;
+
+        .gougou {
+          position: absolute;
+          right: 0;
+          top: toRem(25px);
+          height: toRem(26px);
+          width: toRem(35px);
+          background-image: url(../images/gou@2x.png);
+          background-repeat: no-repeat;
+          background-size: toRem(35px) toRem(26px);
+        }
+      }
+
+      .font-active {
+        color: #3366cc;
+      }
+    }
+    .selected-cancel {
+      height: toRem(88px);
+      line-height: toRem(88px);
+      text-align: center;
+      color: #3366cc;
+      border-top: 1px solid #c0c6cd;
+      @include font(18px);
+    }
+  }
+}

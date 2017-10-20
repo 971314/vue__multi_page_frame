@@ -1,0 +1,12 @@
+.container {
+  .table {
+    .pr-table-header {
+      position: fixed;
+      top: 44px;
+      left: 0;
+      right: 0;
+      height: 35px;
+      z-index: 999;
+    }
+  }
+}

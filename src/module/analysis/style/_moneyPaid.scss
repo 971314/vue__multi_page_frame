@@ -1,0 +1,285 @@
+.moneyPaid {
+  background-color: #ffffff;
+  padding-top: 44px;
+  //.navbar-header {
+  //  padding-left: 10px;
+  //}
+  //.navbar-footer {
+  //  flex: .4;
+  //  padding-right: 10px;
+  //}
+
+  .moneyPaid-title {
+    text-align: center;
+    color: $color-bg-grounding;
+  }
+
+  .moneyPaid-select-group {
+    @include clearfix;
+    border-bottom: 1px solid $color-cutline-1px-cutoff;
+    background-color: #ffffff;
+    position: relative;
+    .moneyPaid-left-select {
+      height: toRem(86px);
+      line-height: toRem(86px);
+      width: 49.9%;
+      float: left;
+      padding-left: toRem(40px);
+      @include clearfix;
+      .left-select-title {
+        height: 100%;
+        float: left;
+        //font-size: toRem(28px);
+        @include font(14px);
+        color: $color-bg-assistant-text;
+      }
+      .left-select-content {
+        height: 100%;
+        float: left;
+        margin-left: toRem(20px);
+        font-size: 0;
+
+        .select-text-current {
+          //font-size: toRem(28px);
+          @include font(14px);
+          color: $color-bg-text;
+          vertical-align: middle;
+        }
+        .choose-active {
+          color: $color-bg-up;
+        }
+        .dropdown-tria {
+          vertical-align: middle;
+          margin-left: toRem(25px);
+          display: inline-block;
+          height: toRem(12px);
+          width: toRem(20px);
+          background-image: url(../images/downchoosedefault@2x.png);
+          background-repeat: no-repeat;
+          background-position: 0 0;
+          background-size: toRem(20px) toRem(12px);
+        }
+        .up-choose {
+          background-image: url(../images/huishou@2x.png);
+        }
+      }
+
+    }
+    .moneyPaid-right-select {
+      height: toRem(86px);
+      line-height: toRem(86px);
+      width: 49.9%;
+      float: left;
+      padding-right: toRem(120px);
+      .right-select-content {
+        vertical-align: middle;
+        height: 100%;
+        float: right;
+        margin-left: toRem(20px);
+        font-size: 0;
+
+        .select-text-current {
+          //font-size: toRem(28px);
+          @include font(14px);
+          color: $color-bg-text;
+          vertical-align: middle;
+        }
+        .choose-active {
+          color: $color-bg-up;
+        }
+        .dropdown-tria {
+          vertical-align: middle;
+          margin-left: toRem(25px);
+          display: inline-block;
+          height: toRem(12px);
+          width: toRem(20px);
+          background-image: url(../images/downchoosedefault@2x.png);
+          background-repeat: no-repeat;
+          background-position: 0 0;
+          background-size: toRem(20px) toRem(12px);
+        }
+        .up-choose {
+          background-image: url(../images/huishou@2x.png);
+        }
+      }
+    }
+
+    .moneyPaid-right-select {
+      width: 49.9%;
+      float: left;
+    }
+
+    .dropdown-selected {
+      position: absolute;
+      z-index: 1011;
+      top: toRem(87px);
+      left: 0;
+      width: 100%;
+      padding: 0 toRem(30px);
+      background-color: $color-bg-grounding;
+      //font-size: toRem(28px);
+      @include font(14px);
+      line-height: 1;
+      .dropdown-selected-option {
+        padding-top: toRem(25px);
+        padding-bottom: toRem(25px);
+        //font-size: toRem(28px);
+        @include font(14px);
+        color: #1a1a1a;
+        position: relative;
+        &:first-child {
+          margin-top: toRem(25px);
+        }
+        &:last-child {
+          padding-bottom: toRem(50px);
+        }
+      }
+      .dropdown-zdy-option {
+        padding-top: toRem(30px);
+        margin-right: toRem(-30px);
+        padding-bottom: toRem(50px);
+        //font-size: toRem(28px);
+        @include font(14px);
+        color: #1a1a1a;
+        border-top: 1px solid $color-cutline-1px-cutoff;
+        position: relative;
+        .dropdown-selected-active {
+          position: absolute;
+          right: toRem(30px);
+          top: toRem(30px);
+          height: toRem(26px);
+          width: toRem(35px);
+          background-image: url(../images/gou@2x.png);
+          background-repeat: no-repeat;
+          background-size: toRem(35px) toRem(26px);
+        }
+      }
+      .moneyPaid-option-active {
+        color: $color-bg-up;
+      }
+      .dropdown-selected-active {
+        position: absolute;
+        right: 0;
+        top: toRem(25px);
+        height: toRem(26px);
+        width: toRem(35px);
+        background-image: url(../images/gou@2x.png);
+        background-repeat: no-repeat;
+        background-size: toRem(35px) toRem(26px);
+      }
+    }
+    .dropdown-selected-mask {
+      position: fixed;
+      left: 0;
+      top: toRem(200px);
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 1010;
+    }
+
+  }
+
+  .chart-indicator {
+    @include clearfix;
+    height: toRem(318px);
+    padding-top: toRem(50px);
+    padding-bottom: toRem(50px);
+    border-bottom: 1px solid $color-cutline-1px-cutoff;
+    background-color: #ffffff;
+    .common-indictor {
+      width: 49.99%;
+      float: left;
+      &:nth-child(n+3) {
+        margin-top: toRem(58px);
+      }
+      .common-indictor-title {
+        margin-left: toRem(60px);
+        font-size: 0;
+        .duotou-indictor-pg {
+          display: inline-block;
+          height: toRem(14px);
+          width: toRem(14px);
+          background-image: url(../images/zhuxingtusezhi1@2x.png);
+          background-repeat: no-repeat;
+          background-position: 0 0;
+          background-size: toRem(14px) toRem(14px);
+        }
+
+        .shouxu-indictor-pg {
+          display: inline-block;
+          height: toRem(14px);
+          width: toRem(14px);
+          background-image: url(../images/zhuxingtusezhi2@2x.png);
+          background-repeat: no-repeat;
+          background-position: 0 0;
+          background-size: toRem(14px) toRem(14px);
+        }
+
+        .kongtou-indictor-pg {
+          display: inline-block;
+          height: toRem(14px);
+          width: toRem(14px);
+          background-image: url(../images/zhuxingtusezhi3@2x.png);
+          background-repeat: no-repeat;
+          background-position: 0 0;
+          background-size: toRem(14px) toRem(14px);
+        }
+
+        .pinzhong-indictor-pg {
+          display: inline-block;
+          height: toRem(14px);
+          width: toRem(14px);
+          background-image: url(../images/zhuxingtusezhi4@2x.png);
+          background-repeat: no-repeat;
+          background-position: 0 0;
+          background-size: toRem(14px) toRem(14px);
+        }
+
+        .indictor-title-item {
+          margin-left: toRem(20px);
+          //font-size: toRem(28px);
+          @include font(14px);
+          color: $color-bg-assistant-text;
+        }
+      }
+      .duotou-indictor-content {
+        text-align: left;
+        margin-top: toRem(20px);
+        margin-left: toRem(94px);
+        //font-size: toRem(32px);
+        @include font(18px);
+        color: $color-bg-text;
+      }
+    }
+
+    .shouxu-indictor {
+
+    }
+
+    .kongtou-indictor {
+
+    }
+
+    .yingkui-indictor {
+
+    }
+  }
+
+  .moneyPaid-charts {
+    background-color: #ffffff;
+    height: toRem(600px);
+    z-index: 999;
+    margin-top: toRem(44px);
+  }
+
+  .moneyPaid-data-date {
+    background-color: #ffffff;
+    padding-top: toRem(20px);
+    padding-left: toRem(40px);
+    //font-size: toRem(24px);
+    @include font(12px);
+    color: $color-bg-assistant-text;
+    line-height: 1;
+  }
+}

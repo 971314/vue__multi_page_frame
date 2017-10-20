@@ -1,0 +1,61 @@
+.indNews {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  .pb-common-nav {
+    position: relative;
+    width: 100%;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 1.22667rem;
+    flex: 0 0 1.22667rem;
+    .common-nav {
+      .navbar-body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        & > div {
+          height: 29px;
+        }
+      }
+    }
+  }
+  .navtab {
+    width: 185px;
+    display: flex;
+    @include font(15px);
+    justify-content: center;
+    height: 29px;
+    line-height: 29px;
+    //border:1px solid #fff;
+    @include border-px1-pixel-ratio;
+    position: relative;
+    & .navTab1 {
+      height: 28px;
+      width: 50%;
+      text-align: center;
+      color: #fff;
+      &:last-child {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
+      &:first-child {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+      }
+      &.background {
+        background: #fff;
+        color: #36c;
+      }
+    }
+  }
+}

@@ -1,0 +1,233 @@
+[v-cloak] {
+  display: none;
+}
+.yield {
+  padding-top: 44px;
+  //.navbar-header {
+  //  padding-left: 10px;
+  //}
+  //.navbar-footer {
+  //  flex: .4;
+  //  padding-right: 10px;
+  //}
+
+  .yield-title {
+    text-align: center;
+    color: $color-bg-grounding;
+  }
+
+  .time-show-line {
+    height: toRem(86px);
+    line-height: toRem(86px);
+    padding-left: toRem(30px);
+    background-color: $color-bg-grounding;
+    border-bottom: 1px solid $color-cutline-1px-cutoff;
+    color: $color-bg-assistant-text;
+    //font-size: toRem(24px);
+    @include font(13px);
+    margin-bottom: toRem(20px);
+    position: relative;
+    @include clearfix;
+
+    .time-right-choose {
+      float: right;
+      margin-right: toRem(46px);
+      font-size: 0;
+      .down-choose {
+        vertical-align: middle;
+        display: inline-block;
+        height: toRem(12px);
+        width: toRem(20px);
+        background-image: url(../images/downchoosedefault@2x.png);
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: toRem(20px) toRem(12px);
+      }
+      .up-choose {
+        background-image: url(../images/huishou@2x.png);
+      }
+      .time-right-text {
+        color: $color-text-text;
+        //font-size: toRem(28px);
+        @include font(14px);
+        vertical-align: middle;
+        margin-right: toRem(15px);
+      }
+
+      .choose-active {
+        color: $color-bg-up;
+      }
+
+    }
+    .dropdown-selected {
+      position: absolute;
+      z-index: 1011;
+      top: toRem(86px);
+      left: 0;
+      width: 100%;
+      padding: 0 toRem(30px);
+      background-color: $color-bg-grounding;
+      //font-size: toRem(28px);
+      @include font(14px);
+      line-height: 1;
+      .dropdown-selected-option {
+        padding-top: toRem(25px);
+        padding-bottom: toRem(25px);
+        //font-size: toRem(28px);
+        @include font(14px);
+        color: #1a1a1a;
+        position: relative;
+        .dropdown-selected-active {
+          position: absolute;
+          right: 0;
+          top: toRem(25px);
+          height: toRem(26px);
+          width: toRem(35px);
+          background-image: url(../images/gou@2x.png);
+          background-repeat: no-repeat;
+          background-size: toRem(35px) toRem(26px);
+        }
+        &:first-child {
+          margin-top: toRem(25px);
+        }
+        &:last-child {
+          padding-bottom: toRem(30px);
+        }
+      }
+
+
+      .dropdown-zdy-option {
+        padding-top: toRem(30px);
+        margin-right: toRem(-30px);
+        padding-bottom: toRem(50px);
+        //font-size: toRem(28px);
+        @include font(14px);
+        color: #1a1a1a;
+        border-top: 1px solid $color-cutline-1px-cutoff;
+        position: relative;
+        .dropdown-selected-active {
+          position: absolute;
+          right: toRem(30px);
+          top: toRem(30px);
+          height: toRem(26px);
+          width: toRem(35px);
+          background-image: url(../images/gou@2x.png);
+          background-repeat: no-repeat;
+          background-size: toRem(35px) toRem(26px);
+        }
+      }
+
+      .yield-option-active {
+        color: $color-bg-up;
+      }
+    }
+    .dropdown-selected-mask {
+      position: fixed;
+      left: 0;
+      top: toRem(200px);
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 1010;
+    }
+  }
+
+  .yield-tab-selected {
+    border-top: 1px solid $color-cutline-1px-cutoff;
+    border-bottom: 1px solid $color-cutline-1px-cutoff;
+    background-color: $color-bg-grounding;
+    @include clearfix;
+    .tab-selected-items {
+      float: left;
+      height: toRem(80px);
+      width: toRem(250px);
+      line-height: toRem(80px);
+      //font-size: toRem(32px);
+      @include font(16px);   //字体不支持奇数，这样页面会出现bug也就是锯齿 模糊等
+      text-align: center;
+      color: #1a1a1a;
+      position: relative;
+
+      .tab-indicator-line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: toRem(250px);
+        height: 2px;
+        background-color: $color-bg-up;
+        overflow: visible;
+      }
+    }
+    .yield-tab-active {
+      color: $color-bg-up;
+    }
+  }
+
+  .list-content {
+    background-color: $color-bg-grounding;
+    border-bottom: 1px solid $color-cutline-1px-cutoff;
+    .item-content {
+      padding-top: toRem(24px);
+      padding-left: toRem(60px);
+      padding-right: toRem(46px);
+      display: flex;
+      width: 100%;
+      &:first-child {
+        padding-top: toRem(26px);
+      }
+
+      &:last-child {
+        padding-bottom: toRem(26px);
+      }
+      .item-content-title {
+        flex: 1;
+        text-align: left;
+        //font-size: toRem(26px);
+        @include font(15px);
+        color: $color-bg-assistant-text;
+      }
+      .item-content-num {
+        flex: 1;
+        text-align: right;
+        //font-size: toRem(26px);
+        @include font(15px);
+        color: #1a1a1a;
+      }
+    }
+  }
+  .zjxx-top20 {
+    &:not(:last-child) {
+      margin-bottom: toRem(20px);
+      border-bottom: 1px solid $color-cutline-1px-cutoff;
+    }
+    &:not(:first-child) {
+      border-top: 1px solid $color-cutline-1px-cutoff;
+    }
+  }
+
+  .yield-syxfx {
+
+    .trade-description {
+      padding-left: toRem(60px);
+      padding-right: toRem(46px);
+      padding-top: toRem(26px);
+      padding-bottom: toRem(26px);
+      border-bottom: 1px solid $color-cutline-1px-cutoff;
+      background-color: $color-bg-grounding;
+      margin-bottom: toRem(20px);
+      .trade-description-title {
+        //font-size: toRem(26px);
+        @include font(15px);
+        color: $color-bg-assistant-text;
+      }
+      .trade-description-context {
+        margin-top: toRem(20px);
+        color: $color-bg-text;
+        //font-size: toRem(26px);
+        @include font(15px);
+        line-height: toRem(36px);
+      }
+    }
+  }
+
+}

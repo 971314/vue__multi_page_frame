@@ -1,0 +1,39 @@
+{
+  "fast": [
+    {
+      "tplType": "baoZhengJingYouHui.png",
+      "tplTypeName": "保证金率优惠",
+      "tplTypetplTypeModel":"1"
+    },
+    {
+      "tplType": "shouXuFeiLvYouHui.png",
+      "tplTypeName": "手续费率优惠",
+      "tplTypetplTypeModel":"1"
+    },
+    {
+      "tplType": "stockOptions_baoZhengJing.png",
+      "tplTypeName": "股票期权系统保证金率",
+      "tplTypetplTypeModel":"1"
+    },
+    {
+      "tplType": "stockOptions_shouXuFei.png",
+      "tplTypeName": "股票期权系统手续费率",
+      "tplTypetplTypeModel":"1"
+    },
+    {
+      "tplType": "tiChengBiLi.png",
+      "tplTypeName": "提成比例",
+      "tplTypeModel ":"2"
+    },
+    {
+      "tplType": "jiaoYiSuoFanHuanTiCheng@2x.png",
+      "tplTypeName": "交易所返还提成",
+      "tplTypetplTypeModel":"2"
+    },
+    {
+      "tplType": "liXiTiCheng.png",
+      "tplTypeName": "利息提成",
+      "tplTypetplTypeModel":"2"
+    }
+  ]
+}

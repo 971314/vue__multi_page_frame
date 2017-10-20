@@ -1,0 +1,136 @@
+input:disabled {
+  background: rgb(235, 235, 228);
+}
+
+.setDiv {
+  background: #fff;
+  border-top: solid 1px #e4e7f0;
+  border-bottom: solid 1px #e4e7f0;
+  ul li {
+    margin: 0 toRem(30px);
+    justify-content: space-between;
+    color: #1a1a1a;
+    font-size: 16px;
+  }
+  ul li:nth-of-type(1) {
+    //height:toRem(80px);
+    line-height: toRem(80px);
+    margin: 0;
+    padding: 0 toRem(30px);
+    border: 0;
+  }
+  ul li:nth-of-type(2) {
+    height: toRem(80px);
+    line-height: toRem(80px);
+    margin: 0;
+    padding: 0 toRem(30px);
+    border-bottom: solid 1px #e4e7f0;
+  }
+  ul li span {
+    display: inline-block;
+  }
+  ul li {
+    list-style: none;
+    height: toRem(100px);
+    background: #fff;
+    border-bottom: solid 1px #e4e7f0;
+    line-height: toRem(100px);
+    display: flex;
+    align-items: center;
+  }
+  ul li:last-child {
+    border: 0;
+  }
+}
+
+.heyuk {
+  height: toRem(70px);
+  border: solid 1px #c0c6cd;
+  border-radius: toRem(8px);
+  line-height: toRem(70px);
+  text-align: center;
+  width: toRem(410px);
+  margin-top: toRem(15px);
+}
+
+.fontcol8080 {
+  color: #808086;
+}
+
+.select {
+  width: 20px;
+  height: 20px;
+  transform: translate(0%, 18%);
+}
+
+.set {
+  background: url(../alerted/images/selectin.png) no-repeat;
+  background-size: 20px 20px;
+}
+
+.unset {
+  background: url(../alerted/images/unselect.png) no-repeat 0 0;
+  background-size: 20px 20px;
+}
+
+#priceup, #pricedown, #curVolUp, #volumeUp, #entrustUp {
+  width: toRem(300px);
+  height: toRem(70px);
+  line-height: toRem(70px);
+  border: solid 1px #c0c6cd;
+  text-align: center;
+  outline: none;
+  border-radius: toRem(8px);
+  font-size: 16px;
+}
+
+#priceValue {
+  color: #28aa49;
+}
+
+.tips {
+  padding: toRem(20px) 0 0 toRem(30px);
+  height: toRem(132px);
+  font-size: 13px;
+  color: #808086;
+}
+
+#btnSubmits {
+  width: toRem(690px);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  height: toRem(86px);
+  line-height: toRem(86px);
+  text-align: center;
+  white-space: nowrap;
+  background-color: #3366cc;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-radius: toRem(8px);
+  margin: 0 toRem(30px);
+  padding: 0;
+  border: 0;
+}
+
+.navThree {
+  position: fixed;
+  text-align: center;
+  width: 16%;
+  cursor: pointer;
+  right: 0;
+  top: 0;
+  height: 44px;
+  z-index: 1010;
+  line-height: 44px;
+}
+.pb-common-nav{
+  z-index: 1010;
+}
+

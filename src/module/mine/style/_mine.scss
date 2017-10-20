@@ -1,0 +1,69 @@
+//info
+.user-info {
+  width: 100%;
+  background: #ffffff;
+  height: toRem(176px);
+  padding: toRem(38px) toRem(30px);
+  @include font(17px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e7e7f0;
+  margin-bottom: toRem(20px);
+}
+
+.user-info a {
+  color: #1a1a1a;
+}
+
+.user-info > img {
+  width: toRem(100px);
+  margin-right: toRem(30px);
+}
+
+.user-info #login {
+  flex-grow: 1;
+  padding-right: toRem(15px);
+  background: url('../images/chakanxiangqingdefault@2x.png') no-repeat right;
+  background-size: toRem(15px);
+}
+
+.user-info #login img {
+  height: toRem(29px);
+  float: right;
+}
+
+.groupp {
+  background: #ffffff;
+  border-top: 1px solid #e7e7f0;
+  border-bottom: 1px solid #e7e7f0;
+}
+
+.groupp a {
+  display: flex;
+  margin-left: toRem(30px);
+  border-bottom: 1px solid #e7e7f0;
+  padding: toRem(20px) toRem(30px) toRem(20px) 0;
+  height: toRem(88px);
+  align-items: center;
+  color: #1a1a1a;
+  @include font(16px);
+}
+
+.groupp a div:nth-child(1) {
+  flex: 1;
+
+}
+
+.groupp a div:nth-child(1) img {
+  width: toRem(40px);
+  margin-right: toRem(40px)
+}
+
+.groupp a img:nth-child(2) {
+  width: toRem(15px);
+}
+
+.groupp a:last-child {
+  border: 0;
+}
