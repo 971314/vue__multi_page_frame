@@ -1,7 +1,7 @@
 <template>
   <div class="nick-name-container">
     <div class="input">
-      <input type="text" v-model="nickname" placeholder="请输入昵称" maxlength="10">
+      <input type="text" v-model="nickname" placeholder="请输入昵称" maxlength="20">
       <img v-show="nickname" @click="clear" src="../images/closeclick@2x.png">
     </div>
   </div>
@@ -9,27 +9,35 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
-    props: ['userInfoAll'],
     data() {
       return {
-        nickname: this.userInfoAll.petName,
+        nickname: '',
       }
     },
-    created() {
+    computed: {
+      ...mapState([
+        'userInfoAll'
+      ])
+    },
+    activated() {
       this.$emit('change-title', '姓名');
+      this.$emit('change-goback-url', 'goBack');
+      this.nickname = this.userInfoAll.petName
     },
     methods: {
       clear() {
         this.nickname = '';
       }
     },
-    watch: {
-      nickname(val, oldVal) {
-        if (val && val != this.userInfoAll.petName) {
-          this.userInfoAll.petName = val;
-        }
+    beforeRouteLeave(to, from, next) {
+      if (this.nickname) {
+        this.userInfoAll.petName = this.nickname;
+        this.$store.dispatch('updateUserInfoAll', this.userInfoAll);
+        this.$store.dispatch('updateIsFisrt', true)
       }
+      next();
     }
   }
 </script>

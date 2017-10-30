@@ -23,24 +23,36 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
-    props: ['userInfoAll'],
     data() {
       return {
         hasArrow: false,
-        sexFlag: this.userInfoAll.sex
+        sexFlag: ''
       }
     },
-    created() {
+    computed: {
+      ...mapState([
+        'userInfoAll'
+      ])
+    },
+    activated() {
       this.$emit('change-title', '性别');
+      this.$emit('change-goback-url', 'goBack');
+      this.sexFlag = this.userInfoAll.sex
     },
     methods: {
       setSex(str) {
         this.sexFlag = str;
-        if (this.sexFlag == '0' || this.sexFlag != this.userInfoAll.sex) {
-          this.userInfoAll.sex = this.sexFlag;
-        }
       }
+    },
+    beforeRouteLeave(to, from, next) {
+      if (this.sexFlag !== '') {
+        this.userInfoAll.sex = this.sexFlag;
+        this.$store.dispatch('updateUserInfoAll', this.userInfoAll);
+        this.$store.dispatch('updateIsFisrt', true)
+      }
+      next();
     }
   }
 </script>

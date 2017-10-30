@@ -10,6 +10,9 @@ import approvalDetails from '../view/approvalDetails.vue'
 import approvalIndex from '../view/approvalIndex.vue'
 import approvalProcess from '../view/approvalProcess.vue'
 import rankingList from '../view/rankingList.vue'
+import setTime from '../view/setTime.vue'
+import logIn from  '../view/logIn.vue'
+import bindCRM from '../view/bindCRM.vue'
 
 const routes = [
   {path: '/',component:applyFast},//选择申请
@@ -19,6 +22,9 @@ const routes = [
   {path: '/approvalDetails',component:approvalDetails},//申请详情
   {path: '/approvalProcess',component:approvalProcess},//申请进程
   {path: '/rankingList',component:rankingList},//权益排行榜
+  {path: '/setTime',component:setTime},//权益排行榜
+  {path: '/logIn',component:logIn},//权益排行榜
+  {path: '/bindCRM',component:bindCRM},//权益排行榜
 ]
 
 const router = new VueRouter({

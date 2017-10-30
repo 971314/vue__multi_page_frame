@@ -9,32 +9,40 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
-    props: ['userInfoAll'],
     data() {
       return {
-        email: this.userInfoAll.email
+        email: ''
       }
     },
-    created() {
+    computed: {
+      ...mapState([
+        'userInfoAll'
+      ])
+    },
+    activated() {
       this.$emit('change-title', '邮箱');
+      this.$emit('change-goback-url', 'goBack');
+      this.email = this.userInfoAll.email
     },
     methods: {
       clear() {
           this.email = '';
       }
     },
-    watch: {
-      email(val, oldVal) {
-        if (val && val != this.userInfoAll.email) {
-          if (val.match(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/)) {
-            this.userInfoAll.email = val;
+    beforeRouteLeave(to, from, next) {
+      if (this.email) {
+          if (this.email.match(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/)) {
+            this.userInfoAll.email = this.email;
+            this.$store.dispatch('updateUserInfoAll', this.userInfoAll);
+            this.$store.dispatch('updateIsFisrt', true)
           }else {
             this.$toast('请输入正确的邮箱地址!');
             return ;
           }
-        }
       }
+      next();
     }
   }
 </script>

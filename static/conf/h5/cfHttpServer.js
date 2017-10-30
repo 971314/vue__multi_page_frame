@@ -33,5 +33,8 @@ var PBHttpServer = {
     // serverUrl: "http://pbnetserver.pobo.net.cn:8989/",
     // shareUrl: "http://pbnetserver.pobo.net.cn:8989/share/active.html"   //http://180.169.30.6:8080/poboactivityws/active.html
     shareUrl: "http://180.169.30.6:8080/share/active.html"   //http://180.169.30.6:8080/poboactivityws/active.html
+  },
+  apply:{
+    "serverUrl":'http://192.168.6.49:8080/pobocmhelperapp/0.0.1/pc/'
   }
 };

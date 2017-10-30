@@ -1,7 +1,7 @@
 <template>
   <div class="avatar-selected">
     <div class="avatar-container">
-      <img class="avatar-img" v-if="avatar" :src="avatar">
+      <img class="avatar-img" v-if="userInfoAll.avatar" :src="userInfoAll.avatar">
       <img v-else class="avatar-img" src="../images/useravatar@2x.png"/>
     </div>
     <div class="selected-group">
@@ -31,14 +31,13 @@
 <script>
   import EXIF from "exif-js";
   import MegaPixImage from "../utils/megapix-image.js";
+  import {mapState} from 'vuex'
   const getDinstance = function (point0, point1) {
     return Math.sqrt(Math.pow(point0.pageY - point1.pageY, 2) + Math.pow(point0.pageX - point1.pageX, 2))
   }
   export default {
-    props: ['userInfoAll'],
     data() {
       return {
-        avatar: this.userInfoAll.avatar ? this.userInfoAll.avatar : '',
 //        avatar: '',
         EXIF: EXIF,
         file: null,
@@ -68,13 +67,20 @@
         },
         isShow: false,
         minScale: 0,
-        info: ''
+        info: '',
+        testId: null,
+        testToken: null
       }
     },
     events: {
       showCropper() {
         this.$els.file.click()
       }
+    },
+    computed: {
+      ...mapState([
+        'userInfoAll'
+      ])
     },
     watch: {
       'imageState': {
@@ -85,11 +91,15 @@
         deep: true
       }
     },
-    created() {
+    activated() {
+      this.testToken = pbE.isPoboApp ? pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_Token') : '11111111111kkkkkkskskslslslsls';//token
+      this.testId = pbE.isPoboApp ? pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_UserId') : '8';//认证userId/id
       this.$emit('change-title', '个人头像');
+      this.$emit('change-goback-url', 'goBack');
     },
     methods: {
       readImage(event) {
+        this.$loading.toggle(' ');
         var self = this;
         var file = this.file = event.target.files[0]
         if (!file) {
@@ -116,6 +126,7 @@
         reader.readAsDataURL(file)
       },
       initCropper() {
+        this.$loading.hide();
         this.isShow = true // 显示裁剪界面
         // 回调会在dom更新后调用，如果不使用$nextTick，无法获取元素正确的高度
         this.$nextTick(() => {
@@ -139,7 +150,6 @@
 
 
           let img = document.getElementById("cropperImg")
-
           var width = this.imageState.width = img.width
           var height = this.imageState.height = img.height
           // 计算imageState
@@ -176,12 +186,12 @@
               orientation: this.orientation
             }, () => {
               image = new Image();
-              this.$loading.toggle('');
+//              this.$loading.toggle('');
               image.src = canvas.toDataURL('image/jpeg');
-              this.$loading.hide();
+//              this.$loading.hide();
               canvas = document.createElement('canvas')
-              canvas.width = cropBoxRect.width
-              canvas.height = cropBoxRect.height
+              canvas.width = cropBoxRect.height * 2;
+              canvas.height = cropBoxRect.height;
               ctx = canvas.getContext('2d')
               // 添加白色背景
               ctx.fillStyle = "#fff";
@@ -200,8 +210,10 @@
             data = canvas.toDataURL('image/jpeg', 150 * 1024 / data.length);
           }
           //提交头像
-          this.avatar = data;
           this.userInfoAll.avatar = data;
+          this.$store.dispatch('updateUserInfoAll', this.userInfoAll);
+          this.$store.dispatch('updateIsFisrt', false);
+
           this.saveImage();
           this.isShow = false;
         });
@@ -280,7 +292,7 @@
           "data": [{
             "userId": this.testId,
             "token": this.testToken,
-            "image": this.avatar
+            "image": this.userInfoAll.avatar
           }]
         })
           .then((response) => {

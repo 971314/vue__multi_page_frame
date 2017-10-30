@@ -78,7 +78,7 @@ router.beforeEach((to, from, next) => {
 })
 
 if (browser.versions.mobile && store.state.env === 'production') {
-  let cfAdequacyJson = JSON.parse(pbE.SYS().readConfig('adequacy/conf/cfAdequacy.json'))
+  let cfAdequacyJson = JSON.parse(pbE.SYS().readConfig('conf/h5/cfAdequacy.json')) // eslint-disable-line
   bootstrap(store, cfAdequacyJson)
 } else {
   Axios.get(util.getApiUrl(store.state, 'cfAdequacyJson')).then((response) => {

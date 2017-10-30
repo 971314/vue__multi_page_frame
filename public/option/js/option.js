@@ -23,7 +23,7 @@
          };
          callback(JSON.stringify(data));
        },
-       
+
        wtQueryStock:function() {},
        wtGetMSSL:function () {},
        wtLoginRe:function () {
@@ -34,7 +34,7 @@
        },
        wtLoginOut: function () {},
        wtSetCurrentAccLoginOutState: function () {}
-       
+
      }
       return obj;
     },
@@ -75,13 +75,21 @@ function queryMoneyPart(msg) {
   if (asset['152']) $('#guarantee').html(pbUtils.comma(asset['152'], 2) + unit);
   if (asset['319']) $('#remargin').html(pbUtils.comma(asset['319'], 2) + unit);
   if (asset['345']) {
-    if(asset['345'].indexOf('%') >= 0){
-      $('#risk').html(asset['345']);
-    } else {
-      $('#risk').html(asset['345']+ '%');
-    } 
+      if(asset['345'].indexOf('%') >= 0){
+          $('#risk').html(asset['345']);
+          if(asset['361'])
+             $('#dd-risk').html((10000/(asset['361'].replace('%','') -0)).toFixed(2) + '%');
+      } else {
+          if(asset['345'] - 0 > 1)
+              $('#risk').html(100/(asset['345']-0)+ '%');
+          else
+              $('#risk').html(asset['345']+ '%');
+      }
+
+
   } else {
     $('#risk').html('--');
+    $('#dd-risk').html('--');
   }
 }
 
@@ -172,7 +180,7 @@ function hqPart(msg) {
         }
         stockInfo[i]['7'] = pl;
         break;
-      } 
+      }
     }
   }
 
@@ -270,7 +278,7 @@ $(function () {
                     tradePart(msg);
                 }
             }},
-                    
+
             {module: 90000, callback: function(msg){
                 hqPart(msg);
             }}],
@@ -287,7 +295,7 @@ $(function () {
               $('#remargin').html('--元');
               userInfo(CID);
             }
-          
+
             pbE.SYS().startLoading();
             pbE.WT().wtQueryMoney(CID, JSON.stringify({}));
             pbE.WT().wtQueryStock(CID, JSON.stringify({}));
@@ -299,7 +307,7 @@ $(function () {
             pbE.WT().wtQueryStock(CID, JSON.stringify({}));
         },
         fresh: function () {},
-      
+
         doShow: function (flag) {
             if (!flag) {
               pbE.SYS().stopLoading();
@@ -313,7 +321,7 @@ $(function () {
     pbE.SYS().startLoading();
     pbE.WT().wtQueryMoney(CID, JSON.stringify({}));
     pbE.WT().wtQueryStock(CID, JSON.stringify({}));
-  
+
     if(pbE.isPoboApp) {
       process(pbUtils.parseJSON(pbE.SYS().readConfig('option/conf/option.json')));
     } else{

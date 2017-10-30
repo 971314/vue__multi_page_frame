@@ -14,9 +14,13 @@ const store = new Vuex.Store({
       tplId: '',
       tplName: ''
     },
-    task:{
-      bizTypeId:'',
-      bizId:''
+    task: {
+      bizTypeId: '',
+      bizId: ''
+    },
+    rankingTime: {
+      startTime: '',
+      endTime: ''
     }
   },
   mutations: {
@@ -28,6 +32,9 @@ const store = new Vuex.Store({
     },
     updataTask (state, payload) {
       state.task = payload.task
+    },
+    updataRankingTime (state, payload) {
+      state.rankingTime = payload.rankingTime
     }
   },
   actions: {
@@ -38,7 +45,10 @@ const store = new Vuex.Store({
       commit({type: 'updataTemplate', template: template})
     },
     updataTask ({commit}, task) {
-      commit({type: 'updataTask', applyType: task})
+      commit({type: 'updataTask', task: task})
+    },
+    updataRankingTime ({commit}, rankingTime) {
+      commit({type: 'updataRankingTime', rankingTime: rankingTime})
     }
   }
 })

@@ -12,7 +12,7 @@
       <div class="approval_cell" @click="jumpClick(data)" v-for="data in approvalData">
         <div>
           <span>{{data.appObjName}}&nbsp;&nbsp;{{data.bizType}}</span>
-          <span>{{data.appDate}}</span>
+          <span>{{$$getTimeFmt(data.appDate, '-')}}</span>
         </div>
         <span
           :class="{'c1':data.auditStatus== '通过','c2':data.auditStatus== '审批中','c3':data.auditStatus== '驳回'}">{{data.auditStatus}}</span>
@@ -27,112 +27,7 @@
     data () {
       return {
         qrytype: null,
-        approvalData: [
-          {
-            bizType: '手续费率优惠',
-            bizId: '100000001',
-            appObjName: '张三',
-            auditStatus: '审批中',
-            appDate: '10-20 20:20',
-            auditorComment: 'auditorComment'
-          },
-          {
-            bizType: '手续费率优惠',
-            bizId: '100000001',
-            appObjName: '张三',
-            auditStatus: '通过',
-            appDate: '10-20 20:20',
-            auditorComment: 'auditorComment'
-          },
-          {
-            bizType: '手续费率优惠',
-            bizId: '100000001',
-            appObjName: '张三',
-            auditStatus: '驳回',
-            appDate: '10-20 20:20',
-            auditorComment: 'auditorComment'
-          },
-          {
-            bizType: '手续费率优惠',
-            bizId: '100000001',
-            appObjName: '张三',
-            auditStatus: '审批中',
-            appDate: '10-20 20:20',
-            auditorComment: 'auditorComment'
-          },
-          {
-            bizType: '手续费率优惠',
-            bizId: '100000001',
-            appObjName: '张三',
-            auditStatus: '审批中',
-            appDate: '10-20 20:20',
-            auditorComment: 'auditorComment'
-          },
-          {
-            bizType: '手续费率优惠',
-            bizId: '100000001',
-            appObjName: '张三',
-            auditStatus: '审批中',
-            appDate: '10-20 20:20',
-            auditorComment: 'auditorComment'
-          },
-          {
-            bizType: '手续费率优惠',
-            bizId: '100000001',
-            appObjName: '张三',
-            auditStatus: '审批中',
-            appDate: '10-20 20:20',
-            auditorComment: 'auditorComment'
-          },
-          {
-            bizType: '手续费率优惠',
-            bizId: '100000001',
-            appObjName: '张三',
-            auditStatus: '审批中',
-            appDate: '10-20 20:20',
-            auditorComment: 'auditorComment'
-          },
-          {
-            bizType: '手续费率优惠',
-            bizId: '100000001',
-            appObjName: '张三',
-            auditStatus: '审批中',
-            appDate: '10-20 20:20',
-            auditorComment: 'auditorComment'
-          },
-          {
-            bizType: '手续费率优惠',
-            bizId: '100000001',
-            appObjName: '张三',
-            auditStatus: '审批中',
-            appDate: '10-20 20:20',
-            auditorComment: 'auditorComment'
-          },
-          {
-            bizType: '手续费率优惠',
-            bizId: '100000001',
-            appObjName: '张三',
-            auditStatus: '审批中',
-            appDate: '10-20 20:20',
-            auditorComment: 'auditorComment'
-          },
-          {
-            bizType: '手续费率优惠',
-            bizId: '100000001',
-            appObjName: '张三',
-            auditStatus: '审批中',
-            appDate: '10-20 20:20',
-            auditorComment: 'auditorComment'
-          },
-          {
-            bizType: '手续费率优惠',
-            bizId: '100000001',
-            appObjName: '张三',
-            auditStatus: '审批中',
-            appDate: '10-20 20:20',
-            auditorComment: 'auditorComment'
-          }
-        ]
+        approvalData: []
       }
     },
     computed: {
@@ -141,21 +36,43 @@
       ])
     },
     mounted () {
+      this.getInfo()
+//      this.tabClick(0)
+    },
+    activated () {
       this.tabClick(0)
     },
     methods: {
       //tab切换
       tabClick (flag) {
-        let _this = this
-        _this.qrytype = flag
+        this.qrytype = flag
+        this.getData(flag)
       },
       //点击跳转详情
       jumpClick (data) {
         let taskData = {}
-        taskData['bizTypeId'] = data.bizType
+        taskData['bizTypeId'] = data.bizTypeId
         taskData['bizId'] = data.bizId
-        this.$store.dispatch('updataTask',taskData)
+        this.$store.dispatch('updataTask', taskData)
         this.$router.push('/approvalDetails')
+      },
+      getData (flag) {
+        let _this = this
+        _this.$loading.toggle(' ')
+        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalToView.url + _this.info.userId + '?qrytype=' + flag).then((data) => {
+          data = data.data
+          console.log(data)
+          _this.$loading.hide()
+          if (data.retHead == 0) {
+            _this.approvalData = data.data
+          } else {
+            _this.$toast(data.desc)
+          }
+        }).catch((err) => {
+          _this.$loading.hide()
+          _this.$toast('网络超时，请稍后重试！')
+          console.log(err)
+        })
       }
     }
   }

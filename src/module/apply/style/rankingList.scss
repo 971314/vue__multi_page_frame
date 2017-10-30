@@ -1,5 +1,28 @@
 .ranking_list {
   @extend %initial;
+  .pb-common-nav {
+    .icon_calendar {
+      display: inline-block;
+      width: toRem(100px);
+      margin-right: toRem(30px);
+      height: 43px;
+      background: url("../apply/images/icon_calendar.png") no-repeat center right;
+      background-size: toRem(37px) toRem(35px);
+      /*width: toRem(37px);
+      height: toRem(35px);
+      margin:toRem(30px)*/
+    }
+  }
+  .ranking_date {
+    padding-left: toRem(30px);
+    background: $color22;
+    color: $color17;
+    font-size: $font11;
+    height: toRem(58px);
+    line-height: toRem(57px);
+    position: relative;
+    @include border-TBottom-color23;
+  }
   .tableBody {
     overflow: auto;
     .borderBottom {
@@ -20,9 +43,11 @@
             &:nth-of-type(1) {
               width: toRem(116px);
               text-align: center;
+              min-width: toRem(58px);
             }
             &:nth-of-type(2) {
               width: toRem(190px);
+              min-width: toRem(58px);
             }
           }
         }
@@ -31,136 +56,186 @@
         height: toRem(88px);
       }
     }
-    #ranking {
-      margin-top: 35px;
-      .TbodyInner {
-        display: flex;
-        overflow: hidden;
-        color: $color18;
-        font-size: $font10;
-        position: relative;
-        .brief {
-          tr {
-            font-size: 0;
-            td {
-              &:nth-of-type(1) {
-                width: toRem(116px);
-                text-align: center;
-                img {
-                  width: toRem(37px);
-                  height: toRem(48px);
-                }
-                div {
-                  width: toRem(38px);
-                  height: toRem(38px);
-                  color: $color15;
-                  background: $color47;
-                  margin: 0 auto;
-                  border-radius: toRem(38px);
-                  font-size: $font23;
-                  text-align: center;
-                  line-height: toRem(38px);
-                }
+    .TbodyInner {
+      margin-top: 34px;
+      display: flex;
+      overflow: hidden;
+      color: $color18;
+      font-size: $font10;
+      .brief {
+        tr {
+          td {
+            &:nth-of-type(1) {
+              width: toRem(116px);
+              text-align: center;
+              min-width: toRem(58px);
+              img {
+                width: toRem(37px);
+                height: toRem(48px);
               }
-              &:nth-of-type(2) {
+              div {
+                width: toRem(38px);
+                height: toRem(38px);
+                color: $color15;
+                background: $color47;
+                margin: 0 auto;
+                border-radius: toRem(40px);
+                font-size: $font23;
+                text-align: center;
+                line-height: toRem(38px);
+              }
+            }
+            &:nth-of-type(2) {
+              div {
                 width: toRem(190px);
-                div {
-                  line-height: 1;
-                  &:nth-of-type(1) {
-                    padding-bottom: toRem(10px);
-                  }
-                  &:nth-of-type(2) {
-                    color: $color17;
-                    font-size: $font23;
-                  }
+                line-height: 1;
+                &:nth-of-type(1) {
+                  padding-bottom: toRem(10px);
+                }
+                &:nth-of-type(2) {
+                  color: $color17;
+                  font-size: $font23;
                 }
               }
             }
           }
         }
+      }
+      tr {
+        height: toRem(130px);
+      }
+      .detail {
+        position: relative;
+        left: -1px;
         tr {
-          height: toRem(130px);
-        }
-        .detail {
-          position: relative;
-          left: -1px;
-          tr {
-            & > td {
-              text-align: right;
+          & > td {
+            span {
               display: inline-block;
-              &:nth-child(1) {
+            }
+            text-align: right;
+            &:nth-child(1) {
+              span {
                 width: toRem(194px);
               }
-              &:nth-child(2) {
+            }
+            &:nth-child(2) {
+              span {
                 width: toRem(222px);
               }
-              &:nth-child(3) {
+            }
+            &:nth-child(3) {
+              span {
                 width: toRem(195px);
               }
-              &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7) {
+            }
+            &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7) {
+              span {
                 width: toRem(260px);
               }
-              &:nth-child(8) {
+            }
+            &:nth-child(8) {
+              span {
                 width: toRem(230px);
               }
-              &:nth-child(9) {
+            }
+            &:nth-child(9) {
+              span {
                 width: toRem(216px);
               }
-              &:nth-child(10) {
-                width: toRem(220px);
+            }
+            &:nth-child(10) {
+              span {
+                width: toRem(30px);
               }
-              &:nth-child(11) {
+            }
+            &:nth-child(11) {
+              span {
                 width: toRem(254px);
               }
-              &:nth-child(12), &:nth-child(13), &:nth-child(14), &:nth-child(15) {
+            }
+            &:nth-child(12), &:nth-child(13), &:nth-child(14), &:nth-child(15) {
+              span {
                 width: toRem(212px);
               }
-              &:nth-child(16) {
+            }
+            &:nth-child(16) {
+              span {
                 min-width: toRem(90px);
+              }
+            }
+            &:nth-child(17) {
+              span {
+                min-width: toRem(30px);
               }
             }
           }
         }
       }
     }
+
     .detailOuter {
       flex: 1;
       overflow: hidden;
       tr {
-        font-size: 0;
         & > td {
+          span {
+            display: inline-block;
+          }
           text-align: right;
-          display: inline-block;
-          font-size: $font33;
           &:nth-child(1) {
-            width: toRem(194px);
+            span {
+              width: toRem(194px);
+            }
           }
           &:nth-child(2) {
-            width: toRem(222px);
+            span {
+              width: toRem(222px);
+            }
           }
           &:nth-child(3) {
-            width: toRem(195px);
+            span {
+              width: toRem(195px);
+            }
           }
           &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7) {
-            width: toRem(260px);
+            span {
+              width: toRem(260px);
+            }
           }
           &:nth-child(8) {
-            width: toRem(230px);
+            span {
+              width: toRem(230px);
+            }
           }
           &:nth-child(9) {
-            width: toRem(216px);
+            span {
+              width: toRem(216px);
+            }
           }
           &:nth-child(10) {
-            width: toRem(220px);
+            span {
+              width: toRem(30px);
+            }
           }
           &:nth-child(11) {
-            width: toRem(254px);
+            span {
+              width: toRem(254px);
+            }
           }
           &:nth-child(12), &:nth-child(13), &:nth-child(14), &:nth-child(15) {
-            width: toRem(212px);
+            span {
+              width: toRem(212px);
+            }
           }
           &:nth-child(16) {
-            min-width: toRem(90px);
+            span {
+              min-width: toRem(90px);
+            }
+          }
+          &:nth-child(17) {
+            span {
+              min-width: toRem(30px);
+            }
           }
         }
       }

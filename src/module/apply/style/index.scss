@@ -1,5 +1,4 @@
 @import './tool/index.scss';
-
 @import "applyFast";
 @import "applyFill";
 @import "applyOpt";
@@ -7,3 +6,7 @@
 @import "approvalDetails";
 @import "approvalProcess";
 @import "rankingList";
+@import '../../alerted/style/alertLoding';
+@import "setTime.scss";
+@import "logIn.scss";
+@import "bindCRM.scss";

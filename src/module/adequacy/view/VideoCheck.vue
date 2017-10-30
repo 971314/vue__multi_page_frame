@@ -24,6 +24,10 @@
         </div>
       </div>
 
+      <div class="queue-info text-center">
+        <div class="queue-box" v-text="cfAdequacyJson.view.workingTime"></div>
+      </div>
+
       <div class="queue-info text-center" v-if="isQueuing">
         <div class="queue-box">
           前方排队 <span class="queue" v-text="position"></span>人
@@ -63,7 +67,6 @@
       ...mapState([
         'personalInfo',
         'basicInfo',
-        'agreementsJson',
         'cfAdequacyJson',
         'brokerId'
       ])
@@ -209,10 +212,7 @@
           switch (data.action) {
             case 'RSP_ACCEPT_MATCH': {
               // 通过 CloudroomLogin 接口来准备视频
-              let reslut = pbE.SYS().CloudroomLogin(`{"yyb": "${this.basicInfo.CHANNEL_DEPARTMENT_ID}", "phone": "${this.personalInfo.PHONENUM}", "idcard": "${this.personalInfo.ID_NO}", "name": "${this.personalInfo.INVESTOR_NAM}"}`)
-              if (reslut < 0) {
-                this.showAlert('视频登录失败')
-              }
+              pbE.SYS().CloudroomLogin(`{"yyb": "${this.basicInfo.CHANNEL_DEPARTMENT_ID}", "phone": "${this.personalInfo.PHONENUM}", "idcard": "${this.personalInfo.ID_NO}", "name": "${this.personalInfo.INVESTOR_NAM}"}`)
               break
             }
             case 'RSP_QUEUE_INFO': {
@@ -227,55 +227,63 @@
           console.log('onclose')
         }
         this.ws.onerror = (e) => {
-          console.error('onclose', e)
+          console.error('onerror', e)
         }
       },
       initPage () {
         if (pbPage.getInitState()) {
-          // 1、成功登陆，进入排队
-          pbPage.addFunCallback(101003, () => {
+          pbPage.addFunCallback(101003, () => { // 1、连接成功回调
             console.log('成功登陆，进入排队')
-          }) // this.loginCallbac
-          // 2、排队回调。会被重复调用
-          pbPage.addFunCallback(101004, () => {
-            console.log('排队、进入队列')
-          }) // this.waitingCallback
-          // 3、视频录制回调，包含了录制视频开始和录制视频结束2个回调。
-          pbPage.addFunCallback(101005, this.videoCallback)
 
+            if (this.ws && this.ws.readyState === 1) {
+              this.ws.send(JSON.stringify({
+                action: 'ACK_VIDEO_CONNECTED',
+                body: {}
+              }))
+            }
+          })
+          pbPage.addFunCallback(101004, this.videoOnError) // 2、连接发生错误回调
+          pbPage.addFunCallback(101005, this.videoOnClose) // 3、连接关闭回调
         } else {
           pbPage.initPage({
             callbacks: [
-              {fun: 101003, callback: () => {}}, // this.loginCallback
-              {fun: 101004, callback: () => {}}, // this.waitingCallback
-              {fun: 101005, callback: this.videoCallback}
+              {
+                fun: 101003, callback: () => {
+                console.log('成功登陆，进入排队')
+                if (this.ws && this.ws.readyState === 1) {
+                  this.ws.send(JSON.stringify({
+                    action: 'ACK_VIDEO_CONNECTED',
+                    body: {}
+                  }))
+                }
+              }
+              },
+              {fun: 101004, callback: this.videoOnError},
+              {fun: 101005, callback: this.videoOnClose}
             ]
           })
         }
       },
-      waitingCallback (result) {
+      videoOnError (error) {
+        console.log('videoOnError', error)
+        let errorMsg = error ? `视频错误: ${error.error}` : '启动视频过程发生异常'
+        this.showAlert(errorMsg)
       },
-      async videoCallback (result) {
-        typeof result === 'string' ? (result = JSON.parse(result)) : null
+      async videoOnClose () {
+        try {
+          let response = await this.getSubmitInfo()
 
-        // 视频已经开始。或者视频正在录制中
-        if (result.status === '0') {
-        } else if (result.status === '-1') { // 视频中断。有可能是掉线或者是后台挂断
-          try {
-            let response = await this.getSubmitInfo()
+          if (response.data.data) {
+            let rsltdata = JSON.parse(response.data.data[0].proxyresult)
 
-            if (response.data.data) {
-              let rsltdata = JSON.parse(response.data.data[0].proxyresult)
-
-              // 如果已经完成双录，则直接进入成功页面
-              if (rsltdata.body && rsltdata.body.result && rsltdata.body.result.VIDEO_FLG === 'Y') {
-                return this.$router2.push('/success')
-              }
+            // 如果已经完成双录，则直接进入成功页面
+            if (rsltdata.body && rsltdata.body.result && rsltdata.body.result.VIDEO_FLG === 'Y') {
+              return this.$router2.push('/success')
             }
-            return this.$router2.push('/failure')
-          } catch (e) {
-            this.showAlert('查询信息失败，请确认网络环境')
           }
+          return this.$router2.push('/failure')
+        } catch (e) {
+          this.showAlert('查询信息失败，请确认网络环境')
         }
       },
       async getSubmitInfo () {
@@ -352,6 +360,19 @@
             }
           }],
           title: '<h4>提示</h4>',
+          message: '<p>' + msg + '</p>'
+        })
+      },
+      showError (msg, callback) {
+        this.$alert({
+          maskClosable: true,
+          btns: [{
+            text: '确定',
+            click: callback || function () {
+              return false
+            }
+          }],
+          title: '<h4>错误</h4>',
           message: '<p>' + msg + '</p>'
         })
       }

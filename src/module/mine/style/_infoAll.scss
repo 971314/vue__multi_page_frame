@@ -99,4 +99,20 @@
       font-weight: normal;
     }
   }
+
+  .user-logout {
+    margin-top: toRem(60px);
+    background-color: #3366cc;
+    margin-left: toRem(30px);
+    margin-right: toRem(30px);
+    height: toRem(90px);
+    border-radius: toRem(10px);
+    border: 1px solid #3366cc;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    @include font(18px);
+    color: #ffffff;
+  }
 }

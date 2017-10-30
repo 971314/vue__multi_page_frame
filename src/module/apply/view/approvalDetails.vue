@@ -16,7 +16,7 @@
           <span> 营业部门 {{details.DeptName}}</span>
         </div>
       </div>
-      <div class="details_info">
+      <div class="details_info" @click="$router.push('/approvalProcess')">
         <div>申请信息</div>
         <div>
           <span>申请内容</span>
@@ -27,7 +27,7 @@
           <span>{{details.appDate}}</span>
         </div>
       </div>
-      <div class="details_schedule" @click="approvalProgress(details)">
+      <div class="details_schedule">
         <span>审批进度</span>
         <span>{{details.auditStatus}}</span>
         <img src="../images/gengDuo.png" class="gengduo"/>
@@ -54,50 +54,60 @@
     data () {
       return {
         details: {
-          investorName: '张三',//客户姓名
-          capitalAccount: '123456',//资金账户
-          DeptName: '世纪大道营业部',//营业部名称
-          bizType: '手续费优惠',//申请任务类型
-          TaskNote: '备注备注备注备注备注备注',//备注
-          appDate: '10-10 20:20',//提交任务时间
-          auditStatus: '000',//审批状态
-          auditorComment: '审批意见审批意见审批意见审批意见',//审批意见
-          attachs: [//附件
-            {
-              attachName: '123456.png',
-              attachUrl: '',
-              attachSize: '236KB'
-            },
-            {
-              attachName: '123456.png',
-              attachUrl: '',
-              attachSize: '236KB'
-            },
-            {
-              attachName: '123456.png',
-              attachUrl: '',
-              attachSize: '236KB'
-            },
-            {
-              attachName: '123456.png',
-              attachUrl: '',
-              attachSize: '236KB'
-            }
-          ]
-
+          auditStatus: ''
         }
       }
+    },
+    created () {
     },
     mounted () {
       console.log()
     },
+    activated () {
+      this.getData()
+    },
     methods: {
-      approvalProgress (data) {
-        console.log(data)
-        this.$router.push('/approvalProcess')
-      },
       revokedClick () {
-        console.log('13')
+        let _this = this
+        _this.$loading.toggle(' ')
+        _this.$axios.delete(PBHttpServer.apply.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId + '/' + _this.task.bizTypeId + '/' + _this.task.bizId, {timeout: 10000}).then((data) => {
+          data = data.data
+          _this.$loading.hide()
+          if (data.retHead == 0) {
+            _this.$alert({
+              maskClosable: true,
+              massage: '<div style="text-align: center">撤回成功</div>',
+              click: () => {
+                _this.$router.push('/approvalIndex')
+              }
+            })
+          } else {
+            _this.$toast(data.desc)
+          }
+        }).catch((err) => {
+          _this.$loading.hide()
+          _this.$toast('网络超时，请稍后重试！')
+          console.log(err)
+        })
+      },
+      getData () {
+        let _this = this
+        _this.$loading.toggle(' ')
+        _this.getInfo()
+        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId + '/' + this.$store.state.task.bizTypeId + '/' + this.$store.state.task.bizId, {timeout: 10000}).then((data) => {
+          data = data.data
+          _this.$loading.hide()
+          console.log(data)
+          if (data.retHead == 0) {
+            _this.details = data.data
+          } else {
+            _this.$toast(data.desc)
+          }
+        }).catch((err) => {
+          _this.$loading.hide()
+          _this.$toast('网络超时，请稍后重试！')
+          console.log(err)
+        })
       }
     }
   }

@@ -28,49 +28,13 @@
   </div>
 </template>
 <script>
-  import { mapState } from 'vuex'
+  import { mapState, mapActions } from 'vuex'
 
   export default {
     data () {
       return {
         showEvent: false,
-        applyData: [
-          {
-            tplType: '1',
-            tplTypeName: '保证金率优惠',
-            tplTypeModel: '1'
-          },
-          {
-            tplType: '1',
-            tplTypeName: '手续费率优惠',
-            tplTypeModel: '2'
-          },
-          {
-            tplType: '1',
-            tplTypeName: '股票期权系统保证金率',
-            tplTypeModel: '1'
-          },
-          {
-            tplType: '1',
-            tplTypeName: '股票期权系统手续费率',
-            tplTypeModel: '2'
-          },
-          {
-            tplType: '1',
-            tplTypeName: '提成比例',
-            tplTypeModel: '1'
-          },
-          {
-            tplType: '1',
-            tplTypeName: '交易所返还提成',
-            tplTypeModel: '2'
-          },
-          {
-            tplType: '1',
-            tplTypeName: '利息提成',
-            tplTypeModel: '1'
-          }
-        ]
+        applyData: []
       }
     },
     computed: {
@@ -79,12 +43,37 @@
       ])
     },
     created () {
+      this.$loading.toggle(' ')
+      this.getInfo()
+    },
+    mounted () {
       let _this = this
+      _this.$loading.toggle(' ')
+      _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalModules.url + _this.info.userId, {timeout: 10000}).then((data) => {
+        data = data.data
+        console.log(data)
+        _this.$loading.hide()
+        if (data.retHead == 0) {
+          _this.applyData = data.data
+        } else {
+          _this.$toast(data.desc)
+        }
+      }).catch((err) => {
+        _this.$loading.hide()
+        if (err.message.split(' ')[0] == 'timeout') {
+          _this.$toast('网络超时，请稍后重试！')
+        } else {
+          _this.$toast('网络异常，请稍后重试！')
+        }
+        console.log(err)
+      })
+    },
+    activated () {
+      this.$store.dispatch('updataTemplate', {tplId: '', tplName: ''})
     },
     methods: {
-      //申请点击
+      //申请模块点击
       chooseClick (data) {
-        console.log(data)
         this.$store.dispatch('updataApply', data)
         this.showEvent = true
       },
@@ -99,6 +88,7 @@
         } else {
           console.log(flag)
         }
+        this.showEvent = false
       }
     }
   }

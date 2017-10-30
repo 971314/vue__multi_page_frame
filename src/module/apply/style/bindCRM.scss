@@ -1,0 +1,32 @@
+.bind_crm {
+  @extend %initial;
+  .bind_head {
+    padding: 0 toRem(30px);
+    display: flex;
+    height: toRem(88px);
+    line-height: toRem(88px);
+    font-size: $font33;
+    color: $color17;
+    span {
+      flex: 1;
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+  .bind_input {
+    padding-left: toRem(30px);
+    background: $color15;
+  }
+  .bind_tip {
+    margin: toRem(20px) 0 0 toRem(30px);
+    padding-left: toRem(46px);
+    background: url("../apply/images/icon_zhuYi.png") no-repeat center left;
+    background-size: toRem(26px);
+    color: $color29;
+    font-size: $font11;
+  }
+  .button {
+    margin-top: toRem(120px);
+  }
+}

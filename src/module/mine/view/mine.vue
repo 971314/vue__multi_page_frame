@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="user-info" @click="detailInfo" v-if="isShowHerd">
+    <div class="user-info" v-if="isShowHerd">
       <img src=
              "../images/uimg.png" alt="">
-      <a href="pobo:uncheck=0&pageId=900005&url=mine/index.html#/userInfo" id="login">
-      <!--<a href="pobo:uncheck=0&pageId=905002&url=reg/view/reg-one.html" id="login">-->
+      <a href="pobo:uncheck=0&pageId=905002&url=mine/index.html#/userInfo" id="login">
+        <!--<a href="pobo:uncheck=0&pageId=905002&url=reg/view/reg-one.html" id="login">-->
         <span>{{info}}</span>
         <!--<img class="more" src="../../../assets/images/chakanxiangqingdefault@2x.png" alt="详细">-->
       </a>
@@ -29,10 +29,24 @@
         marketAccount: pbE.isPoboApp ? pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_LoginName') : '18292320745',//手机号/用户名
         id: pbE.isPoboApp ? pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_UserId') : '46461',//认证userid
         isShowHerd: null,
-        info: null
+        info: null,
+        testIp: null,
+        testMac: null,
+        testVersion: null,
+        testId: null,
+        userName: null,
+        testToken: null
       }
     },
     mounted() {
+      this.testIp = pbE.isPoboApp ? pbE.SYS().getDeviceJsonInfo()['71'] : '';//ip
+      this.testMac = pbE.isPoboApp ? pbE.SYS().getDeviceJsonInfo()['72'] : '';//物理地址
+      this.testVersion = pbE.isPoboApp ? pbE.SYS().getDeviceJsonInfo()['73'] : '';//版本
+      this.testId = pbE.isPoboApp ? pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_UserId') : '8';//认证userId/id
+      this.userName  =  pbE.isPoboApp ? pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_LoginName') : '18292320745';//认证手机号
+      this.testToken  =  pbE.isPoboApp ? pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_Token') : '11111111111kkkkkkskskslslslsls';//token
+
+
       this.initPage();
       let _this = this;
       if (_this.marketAccount && _this.marketAccount.length != 0) {
@@ -65,9 +79,6 @@
       }
     },
     methods: {
-      detailInfo() {
-        this.$router.push({name: 'userInfo'});
-      },
       readConfig(conf) {
         this.isShowHerd = JSON.parse(conf).my.isShowH;
         conf = JSON.parse(conf).my.data;

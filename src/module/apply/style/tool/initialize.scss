@@ -13,13 +13,11 @@ body {
     div {
       font-size: $font25;
       text-align: center;
-    }
-    div:nth-of-type(1), div:nth-of-type(2) {
       color: $color18;
       height: toRem(99.5px);
       line-height: toRem(99px);
     }
-    div:nth-of-type(3) {
+    div:last-child {
       color: $color1;
       height: toRem(87px);
       line-height: toRem(86px);
@@ -32,15 +30,20 @@ body {
 .apply_fill, .approval_details {
   .common-nav {
     .navbar-footer {
-      span {
+      & > div > span {
         display: inline-block;
         width: 100%;
         height: 100%;
         color: $color15;
         font-size: $font10;
         padding-right: toRem(30px);
-        &.c4 {
-          color: $color28;
+        & > span {
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+          &.c4 {
+            color: $color28;
+          }
         }
       }
     }
@@ -61,10 +64,14 @@ body {
   padding-right: toRem(30px);
   span:nth-of-type(1) {
     flex: 1;
+    font-size: $font10;
+    color: $color18;
   }
   span:nth-of-type(2) {
     flex: .3;
     text-align: right;
+    color: $color17;
+    font-size: $font23;
   }
   img:nth-of-type(1) {
     width: toRem(36px);
@@ -98,7 +105,52 @@ table {
   border-collapse: collapse;
   table-layout: fixed;
   th, td {
-    min-width:toRem(200px);
+    //min-width: toRem(200px);
     white-space: nowrap
   }
+}
+
+.input {
+  width: 100%;
+  height: toRem(100px);
+  line-height: toRem(100px);
+  border: 0;
+  outline: none;
+  position: relative;
+  border-bottom: 1px solid $color23;
+}
+
+.input:last-child {
+  border-bottom: 0;
+}
+
+.button {
+  width: 90%;
+  height: toRem(86px);
+  margin: 0 auto;
+  border: 0;
+  outline: none;
+  border-radius: toRem(8px);
+  color: $color15;
+  font-size: $font25;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+  color: $color47;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: $color47;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: $color47;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: $color47;
+}
+
+.available {
+  background: $color1;
 }

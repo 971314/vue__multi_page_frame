@@ -2,8 +2,13 @@
   <div class="ranking_list">
     <common-nav>
       <span slot="body">权益排行榜</span>
+      <span slot="footer" class="icon_calendar" @click="showCalendar"></span>
+      <!--<img src="../images/icon_calendar.png" slot="footer" class="icon_calendar"/>-->
     </common-nav>
-    <div class="tableBody">
+    <div class="ranking_date">
+      数据统计区间：{{$store.state.rankingTime.startTime}} 至 {{$store.state.rankingTime.endTime}}
+    </div>
+    <div class="tableBody" v-show="rankingData.length > 0">
       <div class="TheadWrap borderBottom">
         <table class="table1">
           <tbody>
@@ -23,20 +28,14 @@
             <tr>
               <td><span>期末权益(万)</span></td>
               <td><span>日均权益(万)</span></td>
-              <td><span>最新入金时间</span></td>
-              <td><span>月盈亏(万)</span></td>
-              <td><span>半年盈亏(万)</span></td>
-              <td><span>年盈亏(万)</span></td>
               <td><span>保证金(万)</span></td>
               <td><span>风险度(%)</span></td>
+              <td><span>成交金额(万)</span></td>
               <td><span>成交手数</span></td>
-              <td><span>留存手数</span></td>
-              <td><span>业绩占比(%)</span></td>
-              <td><span>佣金提成(%)</span></td>
-              <td><span>年出金(万)</span></td>
-              <td><span>年入今(万)</span></td>
-              <td><span>年净入金(万)</span></td>
-              <td></td>
+              <td><span>出金(万)</span></td>
+              <td><span>入金(万)</span></td>
+              <td><span>净入入金(万)</span></td>
+              <td><span></span></td>
             </tr>
             </thead>
           </table>
@@ -50,8 +49,8 @@
               <td v-if="i == 0"><img src="../images/ranking1.png"/></td>
               <td v-else-if="i == 1"><img src="../images/ranking2.png"/></td>
               <td v-else-if="i == 2"><img src="../images/ranking3.png"/></td>
-              <td v-else="i == 2">
-                <div>{{i}}</div>
+              <td v-else>
+                <div>{{i + 1}}</div>
               </td>
               <td>
                 <div>{{data.customerName}}</div>
@@ -73,13 +72,7 @@
                 <td><span>{{data.margin}}</span></td>
                 <td><span>{{data.risk}}</span></td>
                 <td><span>{{data.volume}}</span></td>
-                <td><span>{{data.keepVolume}}</span></td>
-                <td><span>{{data.ratio}}</span></td>
-                <td><span>{{data.commission}}</span></td>
-                <td><span>{{data.yearGold}}</span></td>
-                <td><span>{{data.yearDeposit}}</span></td>
-                <td><span>{{data.netDeposit}}</span></td>
-                <td></td>
+                <td><span></span></td>
               </tr>
               </tbody>
             </table>
@@ -87,6 +80,16 @@
         </div>
       </div>
     </div>
+    <multi-slide v-model="showEvent">
+      <div class="bottom_modal">
+        <div @click="selectTimeInterval(1)">本月</div>
+        <div @click="selectTimeInterval(2)">近半年</div>
+        <div @click="selectTimeInterval(3)">近一年</div>
+        <div @click="selectTimeInterval(4)">自定义
+        </div>
+        <div @click="showEvent = false">取消</div>
+      </div>
+    </multi-slide>
   </div>
 </template>
 <script>
@@ -95,370 +98,17 @@
   export default {
     data () {
       return {
-        rankingData: [
-          {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }, {
-            customerName: '稽伟明',
-            capitalAccount: '072322567',
-            finalEquity: '123456',
-            dailyEquity: '123456',
-            depositDate: '123456',
-            monthlyIncome: '12346',
-            halfYearIncome: '12346',
-            oneYearIncome: '12346',
-            margin: '12346',
-            risk: '12346',
-            volume: '12346',
-            keepVolume: '12346',
-            ratio: '12346',
-            commission: '12346',
-            yearGold: '12346',
-            yearDeposit: '12346',
-            netDeposit: '12346'
-          }
-        ]
+        showEvent: false,
+        rankingData: []
       }
+    },
+    created () {
+      this.$store.dispatch('updataRankingTime', {
+        startTime: this.GetDateStr(0),
+        endTime: this.GetDateStr(0)
+      })
+      this.getInfo()
+//      this.getData()
     },
     mounted () {
       Ps.initialize(document.getElementById('ranking'), {
@@ -466,9 +116,64 @@
         wheelSpeed: 200
       })
     },
+    activated () {
+      this.getData()
+    },
     updated: function () {
       Ps.update(document.getElementById('ranking'))
     },
-    methdos: {}
+    methods: {
+      showCalendar () {
+        this.showEvent = true
+      },
+      selectTimeInterval (num) {
+        if (num == 1) {
+          this.$store.dispatch('updataRankingTime', {
+            startTime: this.$$timeFormate({date: this.GetDateStr(0), format: 'Y-M'}) + '-01',
+            endTime: this.GetDateStr(0)
+          })
+          this.getData()
+        } else if (num == 2) {
+          this.$store.dispatch('updataRankingTime', {
+            startTime: this.GetDateStr(0),
+            endTime: this.$$timeFormate({date: this.getTimeByParam(6), format: 'Y-M-D'})
+          })
+          this.getData()
+        } else if (num == 3) {
+          this.$store.dispatch('updataRankingTime', {
+            startTime: this.GetDateStr(0),
+            endTime: this.$$timeFormate({date: this.getTimeByParam(12), format: 'Y-M-D'})
+          })
+          this.getData()
+        } else if (num == 4) {
+          this.$router.push('/setTime')
+        }
+        this.showEvent = false
+      },
+      getData () {
+        let _this = this
+        _this.$loading.toggle(' ')
+        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalRanking.url + _this.info.userId + '?beginDate=' + _this.$$timeFormate({
+          date: _this.$store.state.rankingTime.startTime,
+          format: 'YMD'
+        }) + '&endDate=' + _this.$$timeFormate({
+          date: _this.$store.state.rankingTime.endTime,
+          format: 'YMD'
+        }), {timeout: 10000}).then((data) => {
+          data = data.data
+          console.log(data)
+          _this.$loading.hide()
+          if (data.retHead == 0) {
+            _this.rankingData = data.data
+          } else {
+            _this.$toast(data.desc)
+          }
+        }).catch((err) => {
+          _this.$loading.hide()
+          _this.$toast('网络超时，请稍后重试！')
+          console.log(err)
+        })
+      }
+    }
   }
 </script>

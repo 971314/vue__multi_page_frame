@@ -4,7 +4,7 @@
       <cell to="/userInfo/avatar" class="avatar">
         头像
         <img v-if="userInfoAll.avatar" class="avatar" slot="footer" :src="userInfoAll.avatar">
-        <img v-else class="avatar" slot="footer" src="../images/useravatar@2x.png">
+        <!--<img v-else class="avatar" slot="footer" src="../images/useravatar@2x.png">-->
         <img class="more" slot="footer" src="../images/chakanxiangqing@2x.png">
       </cell>
       <cell to="/userInfo/nickName">
@@ -19,17 +19,17 @@
       </cell>
       <cell @click="chooseAge">
         年龄
-        <span slot="footer" v-text="userInfoAll.age ? `${userInfoAll.age}岁` : '岁'"></span>
+        <span slot="footer" v-text="userInfoAll.age > 2 ? `${userInfoAll.age}岁` : '无'"></span>
         <img class="more" slot="footer" src="../images/chakanxiangqing@2x.png">
       </cell>
       <cell to="/userInfo/job" class="job">
         职业
-        <span slot="footer">{{ userInfoAll.prefessionName }}</span>
+        <span slot="footer">{{ userInfoAll.prefessionName ? userInfoAll.prefessionName : '无' }}</span>
         <span slot="footer"><img class="more" src="../images/chakanxiangqing@2x.png"></span>
       </cell>
       <cell to="/userInfo/email">
         邮箱
-        <span slot="footer">{{ cipherMail }}</span>
+        <span slot="footer">{{ cipherMail ? cipherMail : '无' }}</span>
         <img class="more" slot="footer" src="../images/chakanxiangqing@2x.png">
       </cell>
       <cell to="/userInfo/password">
@@ -38,6 +38,9 @@
         <img class="more" slot="footer" src="../images/chakanxiangqing@2x.png">
       </cell>
     </group>
+    <div @click="UserLogOut" class="user-logout">
+      退出登录
+    </div>
     <multi-slide v-model="showEvent">
       <div class="age-select-title">
         <span class="complete-span" @click="showEvent = false">完成</span>
@@ -50,37 +53,23 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default{
-    props: {
-      prefessionList: {
-        type: Array,
-        default: []
-      },
-      userInfoAll: {
-        type: Object,
-        default: function () {
-          return {
-            avatar: '',
-            petName: `嵇伟民`,
-            sex: `男`,
-            age: 30,
-            prefessionName: '金融从业机构人员',
-            prefession: `02`,
-            email: 'fzjjian584520@qq.com',
-            userId: ''
-          }
-        }
-      }
-    },
-    props:['prefessionList', 'userInfoAll'],
     data() {
       return {
+        oldAge: null,
         showEvent: false,
         gobackUrl: `goBack`,
-        hasArrow: true
+        hasArrow: true,
+        testToken: null,
+        testId: null
       }
     },
     computed: {
+      ...mapState([
+        'userInfoAll',
+        'isFisrt'
+      ]),
       sex: function () {
         if (this.userInfoAll.sex) {
           let sex = this.getSex(this.userInfoAll.sex);
@@ -111,32 +100,37 @@
         }
       }
     },
+    activated() {
+      this.testToken = pbE.isPoboApp ? pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_Token') : '11111111111kkkkkkskskslslslsls';//token
+      this.testId = pbE.isPoboApp ? pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_UserId') : '8';//认证userId/id
+      this.$emit('change-title', '个人资料');
+      this.$emit('change-goback-url', 'close');
+      this.$forceUpdate();
+      console.log('this.isFisrt', this.isFisrt);
+      if (this.isFisrt) {
+        this.sendInfo();
+      }
+    },
     watch: {
-      prefessionList(val, oldVal) {
-        if (val.length > 0) {
-          val.map((item) => {
-            if (item.proId === this.userInfoAll.prefession) {
-              this.userInfoAll.prefessionName = item.proName;
-            }
-          });
-        }
-      },
-      'userInfoAll.prefession': function (val, oldVal) {
-        if (val) {
-          if (this.prefessionList.length > 0) {
-            this.prefessionList.map((item) => {
-              if (item.proId === val) {
-                this.userInfoAll.prefessionName = item.proName;
-              }
-            });
+      showEvent(val, oldVal) {
+        if (!val) {
+          if (this.userInfoAll.age != this.oldAge) {
+            this.oldAge = this.userInfoAll.age
+            this.sendInfo();
           }
         }
       }
     },
-    created() {
-      this.$emit('change-title', '个人资料');
-    },
     methods: {
+      UserLogOut() {
+        if (pbE.isPoboApp) {
+          pbE.SYS().clearAuthData();
+          location.href = 'pobo:uncheck=0&pageId=800011&url=mine/index.html#/';
+        }
+      },
+      chooseAge() {
+        this.showEvent = true
+      },
       getSex (flag) {
         if (flag == '1') {
           return '男';
@@ -146,9 +140,6 @@
           return '非人类';
         }
         return '未知';
-      },
-      chooseAge() {
-        this.showEvent = true
       },
       getCipherMail (mail) { //对邮箱进行切割
         var index = mail.indexOf('@');
@@ -161,6 +152,32 @@
           mailname = mailname + '***';
         }
         return mailname + maildomain;
+      },
+      sendInfo() {
+        this.$axios.post(this.postUrl, {
+          "func": "111",
+          "data": [
+            {
+              "userId": this.testId,
+              "token": this.testToken,
+              "petName": this.userInfoAll.petName,
+              "sex": this.userInfoAll.sex + '',
+              "prefessionId": this.userInfoAll.prefession + '',
+              "email": this.userInfoAll.email ? this.userInfoAll.email : '',
+              "age": this.userInfoAll.age + ''
+            }
+          ]
+        })
+          .then((response) => {
+            if (response.data.retHead == '0') {
+//              this.$toast('修改成功！')
+            } else {
+              this.$toast(response.data.desc)
+            }
+          })
+          .catch((res) => {
+            console.log(res);
+          });
       }
     }
   }

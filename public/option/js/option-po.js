@@ -91,11 +91,17 @@ function queryMoneyPart(msg) {
   if (asset['345']) {
     if(asset['345'].indexOf('%') >= 0){
       $('#risk').html(asset['345']);
+      if(asset['361'])
+        $('#dd-risk').html((10000/(asset['361'].replace('%','') -0)).toFixed(2) + '%');
     } else {
-      $('#risk').html(asset['345']+ '%');
-    } 
+      if(asset['345'] - 0 > 1)
+          $('#risk').html(100/(asset['345']-0)+ '%');
+        else
+           $('#risk').html(asset['345']+ '%');
+    }
   } else {
     $('#risk').html('--');
+    $('#dd-risk').html('--');
   }
 }
 
@@ -392,32 +398,32 @@ $(function () {
                 {fun: 6019, module: 90002, callback: function (msg) {if (msg.reservId == CID){entrustPart(msg);}}},
                 {module: 90000, callback: function (msg) {hqPart(msg);}}
                ],
-    
+
     reload: function () {
       CID = pbE.WT().wtGetCurrentConnectionCID(), p = 0, position = [];
       pbE.SYS().startLoading();
       pbE.WT().wtQueryMoney(CID, JSON.stringify({}));
       pbE.WT().wtQueryStock(CID, JSON.stringify({}));
     },
-    
+
     refresh: function () {
       pbE.SYS().startLoading();
       p = 0;
       pbE.WT().wtQueryMoney(CID, JSON.stringify({}));
       pbE.WT().wtQueryStock(CID, JSON.stringify({}));
     },
-    
+
     doShow: function (flag) {
       if (!flag) {
         pbE.SYS().stopLoading();
         //pbE.HQ().hqUnSubscribe(0, JSON.stringify(symbolData));
       }
     },
-    
+
     fresh: function () {}
   };
   pbPage.initPage(option);
-  
+
   pbE.SYS().startLoading();
   pbE.WT().wtQueryMoney(CID, JSON.stringify({}));
   pbE.WT().wtQueryStock(CID, JSON.stringify({}));

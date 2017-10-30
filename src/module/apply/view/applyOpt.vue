@@ -45,20 +45,36 @@
     },
     computed: {
       ...mapState([
-        'template'
+        'template',
+        'apply'
       ])
     },
-    created () {
-
+    mounted () {
+      let _this = this
+      _this.$loading.toggle(' ')
+      _this.getInfo()
+      _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalSelect.url + _this.info.userId + '/' + _this.apply.tplType, {timeout: 10000}).then((data) => {
+        data = data.data
+        console.log(data)
+        _this.$loading.hide()
+        if (data.retHead == 0) {
+          _this.subTemplate = data.data
+        } else {
+          _this.$toast(data.desc)
+        }
+      }).catch((err) => {
+        _this.$loading.hide()
+        _this.$toast('网络超时，请稍后重试！')
+        console.log(err)
+      })
     },
     methods: {
       chooseClick (data) {
-        console.log(data)
         let steData = {}
         steData['tplId'] = data.tplId
         steData['tplName'] = data.tplName
-        this.$store.dispatch('updataTemplate',steData)
-        this.$router.push('/applyFill')
+        this.$store.dispatch('updataTemplate', steData)
+        this.$router.replace('/applyFill')
       },
       iconClick (data) {
         this.$alert({

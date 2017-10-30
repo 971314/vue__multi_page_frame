@@ -50,7 +50,20 @@ textarea::-webkit-input-placeholder{
 									margin-right: toRem(10px);
 									width: toRem(86px);
 									height: toRem(86px);
-								}	
+								}
+								.removeImg{
+								    position: absolute;
+								    left: toRem(-14px);
+								    top: toRem(-14px); 
+								    z-index: 2;
+									display: inline-block;
+									width: toRem(36px);
+									height: toRem(36px);
+									background-image:url(../followUpRecord/images/img04.png);
+							        background-size: 99% 100%;
+							        background-repeat: no-repeat;
+							        background-position: center;
+								}
 							}
 							
 						}

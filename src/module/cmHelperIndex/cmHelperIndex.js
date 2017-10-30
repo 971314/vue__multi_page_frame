@@ -10,6 +10,8 @@ import browser from './common/browser'
 import cmHelperIndex from './view/cmHelperIndex.vue'
 import cmTrends from './view/cmTrends.vue'
 import myAttention from './view/myAttention.vue'
+import customerInfo from './view/customerInfo.vue'
+import info from './view/info.vue'
 import FastClick from 'fastclick'
 
 import {DatePicker} from 'element-ui'
@@ -29,7 +31,9 @@ const router = new VueRouter({
   routes: [
     {path: '/', name: 'cmHelperIndex',component: cmHelperIndex},
     {path: '/cmTrends', component: cmTrends},
-    {path: '/myAttention', component: myAttention}
+    {path: '/myAttention', component: myAttention},
+    {path: '/customerInfo', component: customerInfo},
+    {path: '/info', component: info}
   ]
 })
 

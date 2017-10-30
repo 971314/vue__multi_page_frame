@@ -1,0 +1,23 @@
+.log_in {
+  @extend %initial;
+  .log_input {
+    margin-top: toRem(20px);
+    padding-left: toRem(30px);
+    background: $color15;
+    font-size: $font33;
+  }
+  .button {
+    margin-top: toRem(120px);
+  }
+  .log_tip {
+    text-align: right;
+    margin-top: toRem(46px);
+    color: $color17;
+    font-size: $font23;
+    margin-right: toRem(30px);
+    span {
+      color: $color29;
+      text-decoration: underline;
+    }
+  }
+}

@@ -36,7 +36,8 @@
                         <div class="textarea">
                             <textarea placeholder="问题内容" rows="5" class="textarea-input"></textarea>
                             <div class="upload-img">
-                                <div v-if="imgSrcArr.length > 0" class="showImgArea" v-for="i in imgSrcArr">
+                                <div v-if="imgSrcArr.length > 0" class="showImgArea" v-for="(i, index) in imgSrcArr">
+                                    <i class="removeImg" @click="removePreImg(index)">&nbsp;</i>
                                     <img :src="i"/>
                                 </div>
                                 <div v-if="imgSrcArr.length == 0" class="showImgArea">
@@ -188,6 +189,10 @@
             submit(){
                 let src = document.querySelector('#fileFront').getAttribute('src');
                 var img = src.replace('data:image/jpeg;base64,', 'image/jpg;base64,');
+            },
+
+            removePreImg(index){
+                this.imgSrcArr.splice(index, 1);
             }
 
         }

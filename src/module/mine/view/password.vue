@@ -28,11 +28,26 @@
       return {
         oldpwd: ``,
         newpwd: ``,
-        againnewpwd: ``
+        againnewpwd: ``,
+        testIp: null,
+        testVersion: null,
+        testToken: null,
+        userName: null,
+        testId: null,
+        testMac: null
       }
     },
     created() {
+      this.testIp = pbE.isPoboApp ? JSON.parse(pbE.SYS().getDeviceJsonInfo())['71'] : '';//ip
+      this.testMac = pbE.isPoboApp ? JSON.parse(pbE.SYS().getDeviceJsonInfo())['72'] : '';//物理地址
+      this.testVersion = pbE.isPoboApp ? JSON.parse(pbE.SYS().getDeviceJsonInfo())['73'] : '';//版本
+      this.testId = pbE.isPoboApp ? pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_UserId') : '8';//认证userId/id
+      this.userName  =  pbE.isPoboApp ? pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_LoginName') : '18292320745';//认证手机号
+      this.testToken  =  pbE.isPoboApp ? pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_Token') : '11111111111kkkkkkskskslslslsls';//token
+
+      this.$store.dispatch('updateIsFisrt', false)
       this.$emit('change-title', '登录密码更改');
+      this.$emit('change-goback-url', 'goBack');
     },
     methods: {
       clear(str) {
@@ -60,7 +75,7 @@
                   this.$router.back();
                   this.$loading.toggle('');
                   this.$axios.post(this.postUrl, {
-                    "func": "112",
+                    "func": "108",
                     "data": [{
                       "loginName": this.userName,
                       "userId": this.testId,

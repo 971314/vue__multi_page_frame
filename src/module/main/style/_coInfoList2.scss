@@ -133,11 +133,22 @@
           border-bottom: 0;
         }
         .group.template2{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
           padding-top: toRem(40px);
+          .template2-time {
+            margin-right: toRem(30px);
+          }
           .cell{
+            flex: 1;
             padding-top: 0;
             padding-bottom: 0;
             border-bottom: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
             .media-body{
               width: 100%;
               height: inherit;

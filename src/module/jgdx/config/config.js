@@ -6,19 +6,19 @@ module.exports = {
         //项目根路径
         projectPrefix: "consult",      //http://192.168.6.49:8080(本地)
         //开发代理服务地址
-        proxyServer: "http://101.226.207.142:8890", //http://61.172.197.204:8890
-        // 生产请求服务地址
-        productionServer: "http://101.226.207.142:8890", //http://101.226.207.142:8890
+        proxyServer: "http://info.pobo.net.cn:8080", //http://61.172.197.204:8890    //info.pobo.net.cn:8080
+      // 生产请求服务地址
+        productionServer: "http://info.pobo.net.cn:8080", //http://101.226.207.142:8890
     }, {
         //项目名称
         projectName: "info",           //testinfo
         //项目根路径
         projectPrefix: "info",
         //开发代理服务地址
-        proxyServer: "http://101.226.207.142:8890",
+        proxyServer: "http://info.pobo.net.cn:8080",
         // proxyServer: "http://101.226.207.142:8890",
         // 生产请求服务地址
-        productionServer: "http://101.226.207.142:8890",
+        productionServer: "http://info.pobo.net.cn:8080",
     }],
     //图片服务器前缀
     // PrefixImg: "https://static.yunyesoft.com/fsimg",

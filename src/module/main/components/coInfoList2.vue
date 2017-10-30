@@ -41,6 +41,9 @@
               </div>
           </span>
         </a>
+        <span class="template2-time">
+        {{$$timeFormate({date:item.updateTime, format: 'M-D'})}}
+        </span>
       </div>
 
     </div>
@@ -142,10 +145,35 @@
         }
         _this.$axios.post(_this.webService, params).then(function (result) {
             var CONTENTS = result.data.data;
+            if (obj.infoType === '10101') {
+              console.log('result',result);
+            }
             _this.newsList = CONTENTS;
           }).catch(function (err) {
             console.log('服务器异常', err)
           });
+      },
+      $$timeFormate({date = new Date(), format = "Y-M-D h:m:s", week = 0} = {}) {     //时间格式化函数
+        let r, wk, wk1;
+        if (Object.prototype.toString.call(date) === '[object String]') {
+          date = date.replace(/-/g, '/'); //解决ios上不兼容new Date('2017-01-01')
+        }
+        date = new Date(date);
+        [wk, wk1] = [['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'][date.getDay()], ['周天', '周一', '周二', '周三', '周四', '周五', '周六'][date.getDay()]];
+        r = {
+          Y: date.getFullYear(),
+          M: date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1,
+          D: date.getDate() < 10 ? `0${date.getDate()}` : date.getDate(),
+          wk: Object.is(week, 0) ? wk : wk1,
+          h: date.getHours() < 10 ? `0${date.getHours()}` : date.getHours(),
+          m: date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes(),
+          s: date.getSeconds() < 10 ? `0${date.getSeconds()}` : date.getSeconds(),
+          ms: date.getMilliseconds() < 10 ? `00${date.getMilliseconds()}` : (date.getMilliseconds() < 99 ? `0${date.getMilliseconds()}` : date.getMilliseconds())
+        };
+        for (let [k, v] of Object.entries(r)) {
+          format = new RegExp(`(${k})`).test(format) ? format.replace(RegExp.$1, v) : format;
+        }
+        return format;
       }
 
     }

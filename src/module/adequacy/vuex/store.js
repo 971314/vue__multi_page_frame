@@ -44,7 +44,6 @@ export default new Vuex.Store({
         getAppropriatenessResult: '/webservice',
         professionJson: '/webservice',
         deptJson: '/webservice',
-        cfAdequacyJson: 'conf/cfAdequacy.json',
         signature: 'adequacySignature/index.html#/',
         getAgreements: '/webservice',
         makeAgreements: '/agreement/makeAgreements',

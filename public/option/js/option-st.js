@@ -41,10 +41,29 @@ function queryMoneyPart (msg) {
         } else {
             $('#guarantee').text(pbUtils.doubleToPercent(1.0 / pbUtils.per2num(value), 2));
         }
-        $('#risk').text(value);
+
+        if(num >= 0){
+            $('#risk').html(value);
+            if(asset['361'])
+               $('#dd-risk').html((10000/(asset['361'].replace('%','') -0)).toFixed(2) + '%');
+        } else {
+            if(value - 0 > 1)
+                $('#risk').html(100/(value-0)+ '%');
+            else
+                $('#risk').html(value+ '%');
+        }
     }
-    if(asset['107']){//交易所风险度
-        $('#jiaoyisuo').text(asset['107'])
+    if(asset['107']){//实时风险度
+        if(asset['107'].indexOf('%') >= 0){
+            $('#jiaoyisuo').html(asset['107']);
+            if(asset['345'])
+                $('#dd-jiaoyisuo').html((10000/(asset['345'].replace('%','') -0)).toFixed(2) + '%');
+        } else {
+            if(asset['107'] - 0 > 1)
+                $('#jiaoyisuo').html(100/(asset['107']-0)+ '%');
+            else
+                $('#jiaoyisuo').html(asset['107']+ '%');
+        }
     }else{
         $('#jiaoyisuo').text('--')
     }
@@ -142,32 +161,32 @@ $(function () {
       location.href = 'goBack';
     })
   }
-  
+
   var option = {
     callbacks: [{fun: 6012, module: 90002, callback: function (msg) {queryMoneyPart(msg);}}
                ],
-    
+
     reload: function () {
       CID = pbE.WT().wtGetCurrentConnectionCID();
       pbE.SYS().startLoading();
       pbE.WT().wtQueryMoney(CID, JSON.stringify({}));
     },
-    
+
     refresh: function () {
       pbE.SYS().startLoading();
       pbE.WT().wtQueryMoney(CID, JSON.stringify({}));
     },
-    
+
     doShow: function (flag) {
       if (!flag) {
         pbE.SYS().stopLoading();
       }
     },
-    
+
     fresh: function () {}
   };
   pbPage.initPage(option);
-  
+
   pbE.SYS().startLoading();
   pbE.WT().wtQueryMoney(CID, JSON.stringify({}));
 });
