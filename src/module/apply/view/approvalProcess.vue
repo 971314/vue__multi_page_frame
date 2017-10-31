@@ -12,7 +12,7 @@
       <div class="process_bottom">
         <div class="process_cell" v-for=" (datas,i) in data.his">
           <div>
-            <span>{{$$dateInterception($$getTimeFmt(datas.opDate, '-'), 5, 10)}}</span>
+            <span>{{$$dateInterception($$getTimeFmt(datas.opDate, '-'), 5, 16)}}</span>
             <i v-if="datas.opType == '通过'" class="by"></i>
             <i v-else-if="datas.opType == '审批中'" class="by1"></i>
             <i v-else-if="datas.opType == '驳回'" class="by2"></i>
@@ -48,7 +48,10 @@
         let _this = this
         _this.$loading.toggle(' ')
         _this.getInfo()
-        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalHistory.url + _this.info.userId + '/' + this.$store.state.task.bizTypeId + '/' + this.$store.state.task.bizId, {timeout: 10000}).then((data) => {
+        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalHistory.url + _this.info.userId + '/' + this.$store.state.task.bizTypeId + '/' + this.$store.state.task.bizId, {timeout: 10000,
+          headers: {
+            id: _this.info.token
+          }}).then((data) => {
           data = data.data
           console.log(data)
           _this.$loading.hide()

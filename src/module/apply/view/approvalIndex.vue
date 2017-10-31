@@ -59,7 +59,10 @@
       getData (flag) {
         let _this = this
         _this.$loading.toggle(' ')
-        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalToView.url + _this.info.userId + '?qrytype=' + flag).then((data) => {
+        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalToView.url + _this.info.userId + '?qrytype=' + flag,{timeout: 10000,
+          headers: {
+          id: _this.info.token
+        }}).then((data) => {
           data = data.data
           console.log(data)
           _this.$loading.hide()

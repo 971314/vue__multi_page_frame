@@ -52,16 +52,20 @@
           _this.$loading.toggle(' ')
           _this.$axios.post(PBHttpServer.apply.serverUrl + this.urlList.approvalLog.url + _this.crmAccount, {
             pwd: _this.pwd,
-            mobilePhone: _this.mobilePhone
-          }, {timeout: 10000}).then((data) => {
+            mobilePhone: _this.mobilePhone,
+            crmAccount: _this.crmAccount
+          }, {timeout: 10000,
+            headers: {
+              id: _this.info.token
+            }}).then((data) => {
             data = data.data
             console.log(data)
             _this.$loading.hide()
             if (data.retHead == 0) {
               if (pbE.isPoboApp) {
-                pbE.SYS().storePrivateData('managerInfo', data.data)
+                pbE.SYS().storePrivateData('managerInfo', JSON.stringify(data.data))
               } else {
-                localStorage.managerInfo = data.data
+                localStorage.managerInfo = JSON.stringify(data.data)
               }
             } else {
               _this.$toast(data.desc)

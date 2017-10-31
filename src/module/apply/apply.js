@@ -12,13 +12,12 @@ import urlList from './config/retUrl.js'
 import Index from './index.vue'
 // 去掉ios上300毫秒延迟
 FastClick.attach(document.body)
-Vue.prototype.$axios = Axios
-if (pbE.isPoboApp) {
+/*if (pbE.isPoboApp) {
   Axios.defaults.headers['id'] = pbE.SYS().getPrivateData('managerInfo').token
 } else {
-  /*Axios.defaults.headers['id'] = localStorage.managerInfo.token */
+  /!*Axios.defaults.headers['id'] = localStorage.managerInfo.token *!/
   Axios.defaults.headers['id'] = localStorage.managerInfo ? localStorage.managerInfo.token : ''
-}
+}*/
 Vue.prototype.$axios = Axios
 Vue.prototype.urlList = urlList
 Vue.use(pbUI)

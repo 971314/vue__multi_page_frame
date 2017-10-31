@@ -53,8 +53,8 @@
                 <div>{{i + 1}}</div>
               </td>
               <td>
-                <div>{{data.customerName}}</div>
-                <div>{{data.capitalAccount}}</div>
+                <div>{{data.investorName }}</div>
+                <div>{{data.capitalAccount }}</div>
               </td>
             </tr>
             </tbody>
@@ -65,13 +65,13 @@
               <tr v-for="(data,i) in rankingData" class="borderBottom">
                 <td><span>{{data.finalEquity}}</span></td>
                 <td><span>{{data.dailyEquity}}</span></td>
-                <td><span>{{data.depositDate}}</span></td>
-                <td><span>{{data.monthlyIncome}}</span></td>
-                <td><span>{{data.halfYearIncome}}</span></td>
-                <td><span>{{data.oneYearIncome}}</span></td>
                 <td><span>{{data.margin}}</span></td>
                 <td><span>{{data.risk}}</span></td>
+                <td><span>{{data.turnVolume }}</span></td>
                 <td><span>{{data.volume}}</span></td>
+                <td><span>{{data.yearGold}}</span></td>
+                <td><span>{{data.yearDeposit}}</span></td>
+                <td><span>{{data.netDeposit}}</span></td>
                 <td><span></span></td>
               </tr>
               </tbody>
@@ -135,14 +135,14 @@
           this.getData()
         } else if (num == 2) {
           this.$store.dispatch('updataRankingTime', {
-            startTime: this.GetDateStr(0),
-            endTime: this.$$timeFormate({date: this.getTimeByParam(6), format: 'Y-M-D'})
+            startTime: this.$$timeFormate({date: this.getTimeByParam(6), format: 'Y-M-D'}),
+            endTime: this.GetDateStr(0)
           })
           this.getData()
         } else if (num == 3) {
           this.$store.dispatch('updataRankingTime', {
-            startTime: this.GetDateStr(0),
-            endTime: this.$$timeFormate({date: this.getTimeByParam(12), format: 'Y-M-D'})
+            startTime: this.$$timeFormate({date: this.getTimeByParam(12), format: 'Y-M-D'}),
+            endTime: this.GetDateStr(0)
           })
           this.getData()
         } else if (num == 4) {
@@ -159,7 +159,12 @@
         }) + '&endDate=' + _this.$$timeFormate({
           date: _this.$store.state.rankingTime.endTime,
           format: 'YMD'
-        }), {timeout: 10000}).then((data) => {
+        }), {
+          timeout: 10000,
+          headers: {
+            id: _this.info.token
+          }
+        }).then((data) => {
           data = data.data
           console.log(data)
           _this.$loading.hide()

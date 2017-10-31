@@ -45,18 +45,18 @@
     created () {
     },
     activated () {
+      this.mobilePhone = pbE.isPoboApp ? pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_LoginName') : '18292320745'
+      if (!this.mobilePhone) {
+        location.href = 'pobo:uncheck=1&pageId=900005&url=reg/index.html'
+      }
       this.crmAccount = ''//工号
       this.pwd = ''//密码
-      this.mobilePhone = ''//手机号
       this.name = ''//用户姓名
       this.gender = ''//性别
       this.mail = ''//邮箱
     },
     mounted () {
-      this.mobilePhone = pbE.isPoboApp ? pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_LoginName') : '18292320745'
-      if (!this.mobilePhone) {
-        location.href = 'pobo:uncheck=1&pageId=900005&url=reg/index.html'
-      }
+
     },
     methods: {
       submit () {
@@ -70,7 +70,10 @@
             name: _this.name,
             gender: _this.gender,
             mail: _this.mail,
-          }, {timeout: 10000}).then((data) => {
+          }, {timeout: 10000,
+            headers: {
+              id: _this.info.token
+            }}).then((data) => {
             data = data.data
             console.log(data)
             _this.$loading.hide()

@@ -1,20 +1,17 @@
 export default {
   methods: {
+    /*
+    * 获取登录信息*/
     getInfo () {
-      let info
-      if (pbE.isPoboApp) {
-        info = JSON.parse(pbE.SYS().getPrivateData('managerInfo'))
-      } else {
-        info = JSON.parse(localStorage.managerInfo)
-        info = {userId: '1', crmAccount: '2', name: '3', departName: '0'}
-      }
+      let info = pbE.isPoboApp ? JSON.parse(pbE.SYS().getPrivateData('managerInfo')) : JSON.parse(localStorage.managerInfo)
       this.info['userId'] = info.userId
       this.info['crmAccount'] = info.crmAccount //工号
       this.info['userName'] = info.name //姓名
       this.info['departName'] = info.departName  //营业部
+      this.info['token'] = info.token
     },
     /*
-    * 获取par月日期*/
+    * 获取par个月日期*/
     getTimeByParam (par) {
       let dateTime = new Date()
       return new Date(dateTime.setMonth(dateTime.getMonth() - par))

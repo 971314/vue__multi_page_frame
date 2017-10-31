@@ -23,8 +23,12 @@
           <span>{{details.bizType}}</span>
         </div>
         <div>
+          <span>模板名称</span>
+          <span>{{$$getTimeFmt(details.appDate, '-')}}</span>
+        </div>
+        <div>
           <span>提交时间</span>
-          <span>{{details.appDate}}</span>
+          <span>{{$$getTimeFmt(details.appDate, '-')}}</span>
         </div>
       </div>
       <div class="details_schedule">
@@ -36,7 +40,7 @@
         <div>备注内容</div>
         <span>{{details.TaskNote}}</span>
       </div>
-      <div class="details_annex">
+      <div class="details_annex" v-show="details.attachs && details.attachs.length > 0">
         <div>附件信息</div>
         <a class="annex_list" v-for="data in details.attachs" :href="data.attachUrl">
           <img src="../images/icon_tuPian.png"/>
@@ -70,7 +74,12 @@
       revokedClick () {
         let _this = this
         _this.$loading.toggle(' ')
-        _this.$axios.delete(PBHttpServer.apply.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId + '/' + _this.task.bizTypeId + '/' + _this.task.bizId, {timeout: 10000}).then((data) => {
+        _this.$axios.delete(PBHttpServer.apply.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId + '/' + _this.task.bizTypeId + '/' + _this.task.bizId, {
+          timeout: 10000,
+          headers: {
+            id: _this.info.token
+          }
+        }).then((data) => {
           data = data.data
           _this.$loading.hide()
           if (data.retHead == 0) {
@@ -94,7 +103,12 @@
         let _this = this
         _this.$loading.toggle(' ')
         _this.getInfo()
-        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId + '/' + this.$store.state.task.bizTypeId + '/' + this.$store.state.task.bizId, {timeout: 10000}).then((data) => {
+        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId + '/' + this.$store.state.task.bizTypeId + '/' + this.$store.state.task.bizId, {
+          timeout: 10000,
+          headers: {
+            id: _this.info.token
+          }
+        }).then((data) => {
           data = data.data
           _this.$loading.hide()
           console.log(data)

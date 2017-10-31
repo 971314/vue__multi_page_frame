@@ -7,7 +7,8 @@ export default {
         userId: '',
         crmAccount: '',//工号
         userName: '',//姓名
-        departName: ''//营业部
+        departName: '',//营业部
+        token:''
       }
     }
   }

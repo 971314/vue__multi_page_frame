@@ -105,12 +105,20 @@
             tplID: _this.template.tplId,
             note: _this.fillData.note,
             attach: _this.attachs,
-          }, {timeout: 10000}).then((data) => {
+          }, {
+            timeout: 10000,
+            headers: {
+              id: _this.info.token
+            }
+          }).then((data) => {
             data = data.data
             console.log(data)
             _this.$loading.hide()
             if (data.retHead == 0) {
-
+              _this.$toast('提交成功')
+              setTimeout(() => {
+                _this.$router.replace('/')
+              }, 1500)
             } else {
               _this.$toast(data.desc)
             }

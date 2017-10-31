@@ -17,30 +17,7 @@
   export default {
     data () {
       return {
-        subTemplate: [
-          {
-            tplId: '1',//模板类型
-            tplDesc: '交易所1.01倍+投保',//模板描述
-            tplName: '交易所1.01倍+投保'//模板名称
-          },
-          {
-            tplId: '2',//模板类型
-            tplDesc: '交易所1.02倍+投保',//模板描述
-            tplName: '交易所1.02倍+投保'//模板名称
-          }, {
-            tplId: '3',//模板类型
-            tplDesc: '交易所1.03倍+投保',//模板描述
-            tplName: '交易所1.03倍+投保'//模板名称
-          }, {
-            tplId: '4',//模板类型
-            tplDesc: '交易所1.04倍+投保',//模板描述
-            tplName: '交易所1.04倍+投保'//模板名称
-          }, {
-            tplId: '5',//模板类型
-            tplDesc: '交易所1.05倍+投保',//模板描述
-            tplName: '交易所1.05倍+投保'//模板名称
-          }
-        ]
+        subTemplate: null
       }
     },
     computed: {
@@ -53,7 +30,12 @@
       let _this = this
       _this.$loading.toggle(' ')
       _this.getInfo()
-      _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalSelect.url + _this.info.userId + '/' + _this.apply.tplType, {timeout: 10000}).then((data) => {
+      _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalSelect.url + _this.info.userId + '/' + _this.apply.tplType, {
+        timeout: 10000,
+        headers: {
+          id: _this.info.token
+        }
+      }).then((data) => {
         data = data.data
         console.log(data)
         _this.$loading.hide()
