@@ -71,6 +71,90 @@ export default {
     },
     $$dateInterception (value, start, stop) {
       return value.substring(start, stop)
+    },
+    $$comma (parm, n = 3) { //数字加逗号(去掉尾部多余的0)
+      parm = Number((parm || 0)).toString()  //使用Number强转一下再toString
+      let integer = ``,
+        isNegativeNumber = false,
+        decimal = ``,
+        result = ``
+      isNegativeNumber = parm / 1 > 0 ? false : true
+      parm = parm.replace('-', '')
+      integer = parm.split(`.`)[0]
+      if (parm.split(`.`).length > 1) {
+        decimal = parm.split(`.`)[1]
+      }
+      while (integer.length > 3) {
+        result = `,${integer.slice(-n)}${result}`
+        integer = integer.slice(0, integer.length - 3)
+      }
+      if (integer) {
+        result = decimal ? `${integer}${result}.${decimal}` : `${integer}${result}`
+      }
+
+      if (isNegativeNumber && (parm / 1) != 0) {
+        result = `-${result}`
+      }
+      return result
+    },
+    $$transformData (data) { //数字单位转换(万/亿/个位数不加小数点)
+      data = Number((data || 0)).toString()
+      let integer = ``,
+        decimal = ``,
+        isNegativeNumber = false,
+        result = ``,
+        unit = ``,
+        n = 0,
+        tempArr = [],
+        tempNumber = null
+
+      isNegativeNumber = data / 1 > 0 ? false : true
+      data = data.replace('-', '')
+      integer = data.split(`.`)[0]
+
+      if (data.split(`.`).length > 1) {
+        decimal = data.split(`.`)[1]
+      }
+      if (integer.length >= 5 && integer.length < 9) {
+        unit = `万`
+        n = 4
+      }
+      else if (integer.length >= 9) {
+        unit = `亿`
+        n = 8
+      }
+      tempArr = integer.split('')
+      if (n > 0) {
+        tempArr.splice(integer.length - n, 0, '.')
+      }
+      tempNumber = tempArr.join('')
+      if (n <= 0) {
+        tempNumber = Number(tempNumber)
+      } else {
+        tempNumber = Number(tempNumber).toFixed(2)
+      }
+      result = integer.split('').splice(0, integer.length - n).length > 3 ? this.$$comma(integer.split('').splice(0, integer.length - n).join('')) : integer.split('').splice(0, integer.length - n).join('')
+      tempNumber = tempNumber.toString()
+
+      if (tempNumber.indexOf('.') > -1) {
+        decimal = `${tempNumber}${decimal}`
+      } else {
+        decimal = `${tempNumber}.${decimal}`
+      }
+      decimal = decimal.split(`.`)[1] ? decimal.split(`.`)[1].slice(0, 2) : ``
+      if (decimal)
+        decimal = decimal.length >= 2 ? decimal : `${decimal}0`
+
+      if (decimal) {
+        result = `${result}.${decimal}`
+      }
+
+      if (isNegativeNumber) {
+        result = `-${result}${unit}`
+      } else {
+        result = `${result}${unit}`
+      }
+      return result
     }
   }
 }

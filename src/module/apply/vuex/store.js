@@ -21,7 +21,8 @@ const store = new Vuex.Store({
     rankingTime: {
       startTime: '',
       endTime: ''
-    }
+    },
+    performanceData: {}
   },
   mutations: {
     updataApply (state, payload) {
@@ -35,6 +36,9 @@ const store = new Vuex.Store({
     },
     updataRankingTime (state, payload) {
       state.rankingTime = payload.rankingTime
+    },
+    updataPerformanceData (state, payload) {
+      state.performanceData = payload.performanceData
     }
   },
   actions: {
@@ -49,6 +53,9 @@ const store = new Vuex.Store({
     },
     updataRankingTime ({commit}, rankingTime) {
       commit({type: 'updataRankingTime', rankingTime: rankingTime})
+    },
+    updataPerformanceData ({commit}, performanceData) {
+      commit({type: 'updataPerformanceData', performanceData: performanceData})
     }
   }
 })

@@ -1,0 +1,180 @@
+.performance_list {
+  @extend %initial;
+  color: $color18;
+  background: $color15;
+  .performance_tab {
+    position: static;
+    & > div {
+      display: flex;
+      padding: 0 toRem(62px);
+      font-size: $font33;
+      justify-content: space-between;
+      height: 40px;
+      line-height: 40px;
+      position: relative;
+      @include border-TBottom-color23;
+      div {
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        span {
+          width: toRem(150px);
+          margin-bottom: 1px;
+          border-bottom: toRem(4px) solid $color15;
+          &.selected {
+            border-bottom: toRem(4px) solid $color1;
+          }
+        }
+      }
+      .selected {
+        color: $color1;
+      }
+    }
+
+  }
+  .performance_tab2 {
+    & > div {
+      display: flex;
+      color: $color17;
+      font-size: $font10;
+      height: 40px;
+      line-height: 40px;
+      position: relative;
+      @include border-TBottom-color23;
+      span {
+        display: inline-block;
+        text-align: center;
+        flex: 1;
+        &.selected {
+          color: $color1;
+        }
+      }
+    }
+  }
+  .performance_tab3 {
+    position: static;
+    & > div {
+      display: flex;
+      font-size: $font33;
+      height: 40px;
+      line-height: 40px;
+      position: relative;
+      @include border-TBottom-color23;
+      div {
+        flex: 1;
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        span {
+          width: toRem(150px);
+          margin-bottom: 1px;
+          border-bottom: toRem(4px) solid $color15;
+          &.selected {
+            border-bottom: toRem(4px) solid $color1;
+          }
+        }
+      }
+      .selected {
+        color: $color1;
+      }
+    }
+
+  }
+  .performance_list {
+    position: absolute;
+    top: 84px;
+    bottom: toRem(98px);
+    overflow: auto;
+    .group_list {
+      height: toRem(100px);
+      line-height: toRem(100px);
+      font-size: $font10;
+      padding-left: toRem(30px);
+      position: relative;
+      @include border-TBottom-color23;
+      div:nth-of-type(1) {
+        img {
+          width: toRem(37px);
+          height: toRem(48px);
+          margin-right: toRem(30px);
+        }
+        div:nth-of-type(1) {
+          //transform: translate(0px, toRem(25px));
+          display: inline-block;
+          width: toRem(38px);
+          height: toRem(38px);
+          line-height: toRem(38px);
+          text-align: center;
+          border-radius: toRem(20px);
+          background: $color47;
+          color: $color15;
+          font-size: $font23;
+          margin-right: toRem(30px);
+        }
+        span:last-child {
+          position: absolute;
+          right: toRem(30px);
+        }
+      }
+      div:nth-of-type(2) {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: $color29;
+        opacity: 0.09;
+        height: 100%;
+        width: 90%;
+      }
+    }
+  }
+  .performance_list_footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-top: toRem(15px);
+    @include border-TTop-color23;
+    padding: 0 toRem(30px);
+    height: 49px;
+    & > div {
+      position: relative;
+      @include border-color23;
+      width: 100%;
+      font-size: 0;
+      margin: toRem(20px) 0;
+      height: 30px;
+      line-height: 30px;
+      span {
+        display: inline-block;
+        width: 25%;
+        font-size: $font26;
+        color: $color47;
+        text-align: center;
+        position: relative;
+        @include border-R-color23;
+        &.selected {
+          color: $color15;
+          background: $color16;
+        }
+        &:nth-of-type(1) {
+          border-top-left-radius: toRem(10px);
+          border-bottom-left-radius: toRem(10px);
+        }
+        &:last-child {
+          border-top-right-radius: toRem(10px);
+          border-bottom-right-radius: toRem(10px);
+        }
+      }
+      span:last-child {
+        &:before {
+          border: 0;
+        }
+      }
+    }
+  }
+}

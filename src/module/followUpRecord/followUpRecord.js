@@ -9,6 +9,8 @@ import Index from './Index.vue'
 import browser from './common/browser'
 import list from './view/list'
 import addAndEdit from './view/addAndEdit'
+import approTask from './view/approTask'
+import approProcess from './view/approProcess'
 import FastClick from 'fastclick'
 
 import {DatePicker} from 'element-ui'
@@ -26,9 +28,11 @@ if (browser.versions.mobile) {
 
 const router = new VueRouter({
   routes: [
-	{path: '/', redirect: '/list'},
-    {path: '/list',component: list},
-    {path: '/addAndEdit',component: addAndEdit}
+        {path: '/', redirect: '/list'},
+        {path: '/list',component: list},
+        {path: '/addAndEdit',component: addAndEdit},
+        {path: '/approTask',component: approTask},
+        {path: '/approProcess',component: approProcess}
   ]
 })
 

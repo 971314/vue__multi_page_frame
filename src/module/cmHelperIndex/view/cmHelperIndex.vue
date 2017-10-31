@@ -117,6 +117,7 @@
     import browser from '../common/browser';
     import MoreHeader from '../../main/components/moreHeader.vue';
     import FuncNav from '../components/funcNav.vue';
+    import util from '../common/util';
 
     export default {
 
@@ -142,17 +143,17 @@
             getCusAc(){
                 var params = {
                     "func":"12850",
-                    "data":[
-                        {
-                            "cmUserId":"0"
-                        }
-                    ]
+                    "data":[{
+                        "cmUserId":"0",
+                        "begindate":util.getDate(),
+                        "endDate":util.getDate(),
+                        "begin":"1",
+                        "size":"3"
+                    }]
                 };
-                this.$get(url,params)
-                .then(function(res){
+                this.$axios.$get(url,params).then(function(res){
 
-                })
-                .catch(function(err){
+                }).catch(function(err){
                     console.log(err);
                 })
             },
