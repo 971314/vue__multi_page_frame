@@ -5,7 +5,7 @@
     </common-nav>
     <div class="log_input">
       <input type="text" placeholder="请输入CRM用户名" class="input" v-model="crmAccount"/>
-      <input type="text" placeholder="请输入CRM用户口令" class="input" v-model="pwd"/>
+      <input type="password" placeholder="请输入CRM用户口令" class="input" v-model="pwd"/>
     </div>
     <button v-if="checkFlag" class="button available" @click="submit">登录</button>
     <button class="button" v-else>登录</button>
@@ -46,6 +46,7 @@
       }
     },
     methods: {
+      //登录
       submit () {
         let _this = this
         if (_this.crmAccount && _this.pwd) {
@@ -65,7 +66,7 @@
               if (pbE.isPoboApp) {
                 pbE.SYS().storePrivateData('managerInfo', JSON.stringify(data.data))
               } else {
-                localStorage.managerInfo = JSON.stringify(data.data)
+                sessionStorage.managerInfo = JSON.stringify(data.data)
               }
             } else {
               _this.$toast(data.desc)
@@ -85,6 +86,7 @@
           _this.$toast('CRM口令不能为空')
         }
       },
+      //必填项判断
       check () {
         if (this.crmAccount && this.pwd) {
           this.checkFlag = true

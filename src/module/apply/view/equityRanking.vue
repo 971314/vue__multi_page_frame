@@ -2,7 +2,7 @@
   <div class="ranking_list">
     <common-nav>
       <span slot="body">权益排行榜</span>
-      <span slot="footer" class="icon_calendar" @click="showCalendar"></span>
+      <span slot="footer" class="icon_calendar" @click="showEvent = true"></span>
       <!--<img src="../images/icon_calendar.png" slot="footer" class="icon_calendar"/>-->
     </common-nav>
     <div class="ranking_date">
@@ -123,9 +123,7 @@
       Ps.update(document.getElementById('ranking'))
     },
     methods: {
-      showCalendar () {
-        this.showEvent = true
-      },
+      //日期区间处理
       selectTimeInterval (num) {
         if (num == 1) {
           this.$store.dispatch('updataRankingTime', {
@@ -150,6 +148,7 @@
         }
         this.showEvent = false
       },
+      //获取数据请求
       getData () {
         let _this = this
         _this.$loading.toggle(' ')

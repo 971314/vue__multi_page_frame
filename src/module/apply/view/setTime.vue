@@ -52,6 +52,7 @@
 
     },
     methods: {
+      //保存时间
       parseParams () {
         let Time = {
           startTime: this.setTime.startTime,

@@ -3,7 +3,7 @@
   .conter {
     overflow: auto;
     .fill_type {
-      padding-top: toRem(20px);
+      //padding-top: toRem(20px);
     }
     .fill_group {
       display: flex;
@@ -19,14 +19,26 @@
         &:nth-of-type(2) {
           flex: 1;
         }
+        &.c4 {
+          color: $color47;
+        }
+        &.c1 {
+          color: $color1;
+        }
       }
-      input {
+      input[type='text'] {
         border: 0;
         outline: none;
         height: 100%;
         font-size: $font33;
         text-align: right;
         flex: 1;
+      }
+      input[type='date'] {
+        width: 96%;
+        outline: none;
+        position: absolute;
+        opacity: 0;
       }
       span:nth-of-type(2) {
         text-align: right;

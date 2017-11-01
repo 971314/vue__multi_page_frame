@@ -27,7 +27,7 @@ const routes = [
   {path: '/setTime',component:setTime},//自定义时间
   {path: '/logIn',component:logIn},//登录
   {path: '/bindCRM',component:bindCRM},//绑定CRM
-  {path: '/performanceClassification',component:performanceClassification},//业绩排行
+  {path: '/performanceClassification',component:performanceClassification},//业绩排行分类
   {path: '/performanceList',component:performanceList},//业绩列表
 ]
 

@@ -3,7 +3,8 @@ export default {
     /*
     * 获取登录信息*/
     getInfo () {
-      let info = pbE.isPoboApp ? JSON.parse(pbE.SYS().getPrivateData('managerInfo')) : JSON.parse(localStorage.managerInfo)
+      // let info = pbE.isPoboApp ? JSON.parse(pbE.SYS().getPrivateData('managerInfo')) : JSON.parse(localStorage.managerInfo)
+      let info = JSON.parse(pbE.isPoboApp ? pbE.SYS().getPrivateData('managerInfo') : sessionStorage.managerInfo)
       this.info['userId'] = info.userId
       this.info['crmAccount'] = info.crmAccount //工号
       this.info['userName'] = info.name //姓名
@@ -23,7 +24,7 @@ export default {
       dd.setDate(dd.getDate() + AddDayCount)//获取AddDayCount天后的日期
       let y = dd.getFullYear()
       let m = dd.getMonth() + 1//获取当前月份的日期
-      let d = dd.getDate()
+      let d = dd.getDate().toString().length < 2 ? '0' + dd.getDate() : dd.getDate()
       return y + '-' + m + '-' + d
     },
     /*
@@ -69,10 +70,14 @@ export default {
         return `${yearServer}${s}${monthServer}${s}${dayServer}`
       }
     },
+    /*
+    * 截取数据*/
     $$dateInterception (value, start, stop) {
       return value.substring(start, stop)
     },
-    $$comma (parm, n = 3) { //数字加逗号(去掉尾部多余的0)
+    /*
+    * 数字加逗号(去掉尾部多余的0)*/
+    $$comma (parm, n = 3) {
       parm = Number((parm || 0)).toString()  //使用Number强转一下再toString
       let integer = ``,
         isNegativeNumber = false,
@@ -97,7 +102,13 @@ export default {
       }
       return result
     },
-    $$transformData (data) { //数字单位转换(万/亿/个位数不加小数点)
+    /*
+    * 指标数值：默认保留两位小数，整数不保留，三位一逗号
+      单位根据数值大小而定，默认保留两位小数：
+      大于等于5位数，小于9位数：单位“万”
+      大于等于9位数：单位“亿”
+      //数字单位转换(万/亿/个位数不加小数点)*/
+    $$transformData (data) {
       data = Number((data || 0)).toString()
       let integer = ``,
         decimal = ``,
@@ -155,6 +166,13 @@ export default {
         result = `${result}${unit}`
       }
       return result
+    },
+    /*
+    * 柱形图计算
+    * data 计算数据
+    * data1 依据数据*/
+    calculationPercentage (data, data2) {
+      return (100 / data2 * data) + '%'
     }
   }
 }

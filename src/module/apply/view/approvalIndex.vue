@@ -56,6 +56,7 @@
         this.$store.dispatch('updataTask', taskData)
         this.$router.push('/approvalDetails')
       },
+      //获取数据请求
       getData (flag) {
         let _this = this
         _this.$loading.toggle(' ')

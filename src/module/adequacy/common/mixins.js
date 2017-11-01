@@ -52,6 +52,7 @@ export default {
       }
     }
 
+    /*
     // 解决IOS的webview中position:fixed 在弹出键盘后失效问题。
     if (browser.versions.ios) {
       // 老版本的ios会报错，需要try catch
@@ -83,6 +84,7 @@ export default {
         console.error(e)
       }
     }
+    */
   },
   methods: {
     $getApiUrl (key) {

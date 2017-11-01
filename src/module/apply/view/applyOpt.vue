@@ -51,6 +51,7 @@
       })
     },
     methods: {
+      //选择模板
       chooseClick (data) {
         let steData = {}
         steData['tplId'] = data.tplId
@@ -58,6 +59,7 @@
         this.$store.dispatch('updataTemplate', steData)
         this.$router.replace('/applyFill')
       },
+      //模板介绍模态框
       iconClick (data) {
         this.$alert({
           maskClosable: true,

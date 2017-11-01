@@ -36,6 +36,7 @@
     mounted () {
     },
     methods: {
+      //跳转及数据存储
       jumpClick (child) {
         this.$store.dispatch('updataPerformanceData', child)
         this.$router.push('/performanceList')

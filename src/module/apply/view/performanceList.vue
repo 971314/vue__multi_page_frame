@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="performance_tab2"
-         v-show="flag == 2 || flag == 6">
+         v-show="flag == 2&& tab1 == 5 || flag == 2&& tab1 == 6||flag == 6&& tab1 == 5 || flag == 6&& tab1 == 6">
       <div>
         <span @click="tabClick2(1)" :class="tab2 == 1?'selected':''">股指客户</span>
         <span @click="tabClick2(2)" :class="tab2 == 2?'selected':''">期权客户</span>
@@ -55,15 +55,16 @@
       <div>
         <div @click="tabClick(10)" :class="tab1 == 10?'selected':''">期末权益<span
           :class="tab1 == 10 ? 'selected':''"></span></div>
-        <div @click="tabClick(11)" :class="tab1 == 11?'selected':''">日军权益<span
+        <div @click="tabClick(11)" :class="tab1 == 11?'selected':''">日均权益<span
           :class="tab1 == 11 ? 'selected':''"></span></div>
         <div @click="tabClick(12)" :class="tab1 == 12?'selected':''">净入金<span
           :class="tab1 == 12 ? 'selected':''"></span></div>
       </div>
     </div>
+
     <!--列表-->
     <div class="performance_list"
-         :style="{top:flag == 2 || flag == 6?'124px':'85px',bottom:footer?'49px':'0px'}">
+         :style="{top:flag == 2&& tab1 == 5 || flag == 2&& tab1 == 6||flag == 6&& tab1 == 5 || flag == 6&& tab1 == 6?'125px':'85px',bottom:footer?'49px':'0px'}">
       <div class="group_list" v-for="(data,i) in performanceList">
         <div>
           <img src="../images/ranking1.png" v-if="i == 0"/>
@@ -73,10 +74,11 @@
           <span>{{data.name}}</span>
           <span>{{$$transformData(data.num)}}</span>
         </div>
-        <div v-if="i== 0" style="width:100%"></div>
-        <div v-else="i < 10" style="width:20px"></div>
+        <div v-show="i < 10"
+             :style="{width: i == 0? '100%':calculationPercentage(data.num,performanceList[0].num)}"></div>
       </div>
     </div>
+
     <!--footer-->
     <div class="performance_list_footer" v-show="footer">
       <div>
@@ -95,151 +97,64 @@
         performanceList: [
           {
             name: '北京西直门营业一部',
-            num: '123456789123'
+            num: '987654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
+            num: '977654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
+            num: '787654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
+            num: '687654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
+            num: '587654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
+            num: '487654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
+            num: '387654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
+            num: '287654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
+            num: '187654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
+            num: '117654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
+            num: '127654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
+            num: '137654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
+            num: '147654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
+            num: '157654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
+            num: '167654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
+            num: '167654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
+            num: '167654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
+            num: '167654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
+            num: '167654321'
           }, {
             name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
-          }, {
-            name: '北京西直门营业一部',
-            num: '12.15'
+            num: '167654321'
           }
         ],
         footer: true,
@@ -268,12 +183,20 @@
     mounted () {
     },
     methods: {
+      //一级tab选择
       tabClick (flag) {
         this.tab1 = flag
+        if (flag == 1 || flag == 2 || flag == 3 || flag == 4 || flag == 6 || flag == 8 || flag == 7 || flag == 9 || flag == 11 || flag == 12) {
+          this.footer = true
+        } else {
+          this.footer = false
+        }
       },
+      //二级tab选择
       tabClick2 (flag) {
         this.tab2 = flag
       },
+      //日期区间选择
       footerClick (flag) {
         this.footerFlag = flag
         if (flag == 1) {
@@ -286,8 +209,8 @@
           this.beginTime = this.$$timeFormate({date: this.getTimeByParam(12), format: 'YMD'})
         }
         this.endTime = this.$$timeFormate({date: this.GetDateStr(0), format: 'YMD'})
-        console.log(this.beginTime, this.endTime)
       },
+      //初始页面选择
       initialRequest () {
         if (this.flag == 1 || this.flag == 5) {
           this.tabClick(10)
@@ -299,6 +222,32 @@
         } else if (this.flag == 4 || this.flag == 8) {
           this.tabClick(8)
         }
+      },
+      //数据请求
+      request () {
+        let _this = this
+        _this.$axios.post(PBHttpServer.apply.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId + '/', {
+          timeout: 10000,
+          headers: {
+            id: _this.info.token
+          }
+        }).then((data) => {
+          data = data.data
+          console.log(data)
+          _this.$loading.hide()
+          if (data.retHead == 0) {
+            _this.$toast('提交成功')
+            setTimeout(() => {
+              _this.$router.replace('/')
+            }, 1500)
+          } else {
+            _this.$toast(data.desc)
+          }
+        }).catch((err) => {
+          _this.$loading.hide()
+          _this.$toast('网络超时，请稍后重试！')
+          console.log(err)
+        })
       }
     }
   }

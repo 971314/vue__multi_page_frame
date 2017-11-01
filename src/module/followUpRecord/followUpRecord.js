@@ -11,6 +11,8 @@ import list from './view/list'
 import addAndEdit from './view/addAndEdit'
 import approTask from './view/approTask'
 import approProcess from './view/approProcess'
+import rejectTask from './view/rejectTask'
+
 import FastClick from 'fastclick'
 
 import {DatePicker} from 'element-ui'
@@ -32,7 +34,9 @@ const router = new VueRouter({
         {path: '/list',component: list},
         {path: '/addAndEdit',component: addAndEdit},
         {path: '/approTask',component: approTask},
-        {path: '/approProcess',component: approProcess}
+        {path: '/approProcess',component: approProcess},
+        {path: '/rejectTask',component: rejectTask}
+        
   ]
 })
 

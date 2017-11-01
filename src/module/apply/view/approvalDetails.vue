@@ -8,37 +8,53 @@
       </span>
     </common-nav>
     <div class="conter">
-      <div class="details_header">
+      <!--<div class="details_header">
         <img src="../images/avatar_img.png"/>
         <div>
           <span>{{details.investorName}}</span>
           <span>资金账号 {{details.capitalAccount }}</span>
           <span> 营业部门 {{details.DeptName}}</span>
         </div>
-      </div>
+      </div>-->
       <div class="details_info" @click="$router.push('/approvalProcess')">
-        <div>申请信息</div>
+        <div>申请人</div>
         <div>
-          <span>申请内容</span>
+          <span>类型</span>
+          <span>{{details.bizType}}</span>
+        </div>
+        <div>
+          <span>姓名</span>
+          <span>{{details.investorName}}</span>
+        </div>
+      </div>
+      <div class="details_info">
+        <div>申请项目</div>
+        <div>
+          <span>申请类型</span>
           <span>{{details.bizType}}</span>
         </div>
         <div>
           <span>模板名称</span>
-          <span>{{$$getTimeFmt(details.appDate, '-')}}</span>
+          <span class="c1">{{$$getTimeFmt(details.appDate, '-')}}</span>
         </div>
         <div>
-          <span>提交时间</span>
-          <span>{{$$getTimeFmt(details.appDate, '-')}}</span>
+          <span>申请期间</span>
+          <span>2017-10-23 至 2017-10-23</span>
         </div>
       </div>
       <div class="details_schedule">
+        <span>提交时间</span>
+        <span>08-21 09:23</span>
+      </div>
+      <div class="details_schedule" @click="$router.push('/approvalProcess')">
         <span>审批进度</span>
-        <span>{{details.auditStatus}}</span>
+        <span class="c1">{{details.auditStatus}}</span>
         <img src="../images/gengDuo.png" class="gengduo"/>
       </div>
       <div class="details_remarks">
         <div>备注内容</div>
-        <span>{{details.TaskNote}}</span>
+        <span :style="{'-webkit-line-clamp':noteShow?'14':'2'}"
+              @click="noteShow =! noteShow">{{details.TaskNote}}</span>
       </div>
       <div class="details_annex" v-show="details.attachs && details.attachs.length > 0">
         <div>附件信息</div>
@@ -59,7 +75,8 @@
       return {
         details: {
           auditStatus: ''
-        }
+        },
+        noteShow: false
       }
     },
     created () {
@@ -71,6 +88,7 @@
       this.getData()
     },
     methods: {
+      //撤回请求
       revokedClick () {
         let _this = this
         _this.$loading.toggle(' ')
@@ -99,6 +117,7 @@
           console.log(err)
         })
       },
+      //获取数据请求
       getData () {
         let _this = this
         _this.$loading.toggle(' ')

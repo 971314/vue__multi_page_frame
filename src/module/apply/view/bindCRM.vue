@@ -59,6 +59,7 @@
 
     },
     methods: {
+      //绑定提交请求
       submit () {
         let _this = this
         if (_this.name && _this.crmAccount && _this.pwd && _this.mobilePhone) {
@@ -70,10 +71,12 @@
             name: _this.name,
             gender: _this.gender,
             mail: _this.mail,
-          }, {timeout: 10000,
+          }, {
+            timeout: 10000,
             headers: {
               id: _this.info.token
-            }}).then((data) => {
+            }
+          }).then((data) => {
             data = data.data
             console.log(data)
             _this.$loading.hide()
@@ -99,6 +102,7 @@
           _this.$toast('CRM口令不能为空！')
         }
       },
+      //必填判断
       check () {
         if (this.crmAccount && this.pwd && this.name) {
           this.checkFlag = true
