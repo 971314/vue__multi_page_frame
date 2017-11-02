@@ -1,0 +1,78 @@
+.toast {
+  @include font(15px);
+}
+
+.zdytime {
+  padding-top: 44px;
+  a:not([href]),
+  a:not([href]):focus,
+  a:not([href]):hover {
+    color: #ffffff;
+  }
+
+  .zdytime-title {
+    text-align: center;
+    color: $color-bg-grounding;
+  }
+
+  .time-selected-items {
+    background-color: $color-bg-grounding;
+    padding-left: toRem(30px);
+    .time-selected-options {
+      height: toRem(100px);
+      line-height: toRem(100px);
+      padding-right: toRem(30px);
+      font-size: 16px;
+      color: #1a1a1a;
+      @include clearfix;
+      span {
+        color: #3366cc;
+      }
+      .time-start-title {
+        //font-size: toRem(28px);
+        @include font(15px);
+        float: left;
+        width: 49.9%;
+      }
+      .time-start-content {
+        position: relative;
+        height: toRem(100px);
+        line-height: toRem(99px);
+        float: left;
+        width: 49.9%;
+        text-align: right;
+        @include font(15px);
+        input {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          outline: none;
+          border: none;
+          opacity: 0;
+        }
+        span {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .zdytime-submit-button {
+    display: block;
+    margin: 0 toRem(30px);
+    margin-top: toRem(120px);
+    height: toRem(86px);
+    text-align: center;
+    line-height: toRem(86px);
+    color: #ffffff;
+    //font-size: toRem(36px);
+    @include font(18px);
+    background-image: url(../images/juxinganniudefault@2x.png);
+    background-size: toRem(690px) toRem(86px);
+    background-repeat: no-repeat;
+  }
+}

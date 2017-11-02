@@ -1,0 +1,54 @@
+.pb-zy-lunbo {
+  @extend %common-wrapper;
+
+  .fzj-zy-header {
+    height: toRem(500px);
+    background-color: #f7f7fa;
+    position: relative;
+
+    .bg-qx-blue {
+      background-color: #3366cc;
+      height: toRem(300px);
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%;;
+    }
+    .lunbo-wrapper-content {
+      position: absolute;
+      z-index: 666;
+      top: 44px;
+      left: 0;
+      right: 0;
+
+      .swiper-container {
+        width: 100%;
+        -webkit-perspective: 1200px;
+        -moz-perspective: 1200px;
+        -ms-perspective: 1200px;
+        perspective: 1200px;
+
+        .swiper-wrapper {
+          .swiper-slide {
+            width: toRem(660px);
+            margin: 0 toRem(20px);
+            height: toRem(300px);
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+
+            .swiper-item-div {
+              height: 90%;
+              width: 100%;
+              background-color: #ffffff;
+              border-radius: toRem(16px);
+              box-shadow:0px 0px toRem(12px) #5777b8;
+            }
+          }
+          .swiper-slide-active {
+
+          }
+        }
+      }
+    }
+  }
+}

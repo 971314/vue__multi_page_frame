@@ -65,6 +65,15 @@
         this.$router.push({
           name: 'scheduleDetail'
         })
+      },
+      opScheduleList() { //查询开户进度列表
+        this.$$axios({restUrl: 'opScheduleList', join: [1, 2, 3, 4, 5]})
+          .then((response) => {
+            console.log('response', response);
+          })
+          .catch((res) => {
+            console.log('res', res);
+          })
       }
     }
   }

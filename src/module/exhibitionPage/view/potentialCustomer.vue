@@ -15,11 +15,11 @@
           </div>
           <div class="center-info-list">
             <div class="info-name-group">
-              <span class="info-name">嵇伟民</span>
+              <span class="info-name" v-text="customerInfo.investorName">嵇伟民</span>
               <img v-if="false" class="info-star" src="../images/3-star@2x.png"></img>
               <img v-if="false" class="info-new" src="../images/NEW@2x.png"></img>
             </div>
-            <div class="info-zjzh">创建时间 2017-08-12</div>
+            <div class="info-zjzh">创建时间 {{customerInfo.openingTime}}</div>
             <div class="info-yingye">客户来源 扫码</div>
           </div>
           <div class="right-arrow"></div>
@@ -71,6 +71,16 @@
       return {
         gobackUrl: 'goBack',
         showEvent: false,
+        customerInfo: {
+          investorName: '',
+          departName: '',
+          capitalAccount: '',
+          openingTime: '',
+          exchanges: '',
+          firstInFundDate: '',
+          starLevel: '',
+          isNew: ''
+        },
         recordList: [
           {
             followId: "",
@@ -90,26 +100,58 @@
         ]
       }
     },
+    mounted() {
+//      this.pInvestorFollowList()
+    },
     methods: {
       showSelected() {
         this.showEvent = !this.showEvent
       },
       gotoDetail() {
+        this.$store.dispatch('updateCzType', 0)
         this.$router.push({
           name: 'potentialCustomerInfo'
         })
       },
       editInfo() {
         this.showEvent = false
+        this.$store.dispatch('updateCzType', 1)
         this.$router.push({
           name: 'potentialCustomerInfo'
         })
       },
       deleteInfo() {
         this.showEvent = false
+//        this.pInvestorDelete()
       },
       cancelSelected() {
         this.showEvent = false
+      },
+      pInvestorDelete() { //删除潜在客户
+        this.$$axios({restUrl: 'pInvestorDelete', join: [1, 2]})
+          .then((response) => {
+            console.log('response', response);
+          })
+          .catch((res) => {
+            console.log('res', res);
+          })
+      },
+      pInvestorFollowList() { //查询某个潜在客户跟进列表
+        this.$$axios({restUrl: 'pInvestorFollowList', join: [1, 2]})
+          .then((response) => {
+            this.recordList.splice(0, this.recordList.length)
+            response.map((item) => {
+              let tempObj = {}
+              tempObj['followId'] = item['followId']
+              tempObj['followDesc'] = item['followDesc']
+              tempObj['upDate'] = item['upDate']
+              this.recordList.push(tempObj)
+            })
+            console.log('response', response);
+          })
+          .catch((res) => {
+            console.log('res', res);
+          })
       }
     }
   }

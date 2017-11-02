@@ -5,24 +5,31 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
+    //快速申请入口模板信息
     apply: {
       tplTypeName: '',//模板名称
       tplTypeModel: '',//模板类型模式
       tplType: '',//模板类型
     },
+    //快速申请指定模板信息
     template: {
       tplId: '',
       tplName: ''
     },
+    //任务信息
     task: {
       bizTypeId: '',
       bizId: ''
     },
+    //权益排行榜时间
     rankingTime: {
       startTime: '',
       endTime: ''
     },
-    performanceData: {}
+    //业绩排行榜入口信息存储
+    performanceData: {},
+    //选择客户信息存储
+    chooseCustomer: {}
   },
   mutations: {
     updataApply (state, payload) {
@@ -39,6 +46,9 @@ const store = new Vuex.Store({
     },
     updataPerformanceData (state, payload) {
       state.performanceData = payload.performanceData
+    },
+    updataChooseCustomer (state, payload) {
+      state.chooseCustomer = payload.chooseCustomer
     }
   },
   actions: {
@@ -56,6 +66,9 @@ const store = new Vuex.Store({
     },
     updataPerformanceData ({commit}, performanceData) {
       commit({type: 'updataPerformanceData', performanceData: performanceData})
+    },
+    updataChooseCustomer ({commit}, chooseCustomer) {
+      commit({type: 'updataChooseCustomer', chooseCustomer: chooseCustomer})
     }
   }
 })

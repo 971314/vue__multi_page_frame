@@ -42,7 +42,27 @@
       }
     },
     mounted() {
-//          this.$parent.nowIndex = 3
+      this.investorFollowList()
+    },
+    methods: {
+      investorFollowList() { //查询留存客户跟进列表
+        this.$$axios({restUrl: 'investorFollowList', join: [1, 2]})
+          .then((response) => {
+            this.recordList.splice(0, this.recordList.length)
+            response.map((item) => {
+              let tempObj = {}
+              tempObj['followId'] = item['followId']
+              tempObj['followType'] = item['followType']
+              tempObj['followDesc'] = item['followDesc']
+              tempObj['upDate'] = this.$$getTimeFmt(item['upDate'])
+              this.recordList.push(tempObj)
+            })
+            console.log('response', response);
+          })
+          .catch((res) => {
+            console.log('res', res);
+          })
+      }
     }
   }
 </script>

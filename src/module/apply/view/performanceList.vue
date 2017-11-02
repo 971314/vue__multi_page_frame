@@ -7,13 +7,21 @@
     <div class="performance_tab"
          v-show="flag == 3 || flag == 7">
       <div>
-        <div @click="tabClick(1)" :class="tab1 == 1?'selected':''">成交额<span :class="tab1 == 1 ? 'selected':''"></span>
+        <div @click="tabClick(1)" :class="tab1 == 1?'selected':''">
+          <div>成交额</div>
+          <span :class="tab1 == 1 ? 'selected':''"></span>
         </div>
-        <div @click="tabClick(2)" :class="tab1 == 2?'selected':''">成交量<span :class="tab1 == 2 ? 'selected':''"></span>
+        <div @click="tabClick(2)" :class="tab1 == 2?'selected':''">
+          <div>成交量</div>
+          <span :class="tab1 == 2 ? 'selected':''"></span>
         </div>
-        <div @click="tabClick(3)" :class="tab1 == 3?'selected':''">持仓额<span :class="tab1 == 3 ? 'selected':''"></span>
+        <div @click="tabClick(3)" :class="tab1 == 3?'selected':''">
+          <div>持仓额</div>
+          <span :class="tab1 == 3 ? 'selected':''"></span>
         </div>
-        <div @click="tabClick(4)" :class="tab1 == 4?'selected':''">持仓量<span :class="tab1 == 4 ? 'selected':''"></span>
+        <div @click="tabClick(4)" :class="tab1 == 4?'selected':''">
+          <div>持仓量</div>
+          <span :class="tab1 == 4 ? 'selected':''"></span>
         </div>
       </div>
     </div>
@@ -22,11 +30,17 @@
     <div class="performance_tab"
          v-show="flag == 2 || flag == 6">
       <div>
-        <div @click="tabClick(5)" :class="tab1 == 5?'selected':''">总客户数<span :class="tab1 == 5 ? 'selected':''"></span>
+        <div @click="tabClick(5)" :class="tab1 == 5?'selected':''">
+          <div>总客户数</div>
+          <span :class="tab1 == 5 ? 'selected':''"></span>
         </div>
-        <div @click="tabClick(6)" :class="tab1 == 6?'selected':''">开户数<span :class="tab1 == 6 ? 'selected':''"></span>
+        <div @click="tabClick(6)" :class="tab1 == 6?'selected':''">
+          <div>开户数</div>
+          <span :class="tab1 == 6 ? 'selected':''"></span>
         </div>
-        <div @click="tabClick(7)" :class="tab1 == 7?'selected':''">活跃客户数<span :class="tab1 == 7 ? 'selected':''"></span>
+        <div @click="tabClick(7)" :class="tab1 == 7?'selected':''">
+          <div>活跃客户数</div>
+          <span :class="tab1 == 7 ? 'selected':''"></span>
         </div>
       </div>
     </div>
@@ -42,9 +56,13 @@
     <div class="performance_tab3"
          v-show="flag == 4 || flag == 8">
       <div>
-        <div @click="tabClick(8)" :class="tab1 == 8?'selected':''">手续费<span :class="tab1 == 8 ? 'selected':''"></span>
+        <div @click="tabClick(8)" :class="tab1 == 8?'selected':''">
+          <div>手续费</div>
+          <span :class="tab1 == 8 ? 'selected':''"></span>
         </div>
-        <div @click="tabClick(9)" :class="tab1 == 9?'selected':''">留存手续费<span :class="tab1 == 9 ? 'selected':''"></span>
+        <div @click="tabClick(9)" :class="tab1 == 9?'selected':''">
+          <div>留存手续费</div>
+          <span :class="tab1 == 9 ? 'selected':''"></span>
         </div>
       </div>
     </div>
@@ -53,17 +71,23 @@
     <div class="performance_tab"
          v-show="flag == 1 || flag == 5">
       <div>
-        <div @click="tabClick(10)" :class="tab1 == 10?'selected':''">期末权益<span
-          :class="tab1 == 10 ? 'selected':''"></span></div>
-        <div @click="tabClick(11)" :class="tab1 == 11?'selected':''">日均权益<span
-          :class="tab1 == 11 ? 'selected':''"></span></div>
-        <div @click="tabClick(12)" :class="tab1 == 12?'selected':''">净入金<span
-          :class="tab1 == 12 ? 'selected':''"></span></div>
+        <div @click="tabClick(10)" :class="tab1 == 10?'selected':''">
+          <div>期末权益</div>
+          <span
+            :class="tab1 == 10 ? 'selected':''"></span></div>
+        <div @click="tabClick(11)" :class="tab1 == 11?'selected':''">
+          <div>日均权益</div>
+          <span
+            :class="tab1 == 11 ? 'selected':''"></span></div>
+        <div @click="tabClick(12)" :class="tab1 == 12?'selected':''">
+          <div>净入金</div>
+          <span
+            :class="tab1 == 12 ? 'selected':''"></span></div>
       </div>
     </div>
 
     <!--列表-->
-    <div class="performance_list"
+    <div class="performance_list" id="performance_list"
          :style="{top:flag == 2&& tab1 == 5 || flag == 2&& tab1 == 6||flag == 6&& tab1 == 5 || flag == 6&& tab1 == 6?'125px':'85px',bottom:footer?'49px':'0px'}">
       <div class="group_list" v-for="(data,i) in performanceList">
         <div>
@@ -185,6 +209,7 @@
     methods: {
       //一级tab选择
       tabClick (flag) {
+        document.getElementById('performance_list').scrollTop = 0
         this.tab1 = flag
         if (flag == 1 || flag == 2 || flag == 3 || flag == 4 || flag == 6 || flag == 8 || flag == 7 || flag == 9 || flag == 11 || flag == 12) {
           this.footer = true
@@ -223,7 +248,7 @@
           this.tabClick(8)
         }
       },
-      //数据请求
+      //业绩排行榜数据
       request () {
         let _this = this
         _this.$axios.post(PBHttpServer.apply.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId + '/', {

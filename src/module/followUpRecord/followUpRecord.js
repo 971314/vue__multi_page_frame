@@ -12,6 +12,8 @@ import addAndEdit from './view/addAndEdit'
 import approTask from './view/approTask'
 import approProcess from './view/approProcess'
 import rejectTask from './view/rejectTask'
+import staffInfo from './view/staffInfo'
+
 
 import FastClick from 'fastclick'
 
@@ -30,13 +32,13 @@ if (browser.versions.mobile) {
 
 const router = new VueRouter({
   routes: [
-        {path: '/', redirect: '/list'},
-        {path: '/list',component: list},
-        {path: '/addAndEdit',component: addAndEdit},
-        {path: '/approTask',component: approTask},
-        {path: '/approProcess',component: approProcess},
-        {path: '/rejectTask',component: rejectTask}
-        
+      {path: '/', redirect: '/list'},
+      {path: '/list',component: list},
+      {path: '/addAndEdit',component: addAndEdit},
+      {path: '/approTask',component: approTask},
+      {path: '/approProcess',component: approProcess},
+      {path: '/rejectTask',component: rejectTask},
+      {path: '/staffInfo',component: staffInfo}
   ]
 })
 

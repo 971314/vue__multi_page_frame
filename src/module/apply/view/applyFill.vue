@@ -96,7 +96,7 @@
           investorName: '选择申请人姓名',//申请人姓名
           investorType: '选择申请类型',//申请人类型
           capitalAccount: '123456',//资金账号
-          note: '备注备注备注备注备注备注备注备注备注',//备注
+          note: '',//备注
           InvestorId: '123'//投资者编号
         },
         attachs: [],//附件
@@ -210,7 +210,7 @@
       //选择申请人姓名
       selectName () {
         if (this.fillData.investorType != '客户经理' && this.fillData.investorType != '选择申请类型') {
-          console.log('123')
+          this.$router.push('/chooseCustomer')
         } else {
           if (this.fillData.investorType == '选择申请类型') {
             this.$toast('请先选择申请人类型')

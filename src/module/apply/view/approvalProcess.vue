@@ -44,7 +44,7 @@
       this.getData()
     },
     methods: {
-      //获取数据请求
+      //获取审批进程请求
       getData () {
         let _this = this
         _this.$loading.toggle(' ')

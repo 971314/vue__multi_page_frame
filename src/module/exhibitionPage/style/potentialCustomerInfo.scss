@@ -49,6 +49,12 @@
           align-items: center;
           color: #1a1a1a;
           @include font(16px);
+
+          .user-must-icon {
+            width: toRem(16px);
+            height: toRem(14px);
+            margin-left: toRem(12px);
+          }
         }
         .input-item-breakwrod {
           height: auto;

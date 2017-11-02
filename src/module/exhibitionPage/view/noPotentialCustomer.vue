@@ -15,12 +15,13 @@
           </div>
           <div class="center-info-list">
             <div class="info-name-group">
-              <span class="info-name">陈嫣</span>
-              <img class="info-star" src="../images/3-star@2x.png"></img>
-              <img class="info-new" src="../images/NEW@2x.png"></img>
+              <span class="info-name" v-text="customerInfo.INVESTOR_NAM">陈嫣</span>
+              <img v-if="customerInfo.VIPTYP != '0'" class="info-star"
+                   :src="customerInfo.VIPTYP != '0' ? `../images/${customerInfo.VIPTYP}-star@2x.png` : ''"></img>
+              <img v-if="customerInfo.OPEN_STS == '1' || customerInfo.OPEN_STS == '2'" class="info-new" src="../images/NEW@2x.png"></img>
             </div>
-            <div class="info-zjzh">资金账号 983940192</div>
-            <div class="info-yingye">营业部门 上海商城路</div>
+            <div class="info-zjzh">资金账号 {{customerInfo.INVESTOR_ID}}</div>
+            <div class="info-yingye">营业部门 {{customerInfo.DEPARTMENT_NAM}}</div>
           </div>
           <div class="right-arrow"></div>
         </div>
@@ -59,6 +60,7 @@
     <multi-slide v-model="showEvent">
       <div class="no-potential-group">
         <div class="no-potential-edit" @click="editInfo">编辑</div>
+        <div class="no-potential-edit" @click="addInfo">新增潜在用户</div>
         <div class="no-potential-cancel" @click="cancelSelected">取消</div>
       </div>
     </multi-slide>
@@ -67,13 +69,32 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default{
     data() {
       return {
         showEvent: false,
         gobackUrl: 'goBack',
-        nowIndex: 1
+        nowIndex: 1,
+        customerInfo: {
+          INVESTOR_NAM: '',
+          DEPARTMENT_NAM: '',
+          INVESTOR_ID: '',
+          OPENACCT_DT: '',
+          EXCHANGE_ID: '',
+          FIRST_IN_DT: '',
+          VIPTYP: '',
+          OPEN_STS: ''
+        }
       }
+    },
+    computed: {
+      ...mapState([
+        'customerMessage'
+      ])
+    },
+    mounted() {
+      this.getInvestorOpen()
     },
     methods: {
       LinkToTab(routerViewName, index) {
@@ -86,18 +107,52 @@
         this.showEvent = !this.showEvent
       },
       gotoDetail() {
+        this.$store.dispatch('updateCzType', 0)
         this.$router.push({
           name: 'customerInfo'
         })
       },
       editInfo() {
         this.showEvent = false
+        this.$store.dispatch('updateCzType', 1)
         this.$router.push({
           name: 'customerInfo'
         })
       },
+      addInfo() { //新增潜在用户
+        this.showEvent = false
+        this.$store.dispatch('updateCzType', 2)
+        this.$router.push({
+          name: 'potentialCustomerInfo'
+        })
+      },
       cancelSelected() {
         this.showEvent = false
+      },
+      getInvestorOpen() { //单一投资者开户信息
+        this.$$axios({restUrl: 'investorOpen', join: ['test11', 101469]})
+          .then((response) => {
+            console.log('response', response);
+            this.customerInfo['INVESTOR_NAM'] = response[0]['INVESTOR_NAM']
+            this.customerInfo['DEPARTMENT_NAM'] = response[0]['DEPARTMENT_NAM']
+            this.customerInfo['INVESTOR_ID'] = response[0]['INVESTOR_ID']
+            this.customerInfo['OPENACCT_DT'] = response[0]['OPENACCT_DT']
+            this.customerInfo['EXCHANGE_ID'] = response[0]['EXCHANGE_ID']
+            this.customerInfo['FIRST_IN_DT'] = response[0]['FIRST_IN_DT']
+            this.customerInfo['VIPTYP'] = response[0]['VIPTYP']
+            this.customerInfo['OPEN_STS'] = response[0]['OPEN_STS']
+
+
+            this.$store.dispatch('updateCustomerMessage', {
+              OPENACCT_DT: response[0].OPENACCT_DT,
+              FIRST_IN_DT: response[0].FIRST_IN_DT,
+              EXCHANGE_ID: response[0].EXCHANGE_ID
+            })
+
+          })
+          .catch((res) => {
+            console.log('res', res);
+          })
       }
     }
   }

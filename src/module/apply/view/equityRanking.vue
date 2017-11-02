@@ -34,7 +34,8 @@
               <td><span>成交手数</span></td>
               <td><span>出金(万)</span></td>
               <td><span>入金(万)</span></td>
-              <td><span>净入入金(万)</span></td>
+              <td><span>净入金(万)</span></td>
+              <td><span>最新入金时间</span></td>
               <td><span></span></td>
             </tr>
             </thead>
@@ -53,8 +54,8 @@
                 <div>{{i + 1}}</div>
               </td>
               <td>
-                <div>{{data.investorName }}</div>
-                <div>{{data.capitalAccount }}</div>
+                <div>{{data.INVESTOR_NAM }}</div>
+                <div>{{data.CAPITALACCOUNT }}</div>
               </td>
             </tr>
             </tbody>
@@ -63,15 +64,16 @@
             <table class="detail">
               <tbody>
               <tr v-for="(data,i) in rankingData" class="borderBottom">
-                <td><span>{{data.finalEquity}}</span></td>
-                <td><span>{{data.dailyEquity}}</span></td>
-                <td><span>{{data.margin}}</span></td>
-                <td><span>{{data.risk}}</span></td>
-                <td><span>{{data.turnVolume }}</span></td>
-                <td><span>{{data.volume}}</span></td>
-                <td><span>{{data.yearGold}}</span></td>
-                <td><span>{{data.yearDeposit}}</span></td>
-                <td><span>{{data.netDeposit}}</span></td>
+                <td><span>{{data.FINALEQUITY}}</span></td>
+                <td><span>{{data.DAILYEQUITY}}</span></td>
+                <td><span>{{data.MARGIN}}</span></td>
+                <td><span>{{data.RISK}}</span></td>
+                <td><span>{{data.TURNVOLUME }}</span></td>
+                <td><span>{{data.VOLUME}}</span></td>
+                <td><span>{{data.GOLD}}</span></td>
+                <td><span>{{data.DEPOSIT}}</span></td>
+                <td><span>{{data.NETDEPOSIT}}</span></td>
+                <td><span>{{data.DEPOSITDATE}}</span></td>
                 <td><span></span></td>
               </tr>
               </tbody>
@@ -148,22 +150,36 @@
         }
         this.showEvent = false
       },
-      //获取数据请求
+      //获取权益排行榜数据请求
       getData () {
         let _this = this
         _this.$loading.toggle(' ')
-        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalRanking.url + _this.info.userId + '?beginDate=' + _this.$$timeFormate({
+        /*_this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalRanking.url + _this.info.userId + '?beginDate=' + _this.$$timeFormate({
           date: _this.$store.state.rankingTime.startTime,
-          format: 'YMD'
+          format: 'Y-M-D'
         }) + '&endDate=' + _this.$$timeFormate({
           date: _this.$store.state.rankingTime.endTime,
-          format: 'YMD'
+          format: 'Y-M-D'
         }), {
           timeout: 10000,
           headers: {
             id: _this.info.token
           }
         }).then((data) => {
+          data = data.data
+          console.log(data)
+          _this.$loading.hide()
+          if (data.retHead == 0) {
+            _this.rankingData = data.data
+          } else {
+            _this.$toast(data.desc)
+          }
+        }).catch((err) => {
+          _this.$loading.hide()
+          _this.$toast('网络超时，请稍后重试！')
+          console.log(err)
+        })*/
+        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalRanking.url +'test11?beginDate=2010-01-01&endDate=2017-03-03\n').then((data) => {
           data = data.data
           console.log(data)
           _this.$loading.hide()

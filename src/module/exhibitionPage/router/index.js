@@ -10,6 +10,8 @@ import BusinessPipeline from '../view/businessPipeline.vue'
 import FollowUpRecord from '../view/followUpRecord.vue'
 import CustomerInfo from '../view/customerInfo.vue'
 import PotentialCustomerInfo from '../view/potentialCustomerInfo.vue'
+import Zhanyelunbo from '../view/zhanyelunbo.vue'
+import ccSetTime from '../view/ccSetTime.vue'
 
 Vue.use(VueRouter)
 
@@ -62,6 +64,16 @@ const routes = [
     path: '/potentialCustomerInfo', //潜在客户详细资料
     name: 'potentialCustomerInfo',
     component: PotentialCustomerInfo
+  },
+  {
+    path: '/zhanyelunbo',
+    name: 'zhanyelunbo',
+    component: Zhanyelunbo
+  },
+  {
+    path: '/ccSetTime',
+    name: 'ccSetTime',
+    component: ccSetTime
   }
 ]
 

@@ -18,16 +18,20 @@
     </div>
     <div class="pipeline-content">
 
-      <div v-for="(pipelineItem, index) in pipelineList" :class="{'pipeline-content-failed': pipelineItem.Status == '未通过'}" class="content-item-wrapper">
+      <div v-for="(pipelineItem, index) in pipelineList"
+           :class="{'pipeline-content-failed': pipelineItem.Status == '未通过'}" class="content-item-wrapper">
         <div class="pipeline-content-item" :class="{'pipeline-failed-tips': pipelineItem.Status == '未通过'}">
           <div class="item-left">
             <span class="item-name">
               {{pipelineItem.Operation}}
-              <img v-if="pipelineItem.IsDelay" class="item-over-time" src="../images/overTime@2x.png" />
+              <img v-if="pipelineItem.IsDelay" class="item-over-time" src="../images/overTime@2x.png"/>
             </span>
             <span class="item-time" v-text="pipelineItem.Time"></span>
           </div>
-          <div class="item-right" :class="{'pipeline-success': pipelineItem.Status == '已通过', 'pipeline-failed': pipelineItem.Status == '未通过'}">{{pipelineItem.Status}}</div>
+          <div class="item-right"
+               :class="{'pipeline-success': pipelineItem.Status == '通过', 'pipeline-failed': pipelineItem.Status == '未通过'}">
+            {{pipelineItem.Status}}
+          </div>
         </div>
         <div v-if="pipelineItem.Status == '未通过'" class="pipeline-refused-reason">
           <img class="message-tips" src="../images/messageTips@2x.png"/>
@@ -76,12 +80,33 @@
         ]
       }
     },
-    mounded() {
-//        this.$parent.nowIndex = 2
+    mounted() {
+      this.sort(this.nowIndex)
     },
     methods: {
       sort(index) {
         this.nowIndex = index
+        this.getInvestorBusinessHall()
+      },
+      getInvestorBusinessHall() { //获取业务流水
+        this.$$axios({restUrl: 'investorBusinessHall', join: [1, [2, ['type', this.nowIndex - 1]]]})
+          .then((response) => {
+            this.pipelineList.splice(0, this.pipelineList.length)
+            response.map((item) => {
+              let tempObj = {}
+              tempObj['Operation'] = item['operation']
+              tempObj['Status'] = item['status']
+              tempObj['Time'] = this.$$getTimeFmt(item['time'])
+              tempObj['Note'] = item['note']
+              tempObj['IsDelay'] = item['IsDelay']
+
+              this.pipelineList.push(tempObj)
+            })
+            console.log('response', response);
+          })
+          .catch((res) => {
+            console.log('res', res);
+          })
       }
     }
   }

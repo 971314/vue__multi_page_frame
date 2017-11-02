@@ -16,6 +16,7 @@
           <span> 营业部门 {{details.DeptName}}</span>
         </div>
       </div>-->
+
       <div class="details_info" @click="$router.push('/approvalProcess')">
         <div>申请人</div>
         <div>
@@ -117,7 +118,7 @@
           console.log(err)
         })
       },
-      //获取数据请求
+      //获取详情请求
       getData () {
         let _this = this
         _this.$loading.toggle(' ')

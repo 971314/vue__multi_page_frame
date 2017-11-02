@@ -13,16 +13,21 @@
       line-height: 40px;
       position: relative;
       @include border-TBottom-color23;
-      div {
+      & > div {
         position: relative;
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        & > div {
+          flex: 1;
+          display: flex;
+        }
         span {
+          position: absolute;
+          bottom: 0;
           width: toRem(150px);
-          margin-bottom: 1px;
           border-bottom: toRem(4px) solid $color15;
           &.selected {
             border-bottom: toRem(4px) solid $color1;
@@ -35,6 +40,7 @@
     }
 
   }
+  //二级tab
   .performance_tab2 {
     & > div {
       display: flex;
@@ -63,7 +69,7 @@
       line-height: 40px;
       position: relative;
       @include border-TBottom-color23;
-      div {
+      & > div {
         flex: 1;
         position: relative;
         height: 100%;
@@ -71,9 +77,17 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        & > div {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
         span {
+          position: absolute;
+          bottom: 0;
           width: toRem(150px);
-          margin-bottom: 1px;
           border-bottom: toRem(4px) solid $color15;
           &.selected {
             border-bottom: toRem(4px) solid $color1;

@@ -22,7 +22,7 @@
       <div class="bottom_modal">
         <div @click="modalclick(1)">模板申请</div>
         <div @click="modalclick(2)">其他申请</div>
-        <div @click="cancelmodal">取消</div>
+        <div @click="showEvent = false">取消</div>
       </div>
     </multi-slide>
   </div>
@@ -81,10 +81,6 @@
       chooseClick (data) {
         this.$store.dispatch('updataApply', data)
         this.showEvent = true
-      },
-      //模态框取消点击
-      cancelmodal () {
-        this.showEvent = false
       },
       //模态框模板点击
       modalclick (flag) {

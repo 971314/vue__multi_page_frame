@@ -51,7 +51,7 @@
       })
     },
     methods: {
-      //选择模板
+      //选择模板及模板数据存储
       chooseClick (data) {
         let steData = {}
         steData['tplId'] = data.tplId
