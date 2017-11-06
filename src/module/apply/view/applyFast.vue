@@ -6,14 +6,14 @@
     <div class="conter">
       <div>
         <a v-for="data in applyData" @click="chooseClick(data)">
-          <img v-if="data.tplTypeName  == '保证金率优惠'" src="../images/baoZhengJingYouHui.png"/>
-          <img v-else-if="data.tplTypeName  == '手续费率优惠'" src="../images/shouXuFeiLvYouHui.png"/>
-          <img v-else-if="data.tplTypeName  == '股票期权系统保证金率'" src="../images/stockOptions_baoZhengJing.png"/>
-          <img v-else-if="data.tplTypeName  == '股票期权系统手续费率'" src="../images/stockOptions_shouXuFei.png"/>
-          <img v-else-if="data.tplTypeName  == '提成比例'" src="../images/tiChengBiLi.png"/>
-          <img v-else-if="data.tplTypeName  == '交易所返还提成'" src="../images/jiaoYiSuoFanHuanTiCheng@2x.png"/>
-          <img v-else-if="data.tplTypeName  == '利息提成'" src="../images/liXiTiCheng.png"/>
-          <span>{{data.tplTypeName }}</span>
+          <img v-if="data.processName    == '保证金率优惠'" src="../images/baoZhengJingYouHui.png"/>
+          <img v-else-if="data.processName    == '手续费率优惠'" src="../images/shouXuFeiLvYouHui.png"/>
+          <img v-else-if="data.processName    == '股票期权保证金率'" src="../images/stockOptions_baoZhengJing.png"/>
+          <img v-else-if="data.processName    == '股票期权手续费率'" src="../images/stockOptions_shouXuFei.png"/>
+          <img v-else-if="data.processName    == '提成比例'" src="../images/tiChengBiLi.png"/>
+          <img v-else-if="data.processName    == '交易所返还提成'" src="../images/jiaoYiSuoFanHuanTiCheng@2x.png"/>
+          <img v-else-if="data.processName    == '利息提成'" src="../images/liXiTiCheng.png"/>
+          <span>{{data.processName }}</span>
           <img src="../images/gengDuo.png" class="gengduo"/>
         </a>
       </div>
@@ -72,9 +72,13 @@
         }
         console.log(err)
       })
+      _this.inquireApprovedPersonnel()
     },
     activated () {
       this.$store.dispatch('updataTemplate', {tplId: '', tplName: ''})
+      this.$store.dispatch('updataAppObject', {
+        appObjectName: '选择申请人姓名'
+      })
     },
     methods: {
       //申请模块点击
@@ -90,6 +94,34 @@
           console.log(flag)
         }
         this.showEvent = false
+      },
+      //查询审批人员信息
+      inquireApprovedPersonnel () {
+        let _this = this
+        _this.$loading.toggle(' ')
+        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.inquireApprovedPersonnel.url + _this.info.userId, {
+          timeout: 10000,
+          headers: {
+            id: _this.info.token
+          }
+        }).then((data) => {
+          data = data.data
+          console.log(data)
+          _this.$loading.hide()
+          if (data.retHead == 0) {
+            _this.$store.dispatch('updataApprovedPersonnelInfo', data.data)
+          } else {
+            _this.$toast(data.desc)
+          }
+        }).catch((err) => {
+          _this.$loading.hide()
+          if (err.message.split(' ')[0] == 'timeout') {
+            _this.$toast('网络超时，请稍后重试！')
+          } else {
+            _this.$toast('网络异常，请稍后重试！')
+          }
+          console.log(err)
+        })
       }
     }
   }

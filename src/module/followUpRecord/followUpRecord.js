@@ -1,5 +1,6 @@
 import 'lib-flexible';
 import Vue from 'vue'
+import store from './vuex/store'
 import "./common/mixins.js";
 import VueRouter from 'vue-router'
 import Impression from 'vue-impression'
@@ -13,6 +14,7 @@ import approTask from './view/approTask'
 import approProcess from './view/approProcess'
 import rejectTask from './view/rejectTask'
 import staffInfo from './view/staffInfo'
+import customerInfo from './view/customerInfo'
 
 
 import FastClick from 'fastclick'
@@ -38,13 +40,15 @@ const router = new VueRouter({
       {path: '/approTask',component: approTask},
       {path: '/approProcess',component: approProcess},
       {path: '/rejectTask',component: rejectTask},
-      {path: '/staffInfo',component: staffInfo}
+      {path: '/staffInfo',component: staffInfo},
+      {path: '/customerInfo', component: customerInfo}
   ]
 })
 
 const index = new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(Index)
 });
 

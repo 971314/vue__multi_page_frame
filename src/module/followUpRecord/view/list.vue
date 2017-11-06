@@ -88,23 +88,37 @@
 
         data() {
             return {
-                showBase : false
+                showBase : false,
+                userId : "test11"
             }
         },
 
         mounted() {
-            
+            this.getList("investorFollow/list/" + this.userId + "?begin=1&size=10");
         },
 
         methods: {
 
             //切换tab
             changeHandle(val) {
-
+                if(val==0){
+                   this.getList("investorFollow/list/" + this.userId + "?begin=1&size=10"); 
+                }else{
+                   this.getList("pInvestorFollow/list/" + this.userId + "?begin=1&size=10"); 
+                }
             },
-
+            //跳转去【新增|编辑】跟进记录 页面
             goToAddPage(type){
                 this.$router.push({path:'/addAndEdit'});
+            },
+            //查询跟进记录
+            getList(urlSuffix){
+                this.$axios.get(PBHttpServer.apply.serverUrl + urlSuffix, null).then(function(result) {
+                    console.log(result);
+                }).
+                catch(function(err) {
+                    console.log('服务器异常', err)
+                });
             }
 
         }

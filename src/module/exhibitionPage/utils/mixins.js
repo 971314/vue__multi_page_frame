@@ -3,11 +3,13 @@ import urlList from '../config/retUrl.js'
 import axios from 'axios'
 
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
-
+// axios.defaults.headers['id'] = '123456'
 Vue.mixin({
   data() {
     return {
-      mixinTest: 'mixin测试'
+      mixinTest: 'mixin测试',
+      userId: 'sysadmin',
+      investorId: 103087
     }
   },
   methods: {

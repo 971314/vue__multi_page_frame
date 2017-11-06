@@ -14,22 +14,23 @@
                 <input class="searchbar-input" :class="{'inputFocus':focusFlag || keyword}" type="text" v-model="keyword" placeholder="搜索" @focus="searchFocus(true)" @blur="searchFocus(false)"/>
             </div>
             <index-list>
-                <index-section v-for="(v, i) in currentList" :key="i" :index="v.initial">
-                    <a class="mint-cell" :class="{selected: currentResult.id === item.id}" v-for="(item, index) in v.data" :key="index">
+                <index-section v-for="(v, i) in currentList" :key="i" :index="v.pinyin">
+                    <a class="mint-cell" :class="{selected: currentResult.id === item.id}" v-for="(item, index) in v.data" :key="index" @click="goTo(item.INVESTOR_ID)">
                         <div class="mint-list">
-                            <a class="mobileIcon"><img src="../images/img18.png"/></a>
-                            <div class="cusName" v-text="'联系人姓名'+(index+1)+'(2345123373)'"></div>
+                            <a class="mobileIcon" :href="'tel:'+item.MOBILE_NO"><img src="../images/img18.png"/></a>
+                            <div class="cusName" v-text="item.INVESTOR_NAM+'('+item.MOBILE_NO+')'"></div>
                             <div class="cusLevel">
-                                <img class="type1" src="../images/img14.png"/>
-                                <img class="type1" src="../images/img14.png"/>
-                                <img class="type1" src="../images/img14.png"/>
-                                <img class="type2" src="../images/img16.png"/>
-                                <img class="type3" src="../images/img17.png"/>
+                                <img class="type1" src="../images/img14.png" v-for="i in new Array(item.VIPTYP*1)"/>
+                                <img class="type2" src="../images/img16.png" v-if="item.OPEN_STS=='1'"/>
+                                <div v-if="item.OPEN_STS=='2'">
+                                    <img class="type2" src="../images/img16.png" />
+                                    <img class="type3" src="../images/img17.png" />    
+                                </div>
                             </div>
                         </div>
                     </a>
                 </index-section>
-                <div class="haveOpen text-center">180位已开户客户</div>
+                <div class="haveOpen text-center" v-if="count">{{count}}位已开户客户</div>
             </index-list>
             
         </div>
@@ -61,91 +62,73 @@
                 currentList: null,
                 deptJson: [],
                 focusFlag: false,
-                params: {
-                    userId: '',
-                    type: 1
-                }
+                url : PBHttpServer.apply.serverUrl,
+                userId : 'test11',
+                count : 0    //已开户人数
             }
         },
         mounted() {
-
-            // var rsltData = JSON.parse(json.data);
-            var rsltData = util.data;
-
-            
-
-            if (rsltData.body.result) {
-                let deptJson = rsltData.body.result.map(item =>{
-                    return {
-                        'initial': item.FIRST_PINYIN,
-                        'data': [{
-                            'id': item.DEPARTMENT_ID,
-                            'name': item.DEPARTMENT_NAM,
-                            'pinyin': item.FULL_PINYIN
-                        }]
-                    }
-                })
-                this.deptJson = deptJson;
-                this.currentList = this.deal(deptJson)
-            }
-
-            this.getCusList();
-
+            this.getCusList('investor/list/'+this.userId);
         },
         watch: {
             keyword: function(val, oldVal) {
                 if (!val) {
-                    this.currentList = this.deal(this.deptJson); 
+                    this.currentList = util.deepClone(this.deptJson); 
                     return;
                 }
-                // console.log("--**--");
-                // console.log(this.deptJson);
-                this.currentList = this.deal(this.deptJson).filter(item =>{
+                //根据【客户名称】【移动电话】【拼音首字母】搜索
+                this.currentList = util.deepClone(this.deptJson).filter(item =>{
                     item.data = item.data.filter(item1 =>{
-                        return new RegExp(val).test(item1.name) || new RegExp(val.toUpperCase()).test(item1.pinyin)
+                        return new RegExp(val).test(item1.INVESTOR_NAM) || 
+                               new RegExp(val).test(item1.MOBILE_NO) || 
+                               new RegExp(val.toUpperCase()).test(item1.FIRST_PINYIN)
                     }); 
                     return item.data.length;
                 })
             }
         },
         methods: {
-            deal(list) {
-
-                console.log(list);
-
-                let resultListT = {}
-                for (let item of list) {
-                    if (resultListT[item.initial]) {
-                        resultListT[item.initial].data = resultListT[item.initial].data.concat(item.data)
-                    } else {
-                        resultListT[item.initial] = JSON.parse(JSON.stringify(item))
-                    }
-                }
-
-                return Object.values(resultListT).sort((item, item1) =>{
-                    if (item.initial === item1.initial) {
-                        return 0
-                    }
-                    return item1.initial > item.initial ? -1 : 1
-                })
-            },
             //切换开户状态
             changeHandle(segmentedIndex) {
                 this.segmentedIndex = segmentedIndex;
+                if(segmentedIndex==1){
+                    //获取【客户列表】 
+                    this.getCusList('investor/list/'+this.userId);
+                }else{
+                    //获取【潜在客户列表】 
+                    this.getCusList('pInvestor/list/'+this.userId);
+                }
+                
             },
             //搜索框获取焦点
             searchFocus(flag) {
                 this.focusFlag = flag;
             },
-            //获取【客户列表】
-            getCusList() {
-                // var _this = this; 
-                // this.$axios.get("", this.params).then(function(result) {
-                //     _this.deptJson = result.data.data;
-                // }).
-                // catch(function(err) {
-                //     console.log('服务器异常', err)
-                // });
+            //获取【客户列表|潜在客户列表】
+            getCusList(urlSuffix) {
+                var _this = this; 
+                var url = this.url + urlSuffix;
+                _this.$axios.get(url, null).then(function(result) {
+                    var list = result.data.data;
+                    var cList = [];
+                    var index = 0;
+                    _this.count = 0;
+                    for (var i in list) {
+                        cList[index] = {'pinyin':i, data : list[i]}
+                        index ++;
+                        _this.count += list[i].length;
+                    }
+                    _this.deptJson = util.deepClone(cList);
+                    _this.currentList = util.deepClone(cList);
+                }).
+                catch(function(err) {
+                    console.log('服务器异常', err)
+                });
+            },
+            //跳转详情页面
+            goTo(id){
+                console.log(id);
+                // this.$router.push({path:'/info/'+id});
             }
         }
     }

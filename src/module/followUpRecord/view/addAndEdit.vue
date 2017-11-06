@@ -7,7 +7,7 @@
                 <div slot="body">
                     <span>新建跟进</span>
                 </div>
-                <div slot="footer" class="addFollow">
+                <div slot="footer" class="addFollow" @click="submit()">
                     完成
                 </div>
             </common-nav>
@@ -16,14 +16,14 @@
         <div class="container">
 
            <div class="group">
-               <a class="cell">
-                    <span class="cell-body">客户</span>
+               <a class="cell" href="#/customerInfo">
+                    <span class="cell-body">{{params.name || '客户'}}</span>
                     <div class="cell-footer">
                         <img src="../images/img03.png"/>
                     </div>
                 </a>
                 <a class="cell">
-                    <span class="cell-body">问题类型</span>
+                    <span class="cell-body">{{params.followType || '问题类型'}}</span>
                     <div class="cell-footer">
                         <img src="../images/img03.png"/>
                     </div>
@@ -34,7 +34,7 @@
                 <a class="cell no-padding">
                     <span class="cell-body">
                         <div class="textarea">
-                            <textarea placeholder="问题内容" rows="5" class="textarea-input"></textarea>
+                            <textarea placeholder="问题内容" rows="5" class="textarea-input" v-model="params.followDesc"></textarea>
                             <div class="upload-img">
                                 <div v-if="imgSrcArr.length > 0" class="showImgArea" v-for="(i, index) in imgSrcArr">
                                     <i class="removeImg" @click="removePreImg(index)">&nbsp;</i>
@@ -54,9 +54,7 @@
                 </a>
             </div>
 
-            <div class="result">
-                处理结果
-            </div>
+            <div><textarea placeholder="处理结果" rows="5" class="result" v-model="params.followNote"></textarea></div>
 
             <div class="lastEditDate text-center">
                 创建时间<span>2017-09-09</span> 最后更新时间<span>2017-10-09</span>
@@ -80,12 +78,14 @@
         data() {
             return {
                 cardFront: 'no-file',
-                imgSrcArr : []
+                imgSrcArr : [],
+                params : this.$store.state.addFollow
             }
         },
 
         mounted() {
-            
+            console.log(this.params);
+            //this.$store.dispatch('updateAddFollow', this.ccSetTime1)
         },
 
         methods: {
@@ -187,8 +187,34 @@
             },
 
             submit(){
-                let src = document.querySelector('#fileFront').getAttribute('src');
-                var img = src.replace('data:image/jpeg;base64,', 'image/jpg;base64,');
+                var _this = this;
+                console.log(_this.params);
+                if(!_this.params.InvestorId) {
+                  _this.$toast({ message: '请选择客户', position: 'center' }); return; 
+                }
+                
+                // let src = document.querySelector('#fileFront').getAttribute('src');
+                // var img = src.replace('data:image/jpeg;base64,', 'image/jpg;base64,');
+                // if(_this.imgSrcArr.length > 0){
+                //   for(var i = 0 ; i < _this.imgSrcArr.length ; i++){
+                //     _this.imgSrcArr[i] = _this.imgSrcArr[i].replace('data:image/jpeg;base64,', 'image/jpg;base64,');
+                //   }
+                // }
+                
+
+                _this.params.userId = "test11";
+                _this.params.attach = _this.imgSrcArr;
+
+                var url = PBHttpServer.apply.serverUrl + "investorFollow/detail/" + _this.params.userId + "/" + _this.params.InvestorId;
+
+                
+                console.log(_this.params);
+                _this.$axios.post(url, _this.params).then(function(result) {
+                    console.log(result);
+                }).
+                catch(function(err) {
+                    console.log('服务器异常', err)
+                });
             },
 
             removePreImg(index){

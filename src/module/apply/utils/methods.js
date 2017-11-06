@@ -4,12 +4,12 @@ export default {
     * 获取登录信息*/
     getInfo () {
       // let info = pbE.isPoboApp ? JSON.parse(pbE.SYS().getPrivateData('managerInfo')) : JSON.parse(localStorage.managerInfo)
-      /*let info = JSON.parse(pbE.isPoboApp ? pbE.SYS().getPrivateData('managerInfo') : sessionStorage.managerInfo)
+      let info = JSON.parse(pbE.isPoboApp ? pbE.SYS().getPrivateData('managerInfo') : sessionStorage.managerInfo)
       this.info['userId'] = info.userId
       this.info['crmAccount'] = info.crmAccount //工号
       this.info['userName'] = info.name //姓名
       this.info['departName'] = info.departName  //营业部
-      this.info['token'] = info.token*/
+      this.info['token'] = info.token
     },
     /*
     * 获取par个月日期*/

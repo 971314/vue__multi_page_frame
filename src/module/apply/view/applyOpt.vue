@@ -27,28 +27,11 @@
       ])
     },
     mounted () {
-      let _this = this
-      _this.$loading.toggle(' ')
-      _this.getInfo()
-      _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalSelect.url + _this.info.userId + '/' + _this.apply.tplType, {
-        timeout: 10000,
-        headers: {
-          id: _this.info.token
-        }
-      }).then((data) => {
-        data = data.data
-        console.log(data)
-        _this.$loading.hide()
-        if (data.retHead == 0) {
-          _this.subTemplate = data.data
-        } else {
-          _this.$toast(data.desc)
-        }
-      }).catch((err) => {
-        _this.$loading.hide()
-        _this.$toast('网络超时，请稍后重试！')
-        console.log(err)
-      })
+
+    },
+    activated () {
+      this.subTemplate = null
+      this.request()
     },
     methods: {
       //选择模板及模板数据存储
@@ -57,7 +40,7 @@
         steData['tplId'] = data.tplId
         steData['tplName'] = data.tplName
         this.$store.dispatch('updataTemplate', steData)
-        this.$router.replace('/applyFill')
+        this.$router.back(-1)
       },
       //模板介绍模态框
       iconClick (data) {
@@ -65,6 +48,31 @@
           maskClosable: true,
           message: data.tplDesc,
           title: data.tplName
+        })
+      },
+      //模板请求
+      request () {
+        let _this = this
+        _this.$loading.toggle(' ')
+        _this.getInfo()
+        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalSelect.url + _this.info.userId + '/' + _this.apply.processId, {
+          timeout: 10000,
+          headers: {
+            id: _this.info.token
+          }
+        }).then((data) => {
+          data = data.data
+          console.log(data)
+          _this.$loading.hide()
+          if (data.retHead == 0) {
+            _this.subTemplate = data.data
+          } else {
+            _this.$toast(data.desc)
+          }
+        }).catch((err) => {
+          _this.$loading.hide()
+          _this.$toast('网络超时，请稍后重试！')
+          console.log(err)
         })
       }
     }

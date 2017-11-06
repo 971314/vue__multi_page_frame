@@ -82,12 +82,15 @@ textarea::-webkit-input-placeholder{
 			}
 		}
 		.result{
+			margin-top: toRem(20px);
 			padding: toRem(30px);
-			font-size: toRem(32px);
-			color:#c0c6cd; 
+			width: 100%;
 			height: toRem(250px);
-    		background-color: #fff;
-    		margin-top: toRem(20px);
+    		background-color: #fff; 
+    		font-size: toRem(32px);
+			color:#c0c6cd;
+			border:0;
+			outline:none;
 		}
 		.lastEditDate{
 			margin-top: toRem(20px);

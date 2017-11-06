@@ -10,9 +10,10 @@ const store = new Vuex.Store({
     customerMessage: {
       OPENACCT_DT: '',
       FIRST_IN_DT: '',
-      EXCHANGE_ID: ''
+      EXCHANGE_NAM: ''
     },
-    ccSetTime:''//持仓时间存储
+    ccSetTime:'2010-04-01', //持仓时间存储
+    noPotSex: ''  //潜在客户的性别
   },
   mutations: {
     updateTest(state, payload) {
@@ -26,6 +27,9 @@ const store = new Vuex.Store({
     },
     updateCcSetTime(state, payload) {
       state.ccSetTime = payload.ccSetTime
+    },
+    updateNoPotSex(state, payload) {
+      state.noPotSex = payload.noPotSex
     }
   },
   actions: {
@@ -40,6 +44,9 @@ const store = new Vuex.Store({
     },
     updateCcSetTime({commit}, ccSetTime) {
       commit({type: 'updateCcSetTime', ccSetTime: ccSetTime})
+    },
+    updateNoPotSex({commit}, noPotSex) {
+      commit({type: 'updateNoPotSex', noPotSex: noPotSex})
     }
   },
   getters: {}

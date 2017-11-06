@@ -1,0 +1,38 @@
+.apply_fast {
+  @extend %initial;
+  .conter {
+    flex: 1;
+    overflow: auto;
+    div {
+      background: $color15;
+      position: relative;
+      @include border-Bbottom-color23;
+      a {
+        display: flex;
+        margin-left: toRem(30px);
+        height: toRem(110px);
+        font-size: $font10;
+        color: $color18;
+        align-items: center;
+        position: relative;
+        @include border-TBottom-color23;
+        span {
+          flex: 1;
+        }
+        :first-child {
+          height: toRem(36px);
+          width: toRem(36px);
+          margin-right: toRem(30px);
+        }
+        :last-child {
+          margin-right: toRem(30px);
+        }
+      }
+      a:last-child{
+        &:before {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

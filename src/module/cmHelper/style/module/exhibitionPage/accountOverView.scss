@@ -1,0 +1,275 @@
+.pobo-account-overview {
+  .account-info {
+    padding-top: toRem(40px);
+    padding-bottom: toRem(34px);
+    background-color: #ffffff;
+
+    .account-info-title {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 0;
+      .info-title-left {
+        display: flex;
+        align-items: center;
+        height: toRem(36px);
+        color: #1a1a1a;
+        background-color: rgba(51, 102, 204, 0.2);
+        border-left: toRem(8px) solid #3366cc;
+        line-height: 1;
+        padding-left: toRem(22px);
+        padding-right: toRem(22px);
+        @include font(16px);
+      }
+    }
+
+    .info-detail-group {
+      margin-top: toRem(34px);
+      padding-left: toRem(30px);
+
+      .info-detail-time {
+        @include font(14px);
+        line-height: 1;
+        color: #808086;
+        .detail-time-1a {
+          display: inline-block;
+          margin-left: toRem(34px);
+          margin-right: toRem(12px);
+          color: #1a1a1a;
+        }
+      }
+      .info-detail-rujin {
+        @include font(14px);
+        line-height: 1;
+        color: #808086;
+        margin-top: toRem(20px);
+        .detail-time-1a {
+          display: inline-block;
+          margin-left: toRem(34px);
+          color: #1a1a1a;
+        }
+      }
+    }
+  }
+
+  .zijin-info {
+    margin-top: toRem(20px);
+    background-color: #ffffff;
+    .account-info-title {
+      padding-top: toRem(40px);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 0;
+      .info-title-left {
+        display: flex;
+        align-items: center;
+        height: toRem(36px);
+        color: #1a1a1a;
+        background-color: rgba(51, 102, 204, 0.2);
+        border-left: toRem(8px) solid #3366cc;
+        line-height: 1;
+        padding-left: toRem(22px);
+        padding-right: toRem(22px);
+        @include font(16px);
+      }
+    }
+    .zijin-charts {
+      height: toRem(600px);
+      z-index: 999;
+    }
+    .chart-tab-group {
+      padding-top: toRem(30px);
+      padding-left: toRem(30px);
+      padding-right: toRem(30px);
+      display: flex;
+      flex-direction: row;
+      background-color: #ffff;
+      .chart-item-list {
+        height: toRem(64px);
+        flex: 1;
+        display: flex;
+        border: 1px solid #c0c6cd;
+        border-radius: toRem(6px);
+        .chart-tab-item {
+          flex: 1;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          @include font(14px);
+          color: #808086;
+          border-right: 1px solid #c0c6cd;
+          &:last-child {
+            border-right: none;
+          }
+        }
+        .chart-item-active {
+          background-color: #b6bbc2;
+          color: #ffffff;
+        }
+      }
+    }
+
+    .zijin-info-table {
+      padding-top: toRem(30px);
+      padding-left: toRem(30px);
+      padding-right: toRem(30px);
+      padding-bottom: toRem(40px);
+      .info-table-wrapper {
+        position: relative;
+        background-color: rgba(247, 247, 255, 0.8);
+        .info-table-header {
+          display: flex;
+          height: toRem(68px);
+          flex-direction: row;
+          align-items: center;
+          position: relative;
+          @include bottom-px1-pixel-ratio;
+
+          .info-header-dot {
+            margin-left: toRem(14px);
+            height: toRem(10px);
+            width: toRem(10px);
+            border-radius: 50%;
+            background-color: #e6e6ec;
+          }
+
+          .info-header-time {
+            margin-left: toRem(14px);
+            color: #1a1a1a;
+            @include font(13px);
+          }
+        }
+        .info-table-body {
+          .info-table-row1,
+          .info-table-row2 {
+            display: flex;
+            flex-direction: row;
+            .info-table-item {
+              flex: 1;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: flex-start;
+              padding-bottom: toRem(30px);
+
+              .info-item-title {
+                margin-top: toRem(30px);
+                @include font(12px);
+                color: #808086;
+                line-height: 1;
+              }
+              .info-item-num {
+                margin-top: toRem(22px);
+                @include font(16px);
+                color: #1a1a1a;
+                line-height: 1;
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+  .product-info {
+    margin-top: toRem(20px);
+    background-color: #ffffff;
+    .account-info-title {
+      padding-top: toRem(40px);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 0;
+      .info-title-left {
+        display: flex;
+        align-items: center;
+        height: toRem(36px);
+        color: #1a1a1a;
+        background-color: rgba(51, 102, 204, 0.2);
+        border-left: toRem(8px) solid #3366cc;
+        line-height: 1;
+        padding-left: toRem(22px);
+        padding-right: toRem(22px);
+        @include font(16px);
+      }
+    }
+
+    .product-charts {
+      height: toRem(600px);
+      z-index: 999;
+    }
+
+    .chicang-chart-group {
+      .chicang-left-chart {
+        position: relative;
+        .chicang-choose-time {
+          position: absolute;
+          top: toRem(40px);
+          left: 0;
+          right: 0;
+          z-index: 1999;
+          height: toRem(58px);
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          margin: 0 toRem(30px);
+          padding: 0 toRem(20px);
+          background-color: #f7f7fa;
+          border-radius: toRem(4px);
+
+          .chicang-time-show {
+            color: #1a1a1a;
+            @include font(13px);
+          }
+
+          .chicang-time-icon {
+            height: toRem(33px);
+            width: toRem(35px);
+          }
+        }
+        .chicang-tab-group {
+          position: absolute;
+          z-index: 1999;
+          bottom: toRem(40px);
+          left: 0;
+          right: 0;
+          height: toRem(60px);
+          margin: 0 toRem(30px);
+          border-radius: toRem(4px);
+          border: 1px solid #c0c6cd;
+
+          .chicang-tab-wrapper {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            .chicang-tab-item {
+              flex: 1;
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              border-right: 1px solid #c0c6cd;
+              color: #808086;
+              @include font(14px);
+
+              &:last-child {
+                border: none;
+              }
+            }
+            .chicang-tab-selected {
+              background-color: #b6bbc2;
+              color: #ffffff;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}

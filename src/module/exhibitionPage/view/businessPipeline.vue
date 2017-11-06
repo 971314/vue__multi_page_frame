@@ -89,7 +89,7 @@
         this.getInvestorBusinessHall()
       },
       getInvestorBusinessHall() { //获取业务流水
-        this.$$axios({restUrl: 'investorBusinessHall', join: [1, [2, ['type', this.nowIndex - 1]]]})
+        this.$$axios({restUrl: 'investorBusinessHall', join: [this.userId, [this.investorId, ['type', this.nowIndex - 1]]]})
           .then((response) => {
             this.pipelineList.splice(0, this.pipelineList.length)
             response.map((item) => {

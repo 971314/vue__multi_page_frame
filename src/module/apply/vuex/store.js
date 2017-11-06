@@ -6,16 +6,9 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     //快速申请入口模板信息
-    apply: {
-      tplTypeName: '',//模板名称
-      tplTypeModel: '',//模板类型模式
-      tplType: '',//模板类型
-    },
+    apply: {},
     //快速申请指定模板信息
-    template: {
-      tplId: '',
-      tplName: ''
-    },
+    template: {},
     //任务信息
     task: {
       bizTypeId: '',
@@ -29,7 +22,13 @@ const store = new Vuex.Store({
     //业绩排行榜入口信息存储
     performanceData: {},
     //选择客户信息存储
-    chooseCustomer: {}
+    chooseCustomer: {},
+    // 审批人员信息
+    approvedPersonnelInfo: {},
+    //被申请对象
+    appObject: {
+      appObjectName: '选择申请人姓名'
+    }
   },
   mutations: {
     updataApply (state, payload) {
@@ -49,6 +48,12 @@ const store = new Vuex.Store({
     },
     updataChooseCustomer (state, payload) {
       state.chooseCustomer = payload.chooseCustomer
+    },
+    updataApprovedPersonnelInfo (state, payload) {
+      state.approvedPersonnelInfo = payload.approvedPersonnelInfo
+    },
+    updataAppObject (state, payload) {
+      state.appObject = payload.appObject
     }
   },
   actions: {
@@ -69,6 +74,12 @@ const store = new Vuex.Store({
     },
     updataChooseCustomer ({commit}, chooseCustomer) {
       commit({type: 'updataChooseCustomer', chooseCustomer: chooseCustomer})
+    },
+    updataApprovedPersonnelInfo ({commit}, approvedPersonnelInfo) {
+      commit({type: 'updataApprovedPersonnelInfo', approvedPersonnelInfo: approvedPersonnelInfo})
+    },
+    updataAppObject ({commit}, appObject) {
+      commit({type: 'updataAppObject', appObject: appObject})
     }
   }
 })

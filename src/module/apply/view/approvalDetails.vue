@@ -93,7 +93,7 @@
       revokedClick () {
         let _this = this
         _this.$loading.toggle(' ')
-        _this.$axios.delete(PBHttpServer.apply.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId + '/' + _this.task.bizTypeId + '/' + _this.task.bizId, {
+        _this.$axios.delete(PBHttpServer.apply.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId + '/' + _this.task.businessKeyId, {
           timeout: 10000,
           headers: {
             id: _this.info.token

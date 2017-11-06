@@ -1,44 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="470a25d4-2f62-4e97-aff3-8fd6fc115bc2" name="Default" comment="展业版提交">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/apply/images/icon_biaoQian.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/apply/images/icon_keHuChengJiaoChiCang.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/apply/images/icon_keHuShouXuFei.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/apply/images/icon_keHuShuLiang.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/apply/images/icon_keHuZiJing.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/apply/images/icon_yingYeBuKeHu.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/apply/images/icon_yingYeBuKeHuCengJiaoChiCang.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/apply/images/icon_yingYeBuShouXuFei.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/apply/images/icon_yingYeBuZiJin.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/apply/images/img14.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/conf/h5/apply.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/apply/style/chooseCustomer.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/apply/style/performanceClassification.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/apply/style/performanceList.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/apply/view/chooseCustomer.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/apply/view/performanceClassification.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/apply/view/performanceList.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/apply/apply.js" afterPath="$PROJECT_DIR$/src/module/apply/apply.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/apply/router/index.js" afterPath="$PROJECT_DIR$/src/module/apply/router/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/apply/style/applyFill.scss" afterPath="$PROJECT_DIR$/src/module/apply/style/applyFill.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/apply/style/approvalDetails.scss" afterPath="$PROJECT_DIR$/src/module/apply/style/approvalDetails.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/apply/style/index.scss" afterPath="$PROJECT_DIR$/src/module/apply/style/index.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/apply/style/tool/initialize.scss" afterPath="$PROJECT_DIR$/src/module/apply/style/tool/initialize.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/apply/style/tool/mixin.scss" afterPath="$PROJECT_DIR$/src/module/apply/style/tool/mixin.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/apply/utils/methods.js" afterPath="$PROJECT_DIR$/src/module/apply/utils/methods.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/apply/view/applyFast.vue" afterPath="$PROJECT_DIR$/src/module/apply/view/applyFast.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/apply/view/applyFill.vue" afterPath="$PROJECT_DIR$/src/module/apply/view/applyFill.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/apply/view/applyOpt.vue" afterPath="$PROJECT_DIR$/src/module/apply/view/applyOpt.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/apply/view/approvalDetails.vue" afterPath="$PROJECT_DIR$/src/module/apply/view/approvalDetails.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/apply/view/approvalIndex.vue" afterPath="$PROJECT_DIR$/src/module/apply/view/approvalIndex.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/apply/view/approvalProcess.vue" afterPath="$PROJECT_DIR$/src/module/apply/view/approvalProcess.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/apply/view/bindCRM.vue" afterPath="$PROJECT_DIR$/src/module/apply/view/bindCRM.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/apply/view/logIn.vue" afterPath="$PROJECT_DIR$/src/module/apply/view/logIn.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/apply/view/setTime.vue" afterPath="$PROJECT_DIR$/src/module/apply/view/setTime.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/apply/vuex/store.js" afterPath="$PROJECT_DIR$/src/module/apply/vuex/store.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/module/apply/style/rankingList.scss" afterPath="$PROJECT_DIR$/src/module/apply/style/equityRanking.scss" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/module/apply/view/rankingList.vue" afterPath="$PROJECT_DIR$/src/module/apply/view/equityRanking.vue" />
+    <list default="true" readonly="true" id="470a25d4-2f62-4e97-aff3-8fd6fc115bc2" name="Default" comment="展业版整理">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/config/apply" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/annex_close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/avatar_img.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/baoZhengJingYouHui.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/by.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/by1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/by2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/fuJian.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/gengDuo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/icon_biaoQian.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/icon_calendar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/icon_keHuChengJiaoChiCang.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/icon_keHuShouXuFei.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/icon_keHuShuLiang.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/icon_keHuZiJing.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/icon_moBanShuoMing.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/icon_tuPian.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/icon_yingYeBuKeHu.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/icon_yingYeBuKeHuCengJiaoChiCang.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/icon_yingYeBuShouXuFei.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/icon_yingYeBuZiJin.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/icon_zhuYi.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/img14.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/jiaoYiSuoFanHuanTiCheng@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/liXiTiCheng.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/ranking1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/ranking2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/ranking3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/shouXuFeiLvYouHui.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/stockOptions_baoZhengJing.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/stockOptions_shouXuFei.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/images/apply/tiChengBiLi.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/router/apply" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/module/apply" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/view/apply" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/vuex/modules/apply" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/annex_close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/avatar_img.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/baoZhengJingYouHui.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/by.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/by1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/by2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/fuJian.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/gengDuo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/icon_biaoQian.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/icon_calendar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/icon_keHuChengJiaoChiCang.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/icon_keHuShouXuFei.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/icon_keHuShuLiang.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/icon_keHuZiJing.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/icon_moBanShuoMing.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/icon_tuPian.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/icon_yingYeBuKeHu.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/icon_yingYeBuKeHuCengJiaoChiCang.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/icon_yingYeBuShouXuFei.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/icon_yingYeBuZiJin.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/icon_zhuYi.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/img14.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/jiaoYiSuoFanHuanTiCheng@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/liXiTiCheng.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/ranking1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/ranking2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/ranking3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/shouXuFeiLvYouHui.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/stockOptions_baoZhengJing.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/stockOptions_shouXuFei.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/cmHelper/images/apply/tiChengBiLi.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/config/apply/retUrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/router/apply/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/applyFast.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/applyFill.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/applyOpt.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/approvalDetails.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/approvalIndex.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/approvalProcess.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/bindCRM.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/chooseCustomer.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/equityRanking.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/index.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/logIn.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/setTime.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/tool/color.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/tool/font.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/view/apply/applyFast.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/view/apply/applyFill.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/view/apply/applyOpt.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/view/apply/approvalDetails.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/view/apply/approvalIndex.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/view/apply/approvalProcess.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/view/apply/bindCRM.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/view/apply/chooseCustomer.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/view/apply/equityRanking.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/view/apply/logIn.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/view/apply/setTime.vue" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/module/cmHelper/vuex/modules/apply/store.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/cmHelper/config/index.js" afterPath="$PROJECT_DIR$/src/module/cmHelper/config/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/cmHelper/router/exhibitionPage/index.js" afterPath="$PROJECT_DIR$/src/module/cmHelper/router/exhibitionPage/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/cmHelper/router/index.js" afterPath="$PROJECT_DIR$/src/module/cmHelper/router/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/cmHelper/style/index.scss" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/index.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/cmHelper/style/tool/index.scss" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/tool/index.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/cmHelper/style/tool/initialize.scss" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/tool/initialize.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/cmHelper/style/tool/mixin.scss" afterPath="$PROJECT_DIR$/src/module/cmHelper/style/tool/mixin.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/cmHelper/utils/mixins.js" afterPath="$PROJECT_DIR$/src/module/cmHelper/utils/mixins.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/cmHelper/view/exhibitionPage/getSex.vue" afterPath="$PROJECT_DIR$/src/module/cmHelper/view/exhibitionPage/getSex.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/module/cmHelper/vuex/index.js" afterPath="$PROJECT_DIR$/src/module/cmHelper/vuex/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -52,359 +124,195 @@
   </component>
   <component name="ChangesViewManager" show_ignored="true" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5644044">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="performanceList.vue" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/module/apply/view/performanceList.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="95">
-                  <caret line="211" column="61" lean-forward="false" selection-start-line="211" selection-start-column="52" selection-end-line="211" selection-end-column="61" />
-                  <folding>
-                    <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <element signature="n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <element signature="n#div#2;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <element signature="n#div#6;n#div#0;n#template#0;n#!!top" expanded="false" />
-                    <element signature="e#4382#6252#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="news_DCD.vue" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/module/indNews/view/news_DCD.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="384">
-                  <caret line="117" column="47" lean-forward="false" selection-start-line="117" selection-start-column="47" selection-end-line="117" selection-end-column="47" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="applyFill.vue" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/module/apply/view/applyFill.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-196">
-                  <caret line="23" column="13" lean-forward="true" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/module/apply/index.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="approvalDetails.scss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/module/apply/style/approvalDetails.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="172">
-                  <caret line="67" column="26" lean-forward="false" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="equityRanking.vue" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/module/apply/view/equityRanking.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="129">
-                  <caret line="79" column="20" lean-forward="false" selection-start-line="79" selection-start-column="20" selection-end-line="79" selection-end-column="20" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="equityRanking.scss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/module/apply/style/equityRanking.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="32">
-                  <caret line="1" column="19" lean-forward="false" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="19" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="approvalDetails.vue" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/module/apply/view/approvalDetails.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="162">
-                  <caret line="45" column="36" lean-forward="false" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
-                  <folding>
-                    <element signature="e#311#588#0" expanded="false" />
-                    <marker date="1509585866579" expanded="true" signature="3169:3187" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="performanceClassification.scss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/module/apply/style/performanceClassification.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="64">
-                  <caret line="2" column="15" lean-forward="false" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="performanceList.scss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/module/apply/style/performanceList.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="453">
-                  <caret line="94" column="9" lean-forward="false" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
-                  <folding>
-                    <element signature="e#891#924#0" expanded="false" />
-                    <element signature="e#966#1325#0" expanded="false" />
-                    <element signature="e#1926#2159#0" expanded="false" />
-                    <element signature="e#2184#2217#0" expanded="false" />
-                    <element signature="e#2249#3406#0" expanded="false" />
-                    <element signature="e#2351#3402#0" expanded="false" />
-                    <element signature="e#2563#3205#0" expanded="false" />
-                    <element signature="e#2577#2686#0" expanded="false" />
-                    <element signature="e#2714#3101#0" expanded="false" />
-                    <element signature="e#3126#3197#0" expanded="false" />
-                    <element signature="e#3231#3396#0" expanded="false" />
-                    <element signature="e#3434#4448#0" expanded="false" />
-                    <element signature="e#3613#4444#0" expanded="false" />
-                    <element signature="e#3796#4356#0" expanded="false" />
-                    <element signature="e#4012#4082#0" expanded="false" />
-                    <element signature="e#4108#4216#0" expanded="false" />
-                    <element signature="e#4238#4348#0" expanded="false" />
-                    <element signature="e#4379#4438#0" expanded="false" />
-                    <element signature="e#4398#4430#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="ccSetTime.vue" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/module/exhibitionPage/view/ccSetTime.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="352">
-                  <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="logIn.scss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/module/apply/style/logIn.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="bindCRM.scss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/module/apply/style/bindCRM.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="bindCRM.vue" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/module/apply/view/bindCRM.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="385">
-                  <caret line="72" column="13" lean-forward="true" selection-start-line="72" selection-start-column="13" selection-end-line="72" selection-end-column="13" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="store.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/module/exhibitionPage/vuex/store.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="384">
-                  <caret line="40" column="19" lean-forward="false" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="19" />
-                  <folding>
-                    <element signature="e#0#21#0" expanded="true" />
-                    <element signature="e#190#265#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="mixins.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/module/exhibitionPage/utils/mixins.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="320">
-                  <caret line="83" column="60" lean-forward="false" selection-start-line="83" selection-start-column="19" selection-end-line="83" selection-end-column="60" />
-                  <folding>
-                    <element signature="e#198#249#0" expanded="false" />
-                    <element signature="e#211#245#0" expanded="false" />
-                    <element signature="e#339#2359#0" expanded="false" />
-                    <element signature="e#496#694#0" expanded="false" />
-                    <element signature="e#539#686#0" expanded="false" />
-                    <element signature="e#834#869#0" expanded="false" />
-                    <element signature="e#898#1506#0" expanded="false" />
-                    <element signature="e#928#1498#0" expanded="false" />
-                    <element signature="e#1000#1435#0" expanded="false" />
-                    <element signature="e#1053#1423#0" expanded="false" />
-                    <element signature="e#1129#1347#0" expanded="false" />
-                    <element signature="e#1162#1232#0" expanded="false" />
-                    <element signature="e#1238#1307#0" expanded="false" />
-                    <element signature="e#1353#1409#0" expanded="false" />
-                    <element signature="e#1441#1488#0" expanded="false" />
-                    <element signature="e#1674#2352#0" expanded="false" />
-                    <element signature="e#1794#2044#0" expanded="false" />
-                    <element signature="e#1875#1950#0" expanded="false" />
-                    <element signature="e#2053#2343#0" expanded="false" />
-                    <element signature="e#2106#2161#0" expanded="false" />
-                    <element signature="e#2377#2434#0" expanded="false" />
-                    <element signature="e#2451#2504#0" expanded="false" />
-                    <element signature="e#2584#3773#0" expanded="false" />
-                    <element signature="e#2692#2775#0" expanded="false" />
-                    <element signature="e#2960#3599#0" expanded="false" />
-                    <element signature="e#3645#3746#0" expanded="false" />
-                    <element signature="e#3800#4582#0" expanded="false" />
-                    <element signature="e#4155#4202#0" expanded="false" />
-                    <element signature="e#4236#4352#0" expanded="false" />
-                    <element signature="e#4372#4466#0" expanded="false" />
-                    <element signature="e#4515#4555#0" expanded="false" />
-                    <element signature="e#4610#6318#0" expanded="false" />
-                    <element signature="e#5027#5074#0" expanded="false" />
-                    <element signature="e#5128#5170#0" expanded="false" />
-                    <element signature="e#5207#5249#0" expanded="false" />
-                    <element signature="e#5301#5361#0" expanded="false" />
-                    <element signature="e#5416#5465#0" expanded="false" />
-                    <element signature="e#5471#5531#0" expanded="false" />
-                    <element signature="e#5820#5873#0" expanded="false" />
-                    <element signature="e#5879#5933#0" expanded="false" />
-                    <element signature="e#6116#6165#0" expanded="false" />
-                    <element signature="e#6195#6241#0" expanded="false" />
-                    <element signature="e#6247#6292#0" expanded="false" />
-                    <element signature="e#6585#6679#0" expanded="false" />
-                    <element signature="e#6718#6817#0" expanded="false" />
-                    <marker date="1509607147320" expanded="false" signature="6344:7009" ph="{...}" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ccSetTime.scss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/module/exhibitionPage/style/ccSetTime.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="389">
-                  <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-                  <folding>
-                    <element signature="e#1279#1660#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="index.scss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/module/exhibitionPage/style/index.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="385">
-                  <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="color.scss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/module/apply/style/tool/color.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="15" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="15" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="mixin.scss" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/module/exhibitionPage/style/tool/mixin.scss">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="192">
-                  <caret line="28" column="29" lean-forward="false" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="29" />
-                  <folding>
-                    <element signature="e#24#170#0" expanded="false" />
-                    <element signature="e#73#109#0" expanded="false" />
-                    <element signature="e#132#168#0" expanded="false" />
-                    <element signature="e#193#225#0" expanded="false" />
-                    <element signature="e#243#389#0" expanded="false" />
-                    <element signature="e#255#372#0" expanded="false" />
-                    <element signature="e#421#801#0" expanded="false" />
-                    <element signature="e#479#799#0" expanded="false" />
-                    <element signature="e#494#795#0" expanded="false" />
-                    <element signature="e#830#1207#0" expanded="false" />
-                    <element signature="e#888#1205#0" expanded="false" />
-                    <element signature="e#903#1201#0" expanded="false" />
-                    <element signature="e#1232#1649#0" expanded="false" />
-                    <element signature="e#1290#1647#0" expanded="false" />
-                    <element signature="e#1305#1643#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="approvalIndex.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/approvalIndex.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-28">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="approvalDetails.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/approvalDetails.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-28">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="applyOpt.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/applyOpt.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="20" column="50" lean-forward="false" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="applyFill.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/applyFill.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="64" column="50" lean-forward="false" selection-start-line="64" selection-start-column="50" selection-end-line="64" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="applyFast.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/applyFast.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addAndEdit.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/module/followUpRecord/style/addAndEdit.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="approProcess.scss" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/module/followUpRecord/style/approProcess.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="512">
+              <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/module/followUpRecord/style/list.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="39" lean-forward="false" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cmTrends.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/module/cmHelperIndex/style/cmTrends.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="64">
+              <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+              <folding>
+                <element signature="e#4#35#0" expanded="false" />
+                <element signature="e#60#689#0" expanded="false" />
+                <element signature="e#128#686#0" expanded="false" />
+                <element signature="e#210#375#0" expanded="false" />
+                <element signature="e#394#682#0" expanded="false" />
+                <element signature="e#701#1704#0" expanded="false" />
+                <element signature="e#744#1141#0" expanded="false" />
+                <element signature="e#815#900#0" expanded="false" />
+                <element signature="e#905#1137#0" expanded="false" />
+                <element signature="e#1150#1701#0" expanded="false" />
+                <element signature="e#1221#1649#0" expanded="false" />
+                <element signature="e#1358#1644#0" expanded="false" />
+                <element signature="e#1417#1638#0" expanded="false" />
+                <element signature="e#1516#1631#0" expanded="false" />
+                <element signature="e#1669#1697#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="staffInfo.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/module/followUpRecord/style/staffInfo.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#10#4539#0" expanded="false" />
+                <element signature="e#26#4527#0" expanded="false" />
+                <element signature="e#45#917#0" expanded="false" />
+                <element signature="e#65#907#0" expanded="false" />
+                <element signature="e#143#810#0" expanded="false" />
+                <element signature="e#349#792#0" expanded="false" />
+                <element signature="e#376#449#0" expanded="false" />
+                <element signature="e#487#610#0" expanded="false" />
+                <element signature="e#647#770#0" expanded="false" />
+                <element signature="e#843#893#0" expanded="false" />
+                <element signature="e#946#4521#0" expanded="false" />
+                <element signature="e#982#4511#0" expanded="false" />
+                <element signature="e#1167#3110#0" expanded="false" />
+                <element signature="e#1409#2855#0" expanded="false" />
+                <element signature="e#1573#2275#0" expanded="false" />
+                <element signature="e#1828#2124#0" expanded="false" />
+                <element signature="e#2162#2249#0" expanded="false" />
+                <element signature="e#2307#2496#0" expanded="false" />
+                <element signature="e#2530#2833#0" expanded="false" />
+                <element signature="e#2891#3092#0" expanded="false" />
+                <element signature="e#3146#4497#0" expanded="false" />
+                <element signature="e#3444#3596#0" expanded="false" />
+                <element signature="e#3628#4129#0" expanded="false" />
+                <element signature="e#4162#4479#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="XSLT Stylesheet" />
         <option value="CSS File" />
         <option value="SCSS" />
         <option value="Json File" />
-        <option value="HTML File" />
         <option value="Vue File" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>type</find>
-      <find>k</find>
-      <find>开户数</find>
-      <find>margin-bottom: 1px;</find>
-      <find>modules</find>
-      <find>details_schedule</find>
-      <find>rankingList</find>
-      <find>details_info</find>
-      <find>button</find>
-      <find>slideToggleTrans</find>
-      <find>details_remarks</find>
-      <find>fill_group</find>
-      <find>fill_type</find>
-      <find>iconClick</find>
-      <find>showCalendar</find>
-      <find>cancelmodal</find>
-      <find>data:image/png;</find>
-      <find>data:image/png;base64,</find>
-      <find>.details_schedule</find>
-      <find>performance_list</find>
-      <find>util</find>
-      <find>performanceData</find>
-      <find>customerInfo</find>
-      <find>mint-cell</find>
-      <find>changeHandle</find>
-      <find>deptJson</find>
       <find>initial</find>
       <find>$font</find>
       <find>$colo</find>
       <find>performance_tab3</find>
+      <find>selectDept</find>
+      <find>performance_list</find>
+      <find>8080</find>
+      <find>WebpackDevServer</find>
+      <find>chromedriver</find>
+      <find>apply</find>
+      <find>getAttribute</find>
+      <find>updataApprovedPersonnelInfo</find>
+      <find>$$timeFormate</find>
+      <find>approvalSubmit</find>
+      <find>mapState</find>
+      <find>选择申请人姓名</find>
+      <find>appObject</find>
+      <find>investorType</find>
+      <find>config</find>
+      <find>../view/</find>
+      <find>img</find>
+      <find>...mapState</find>
+      <find>dispatch</find>
+      <find>@import '../../adequacy/style/_selectDept.scss</find>
+      <find>...</find>
+      <find>../images/</find>
+      <find>approvalLog</find>
+      <find>performanceData</find>
+      <find>urlList</find>
+      <find>url</find>
     </findStrings>
     <replaceStrings>
       <replace>tplTypeName</replace>
@@ -413,6 +321,8 @@
       <replace>柜台不支持此类型合约</replace>
       <replace>width</replace>
       <replace>td</replace>
+      <replace>../../view/apply/</replace>
+      <replace>../../images/apply/</replace>
     </replaceStrings>
     <dirStrings>
       <dir>E:\svn\PbRes\DevelopV3.1\src\assets\scss</dir>
@@ -426,65 +336,68 @@
       <dir>E:\svn\PbRes\DevelopV3.1\src\module</dir>
       <dir>E:\svn\PbRes\DevelopV3.1\src\module\apply\style</dir>
       <dir>E:\svn\PbRes\DevelopV3.1\src\module\apply\view</dir>
+      <dir>E:\svn\PbRes\DevelopV3.1\static</dir>
       <dir>E:\svn\PbRes\DevelopV3.1</dir>
       <dir>E:\svn\PbRes\DevelopV3.1\build</dir>
-      <dir>E:\svn\PbRes\DevelopV3.1\static</dir>
+      <dir>E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\apply</dir>
+      <dir>E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage</dir>
+      <dir>E:\svn\PbRes\DevelopV3.1\src\module\cmHelper</dir>
     </dirStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/module/mine/view/mine.vue" />
-        <option value="$PROJECT_DIR$/src/module/apply/style/approvalProcess.scss" />
-        <option value="$PROJECT_DIR$/src/module/apply/style/applyOpt.scss" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/module/apply/index.vue" />
-        <option value="$PROJECT_DIR$/src/module/apply/view/1.vue" />
-        <option value="$PROJECT_DIR$/src/module/apply/style/rankingList.scss" />
-        <option value="$PROJECT_DIR$/src/module/apply/style/setTime.css" />
-        <option value="$PROJECT_DIR$/static/conf/h5/cfHttpServer.js" />
-        <option value="$PROJECT_DIR$/src/assets/conf/h5/cfHttpServer.js" />
-        <option value="$PROJECT_DIR$/src/module/apply/style/setTime.scss" />
-        <option value="$PROJECT_DIR$/src/module/apply/style/logIn.scss" />
-        <option value="$PROJECT_DIR$/src/module/apply/style/bindCRM.scss" />
-        <option value="$PROJECT_DIR$/src/module/apply/config/retUrl.js" />
-        <option value="$PROJECT_DIR$/src/module/apply/utils/datas.js" />
-        <option value="$PROJECT_DIR$/src/module/apply/view/rankingList.vue" />
-        <option value="$PROJECT_DIR$/src/module/apply/apply.js" />
-        <option value="$PROJECT_DIR$/src/module/apply/view/performanceRanking.vue" />
-        <option value="$PROJECT_DIR$/src/module/apply/style/performanceRanking.scss" />
-        <option value="$PROJECT_DIR$/src/assets/conf/h5/apply.json" />
-        <option value="$PROJECT_DIR$/src/module/apply/style/tool/mixin.scss" />
-        <option value="$PROJECT_DIR$/src/module/apply/style/11.html" />
-        <option value="$PROJECT_DIR$/src/module/apply/style/tool/initialize.scss" />
-        <option value="$PROJECT_DIR$/src/module/apply/style/applyFill.scss" />
-        <option value="$PROJECT_DIR$/src/module/apply/view/bindCRM.vue" />
-        <option value="$PROJECT_DIR$/src/module/apply/view/logIn.vue" />
-        <option value="$PROJECT_DIR$/src/module/apply/view/performanceClassification.vue" />
-        <option value="$PROJECT_DIR$/src/module/apply/view/setTime.vue" />
-        <option value="$PROJECT_DIR$/src/module/apply/view/applyOpt.vue" />
-        <option value="$PROJECT_DIR$/src/module/apply/view/approvalIndex.vue" />
-        <option value="$PROJECT_DIR$/src/module/apply/view/approvalProcess.vue" />
-        <option value="$PROJECT_DIR$/src/module/apply/view/applyFast.vue" />
-        <option value="$PROJECT_DIR$/src/module/apply/style/approvalDetails.scss" />
-        <option value="$PROJECT_DIR$/src/module/apply/view/approvalDetails.vue" />
-        <option value="$PROJECT_DIR$/src/module/apply/style/performanceList.scss" />
-        <option value="$PROJECT_DIR$/src/module/apply/view/performanceList.vue" />
-        <option value="$PROJECT_DIR$/src/module/apply/view/equityRanking.vue" />
-        <option value="$PROJECT_DIR$/src/module/apply/style/equityRanking.scss" />
-        <option value="$PROJECT_DIR$/src/module/apply/router/index.js" />
         <option value="$PROJECT_DIR$/src/module/apply/style/index.scss" />
-        <option value="$PROJECT_DIR$/src/module/apply/style/chooseCustomer.scss" />
-        <option value="$PROJECT_DIR$/src/module/apply/view/applyFill.vue" />
-        <option value="$PROJECT_DIR$/src/module/apply/vuex/store.js" />
-        <option value="$PROJECT_DIR$/src/module/apply/utils/methods.js" />
-        <option value="$PROJECT_DIR$/src/module/apply/view/chooseCustomer.vue" />
         <option value="$PROJECT_DIR$/src/module/exhibitionPage/router/index.js" />
         <option value="$PROJECT_DIR$/src/module/exhibitionPage/utils/mixins.js" />
         <option value="$PROJECT_DIR$/src/module/exhibitionPage/style/index.scss" />
         <option value="$PROJECT_DIR$/src/module/exhibitionPage/style/ccSetTime.scss" />
         <option value="$PROJECT_DIR$/src/module/exhibitionPage/vuex/store.js" />
         <option value="$PROJECT_DIR$/src/module/exhibitionPage/view/ccSetTime.vue" />
+        <option value="$PROJECT_DIR$/src/module/apply/view/chooseCustomer.vue" />
+        <option value="$PROJECT_DIR$/src/module/apply/view/setTime.vue" />
+        <option value="$PROJECT_DIR$/src/module/apply/style/chooseCustomer.scss" />
+        <option value="$PROJECT_DIR$/src/module/apply/view/applyOpt.vue" />
+        <option value="$PROJECT_DIR$/src/module/apply/0.html" />
+        <option value="$PROJECT_DIR$/src/module/apply/style/applyOpt.scss" />
+        <option value="$PROJECT_DIR$/src/module/apply/config/retUrl.js" />
+        <option value="$PROJECT_DIR$/src/module/apply/view/performanceList.vue" />
+        <option value="$PROJECT_DIR$/src/module/apply/utils/methods.js" />
+        <option value="$PROJECT_DIR$/src/module/apply/vuex/store.js" />
+        <option value="$PROJECT_DIR$/src/module/apply/view/approvalDetails.vue" />
+        <option value="$PROJECT_DIR$/src/module/apply/view/approvalIndex.vue" />
+        <option value="$PROJECT_DIR$/src/module/apply/view/applyFast.vue" />
+        <option value="$PROJECT_DIR$/src/module/apply/view/applyFill.vue" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/config/index.js" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/vuex/index.js" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/router/index.js" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/style/tool/index.scss" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/style/tool/mixin.scss" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/style/tool/initialize.scss" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/style/index.scss" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/view/apply/performanceList.vue" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/view/apply/approvalDetails.vue" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/view/apply/chooseCustomer.vue" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/view/apply/performanceClassification.vue" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/view/exhibitionPage/getSex.vue" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/view/apply/applyFast.vue" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/view/apply/applyFill.vue" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/view/apply/applyOpt.vue" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/view/apply/approvalIndex.vue" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/view/apply/equityRanking.vue" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/utils/mixins.js" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/router/exhibitionPage/index.js" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/router/apply/index.js" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/vuex/modules/apply/store.js" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/view/apply/logIn.vue" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/index.scss" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/bindCRM.scss" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/setTime.scss" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/chooseCustomer.scss" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/equityRanking.scss" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/approvalProcess.scss" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/applyOpt.scss" />
+        <option value="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/applyFill.scss" />
       </list>
     </option>
   </component>
@@ -525,6 +438,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -535,166 +449,30 @@
             <path>
               <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
               <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="scss" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="scss" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
               <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="module" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="apply" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="apply" type="462c0819:PsiDirectoryNode" />
-              <item name="style" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="apply" type="462c0819:PsiDirectoryNode" />
-              <item name="style" type="462c0819:PsiDirectoryNode" />
-              <item name="tool" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="apply" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="exhibitionPage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="exhibitionPage" type="462c0819:PsiDirectoryNode" />
-              <item name="router" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="exhibitionPage" type="462c0819:PsiDirectoryNode" />
-              <item name="style" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="exhibitionPage" type="462c0819:PsiDirectoryNode" />
-              <item name="style" type="462c0819:PsiDirectoryNode" />
-              <item name="tool" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="exhibitionPage" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="exhibitionPage" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="exhibitionPage" type="462c0819:PsiDirectoryNode" />
-              <item name="vuex" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="jgdx" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="jgdx" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
               <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="conf" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="reference.idesettings.emmet.jsx" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="E:/ml/ex" />
+    <property name="last_opened_file_path" value="E:/DevelopV3.1" />
     <property name="nodejs_interpreter_path" value="D:/Program Files/nodejs/node" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -709,16 +487,16 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\tool" />
+      <recent name="E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module\apply" />
+      <recent name="E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\apply" />
+      <recent name="E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\router\apply" />
+      <recent name="E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\apply" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\svn\PbRes\DevelopV3.1\src\module\apply\utils" />
       <recent name="E:\svn\PbRes\DevelopV3.1\src\module\apply" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\svn\PbRes\DevelopV3.1\src\module\exhibitionPage\style" />
-      <recent name="E:\svn\PbRes\DevelopV3.1\src\module\exhibitionPage\view" />
-      <recent name="E:\svn\PbRes\DevelopV3.1\static\apply\images" />
-      <recent name="E:\svn\PbRes\DevelopV3.1\src\module\apply\images" />
-      <recent name="E:\svn\PbRes\DevelopV3.1\src\module\apply\style" />
     </key>
   </component>
   <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
@@ -735,8 +513,13 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="svn" revision="4136">E:\svn\PbRes\DevelopV3.1\src\module\exhibitionPage\utils\mixins.js</PATH>
-          <PATH vcs="svn" revision="4136">E:\svn\PbRes\DevelopV3.1\src\module\exhibitionPage\view\accountOverView.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\exhibitionPage\view\potentialCustomerInfo.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\exhibitionPage\view\followUpRecord.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\exhibitionPage\style\potentialCustomerInfo.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\exhibitionPage\utils\mixins.js</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\exhibitionPage\config\retUrl.js</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\package.json</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\gulpfile.js</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -744,6 +527,90 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\schedule.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\customerInfo.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\customer.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\router</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\router\exhibitionPage</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\tool</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\tool\initialize.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\tool\placeholder.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\tool\mixin.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\tool\index.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\plugins</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\plugins\swiper.min.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module\exhibitionPage</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module\exhibitionPage\schedule.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module\exhibitionPage\customerInfo.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module\exhibitionPage\noPotentialCustomer.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module\exhibitionPage\getSex.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module\exhibitionPage\ccSetTime.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module\exhibitionPage\businessPipeline.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module\exhibitionPage\customer.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module\exhibitionPage\potentialCustomer.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module\exhibitionPage\accountOverView.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module\exhibitionPage\followUpRecord.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\utils</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\utils\filters.js</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\Index.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\components</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\components\testComponent.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\config</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\config\exhibitionPage</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\customer-woman@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\newfollowUp@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\message@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\messageTips@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\sandianicon@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\NEW@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\overTime@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\rili@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\mobilePhone@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\musticon@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\showdetail@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\gougou@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\tabtips@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\1-star@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\2-star@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\3-star@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\customer-man@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\customerBG@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\4-star@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\5-star@2x.png</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\vuex</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\vuex\modules</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\vuex\modules\exhibitionPage</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\config\exhibitionPage\retUrl.js</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\vuex\index.js</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\assets\scss\modules\cmHelper.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\exhibitionPage\view\potentialCustomerEdit.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\exhibitionPage\view\potentialCustomerAdd.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\cmHelper.js</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\followUpRecord.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\potentialCustomerEdit.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\potentialCustomerAdd.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\potentialCustomerInfo.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\noPotentialCustomer.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\getSex.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\ccSetTime.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\businessPipeline.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\potentialCustomer.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\accountOverView.vue</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\router\exhibitionPage\index.js</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\router\index.js</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\index.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module\exhibitionPage\potentialCustomerInfo.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module\exhibitionPage\index.scss</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\utils\mixins.js</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\components\index.js</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\config\index.js</PATH>
+          <PATH vcs="svn" revision="4151">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\vuex\modules\exhibitionPage\store.js</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -891,7 +758,9 @@
       <workItem from="1509324757894" duration="20523000" />
       <workItem from="1509410632639" duration="30245000" />
       <workItem from="1509496536917" duration="24396000" />
-      <workItem from="1509584956315" duration="15427000" />
+      <workItem from="1509584956315" duration="20408000" />
+      <workItem from="1509669159271" duration="16435000" />
+      <workItem from="1509929710610" duration="18358000" />
     </task>
     <task id="LOCAL-00001">
       <created>1508149067144</created>
@@ -928,34 +797,41 @@
       <option name="project" value="LOCAL" />
       <updated>1509608294284</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="展业版提交">
+      <created>1509949188668</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1509949188668</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="292681000" />
+    <option name="totallyTimeSpent" value="332455000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23919916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35211268" sideWeight="0.5337197" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.64857745" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.49789253" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.35932562" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.6406744" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35211268" sideWeight="0.45785037" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17492098" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35211268" sideWeight="0.46628028" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997833" sideWeight="0.49789253" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.49789253" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -988,10 +864,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="某些柜台不支持的合约筛选" />
-    <MESSAGE value="展业版提交" />
     <MESSAGE value="展业版更新" />
     <MESSAGE value="持仓时间页面" />
-    <option name="LAST_COMMIT_MESSAGE" value="持仓时间页面" />
+    <MESSAGE value="展业版提交" />
+    <MESSAGE value="展业版整理" />
+    <option name="LAST_COMMIT_MESSAGE" value="展业版整理" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1000,557 +877,317 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/module/apply/style/approvalIndex.scss">
+    <entry file="file://$PROJECT_DIR$/src/module/apply/utils/datas.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="96">
+          <caret line="3" column="6" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="11" selection-end-column="7" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/view/applyOpt.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="53" column="19" lean-forward="false" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
-          <folding>
-            <element signature="e#404#460#0" expanded="false" />
-            <element signature="e#476#548#0" expanded="false" />
-            <element signature="e#565#1238#0" expanded="false" />
-            <element signature="e#1300#1513#0" expanded="false" />
-            <element signature="e#1554#1689#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/view/approvalIndex.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="58" column="16" lean-forward="true" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
-          <folding>
-            <element signature="n#common-nav#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#span#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#946#1024#0" expanded="false" />
-            <element signature="e#961#1018#0" expanded="false" />
-            <element signature="e#1040#1091#0" expanded="false" />
-            <element signature="e#1060#1084#0" expanded="false" />
-            <element signature="e#1108#1161#0" expanded="false" />
-            <element signature="e#1180#1210#0" expanded="false" />
-            <element signature="e#1263#1327#0" expanded="false" />
-            <element signature="e#1367#1587#0" expanded="false" />
-            <element signature="e#1627#2291#0" expanded="false" />
-            <element signature="e#1818#1897#0" expanded="false" />
-            <element signature="e#1854#1896#0" expanded="false" />
-            <element signature="e#1914#2157#0" expanded="false" />
-            <element signature="e#2036#2092#0" expanded="false" />
-            <element signature="e#2098#2147#0" expanded="false" />
-            <element signature="e#2174#2282#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/view/approvalProcess.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="46" column="16" lean-forward="true" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
-          <folding>
-            <element signature="n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#common-nav#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#1262#1318#0" expanded="false" />
-            <element signature="e#1277#1312#0" expanded="false" />
-            <element signature="e#1335#1343#0" expanded="false" />
-            <element signature="e#1362#1390#0" expanded="false" />
-            <element signature="e#1441#2191#0" expanded="false" />
-            <element signature="e#1715#1798#0" expanded="false" />
-            <element signature="e#1751#1797#0" expanded="false" />
-            <element signature="e#1815#2057#0" expanded="false" />
-            <element signature="e#1937#1992#0" expanded="false" />
-            <element signature="e#1998#2047#0" expanded="false" />
-            <element signature="e#2074#2182#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/view/logIn.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="88" column="13" lean-forward="false" selection-start-line="88" selection-start-column="13" selection-end-line="88" selection-end-column="13" />
-          <folding>
-            <element signature="n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#common-nav#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#605#726#0" expanded="false" />
-            <element signature="e#620#720#0" expanded="false" />
-            <element signature="e#739#842#0" expanded="false" />
-            <element signature="e#761#791#0" expanded="false" />
-            <element signature="e#806#836#0" expanded="false" />
-            <element signature="e#877#884#0" expanded="false" />
-            <element signature="e#903#957#0" expanded="false" />
-            <element signature="e#974#1211#0" expanded="false" />
-            <element signature="e#1122#1205#0" expanded="false" />
-            <element signature="e#1255#2597#0" expanded="false" />
-            <element signature="e#1325#2433#0" expanded="false" />
-            <element signature="e#1472#1598#0" expanded="false" />
-            <element signature="e#1600#1689#0" expanded="false" />
-            <element signature="e#1638#1688#0" expanded="false" />
-            <element signature="e#1706#2152#0" expanded="false" />
-            <element signature="e#1836#2081#0" expanded="false" />
-            <element signature="e#1871#1973#0" expanded="false" />
-            <element signature="e#1979#2067#0" expanded="false" />
-            <element signature="e#2087#2140#0" expanded="false" />
-            <element signature="e#2169#2422#0" expanded="false" />
-            <element signature="e#2261#2318#0" expanded="false" />
-            <element signature="e#2324#2381#0" expanded="false" />
-            <element signature="e#2467#2515#0" expanded="false" />
-            <element signature="e#2542#2589#0" expanded="false" />
-            <element signature="e#2628#2772#0" expanded="false" />
-            <element signature="e#2671#2714#0" expanded="false" />
-            <element signature="e#2720#2764#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/view/setTime.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="54" column="12" lean-forward="false" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
-          <folding>
-            <element signature="n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#common-nav#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#common-nav#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#a#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#945#1112#0" expanded="false" />
-            <element signature="e#960#1106#0" expanded="false" />
-            <element signature="e#1008#1098#0" expanded="false" />
-            <element signature="e#1129#1137#0" expanded="false" />
-            <element signature="e#1156#1269#0" expanded="false" />
-            <element signature="e#1179#1263#0" expanded="false" />
-            <element signature="e#1286#1294#0" expanded="false" />
-            <element signature="e#1345#1571#0" expanded="false" />
-            <element signature="e#1366#1462#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/style/applyFast.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="8" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/pbApp.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="12" column="1224" lean-forward="false" selection-start-line="12" selection-start-column="1202" selection-end-line="12" selection-end-column="1224" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/module/apply/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/style/approvalDetails.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="67" column="26" lean-forward="false" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/view/approvalDetails.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="45" column="36" lean-forward="false" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
-          <folding>
-            <element signature="e#311#588#0" expanded="false" />
-            <marker date="1509585866579" expanded="true" signature="3169:3187" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/style/performanceClassification.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="2" column="15" lean-forward="false" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/style/performanceList.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="94" column="9" lean-forward="false" selection-start-line="94" selection-start-column="9" selection-end-line="94" selection-end-column="9" />
-          <folding>
-            <element signature="e#891#924#0" expanded="false" />
-            <element signature="e#966#1325#0" expanded="false" />
-            <element signature="e#1926#2159#0" expanded="false" />
-            <element signature="e#2184#2217#0" expanded="false" />
-            <element signature="e#2249#3406#0" expanded="false" />
-            <element signature="e#2351#3402#0" expanded="false" />
-            <element signature="e#2563#3205#0" expanded="false" />
-            <element signature="e#2577#2686#0" expanded="false" />
-            <element signature="e#2714#3101#0" expanded="false" />
-            <element signature="e#3126#3197#0" expanded="false" />
-            <element signature="e#3231#3396#0" expanded="false" />
-            <element signature="e#3434#4448#0" expanded="false" />
-            <element signature="e#3613#4444#0" expanded="false" />
-            <element signature="e#3796#4356#0" expanded="false" />
-            <element signature="e#4012#4082#0" expanded="false" />
-            <element signature="e#4108#4216#0" expanded="false" />
-            <element signature="e#4238#4348#0" expanded="false" />
-            <element signature="e#4379#4438#0" expanded="false" />
-            <element signature="e#4398#4430#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/indNews/view/news_DCD.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="117" column="47" lean-forward="false" selection-start-line="117" selection-start-column="47" selection-end-line="117" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/view/performanceList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="211" column="61" lean-forward="false" selection-start-line="211" selection-start-column="52" selection-end-line="211" selection-end-column="61" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#6;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#4382#6252#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/view/equityRanking.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="79" column="20" lean-forward="false" selection-start-line="79" selection-start-column="20" selection-end-line="79" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/cmHelperIndex/view/cmHelperIndex.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-480">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/cmHelperIndex/view/cmTrends.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-960">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/cmHelperIndex/view/customerInfo.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="832">
-          <caret line="24" column="78" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
-          <folding>
-            <element signature="e#2071#2102#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/adequacy/style/_selectDept.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1632">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/router/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="17" column="42" lean-forward="false" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/apply.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-576">
-          <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#21#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/cmHelperIndex/common/util.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="2" column="6860" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="6860" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/cmHelperIndex/style/customerInfo.scss">
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/utils/filters.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/style/index.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/cmHelperIndex/cmHelperIndex.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="34" column="25" lean-forward="false" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="25" />
           <folding>
-            <element signature="e#0#22#0" expanded="false" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/style/equityRanking.scss">
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/apply/applyFast.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="1" column="19" lean-forward="false" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="19" />
+        <state relative-caret-position="355">
+          <caret line="43" column="6" lean-forward="true" selection-start-line="43" selection-start-column="6" selection-end-line="43" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/view/performanceClassification.vue">
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/exhibitionPage/getSex.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="40" column="51" lean-forward="false" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="51" />
-          <folding>
-            <element signature="n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#common-nav#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#533#596#0" expanded="false" />
-            <element signature="e#548#590#0" expanded="false" />
-            <element signature="e#631#1037#0" expanded="false" />
-            <element signature="e#681#811#0" expanded="false" />
-            <element signature="e#817#1031#0" expanded="false" />
-            <element signature="e#888#1022#0" expanded="false" />
-            <element signature="e#1056#1063#0" expanded="false" />
-            <element signature="e#1080#1087#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="416">
+          <caret line="41" column="6" lean-forward="true" selection-start-line="41" selection-start-column="6" selection-end-line="41" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/vuex/store.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="69" column="24" lean-forward="false" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="24" />
-          <folding>
-            <element signature="e#132#225#0" expanded="false" />
-            <element signature="e#258#300#0" expanded="false" />
-            <element signature="e#400#446#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/view/applyFast.vue">
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/apply/applyOpt.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
-          <caret line="81" column="28" lean-forward="false" selection-start-line="81" selection-start-column="8" selection-end-line="81" selection-end-column="28" />
+          <caret line="23" column="17" lean-forward="true" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/apply/approvalDetails.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="52" column="31" lean-forward="false" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
           <folding>
-            <element signature="n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#common-nav#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#a#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#multi-slide#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#multi-slide#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#1398#1476#0" expanded="false" />
-            <element signature="e#1413#1470#0" expanded="false" />
-            <element signature="e#1492#1544#0" expanded="false" />
-            <element signature="e#1512#1537#0" expanded="false" />
-            <element signature="e#1561#1621#0" expanded="false" />
-            <element signature="e#1804#1897#0" expanded="false" />
-            <element signature="e#1847#1889#0" expanded="false" />
-            <element signature="e#1914#2136#0" expanded="false" />
-            <element signature="e#2028#2077#0" expanded="false" />
-            <element signature="e#2083#2128#0" expanded="false" />
-            <element signature="e#2237#2286#0" expanded="false" />
-            <element signature="e#2292#2341#0" expanded="false" />
-            <element signature="e#2400#2478#0" expanded="false" />
-            <element signature="e#2666#2829#0" expanded="false" />
-            <element signature="e#2692#2745#0" expanded="false" />
-            <element signature="e#2751#2790#0" expanded="false" />
+            <marker date="1509952537301" expanded="true" signature="3184:3202" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/scss/modules/followUpRecord.scss">
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/apply/applyFill.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="266">
+          <caret line="122" column="8" lean-forward="false" selection-start-line="122" selection-start-column="8" selection-end-line="122" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/apply/approvalIndex.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="33" column="17" lean-forward="false" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/apply/approvalProcess.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/scss/modules/exhibitionPage.scss">
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/apply/bindCRM.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-55">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/scss/modules/eCalendar.scss">
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/apply/performanceClassification.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="231">
+          <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/style/chooseCustomer.scss">
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/apply/performanceList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="14" column="14" lean-forward="false" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        <state relative-caret-position="-628">
+          <caret line="95" column="25" lean-forward="false" selection-start-line="95" selection-start-column="23" selection-end-line="95" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/utils/methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-320">
-          <caret line="11" column="39" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="11" selection-end-column="39" />
-          <folding>
-            <element signature="e#602#709#0" expanded="false" />
-            <element signature="e#772#1064#0" expanded="false" />
-            <element signature="e#1168#2344#0" expanded="false" />
-            <element signature="e#1268#1350#0" expanded="false" />
-            <element signature="e#1534#2173#0" expanded="false" />
-            <element signature="e#2218#2318#0" expanded="false" />
-            <element signature="e#2398#3213#0" expanded="false" />
-            <element signature="e#2779#2899#0" expanded="false" />
-            <element signature="e#2979#3083#0" expanded="false" />
-            <element signature="e#3133#3207#0" expanded="false" />
-            <element signature="e#3279#3328#0" expanded="false" />
-            <element signature="e#3387#4140#0" expanded="false" />
-            <element signature="e#3719#3765#0" expanded="false" />
-            <element signature="e#3799#3913#0" expanded="false" />
-            <element signature="e#3933#4026#0" expanded="false" />
-            <element signature="e#4075#4114#0" expanded="false" />
-            <element signature="e#4312#5994#0" expanded="false" />
-            <element signature="e#4704#4750#0" expanded="false" />
-            <element signature="e#4804#4846#0" expanded="false" />
-            <element signature="e#4883#4925#0" expanded="false" />
-            <element signature="e#4977#5037#0" expanded="false" />
-            <element signature="e#5092#5141#0" expanded="false" />
-            <element signature="e#5147#5207#0" expanded="false" />
-            <element signature="e#5496#5549#0" expanded="false" />
-            <element signature="e#5555#5609#0" expanded="false" />
-            <element signature="e#5792#5841#0" expanded="false" />
-            <element signature="e#5871#5917#0" expanded="false" />
-            <element signature="e#5923#5968#0" expanded="false" />
-            <element signature="e#6090#6137#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/nightwatch/lib/runner/filematcher.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="32" column="4" lean-forward="false" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/jgdx/view/checkCompany.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="54" column="34" lean-forward="false" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/view/chooseCustomer.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="23" column="14" lean-forward="false" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
-          <folding>
-            <element signature="n#common-nav#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#input#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#1231#1262#0" expanded="true" />
-            <element signature="e#1399#1456#0" expanded="false" />
-            <element signature="e#1488#1786#0" expanded="false" />
-            <element signature="e#1503#1780#0" expanded="false" />
-            <element signature="e#1576#1628#0" expanded="false" />
-            <element signature="e#1721#1772#0" expanded="false" />
-            <element signature="e#12903#13120#0" expanded="false" />
-            <element signature="e#12967#13108#0" expanded="false" />
-            <element signature="e#12968#13107#0" expanded="false" />
-            <element signature="e#13324#13406#0" expanded="false" />
-            <element signature="e#13415#13440#0" expanded="false" />
-            <element signature="e#13547#13759#0" expanded="false" />
-            <element signature="e#13597#13714#0" expanded="false" />
-            <element signature="e#13809#14373#0" expanded="false" />
-            <element signature="e#13899#14151#0" expanded="false" />
-            <element signature="e#13942#14049#0" expanded="false" />
-            <element signature="e#14055#14141#0" expanded="false" />
-            <element signature="e#14217#14364#0" expanded="false" />
-            <element signature="e#14265#14299#0" expanded="false" />
-            <element signature="e#14523#14562#0" expanded="false" />
-            <element signature="e#14601#14861#0" expanded="false" />
-            <element signature="e#14611#14631#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/exhibitionPage/router/index.js">
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/apply/setTime.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
-          <caret line="75" column="24" lean-forward="false" selection-start-line="75" selection-start-column="15" selection-end-line="75" selection-end-column="24" />
+          <caret line="60" column="28" lean-forward="false" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/apply/chooseCustomer.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="643">
+          <caret line="34" column="26" lean-forward="false" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/vuex/modules/exhibitionPage/store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="15" lean-forward="true" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#26#261#0" expanded="false" />
+            <element signature="e#114#190#0" expanded="false" />
+            <element signature="e#276#706#0" expanded="false" />
+            <element signature="e#309#348#0" expanded="false" />
+            <element signature="e#383#426#0" expanded="false" />
+            <element signature="e#470#531#0" expanded="false" />
+            <element signature="e#569#618#0" expanded="false" />
+            <element signature="e#655#702#0" expanded="false" />
+            <element signature="e#719#1268#0" expanded="false" />
+            <element signature="e#752#806#0" expanded="false" />
+            <element signature="e#843#903#0" expanded="false" />
+            <element signature="e#958#1045#0" expanded="false" />
+            <element signature="e#1088#1157#0" expanded="false" />
+            <element signature="e#1198#1264#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/exhibitionPage/style/tool/placeholder.scss">
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/apply/equityRanking.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="54" column="19" lean-forward="true" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/utils/mixins.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="21" column="22" lean-forward="false" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#21#0" expanded="false" />
+            <element signature="e#81#165#0" expanded="false" />
+            <element signature="e#394#524#0" expanded="false" />
+            <element signature="e#649#2669#0" expanded="false" />
+            <element signature="e#806#1004#0" expanded="false" />
+            <element signature="e#849#996#0" expanded="false" />
+            <element signature="e#1144#1179#0" expanded="false" />
+            <element signature="e#1208#1816#0" expanded="false" />
+            <element signature="e#1238#1808#0" expanded="false" />
+            <element signature="e#1310#1745#0" expanded="false" />
+            <element signature="e#1363#1733#0" expanded="false" />
+            <element signature="e#1439#1657#0" expanded="false" />
+            <element signature="e#1472#1542#0" expanded="false" />
+            <element signature="e#1548#1617#0" expanded="false" />
+            <element signature="e#1663#1719#0" expanded="false" />
+            <element signature="e#1751#1798#0" expanded="false" />
+            <element signature="e#1984#2662#0" expanded="false" />
+            <element signature="e#2104#2354#0" expanded="false" />
+            <element signature="e#2185#2260#0" expanded="false" />
+            <element signature="e#2363#2653#0" expanded="false" />
+            <element signature="e#2416#2471#0" expanded="false" />
+            <element signature="e#2688#2744#0" expanded="false" />
+            <element signature="e#2762#2814#0" expanded="false" />
+            <element signature="e#2895#4078#0" expanded="false" />
+            <element signature="e#3002#3084#0" expanded="false" />
+            <element signature="e#3268#3907#0" expanded="false" />
+            <element signature="e#3952#4052#0" expanded="false" />
+            <element signature="e#4106#4877#0" expanded="false" />
+            <element signature="e#4456#4502#0" expanded="false" />
+            <element signature="e#4536#4650#0" expanded="false" />
+            <element signature="e#4670#4763#0" expanded="false" />
+            <element signature="e#4812#4851#0" expanded="false" />
+            <element signature="e#4906#6611#0" expanded="false" />
+            <element signature="e#5321#5367#0" expanded="false" />
+            <element signature="e#5421#5463#0" expanded="false" />
+            <element signature="e#5500#5542#0" expanded="false" />
+            <element signature="e#5594#5654#0" expanded="false" />
+            <element signature="e#5709#5758#0" expanded="false" />
+            <element signature="e#5764#5824#0" expanded="false" />
+            <element signature="e#6113#6166#0" expanded="false" />
+            <element signature="e#6172#6226#0" expanded="false" />
+            <element signature="e#6409#6458#0" expanded="false" />
+            <element signature="e#6488#6534#0" expanded="false" />
+            <element signature="e#6540#6585#0" expanded="false" />
+            <element signature="e#6638#7165#0" expanded="false" />
+            <element signature="e#6873#6965#0" expanded="false" />
+            <element signature="e#7004#7102#0" expanded="false" />
+            <element signature="e#7191#7292#0" expanded="false" />
+            <element signature="e#7298#7315#0" expanded="false" />
+            <element signature="e#7331#7810#0" expanded="false" />
+            <element signature="e#7816#7836#0" expanded="false" />
+            <element signature="e#7862#7969#0" expanded="false" />
+            <element signature="e#7975#8002#0" expanded="false" />
+            <element signature="e#8032#8324#0" expanded="false" />
+            <element signature="e#8330#8348#0" expanded="false" />
+            <element signature="e#8428#9604#0" expanded="false" />
+            <element signature="e#8528#8610#0" expanded="false" />
+            <element signature="e#8794#9433#0" expanded="false" />
+            <element signature="e#9478#9578#0" expanded="false" />
+            <element signature="e#9610#9629#0" expanded="false" />
+            <element signature="e#9658#10473#0" expanded="false" />
+            <element signature="e#10039#10159#0" expanded="false" />
+            <element signature="e#10239#10343#0" expanded="false" />
+            <element signature="e#10393#10467#0" expanded="false" />
+            <element signature="e#10479#10494#0" expanded="false" />
+            <element signature="e#10539#10588#0" expanded="false" />
+            <element signature="e#10594#10620#0" expanded="false" />
+            <element signature="e#10647#11400#0" expanded="false" />
+            <element signature="e#10979#11025#0" expanded="false" />
+            <element signature="e#11059#11173#0" expanded="false" />
+            <element signature="e#11193#11286#0" expanded="false" />
+            <element signature="e#11335#11374#0" expanded="false" />
+            <element signature="e#11406#11544#0" expanded="false" />
+            <element signature="e#11572#13254#0" expanded="false" />
+            <element signature="e#11964#12010#0" expanded="false" />
+            <element signature="e#12064#12106#0" expanded="false" />
+            <element signature="e#12143#12185#0" expanded="false" />
+            <element signature="e#12237#12297#0" expanded="false" />
+            <element signature="e#12352#12401#0" expanded="false" />
+            <element signature="e#12407#12467#0" expanded="false" />
+            <element signature="e#12756#12809#0" expanded="false" />
+            <element signature="e#12815#12869#0" expanded="false" />
+            <element signature="e#13052#13101#0" expanded="false" />
+            <element signature="e#13131#13177#0" expanded="false" />
+            <element signature="e#13183#13228#0" expanded="false" />
+            <element signature="e#13260#13309#0" expanded="false" />
+            <element signature="e#13350#13397#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/router/exhibitionPage/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/router/apply/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="9" column="50" lean-forward="false" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/vuex/modules/apply/store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="60" column="6" lean-forward="false" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="6" />
+          <folding>
+            <element signature="e#193#239#0" expanded="false" />
+            <element signature="e#409#1056#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/apply/logIn.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1984">
+          <caret line="68" column="22" lean-forward="true" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/exhibitionPage/accountOverView.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/exhibitionPage/businessPipeline.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/exhibitionPage/ccSetTime.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="73" column="25" lean-forward="false" selection-start-line="73" selection-start-column="22" selection-end-line="73" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/exhibitionPage/customer.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1558,158 +1195,243 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/exhibitionPage/style/tool/mixin.scss">
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/exhibitionPage/customerInfo.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="28" column="29" lean-forward="false" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="29" />
-          <folding>
-            <element signature="e#24#170#0" expanded="false" />
-            <element signature="e#73#109#0" expanded="false" />
-            <element signature="e#132#168#0" expanded="false" />
-            <element signature="e#193#225#0" expanded="false" />
-            <element signature="e#243#389#0" expanded="false" />
-            <element signature="e#255#372#0" expanded="false" />
-            <element signature="e#421#801#0" expanded="false" />
-            <element signature="e#479#799#0" expanded="false" />
-            <element signature="e#494#795#0" expanded="false" />
-            <element signature="e#830#1207#0" expanded="false" />
-            <element signature="e#888#1205#0" expanded="false" />
-            <element signature="e#903#1201#0" expanded="false" />
-            <element signature="e#1232#1649#0" expanded="false" />
-            <element signature="e#1290#1647#0" expanded="false" />
-            <element signature="e#1305#1643#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="-28">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/style/tool/color.scss">
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/exhibitionPage/followUpRecord.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/exhibitionPage/getSex.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/exhibitionPage/index.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/exhibitionPage/noPotentialCustomer.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/exhibitionPage/potentialCustomer.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/exhibitionPage/potentialCustomerInfo.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/exhibitionPage/schedule.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="15" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="15" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/exhibitionPage/style/index.scss">
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/setTime.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="240">
+          <caret line="77" column="51" lean-forward="false" selection-start-line="77" selection-start-column="51" selection-end-line="77" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/exhibitionPage/utils/mixins.js">
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/logIn.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/chooseCustomer.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="11" column="1" lean-forward="false" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/bindCRM.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="23" column="46" lean-forward="false" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/index.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
-          <caret line="83" column="60" lean-forward="false" selection-start-line="83" selection-start-column="19" selection-end-line="83" selection-end-column="60" />
-          <folding>
-            <element signature="e#198#249#0" expanded="false" />
-            <element signature="e#211#245#0" expanded="false" />
-            <element signature="e#339#2359#0" expanded="false" />
-            <element signature="e#496#694#0" expanded="false" />
-            <element signature="e#539#686#0" expanded="false" />
-            <element signature="e#834#869#0" expanded="false" />
-            <element signature="e#898#1506#0" expanded="false" />
-            <element signature="e#928#1498#0" expanded="false" />
-            <element signature="e#1000#1435#0" expanded="false" />
-            <element signature="e#1053#1423#0" expanded="false" />
-            <element signature="e#1129#1347#0" expanded="false" />
-            <element signature="e#1162#1232#0" expanded="false" />
-            <element signature="e#1238#1307#0" expanded="false" />
-            <element signature="e#1353#1409#0" expanded="false" />
-            <element signature="e#1441#1488#0" expanded="false" />
-            <element signature="e#1674#2352#0" expanded="false" />
-            <element signature="e#1794#2044#0" expanded="false" />
-            <element signature="e#1875#1950#0" expanded="false" />
-            <element signature="e#2053#2343#0" expanded="false" />
-            <element signature="e#2106#2161#0" expanded="false" />
-            <element signature="e#2377#2434#0" expanded="false" />
-            <element signature="e#2451#2504#0" expanded="false" />
-            <element signature="e#2584#3773#0" expanded="false" />
-            <element signature="e#2692#2775#0" expanded="false" />
-            <element signature="e#2960#3599#0" expanded="false" />
-            <element signature="e#3645#3746#0" expanded="false" />
-            <element signature="e#3800#4582#0" expanded="false" />
-            <element signature="e#4155#4202#0" expanded="false" />
-            <element signature="e#4236#4352#0" expanded="false" />
-            <element signature="e#4372#4466#0" expanded="false" />
-            <element signature="e#4515#4555#0" expanded="false" />
-            <element signature="e#4610#6318#0" expanded="false" />
-            <element signature="e#5027#5074#0" expanded="false" />
-            <element signature="e#5128#5170#0" expanded="false" />
-            <element signature="e#5207#5249#0" expanded="false" />
-            <element signature="e#5301#5361#0" expanded="false" />
-            <element signature="e#5416#5465#0" expanded="false" />
-            <element signature="e#5471#5531#0" expanded="false" />
-            <element signature="e#5820#5873#0" expanded="false" />
-            <element signature="e#5879#5933#0" expanded="false" />
-            <element signature="e#6116#6165#0" expanded="false" />
-            <element signature="e#6195#6241#0" expanded="false" />
-            <element signature="e#6247#6292#0" expanded="false" />
-            <element signature="e#6585#6679#0" expanded="false" />
-            <element signature="e#6718#6817#0" expanded="false" />
-            <marker date="1509607147320" expanded="false" signature="6344:7009" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/exhibitionPage/style/ccSetTime.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-          <folding>
-            <element signature="e#1279#1660#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/exhibitionPage/vuex/store.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="40" column="19" lean-forward="false" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-            <element signature="e#190#265#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/exhibitionPage/view/ccSetTime.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
+          <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/style/logIn.scss">
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/equityRanking.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="228">
+          <caret line="8" column="48" lean-forward="false" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/approvalProcess.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12">
+          <caret line="49" column="56" lean-forward="false" selection-start-line="49" selection-start-column="56" selection-end-line="49" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/approvalIndex.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/style/bindCRM.scss">
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/approvalDetails.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-28">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/view/bindCRM.vue">
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/applyOpt.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="72" column="13" lean-forward="true" selection-start-line="72" selection-start-column="13" selection-end-line="72" selection-end-column="13" />
+        <state relative-caret-position="144">
+          <caret line="20" column="50" lean-forward="false" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/apply/view/applyFill.vue">
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/applyFill.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-196">
-          <caret line="23" column="13" lean-forward="true" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        <state relative-caret-position="144">
+          <caret line="64" column="50" lean-forward="false" selection-start-line="64" selection-start-column="50" selection-end-line="64" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/applyFast.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/followUpRecord/style/list.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="39" lean-forward="false" selection-start-line="0" selection-start-column="39" selection-end-line="0" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelperIndex/style/cmTrends.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" column="9" lean-forward="true" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+          <folding>
+            <element signature="e#4#35#0" expanded="false" />
+            <element signature="e#60#689#0" expanded="false" />
+            <element signature="e#128#686#0" expanded="false" />
+            <element signature="e#210#375#0" expanded="false" />
+            <element signature="e#394#682#0" expanded="false" />
+            <element signature="e#701#1704#0" expanded="false" />
+            <element signature="e#744#1141#0" expanded="false" />
+            <element signature="e#815#900#0" expanded="false" />
+            <element signature="e#905#1137#0" expanded="false" />
+            <element signature="e#1150#1701#0" expanded="false" />
+            <element signature="e#1221#1649#0" expanded="false" />
+            <element signature="e#1358#1644#0" expanded="false" />
+            <element signature="e#1417#1638#0" expanded="false" />
+            <element signature="e#1516#1631#0" expanded="false" />
+            <element signature="e#1669#1697#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/followUpRecord/style/staffInfo.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#10#4539#0" expanded="false" />
+            <element signature="e#26#4527#0" expanded="false" />
+            <element signature="e#45#917#0" expanded="false" />
+            <element signature="e#65#907#0" expanded="false" />
+            <element signature="e#143#810#0" expanded="false" />
+            <element signature="e#349#792#0" expanded="false" />
+            <element signature="e#376#449#0" expanded="false" />
+            <element signature="e#487#610#0" expanded="false" />
+            <element signature="e#647#770#0" expanded="false" />
+            <element signature="e#843#893#0" expanded="false" />
+            <element signature="e#946#4521#0" expanded="false" />
+            <element signature="e#982#4511#0" expanded="false" />
+            <element signature="e#1167#3110#0" expanded="false" />
+            <element signature="e#1409#2855#0" expanded="false" />
+            <element signature="e#1573#2275#0" expanded="false" />
+            <element signature="e#1828#2124#0" expanded="false" />
+            <element signature="e#2162#2249#0" expanded="false" />
+            <element signature="e#2307#2496#0" expanded="false" />
+            <element signature="e#2530#2833#0" expanded="false" />
+            <element signature="e#2891#3092#0" expanded="false" />
+            <element signature="e#3146#4497#0" expanded="false" />
+            <element signature="e#3444#3596#0" expanded="false" />
+            <element signature="e#3628#4129#0" expanded="false" />
+            <element signature="e#4162#4479#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/followUpRecord/style/addAndEdit.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/followUpRecord/style/approProcess.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
           <folding />
         </state>
       </provider>

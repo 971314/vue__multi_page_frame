@@ -4,7 +4,7 @@
       <div class="account-info-title"><span class="info-title-left">开户信息</span></div>
       <div class="info-detail-group">
         <div class="info-detail-time">
-          开户时间<span class="detail-time-1a" v-text="customerMessage.OPENACCT_DT"></span>({{customerMessage.EXCHANGE_ID}})
+          开户时间<span class="detail-time-1a" v-text="customerMessage.OPENACCT_DT"></span>({{customerMessage.EXCHANGE_NAM}})
         </div>
         <div class="info-detail-rujin">
           入金时间<span class="detail-time-1a" v-text="customerMessage.FIRST_IN_DT"></span>
@@ -72,16 +72,16 @@
       <div class="account-info-title"><span class="info-title-left">持仓结构</span></div>
       <div class="chicang-chart-group">
         <div class="chicang-left-chart">
-          <div class="chicang-choose-time">
-            <div class="chicang-time-show">2017-10-22</div>
+          <div class="chicang-choose-time" @click="chooseccTime">
+            <div class="chicang-time-show" v-text="this.ccSetTime"></div>
             <img class="chicang-time-icon" src="../images/rili@2x.png"/>
           </div>
           <div class="chicang-tab-group">
             <div class="chicang-tab-wrapper">
-              <div class="chicang-tab-item chicang-tab-selected">
+              <div class="chicang-tab-item" :class="{'chicang-tab-selected': pzIndex == 1}" @click="choosePZ('P',1)">
                 按品种
               </div>
-              <div class="chicang-tab-item">
+              <div class="chicang-tab-item" :class="{'chicang-tab-selected': pzIndex == 2}" @click="choosePZ('E',2)">
                 按交易所
               </div>
             </div>
@@ -112,11 +112,13 @@
   export default{
     data() {
       return {
+        pzIndex: 1, //持仓选项卡
+        pzClick: true, //设置持仓选项卡多次点击无效
         zjClick: true, //设置资金选项卡多次点击无效
         zjIndex: 0, //资金选项卡
         startTime: '', //开始时间
         endTime: '',  //结束时间
-        chicangTime: '', //持仓时间
+        chicangTime: '2017-01-01', //持仓时间
         chicangType: 'P', //持仓类型
         fundsTips: {
           MARGIN_AMT: '',
@@ -291,7 +293,7 @@
           legend: {
 //            type: 'scroll',
             orient: 'vertical',
-            right: 30,
+            right: 20,
             top: 'middle',
             bottom: 20,
             itemWidth: 7,
@@ -350,12 +352,18 @@
     },
     computed: {
       ...mapState([
-        'customerMessage'
+        'customerMessage',
+        'ccSetTime'
       ])
     },
     mounted() {
       this.startTime = this.$$getCurrentMonth()
       this.endTime = this.$$timeFormate({date: this.$$getCurrentTime(), format: 'Y-M-D'})
+
+      this.startTime = '2010-01-01'
+      this.endTime = '2010-05-01'
+      this.chicangTime = '2010-04-01'
+
       this.getFundInfo()
       this.getPositionInfo()
       this.myCharts = echarts.init(this.$refs.chart)
@@ -385,6 +393,20 @@
       this.myCharts1.setOption(currentOption)
     },
     methods: {
+      chooseccTime() {
+        this.$router.push({
+          name: 'ccSetTime'
+        })
+      },
+      choosePZ(type, index) {
+        if (!this.pzClick) {
+          return
+        }
+        this.pzClick = false
+        this.pzIndex = index
+        this.chicangType = type
+        this.getPositionInfo()
+      },
       zijinChose(index) {
         if (!this.zjClick) {
           return
@@ -421,7 +443,7 @@
       getFundInfo() { //获取单一投资者某一段时间的资金情况
         this.$$axios({
           restUrl: 'fundInfo',
-          join: ['test11', [101469, ['beginDate', this.startTime], ['endDate', this.endTime]]]
+          join: [this.userId, [this.investorId, ['beginDate', this.startTime], ['endDate', this.endTime]]]
         })
           .then((response) => {
             this.zjClick = true
@@ -469,8 +491,12 @@
           })
       },
       getPositionInfo() {  //获取单一投资者上一日持仓情况
-        this.$$axios({restUrl: 'positionInfo', join: ['test11', [101469, ['date', '2017-01-01'], ['type', 'P']]]})
+        this.$$axios({
+          restUrl: 'positionInfo',
+          join: [this.userId, [this.investorId, ['date', this.ccSetTime], ['type', this.chicangType]]]
+        })
           .then((response) => {
+            this.pzClick = true
             this.dataValue = []
             this.dataValue = response
             let vm = this
@@ -500,7 +526,7 @@
                     }
                   })
                   let percent = ((currentValue / total) * 100).toFixed(2)
-                  return `  ${name}    ${percent}%`
+                  return `${name} ${percent}%`
                 },
                 data: legendList
               },

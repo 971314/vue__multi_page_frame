@@ -3,6 +3,7 @@
   .conter {
     padding-left: toRem(30px);
     background: $color15;
+    overflow: auto;
     & > div {
       display: flex;
       align-items: center;
@@ -18,7 +19,7 @@
       i {
         padding: toRem(40px);
         background: url("../apply/images/icon_moBanShuoMing.png") no-repeat center right;
-        background-size: toRem(31px);
+        background-size: toRem(30px);
       }
     }
   }

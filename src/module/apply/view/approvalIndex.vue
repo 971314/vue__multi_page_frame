@@ -11,8 +11,8 @@
     <div class="approval_conter">
       <div class="approval_cell" @click="jumpClick(data)" v-for="data in approvalData">
         <div>
-          <span>{{data.appObjName}}&nbsp;&nbsp;{{data.bizType}}</span>
-          <span>{{$$getTimeFmt(data.appDate, '-')}}</span>
+          <span>{{data.appObjectName}}&nbsp;&nbsp;{{data.bizType}}</span>
+          <span>{{$$dateInterception(data.appDate, 0, data.appDate.length - 2)}}</span>
         </div>
         <span
           :class="{'c1':data.auditStatus== '通过','c2':data.auditStatus== '审批中','c3':data.auditStatus== '驳回'}">{{data.auditStatus}}</span>
@@ -46,24 +46,31 @@
       //tab切换
       tabClick (flag) {
         this.qrytype = flag
-        this.getData(flag)
+        if (flag == 0) {
+          this.getData()
+        } else {
+          this.getData(flag)
+        }
       },
       //点击跳转详情
       jumpClick (data) {
         let taskData = {}
-        taskData['bizTypeId'] = data.bizTypeId
-        taskData['bizId'] = data.bizId
+        taskData['businessKeyId'] = data.businessKeyId
+        taskData['processId'] = data.processId
         this.$store.dispatch('updataTask', taskData)
         this.$router.push('/approvalDetails')
       },
       //获取审批状态请求
       getData (flag) {
+        flag ? flag = flag : flag = null
         let _this = this
         _this.$loading.toggle(' ')
-        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalToView.url + _this.info.userId + '?qrytype=' + flag,{timeout: 10000,
+        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalToView.url + _this.info.userId + '?qrytype=' + flag + '&begin=1&size=1000', {
+          timeout: 10000,
           headers: {
-          id: _this.info.token
-        }}).then((data) => {
+            id: _this.info.token
+          }
+        }).then((data) => {
           data = data.data
           console.log(data)
           _this.$loading.hide()

@@ -33,7 +33,7 @@ const router = new VueRouter({
     {path: '/cmTrends', component: cmTrends},
     {path: '/myAttention', component: myAttention},
     {path: '/customerInfo', component: customerInfo},
-    {path: '/info', component: info}
+    {path: '/info/:id', component: info}
   ]
 })
 

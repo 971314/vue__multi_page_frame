@@ -1,0 +1,125 @@
+.pobo-business-pipeline {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  .pipeline-tab-wrapper {
+    height: toRem(80px);
+    position: relative;
+    background-color: #ffffff;
+    @include bottom-px1-pixel-ratio;
+
+    .pipeline-tab-group {
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+
+      .pipeline-tab-item {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        color: #808086;
+        @include font(14px);
+      }
+      .pipeline-tab-active {
+        color: #3366cc;
+      }
+    }
+  }
+
+  .pipeline-content {
+    flex: 1;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    background-color: #f7f7fa;
+    .content-item-wrapper {
+      background-color: #ffffff;
+      box-sizing: border-box;
+      position: relative;
+      padding-right: toRem(30px);
+      padding-left: toRem(30px);
+      @include bottom-px1-pixel-ratio;
+      &:last-child {
+        &:before {
+          border-bottom: none;
+        }
+      }
+      .pipeline-content-item {
+        height: toRem(150px);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        .item-left {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          .item-name {
+            flex: 1;
+            color: #1a1a1a;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            line-height: 1;
+            @include font(16px);
+
+            .item-over-time {
+              margin-left: toRem(14px);
+              height: toRem(28px);
+              width: toRem(68px);
+            }
+          }
+          .item-time {
+            flex: 1;
+            line-height: 1;
+            margin-top: toRem(20px);
+            color: #808086;
+            @include font(13px);
+          }
+        }
+
+        .item-right {
+          flex: 1;
+          align-items: center;
+          text-align: right;
+          color: #808086;
+          @include font(16px);
+        }
+
+        .pipeline-failed {
+          color: #fb8463;
+        }
+        .pipeline-success {
+          color: #3366cc;
+        }
+
+      }
+      .pipeline-failed-tips {
+        position: relative;
+        @include bottom-px1-pixel-ratio;
+      }
+    }
+    .pipeline-content-failed {
+      background-color: rgba(255, 242, 242, 0.3);
+      .pipeline-refused-reason {
+        height: toRem(68px);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .message-tips {
+          height: toRem(26px);
+          width: toRem(26px);
+        }
+        .pipeline-refused-desc {
+          margin-left: toRem(10px);
+          line-height: 1;
+          color: #fb8463;
+          @include font(13px);
+        }
+      }
+    }
+  }
+}

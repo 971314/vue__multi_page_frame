@@ -36,9 +36,9 @@
           <div class="record-item" v-for="(recordItem, index) in recordList">
             <div class="item-left">
               <!--<span class="item-name">日常事务</span>-->
-              <span class="item-time" v-text="recordItem.upDate"></span>
+              <span class="item-time" v-text="recordItem.UPDT"></span>
             </div>
-            <div class="item-right" v-text="recordItem.followDesc"></div>
+            <div class="item-right" v-text="recordItem.FOLLOWDESC"></div>
             <img class="record-arrow" src="../images/showdetail@2x.png">
           </div>
         </div>
@@ -83,25 +83,22 @@
         },
         recordList: [
           {
-            followId: "",
-            followDesc: "确认下次回访时间地点确认下次回访时间地点确认下次回访时间地点",
-            upDate: "2017-09-12",
+            FOLLOWDESC: "确认下次回访时间地点确认下次回访时间地点确认下次回访时间地点",
+            UPDT: "2017-09-12",
           },
           {
-            followId: "",
-            followDesc: "确认下次回访时间地点",
-            upDate: "2017-08-30",
+            FOLLOWDESC: "确认下次回访时间地点",
+            UPDT: "2017-08-30",
           },
           {
-            followId: "",
-            followDesc: "介绍近期投资方向",
-            upDate: "2017-08-30",
+            FOLLOWDESC: "介绍近期投资方向",
+            UPDT: "2017-08-30",
           }
         ]
       }
     },
     mounted() {
-//      this.pInvestorFollowList()
+      this.pInvestorFollowList()
     },
     methods: {
       showSelected() {
@@ -122,13 +119,13 @@
       },
       deleteInfo() {
         this.showEvent = false
-//        this.pInvestorDelete()
+        this.pInvestorDelete()
       },
       cancelSelected() {
         this.showEvent = false
       },
       pInvestorDelete() { //删除潜在客户
-        this.$$axios({restUrl: 'pInvestorDelete', join: [1, 2]})
+        this.$$axios({restUrl: 'pInvestorDelete', join: [this.userId, this.investorId]})
           .then((response) => {
             console.log('response', response);
           })
@@ -137,14 +134,13 @@
           })
       },
       pInvestorFollowList() { //查询某个潜在客户跟进列表
-        this.$$axios({restUrl: 'pInvestorFollowList', join: [1, 2]})
+        this.$$axios({restUrl: 'pInvestorFollowList', join: [this.userId, this.investorId]})
           .then((response) => {
             this.recordList.splice(0, this.recordList.length)
             response.map((item) => {
               let tempObj = {}
-              tempObj['followId'] = item['followId']
-              tempObj['followDesc'] = item['followDesc']
-              tempObj['upDate'] = item['upDate']
+              tempObj['FOLLOWDESC '] = item['FOLLOWDESC ']
+              tempObj['UPDT '] = item['UPDT ']
               this.recordList.push(tempObj)
             })
             console.log('response', response);

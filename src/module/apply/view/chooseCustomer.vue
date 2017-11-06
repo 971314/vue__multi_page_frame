@@ -439,7 +439,7 @@
       //选择跳转
       jumpClick (data) {
         this.$store.dispatch('updataChooseCustomer', data)
-        this.$router.push('/applyFill')
+        this.$router.back(-1)
       }
     }
   }

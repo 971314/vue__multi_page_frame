@@ -1,0 +1,104 @@
+.pobo-customer-info {
+  @extend %common-wrapper;
+  .customer-info-center {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    overflow: auto;
+    background-color: #f7f7fa;
+    -webkit-overflow-scrolling: touch;
+
+    .customer-input-group {
+      background-color: #ffffff;
+      padding-left: toRem(30px);
+      &:not(:first-child) {
+        margin-top: toRem(20px);
+      }
+      .customer-input-item {
+        input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+          color: #808086;
+        }
+        input:-moz-placeholder, textarea:-moz-placeholder {
+          color: #808086;
+        }
+        input::-moz-placeholder, textarea::-moz-placeholder {
+          color: #808086;
+        }
+        input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+          color: #808086;
+        }
+        &:last-child {
+          &:before {
+            border-bottom: none;
+          }
+        }
+        padding-right: toRem(30px);
+        height: toRem(88px);
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        box-sizing: border-box;
+        @include bottom-px1-pixel-ratio;
+        .input-item-name {
+          height: 100%;
+          flex: 1;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          color: #1a1a1a;
+          @include font(16px);
+        }
+        .input-item-breakwrod {
+          height: auto;
+          align-items: flex-start;
+        }
+        .input-item-input {
+          width: toRem(482px);
+          height: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          align-items: center;
+          color: #808086;
+          text-align: right;
+          @include font(16px);
+          .item-input-content {
+            outline: none;
+            border: none;
+            text-align: right;
+            color: #808086;
+            @include font(16px);
+            background-color:transparent;
+          }
+        }
+      }
+
+      .customer-breakword-item {
+        height: auto;
+        padding-top: toRem(32px);
+        padding-bottom: toRem(32px);
+        line-height: toRem(46px);
+      }
+    }
+
+    .customer-remarks {
+      margin-top: toRem(20px);
+      width: 100%;
+      height: toRem(200px);
+      padding: toRem(30px);
+      background-color: #ffffff;
+      .remarks-text-area {
+        outline: none;
+        border: none;
+        width: 100%;
+        height: 100%;
+        color: #808086;
+        background-color: transparent;
+        padding: 0;
+        font-family: "Helvetica-Neue", "Helvetica", Arial, sans-serif;
+        word-break: break-all;
+        @include font(16px);
+      }
+    }
+  }
+}

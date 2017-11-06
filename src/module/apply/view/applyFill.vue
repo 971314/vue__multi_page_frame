@@ -1,10 +1,11 @@
 <template>
   <div class="apply_fill">
     <common-nav>
-      <span slot="body">{{apply.tplTypeName}}</span>
+      <span slot="body">{{apply.processName}}</span>
       <span slot="footer" @click="submitClick">提交</span>
     </common-nav>
     <div class="conter">
+
       <!-- <div class="fill_type" v-show="apply.tplTypeModel == 2">
          <div class="fill_group">
            <span>客户姓名</span>
@@ -34,6 +35,7 @@
            &lt;!&ndash;<span v-model="fillData.departName"></span>&ndash;&gt;
          </div>
        </div>-->
+
       <div class="fill_group">
         <span>申请人类型</span>
         <span :class="fillData.investorType == '选择申请类型' ? 'c4':''"
@@ -41,9 +43,10 @@
       </div>
       <div class="fill_group">
         <span>申请人姓名</span>
-        <span :class="fillData.investorName == '选择申请人姓名' ? 'c4':''" @click="selectName">{{fillData.investorName}}</span>
+        <span :class="appObject.appObjectName == '选择申请人姓名' ? 'c4':''"
+              @click="selectName">{{appObject.appObjectName}}</span>
       </div>
-      <div class="fill_group" @click="$router.replace('/applyOpt')">
+      <div class="fill_group" @click="$router.push('/applyOpt')">
         <span>模板选择</span>
         <span>{{template.tplName}}</span>
         <img src="../images/gengDuo.png" class="gengduo"/>
@@ -93,7 +96,7 @@
     data () {
       return {
         fillData: {
-          investorName: '选择申请人姓名',//申请人姓名
+//          investorName: '选择申请人姓名',//申请人姓名
           investorType: '选择申请类型',//申请人类型
           capitalAccount: '123456',//资金账号
           note: '',//备注
@@ -112,12 +115,15 @@
       /*this.fillData['investorName'] = ''
       this.fillData['capitalAccount'] = ''
       this.fillData['note'] = ''*/
-      this.attachs = []
+      /*this.fillData['investorType'] = '选择申请类型'
+      this.attachs = []*/
     },
     computed: {
       ...mapState([
         'apply',
-        'template'
+        'template',
+        'appObject',
+        'approvedPersonnelInfo'
       ])
     },
     methods: {
@@ -128,23 +134,31 @@
       //提交
       submitClick () {
         let _this = this
-        if (this.template.tplId != '') {
+        if (this.template.tplId && this.template.tplId != '' && fillData.investorType && appObject.appObjectName) {
           if (this.$$timeFormate({date: this.startTime, format: 'YMD'}) <= this.$$timeFormate({
               date: this.endTime,
               format: 'YMD'
             })) {
             this.$loading.toggle(' ')
-            _this.$axios.post(PBHttpServer.apply.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId + '/' + this.apply.tplType, {
-              crmAccount: _this.info.crmAccount,
-              userName: _this.info.userName,
-              departName: _this.info.departName,
-              InvestorId: _this.fillData.InvestorId,
-              investorName: _this.fillData.investorName,
-              capitalAccount: _this.fillData.capitalAccount,
-              tplType: _this.apply.tplType,
-              tplID: _this.template.tplId,
+            _this.$axios.post(PBHttpServer.apply.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId, {
+              operatorId: _this.approvedPersonnelInfo.operatorId,
+              operatorName: _this.approvedPersonnelInfo.operatorName,
+              departId: _this.approvedPersonnelInfo.departId,
+              departName: _this.approvedPersonnelInfo.departName,
+              operatorposition: _this.approvedPersonnelInfo.operatorposition,
+              appObjectType: '0',
+              appObjectId: '1110',
+              appObjectName: '投资者1',
+              /*appObjectType: _this.appObject.appObjectType,
+              appObjectId: _this.appObject.appObjectId,
+              appObjectName: _this.appObject.appObjectId,*/
+              tplId: _this.template.tplId,
+              availBeginDate: _this.$$timeFormate({date: _this.startTime, format: 'Y-M-D h:m:s'}),
+              availEndDate: _this.$$timeFormate({date: _this.endTime, format: 'Y-M-D h:m:s'}),
               note: _this.fillData.note,
-              attach: _this.attachs,
+              attachlist: null,
+              processKey: _this.apply.processKey,
+              processId: _this.apply.processId
             }, {
               timeout: 10000,
               headers: {
@@ -171,7 +185,7 @@
             this.$toast('起始时间不能大于终止时间！')
           }
         } else {
-          _this.$toast('请选择模板！')
+          _this.$toast('请选择模板/申请类型/申请人姓名！')
         }
 
       },
@@ -195,21 +209,26 @@
           this.fillData.investorType = '客户'
         } else if (flag == 2) {
           this.fillData.investorType = '客户经理'
+          this.$store.dispatch('updataAppObject', {
+            appObjectId: this.approvedPersonnelInfo.operatorId,
+            appObjectType: '1',
+            appObjectName: this.approvedPersonnelInfo.operatorName
+          })
         } else if (flag == 3) {
           this.fillData.investorType = '居间人'
         } else if (flag == 4) {
           this.fillData.investorType = '法人市场咨询机构'
         }
-        if (flag == 2) {
-          this.fillData.investorName = this.info.userName
-        } else {
-          this.fillData.investorName = '选择申请人姓名'
+        if (flag != 2) {
+          this.$store.dispatch('updataAppObject', {
+            appObjectName: '选择申请人姓名'
+          })
         }
         this.showEvent = false
       },
       //选择申请人姓名
       selectName () {
-        if (this.fillData.investorType != '客户经理' && this.fillData.investorType != '选择申请类型') {
+        if (this.appObject.appObjectName != '客户经理' && this.fillData.investorType != '选择申请类型') {
           this.$router.push('/chooseCustomer')
         } else {
           if (this.fillData.investorType == '选择申请类型') {

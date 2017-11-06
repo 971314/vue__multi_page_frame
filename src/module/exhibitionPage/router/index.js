@@ -12,6 +12,7 @@ import CustomerInfo from '../view/customerInfo.vue'
 import PotentialCustomerInfo from '../view/potentialCustomerInfo.vue'
 import Zhanyelunbo from '../view/zhanyelunbo.vue'
 import ccSetTime from '../view/ccSetTime.vue'
+import GetSex from '../view/getSex.vue'
 
 Vue.use(VueRouter)
 
@@ -74,6 +75,11 @@ const routes = [
     path: '/ccSetTime',
     name: 'ccSetTime',
     component: ccSetTime
+  },
+  {
+    path: '/getSex',
+    name: 'getSex',
+    component: GetSex
   }
 ]
 

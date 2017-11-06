@@ -23,10 +23,10 @@ gulp.task('clean', function () {
 })
 
 /*
-*npm run dev ----运行指定的index.html
-*例如 npm run dev --main 运行main模块下面的index.html进行调试
-*执行的步骤
-*/
+ *npm run dev ----运行指定的index.html
+ *例如 npm run dev --main 运行main模块下面的index.html进行调试
+ *执行的步骤
+ */
 // 清除static文件夹
 gulp.task('clean:static', function (cb) {
   return del([
@@ -47,10 +47,11 @@ gulp.task('copy:devmoduleImage', function () {
   var commandDirName = getCommand()// 要打包的文件目录
   for (var i = 0; i < commandDirName.length; i++) {
     var srcStr = 'src/module/' + commandDirName[i] + '/images/*.*'
+    var srcStr2 = 'src/module/' + commandDirName[i] + '/images/*/*.*'
     var destStr = 'static/' + commandDirName[i] + '/images'
     var srcStr1 = 'src/module/' + commandDirName[i] + '/images/*.svg'
     var destStr1 = 'static/css'
-    gulp.src(srcStr).pipe(gulp.dest(destStr))
+    gulp.src([srcStr, srcStr2]).pipe(gulp.dest(destStr))
     gulp.src(srcStr1).pipe(gulp.dest(destStr1))
   }
   if (commandDirName <= 0) {
@@ -75,7 +76,7 @@ gulp.task('copy:devconf', function () {
 // })
 
 gulp.task('copy:JS', function () {
-  return gulp.src(['js/perfect-scrollbar-zh.js','js/jquery-2.2.0.min.js','js/pikaday-package.js','js/PB.Utils.js','js/photoswipe.js','js/photoswipe-ui-default.js','js/BaiduMap.js'])
+  return gulp.src(['js/perfect-scrollbar-zh.js', 'js/jquery-2.2.0.min.js', 'js/pikaday-package.js', 'js/PB.Utils.js', 'js/photoswipe.js', 'js/photoswipe-ui-default.js', 'js/BaiduMap.js'])
   // .pipe(imagemin({verbose: true}))
     .pipe(gulp.dest('static/js'))
 })
@@ -121,10 +122,10 @@ gulp.task('modulesCss:devseparate', function () {
 })
 
 /*
-*npm run build      打包所有的模块
-*例如npm run build --main 打包main模块下面的样式和js
-*执行的步骤
-*/
+ *npm run build      打包所有的模块
+ *例如npm run build --main 打包main模块下面的样式和js
+ *执行的步骤
+ */
 
 // 删除dist下的样式文件
 gulp.task('clean:pbAppSkin', function (cb) {
@@ -146,10 +147,11 @@ gulp.task('copy:moduleImage', function () {
   var commandDirName = getCommand()// 要打包的文件目录
   for (var i = 0; i < commandDirName.length; i++) {
     var srcStr = 'src/module/' + commandDirName[i] + '/images/*.*'
+    var srcStr2 = 'src/module/' + commandDirName[i] + '/images/*/*.*'
     var destStr = 'dist/' + commandDirName[i] + '/images'
     var srcStr1 = 'src/module/' + commandDirName[i] + '/images/*.svg'
     var destStr1 = 'dist/css'
-    gulp.src(srcStr).pipe(gulp.dest(destStr))
+    gulp.src([srcStr, srcStr2]).pipe(gulp.dest(destStr))
     gulp.src(srcStr1).pipe(gulp.dest(destStr1))
   }
   if (commandDirName <= 0) {
@@ -207,10 +209,10 @@ gulp.task('modulesCss:separate', function () {
 })
 
 /*
-*npm run theme    应用默认的_default主题
-*例如 npm run theme --_theme2  应用指定的_theme2主题
-*执行的步骤
-*/
+ *npm run theme    应用默认的_default主题
+ *例如 npm run theme --_theme2  应用指定的_theme2主题
+ *执行的步骤
+ */
 
 // 公共样式修改主题
 gulp.task('commonCss:changetheme', function () {
@@ -261,7 +263,7 @@ gulp.task('theme', ['clean'], function (cb) {
 
 // 启动开发环境npm run dev
 gulp.task('dev', ['clean:static'], function (cb) {
-  sequence(['copy:devimage', 'copy:devmoduleImage', 'copy:devconf','copy:JS'], ['commonCss:dev', 'modulesCss:devseparate'], cb)
+  sequence(['copy:devimage', 'copy:devmoduleImage', 'copy:devconf', 'copy:JS'], ['commonCss:dev', 'modulesCss:devseparate'], cb)
 })
 
 // 监听
@@ -270,7 +272,7 @@ gulp.task('watch', function (cb) {
 })
 
 // 获取文件夹名称
-function getDirName (entry) {
+function getDirName(entry) {
   var lastString = ''
   var currentString = ''
   var dirEntryName = ''
@@ -282,7 +284,7 @@ function getDirName (entry) {
 }
 
 // 获取参数信息(npm run build --main --my)获取其中的main ，my目录
-function getCommand () {
+function getCommand() {
   var allArr = process.env.npm_config_argv || '{}'
   allArr = JSON.parse(allArr)
   var tempArr = []
@@ -319,12 +321,12 @@ function contains(arr, obj) { //判断数组是否存在某个值
 }
 
 function unique(arr) { //数组去重
-  var res=[]; //创建一个存放数组结果集
-  var json={};//对象属性标识数组中是否有重复元素
-  for(var i = 0, len = arr.length; i < len; i++){
+  var res = []; //创建一个存放数组结果集
+  var json = {};//对象属性标识数组中是否有重复元素
+  for (var i = 0, len = arr.length; i < len; i++) {
     if (!json[arr[i]]) {
       res.push(arr[i]);
-      json[arr[i]]=1;
+      json[arr[i]] = 1;
     }
   }
   return res;
