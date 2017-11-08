@@ -93,16 +93,17 @@
     },
     computed: {
       ...mapState({
-        customerMessage: ({exhibitionPage}) => exhibitionPage.customerMessage
+        customerMessage: ({exhibitionPage}) => exhibitionPage.customerMessage,
+        addFollow: ({followUpRecord}) => followUpRecord.addFollow
       })
     },
-    mounted() {
+    activated() {
       this.getInvestorOpen()
     },
     methods: {
       LinkToTab(routerViewName, index) {
         this.nowIndex = index
-        this.$router.push({
+        this.$router.replace({
           name: routerViewName
         })
       },
@@ -126,7 +127,7 @@
         this.showEvent = false
       },
       getInvestorOpen() { //单一投资者开户信息
-        this.$$axios({restUrl: 'investorOpen', join: [this.userId, this.investorId]})
+        this.$$axios({restUrl: 'investorOpen', join: [this.info.userId, this.addFollow.InvestorId]})
           .then((response) => {
             console.log('response', response);
             this.customerInfo['INVESTOR_NAM'] = response[0]['INVESTOR_NAM']

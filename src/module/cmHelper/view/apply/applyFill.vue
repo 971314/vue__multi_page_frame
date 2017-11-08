@@ -70,11 +70,11 @@
           <input type="file" accept="image/*" id="upLoad" @change="turnBase64" v-show="attachs.length <3"/>
         </div>
         <div style="height:.1px"></div>
-        <div class="annex_list" v-for="(data,i) in attachs">
+        <div class="annex_list" v-for="(data,i) in attachs" @click="imgModal(data.url)">
           <img src="../../images/apply/icon_tuPian.png"/>
-          <span>{{data.attachName}}</span>
+          <span>{{data.name}}</span>
           <span>{{data.size}}</span>
-          <img src="../../images/apply/annex_close.png" @click="closeClick(i)"/>
+          <img src="../../images/apply/annex_close.png" @click.stop="closeClick(i)"/>
         </div>
       </div>
     </div>
@@ -91,6 +91,7 @@
 </template>
 <script>
   import { mapState } from 'vuex'
+  //  import qs from 'qs'
 
   export default {
     data () {
@@ -109,22 +110,38 @@
       }
     },
     mounted () {
-      this.getInfo()
     },
     activated () {
-      /*this.fillData['investorName'] = ''
-      this.fillData['capitalAccount'] = ''
-      this.fillData['note'] = ''*/
-      /*this.fillData['investorType'] = '选择申请类型'
-      this.attachs = []*/
+
     },
     computed: {
       ...mapState({
         apply: ({apply}) => apply.apply,
         template: ({apply}) => apply.template,
         appObject: ({apply}) => apply.appObject,
-        approvedPersonnelInfo: ({apply}) => apply.approvedPersonnelInfo
+        approvedPersonnelInfo: ({apply}) => apply.approvedPersonnelInfo,
+        jumpFlag: ({followUpRecord}) => followUpRecord.jumpFlag,
+        investor: ({followUpRecord}) => followUpRecord.investor
       })
+    },
+    watch: {
+      '$route' (to, from) {
+        if (to.path == '/applyFast') {
+          this.attachs = []
+          this.fillData['investorType'] = '选择申请类型'
+          this.$store.dispatch('updataAppObject', {
+            appObjectName: '选择申请人姓名'
+          })
+          this.$store.dispatch('updataTemplate', {tplId: '', tplName: ''})
+          this.fillData.note = ''
+        } else if (to.path == '/applyFill' && from.path == '/customerInfoList') {
+          this.$store.dispatch('updataAppObject', {
+            appObjectId: this.investor.INVESTOR_ID,
+            appObjectType: '0',
+            appObjectName: this.investor.INVESTOR_NAM
+          })
+        }
+      }
     },
     methods: {
       //附件删除
@@ -134,7 +151,7 @@
       //提交
       submitClick () {
         let _this = this
-        if (this.template.tplId && this.template.tplId != '' && fillData.investorType && appObject.appObjectName) {
+        if (this.template.tplId && this.template.tplId != '' && this.fillData.investorType && this.appObject.appObjectName) {
           if (this.$$timeFormate({date: this.startTime, format: 'YMD'}) <= this.$$timeFormate({
               date: this.endTime,
               format: 'YMD'
@@ -146,17 +163,14 @@
               departId: _this.approvedPersonnelInfo.departId,
               departName: _this.approvedPersonnelInfo.departName,
               operatorposition: _this.approvedPersonnelInfo.operatorposition,
-              appObjectType: '0',
-              appObjectId: '1110',
-              appObjectName: '投资者1',
-              /*appObjectType: _this.appObject.appObjectType,
+              appObjectType: _this.appObject.appObjectType,
               appObjectId: _this.appObject.appObjectId,
-              appObjectName: _this.appObject.appObjectId,*/
+              appObjectName: _this.appObject.appObjectId,
               tplId: _this.template.tplId,
               availBeginDate: _this.$$timeFormate({date: _this.startTime, format: 'Y-M-D h:m:s'}),
               availEndDate: _this.$$timeFormate({date: _this.endTime, format: 'Y-M-D h:m:s'}),
               note: _this.fillData.note,
-              attachlist: null,
+              attachlist: _this.attachs,
               processKey: _this.apply.processKey,
               processId: _this.apply.processId
             }, {
@@ -171,7 +185,14 @@
               if (data.retHead == 0) {
                 _this.$toast('提交成功')
                 setTimeout(() => {
-                  _this.$router.replace('/')
+                  _this.attachs = []
+                  _this.fillData['investorType'] = '选择申请类型'
+                  _this.$store.dispatch('updataAppObject', {
+                    appObjectName: '选择申请人姓名'
+                  })
+                  _this.$store.dispatch('updataTemplate', {tplId: '', tplName: ''})
+                  _this.fillData.note = ''
+                  _this.$router.replace('/approvalIndex')
                 }, 1500)
               } else {
                 _this.$toast(data.desc)
@@ -189,9 +210,10 @@
         }
 
       },
-      //图片转换base64
+      //图片上传
       turnBase64 () {
-        let imgs = document.getElementById('upLoad').files
+        //图片转换base64
+        /*let imgs = document.getElementById('upLoad').files
         let reader = new FileReader(), attach = {attachName: '', attachUrl: '', size: ''}
         for (let i = 0; i < imgs.length; i++) {
           reader.readAsDataURL(imgs[i])
@@ -200,8 +222,29 @@
             attach['size'] = (imgs[i].size / 1024).toFixed(2) + 'KB'
             attach['attachUrl'] = this.result
           }
-          this.attachs.push(attach)
-        }
+          this.attachs.push(attach)*/
+        let _this = this,
+          formData = new FormData(),
+          imgs = document.getElementById('upLoad').files[0]
+        formData.append('file', imgs)
+        _this.$axios.post(PBHttpServer.apply.serverUrl + this.urlList.imageUpload.url + _this.info.userId, formData, {
+          timeout: 10000,
+          headers: {
+            id: _this.info.token,
+            'Content-Type': 'multipart/form-data'
+          }
+        }).then((data) => {
+          data = data.data
+          console.log(data)
+          if (data.retHead == 0) {
+            this.attachs.push(data.data)
+          } else {
+            _this.$toast(data.desc)
+          }
+        }).catch((err) => {
+          _this.$toast('网络超时，请稍后重试！')
+          console.log(err)
+        })
       },
       //选择申请类型
       modalclick (flag) {
@@ -211,7 +254,7 @@
           this.fillData.investorType = '客户经理'
           this.$store.dispatch('updataAppObject', {
             appObjectId: this.approvedPersonnelInfo.operatorId,
-            appObjectType: '1',
+            appObjectType: '2',
             appObjectName: this.approvedPersonnelInfo.operatorName
           })
         } else if (flag == 3) {
@@ -229,7 +272,8 @@
       //选择申请人姓名
       selectName () {
         if (this.appObject.appObjectName != '客户经理' && this.fillData.investorType != '选择申请类型') {
-          this.$router.push('/chooseCustomer')
+          this.$store.dispatch('updatepJumpFlag', 3)
+          this.$router.push('/customerInfoList')
         } else {
           if (this.fillData.investorType == '选择申请类型') {
             this.$toast('请先选择申请人类型')

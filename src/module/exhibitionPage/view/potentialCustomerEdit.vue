@@ -3,7 +3,7 @@
     <common-nav :search="false" :message="false" :service="false" :goback="false"
                 :gobackUrl="gobackUrl">
       <span slot="body" v-text="customerTitle"></span>
-      <span v-if="this.czType > 0" slot="footer" style="margin-right: 15px;" @click="completeClick">完成</span>
+      <span slot="footer" style="margin-right: 15px;" @click="completeClick">完成</span>
     </common-nav>
     <div class="potential-info-center">
       <div class="customer-info-center">
@@ -166,6 +166,7 @@
           }
         })
           .then((response) => {
+            this.$store.dispatch('updateCustomerMessage', this.customerMessage)
             console.log('response', response);
           })
           .catch((res) => {

@@ -79,6 +79,7 @@
           }).then((data) => {
             data = data.data
             console.log(data)
+            this.$router.push('/')
             _this.$loading.hide()
             if (data.retHead == 0) {
 

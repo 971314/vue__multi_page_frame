@@ -4,12 +4,14 @@ import Index from './Index.vue'
 import pbUI from '../../components'
 import Axios from 'axios'
 import router from './router'
+import Impression from 'vue-impression'
 import store from './vuex'
 import './utils/mixins'
 import ComponentList from './components'
 
 Vue.prototype.$axios = Axios //首次登陆需要的请求
 Vue.use(pbUI)
+Vue.use(Impression)
 
 const componentGater = Object.values(ComponentList)
 

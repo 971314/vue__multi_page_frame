@@ -15,12 +15,16 @@
             </div>
             <index-list>
                 <index-section v-for="(v, i) in currentList" :key="i" :index="v.pinyin">
-                    <a class="mint-cell" :class="{selected: currentResult.id === item.id}" v-for="(item, index) in v.data" :key="index" @click="goTo(item)">
+                    <!-- 留存客户 -->
+                    <a v-if="segmentedIndex==1" class="mint-cell"  v-for="(item, index) in v.data" :key="index" @click="goTo(item)">
                         <div class="mint-list">
-                            <a class="mobileIcon" :href="'tel:'+item.MOBILE_NO"><img src="../images/img18.png"/></a>
-                            <div class="cusName" v-text="item.INVESTOR_NAM+'('+item.MOBILE_NO+')'"></div>
+                            <!-- <a class="mobileIcon" :href="'tel:'+item.MOBILE_NO"><img src="../images/img18.png"/></a>
+                            <div class="cusName" v-text="item.INVESTOR_NAM+'('+item.MOBILE_NO+')'"></div> -->
+                            <a class="mobileIcon" ><img src="../images/img18.png"/></a>
+                            <div class="cusName">item.VIPTYP</div>
                             <div class="cusLevel">
-                                <img class="type1" src="../images/img14.png" v-for="i in new Array(item.VIPTYP*1)"/>
+                                <!-- <img class="type1" src="../images/img14.png" v-if="item.VIPTYP" v-for="i in new Array(item.VIPTYP*1)"/> -->
+                                <img class="type1" src="../images/img14.png" v-for="i in new Array(2)"/>
                                 <img class="type2" src="../images/img16.png" v-if="item.OPEN_STS=='1'"/>
                                 <div v-if="item.OPEN_STS=='2'">
                                     <img class="type2" src="../images/img16.png" />
@@ -29,8 +33,15 @@
                             </div>
                         </div>
                     </a>
+                    <!-- 潜在客户 -->
+                    <a v-if="segmentedIndex==2" class="mint-cell" v-for="(item, index) in v.data" :key="index" @click="goTo(item)">
+                        <div class="mint-list">
+                            <a class="mobileIcon" :href="'tel:'+item.MOBILE_NO"><img src="../images/img18.png"/></a>
+                            <div class="cusName" v-if="item.CUST_NAM" v-text="item.CUST_NAM+'('+item.MOBILE_NO+')'"></div>
+                        </div>
+                    </a>
                 </index-section>
-                <div class="haveOpen text-center" v-if="count">{{count}}位已开户客户</div>
+                <div v-if="count && segmentedIndex==1" class="haveOpen text-center">{{count}}位已开户客户</div>
             </index-list>
             
         </div>
@@ -58,11 +69,11 @@
                     id: null,
                     name: null
                 },
-                currentList: null,
+                currentList: [],
                 deptJson: [],
                 focusFlag: false,
                 url : PBHttpServer.apply.serverUrl,
-                userId : 'test11',
+                userId : 'sysadmin',
                 count : 0    //已开户人数
             }
         },
@@ -90,6 +101,7 @@
             //切换开户状态
             changeHandle(segmentedIndex) {
                 this.segmentedIndex = segmentedIndex;
+                // this.$forceUpdate();
                 if(segmentedIndex==1){
                     //获取【客户列表】 
                     this.getCusList('investor/list/'+this.userId);
@@ -97,7 +109,6 @@
                     //获取【潜在客户列表】 
                     this.getCusList('pInvestor/list/'+this.userId);
                 }
-                
             },
             //搜索框获取焦点
             searchFocus(flag) {
@@ -112,13 +123,16 @@
                     var cList = [];
                     var index = 0;
                     _this.count = 0;
-                    for (var i in list) {
-                        cList[index] = {'pinyin':i, data : list[i]}
-                        index ++;
-                        _this.count += list[i].length;
+                    if(list){
+                        for (var i in list) {
+                            cList[index] = {'pinyin':i,data:list[i]};
+                            index ++;
+                            _this.count = _this.count + list[i].length;
+                        }
+                        _this.deptJson = util.deepClone(cList);
+                        _this.currentList = util.deepClone(cList);
                     }
-                    _this.deptJson = util.deepClone(cList);
-                    _this.currentList = util.deepClone(cList);
+                    
                 }).
                 catch(function(err) {
                     console.log('服务器异常', err)

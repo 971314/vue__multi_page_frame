@@ -105,16 +105,14 @@
         this.showEvent = !this.showEvent
       },
       gotoDetail() {
-        this.$store.dispatch('updateCzType', 0)
         this.$router.push({
           name: 'potentialCustomerInfo'
         })
       },
       editInfo() {
         this.showEvent = false
-        this.$store.dispatch('updateCzType', 1)
         this.$router.push({
-          name: 'potentialCustomerInfo'
+          name: 'potentialCustomerEdit'
         })
       },
       deleteInfo() {

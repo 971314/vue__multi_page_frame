@@ -54,7 +54,6 @@
       request () {
         let _this = this
         _this.$loading.toggle(' ')
-        _this.getInfo()
         _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalSelect.url + _this.info.userId + '/' + _this.apply.processId, {
           timeout: 10000,
           headers: {

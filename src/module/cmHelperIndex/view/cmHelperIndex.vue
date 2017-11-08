@@ -129,12 +129,14 @@
         data() {
             return {
                 //公司公告【数据列表】
-                comNewsList : []
+                comNewsList : [],
+                userId : 'sysadmin'
             }
         },
 
         mounted() {
             this.getCompanyNotice();
+            this.getCusMessages();
         },
 
         methods: {
@@ -173,6 +175,15 @@
                 _this.$axios.post(url, params).then(function (result) {
                     var CONTENTS = result.data.data;
                     _this.comNewsList = CONTENTS;
+                }).catch(function (err) {
+                    console.log('服务器异常', err)
+                });
+            },
+            //查询【客户动态】
+            getCusMessages(){
+                var url = PBHttpServer.apply.serverUrl + 'investorMessages/info/' + this.userId + '?beginDate=' + util.getDate() + '&endDate=' + util.getDate() + '&begin=0&size=3';
+                this.$axios.get(url, null).then(function (result) {
+                    console.log(result);
                 }).catch(function (err) {
                     console.log('服务器异常', err)
                 });

@@ -95,6 +95,23 @@ Vue.mixin({
       }
     },
 
+    async $put(url, params) {
+      this.$$loading();
+      try {
+        var response = await axios.put(url, params);
+        this.$$loaded();
+        return response;
+      } catch (e) {
+        this.$$loaded();
+        if (e.message.split(' ')[0] == 'timeout') { //延时操作
+          this.$toast("请求超时，请稍后再试");
+        }else {
+          this.$toast("请求服务器失败，请稍后再试");
+        }
+        throw new Error(e);
+      }
+    },
+
     $$loading() {
       //loading开始
       this.$loading.toggle('');

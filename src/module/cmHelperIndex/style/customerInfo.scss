@@ -1,11 +1,11 @@
 @import '../../adequacy/style/_selectDept.scss';
 
 body{
-	-webkit-overflow-scrolling: touch;	
+	-webkit-overflow-scrolling: touch;
 }
 
-input[type="button"], 
-input[type="submit"], 
+input[type="button"],
+input[type="submit"],
 input[type="reset"],
 input[type="text"]{
 	-webkit-appearance: none;
@@ -25,7 +25,7 @@ input[type="text"]{
 				height: toRem(58px);
 				line-height: toRem(58px);
 			    position: absolute;
-			    left: 50%; 
+			    left: 50%;
 			    top: 50%;
 			    transform: translate(-50%,-50%);
 			    -webkit-transform: translate(-50%,-50%);
@@ -42,7 +42,7 @@ input[type="text"]{
 					border-top-left-radius: toRem(6px);
 				}
 				div:last-child{
-					border-left: 0;	
+					border-left: 0;
 					border-bottom-right-radius: toRem(6px);
 					border-top-right-radius: toRem(6px);
 				}
@@ -50,16 +50,16 @@ input[type="text"]{
 					background-color: #fff;
 					color: #36c;
 				}
-			}	
+			}
 		}
 	}
-	
+
 	.selectDept{
 		.mint-indexlist-content{
 			margin-right: 0!important;
 			background-color: #fff;
 		}
-		.mint-indexlist-nav{ 
+		.mint-indexlist-nav{
 			background-color: transparent;
 		}
 		.mint-cell{
@@ -95,7 +95,7 @@ input[type="text"]{
 						margin-right: toRem(4px);
 						width: toRem(24px);
 						height: toRem(24px);
-					} 
+					}
 					img.type2{
 						position: relative;
 						top: toRem(-2px);
@@ -108,7 +108,7 @@ input[type="text"]{
 						margin: 0;
 					}
 				}
-				
+
 			}
 		}
 		.mint-cell:last-child{
@@ -121,16 +121,16 @@ input[type="text"]{
 			    font-weight: bolder;
 			}
 		}
-		.haveOpen{ 
+		.haveOpen{
 			margin: 0;
 			height: toRem(100px);
 			line-height: toRem(100px);
 			font-size: toRem(32px);
 			color: #808086;
-		} 
+		}
 	}
 	.searchbar{
-		position: relative; 
+		position: relative;
 	    background-color: #e6e6ec;
 	    i{
     	    position: absolute;
@@ -151,7 +151,7 @@ input[type="text"]{
 			line-height: toRem(68px);
 			background-color: #fff;
 			font-size: toRem(28px);
-			color: #808086;	
+			color: #808086;
 		    border-radius: toRem(8px);
 		    text-align: center;
 		    outline: none;
@@ -163,5 +163,5 @@ input[type="text"]{
 	    	padding-left: 9%;
 	    }
 	}
-	
+
 }

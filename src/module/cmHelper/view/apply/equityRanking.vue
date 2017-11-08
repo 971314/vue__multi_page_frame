@@ -6,7 +6,7 @@
       <!--<img src="../images/icon_calendar.png" slot="footer" class="icon_calendar"/>-->
     </common-nav>
     <div class="ranking_date">
-      数据统计区间：{{$store.state.rankingTime.startTime}} 至 {{$store.state.rankingTime.endTime}}
+      数据统计区间：{{rankingTime.startTime}} 至 {{rankingTime.endTime}}
     </div>
     <div class="tableBody" v-show="rankingData.length > 0">
       <div class="TheadWrap borderBottom">
@@ -95,7 +95,7 @@
   </div>
 </template>
 <script>
-  import $ from 'jquery'
+  import { mapState } from 'vuex'
 
   export default {
     data () {
@@ -104,12 +104,16 @@
         rankingData: []
       }
     },
+    computed: {
+      ...mapState({
+        rankingTime: ({apply}) => apply.rankingTime,
+      })
+    },
     created () {
       this.$store.dispatch('updataRankingTime', {
         startTime: this.GetDateStr(0),
         endTime: this.GetDateStr(0)
       })
-      this.getInfo()
 //      this.getData()
     },
     mounted () {
@@ -155,10 +159,10 @@
         let _this = this
         _this.$loading.toggle(' ')
         /*_this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalRanking.url + _this.info.userId + '?beginDate=' + _this.$$timeFormate({
-          date: _this.$store.state.rankingTime.startTime,
+          date: _this.rankingTime.startTime,
           format: 'Y-M-D'
         }) + '&endDate=' + _this.$$timeFormate({
-          date: _this.$store.state.rankingTime.endTime,
+          date: _this.rankingTime.endTime,
           format: 'Y-M-D'
         }), {
           timeout: 10000,
@@ -179,7 +183,7 @@
           _this.$toast('网络超时，请稍后重试！')
           console.log(err)
         })*/
-        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalRanking.url +'test11?beginDate=2010-01-01&endDate=2017-03-03\n').then((data) => {
+        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalRanking.url + 'test11?beginDate=2010-01-01&endDate=2017-03-03\n').then((data) => {
           data = data.data
           console.log(data)
           _this.$loading.hide()

@@ -27,12 +27,14 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      "underscore": 'underscore'
+      "underscore": 'underscore',
+      "jquery": "../js/jquery-2.2.0.min.js"
     }
   },
   plugins: [
     new webpack.ProvidePlugin({
-      "_": "underscore"
+      "_": "underscore",
+      "$": "jquery"
     })
   ],
   module: {

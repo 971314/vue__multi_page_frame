@@ -42,6 +42,14 @@ const urlList = {
   inquireApprovedPersonnel: {
     name: '查询审批人员信息',
     url: 'accountApproveMessage/detail/'
+  },
+  imageUpload: {
+    name: '图片上传',
+    url: 'image/upload/'
+  },
+  imageView: {
+    name: '图片查看',
+    url: 'attachImages/'
   }
 }
 

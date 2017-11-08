@@ -7,6 +7,8 @@ import BusinessPipeline from '../../view/exhibitionPage/businessPipeline.vue'
 import FollowUpRecord from '../../view/exhibitionPage/followUpRecord.vue'
 import CustomerInfo from '../../view/exhibitionPage/customerInfo.vue'
 import PotentialCustomerInfo from '../../view/exhibitionPage/potentialCustomerInfo.vue'
+import PotentialCustomerEdit from '../../view/exhibitionPage/potentialCustomerEdit.vue'
+import PotentialCustomerAdd from '../../view/exhibitionPage/potentialCustomerAdd.vue'
 import ccSetTime from '../../view/exhibitionPage/ccSetTime.vue'
 import GetSex from '../../view/exhibitionPage/getSex.vue'
 
@@ -59,6 +61,16 @@ const routes = [
     path: '/potentialCustomerInfo', //潜在客户详细资料
     name: 'potentialCustomerInfo',
     component: PotentialCustomerInfo
+  },
+  {
+    path: '/potentialCustomerEdit', //编辑潜在客户详细资料
+    name: 'potentialCustomerEdit',
+    component: PotentialCustomerEdit
+  },
+  {
+    path: '/potentialCustomerAdd', //新增潜在客户详细资料
+    name: 'potentialCustomerAdd',
+    component: PotentialCustomerAdd
   },
   {
     path: '/ccSetTime',

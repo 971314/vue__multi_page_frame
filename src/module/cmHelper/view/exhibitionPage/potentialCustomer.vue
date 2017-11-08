@@ -15,12 +15,12 @@
           </div>
           <div class="center-info-list">
             <div class="info-name-group">
-              <span class="info-name" v-text="customerInfo.investorName">嵇伟民</span>
+              <span class="info-name" v-text="pInvestor.CUST_NAM">嵇伟民</span>
               <img v-if="false" class="info-star" src="../../images/exhibitionPage/3-star@2x.png"></img>
               <img v-if="false" class="info-new" src="../../images/exhibitionPage/NEW@2x.png"></img>
             </div>
-            <div class="info-zjzh">创建时间 {{customerInfo.openingTime}}</div>
-            <div class="info-yingye">客户来源 扫码</div>
+            <div class="info-zjzh">创建时间 {{pInvestor.INPUT_TIME}}</div>
+            <div class="info-yingye">客户来源 {{pInvestor.CUST_SRC}}</div>
           </div>
           <div class="right-arrow"></div>
         </div>
@@ -66,21 +66,12 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default{
     data() {
       return {
         gobackUrl: 'goBack',
         showEvent: false,
-        customerInfo: {
-          investorName: '',
-          departName: '',
-          capitalAccount: '',
-          openingTime: '',
-          exchanges: '',
-          firstInFundDate: '',
-          starLevel: '',
-          isNew: ''
-        },
         recordList: [
           {
             FOLLOWDESC: "确认下次回访时间地点确认下次回访时间地点确认下次回访时间地点",
@@ -97,7 +88,13 @@
         ]
       }
     },
-    mounted() {
+    computed: {
+      ...mapState({
+        pInvestor: ({followUpRecord}) => followUpRecord.pInvestor
+      })
+    },
+    activated() {
+      console.log(this.pInvestor,'pInvestor')
       this.pInvestorFollowList()
     },
     methods: {
@@ -112,9 +109,8 @@
       },
       editInfo() {
         this.showEvent = false
-        this.$store.dispatch('updateCzType', 1)
         this.$router.push({
-          name: 'potentialCustomerInfo'
+          name: 'potentialCustomerEdit'
         })
       },
       deleteInfo() {
@@ -125,8 +121,11 @@
         this.showEvent = false
       },
       pInvestorDelete() { //删除潜在客户
-        this.$$axios({restUrl: 'pInvestorDelete', join: [this.userId, this.investorId]})
+        this.$$axios({restUrl: 'pInvestorDelete', join: [this.userId, this.pInvestor.CUST_ID]})
           .then((response) => {
+            this.$router.replace({
+              name: 'customerInfoList'
+            })
             console.log('response', response);
           })
           .catch((res) => {
@@ -134,13 +133,16 @@
           })
       },
       pInvestorFollowList() { //查询某个潜在客户跟进列表
-        this.$$axios({restUrl: 'pInvestorFollowList', join: [this.userId, this.investorId]})
+        this.$$axios({restUrl: 'pInvestorFollowList', join: [this.userId, this.pInvestor.CUST_ID]})
           .then((response) => {
             this.recordList.splice(0, this.recordList.length)
+            if (response.length <= 0 || !response[0]) {
+                return ;
+            }
             response.map((item) => {
               let tempObj = {}
-              tempObj['FOLLOWDESC '] = item['FOLLOWDESC ']
-              tempObj['UPDT '] = item['UPDT ']
+              tempObj['FOLLOWDESC'] = item['FOLLOWDESC']
+              tempObj['UPDT'] = this.$$timeFormate({date: item['UPDT'], format: 'Y-M-D'})
               this.recordList.push(tempObj)
             })
             console.log('response', response);

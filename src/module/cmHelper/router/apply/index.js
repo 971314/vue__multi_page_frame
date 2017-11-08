@@ -8,7 +8,6 @@ import equityRanking from '../../view/apply/equityRanking.vue'
 import setTime from '../../view/apply/setTime.vue'
 import logIn from '../../view/apply/logIn.vue'
 import bindCRM from '../../view/apply/bindCRM.vue'
-import chooseCustomer from '../../view/apply/chooseCustomer.vue'
 
 const routes = [
   {path: '/applyFast', component: applyFast},//选择申请
@@ -21,7 +20,6 @@ const routes = [
   {path: '/setTime', component: setTime},//自定义时间
   {path: '/', component: logIn},//登录
   {path: '/bindCRM', component: bindCRM}//绑定CRM
-  // {path: '/chooseCustomer', component: chooseCustomer}//选择客户
 ]
 
 export default routes

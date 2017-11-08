@@ -16,6 +16,7 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default{
     data() {
       return {
@@ -41,12 +42,17 @@
         ]
       }
     },
-    mounted() {
+    computed: {
+      ...mapState({
+        addFollow: ({followUpRecord}) => followUpRecord.addFollow
+      })
+    },
+    activated() {
       this.investorFollowList()
     },
     methods: {
       investorFollowList() { //查询留存客户跟进列表
-        this.$$axios({restUrl: 'investorFollowList', join: [this.userId, this.investorId]})
+        this.$$axios({restUrl: 'investorFollowList', join: [this.info.userId, this.addFollow.InvestorId]})
           .then((response) => {
             this.recordList.splice(0, this.recordList.length)
             response.map((item) => {

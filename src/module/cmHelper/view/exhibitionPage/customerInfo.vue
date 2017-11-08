@@ -71,7 +71,7 @@
           <div class="input-item-input" v-text="customerMessage.VENDOR_NAM">
           </div>
         </div>
-        <div class="customer-input-item">
+        <div class="customer-input-item customer-breakword-item">
           <div class="input-item-name">居间人名称</div>
           <div class="input-item-input" v-text="customerMessage.BROKER_NAM">
           </div>
@@ -82,6 +82,7 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default{
     data() {
       return {
@@ -103,6 +104,9 @@
       }
     },
     computed: {
+      ...mapState({
+        addFollow: ({followUpRecord}) => followUpRecord.addFollow
+      }),
       sex: function () {
         if (this.customerMessage.SEX) {
           let sex = this.getSex(this.customerMessage.SEX);
@@ -114,7 +118,7 @@
         return '';
       }
     },
-    mounted() {
+    activated() {
         this.investorInfo()
     },
     methods: {
@@ -129,7 +133,7 @@
         return '未知';
       },
       investorInfo() { //单一投资者基本信息
-        this.$$axios({restUrl: 'investorInfo', join: [this.userId, this.investorId]})
+        this.$$axios({restUrl: 'investorInfo', join: [this.info.userId, this.addFollow.InvestorId]})
           .then((response) => {
             this.customerMessage = response[0]
           })

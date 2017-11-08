@@ -43,6 +43,7 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default{
     data() {
       return {
@@ -80,7 +81,12 @@
         ]
       }
     },
-    mounted() {
+    computed: {
+      ...mapState({
+        addFollow: ({followUpRecord}) => followUpRecord.addFollow
+      })
+    },
+    activated() {
       this.sort(this.nowIndex)
     },
     methods: {
@@ -89,14 +95,14 @@
         this.getInvestorBusinessHall()
       },
       getInvestorBusinessHall() { //获取业务流水
-        this.$$axios({restUrl: 'investorBusinessHall', join: [this.userId, [this.investorId, ['type', this.nowIndex - 1]]]})
+        this.$$axios({restUrl: 'investorBusinessHall', join: [this.info.userId, [this.addFollow.InvestorId, ['type', this.nowIndex - 1]]]})
           .then((response) => {
             this.pipelineList.splice(0, this.pipelineList.length)
             response.map((item) => {
               let tempObj = {}
               tempObj['Operation'] = item['operation']
               tempObj['Status'] = item['status']
-              tempObj['Time'] = this.$$getTimeFmt(item['time'])
+              tempObj['Time'] = this.$$getTimeFmt(item['time'],'-')
               tempObj['Note'] = item['note']
               tempObj['IsDelay'] = item['IsDelay']
 

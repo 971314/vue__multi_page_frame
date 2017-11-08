@@ -3,7 +3,7 @@
     <common-nav :search="false" :message="false" :service="false" :goback="false"
                 :gobackUrl="gobackUrl">
       <span slot="body" v-text="customerTitle"></span>
-      <span v-if="this.czType > 0" slot="footer" style="margin-right: 15px;" @click="completeClick">完成</span>
+      <span slot="footer" style="margin-right: 15px;" @click="completeClick">完成</span>
     </common-nav>
     <div class="potential-info-center">
       <div class="customer-info-center">
@@ -46,7 +46,8 @@
             </div>
           </div>
           <div class="customer-input-item">
-            <div class="input-item-name">手机号码<img class="user-must-icon" src="../../images/exhibitionPage/musticon@2x.png"/></div>
+            <div class="input-item-name">手机号码<img class="user-must-icon"
+                                                  src="../../images/exhibitionPage/musticon@2x.png"/></div>
             <div class="input-item-input">
               <input class="item-input-content" v-model="customerMessage.MOBILE_NO" type="tel"/>
             </div>
@@ -96,7 +97,8 @@
     },
     computed: {
       ...mapState({
-        noPotSex: ({exhibitionPage}) => exhibitionPage.noPotSex
+        noPotSex: ({exhibitionPage}) => exhibitionPage.noPotSex,
+        pInvestor: ({followUpRecord}) => followUpRecord.pInvestor
       }),
       sex: function () {
         if (this.noPotSex) {
@@ -109,7 +111,7 @@
         return '';
       }
     },
-    mounted() {
+    activated() {
       this.customerTitle = '编辑资料'
       this.getPInvestorInfo()
     },
@@ -134,13 +136,13 @@
         this.pInvestorEdit()
       },
       getPInvestorInfo() { //获取单一潜在客户信息
-        this.$$axios({restUrl: 'pInvestorInfo', join: [this.userId, '100367']})
+        this.$$axios({restUrl: 'pInvestorInfo', join: [this.userId, this.pInvestor.CUST_ID]})
           .then((response) => {
             if (response.length <= 0) {
               return
             }
             this.customerMessage = response[0]
-//            this.customerMessage.BIRTH_DT = this.$$getTimeFmt(this.customerMessage.BIRTH_DT)
+//            this.customerMessage.BIRTH_DT = this.$$getTimeFmt(this.customerMessage.BIRTH_DT, '-')
             console.log('response', response[0]);
 
             this.$store.dispatch('updateNoPotSex', this.customerMessage.SEX)
@@ -150,14 +152,18 @@
           })
       },
       pInvestorEdit() { //编辑潜在客户
+        console.log(this.customerMessage.BIRTH_DT, 'this.customerMessage.BIRTH_DT');
         this.$$axios({
           restUrl: 'pInvestorEdit',
-          join: [this.userId, '100367'],
+          join: [this.userId, this.pInvestor.CUST_ID],
           options: {
             pInvestorName: this.customerMessage.CUST_NAM,
             gender: this.customerMessage.SEX,
             certId: this.customerMessage.ID_NO,
-            birthdate: this.$$timeFormate({date: this.customerMessage.BIRTH_DT, format: 'Y-M-D'}), //this.customerMessage.BIRTH_DT
+            birthdate: this.customerMessage.BIRTH_DT == '--' || !this.customerMessage.BIRTH_DT ? null : this.$$timeFormate({
+              date: this.customerMessage.BIRTH_DT,
+              format: 'Y-M-D'
+            }), //this.customerMessage.BIRTH_DT
             address: this.customerMessage.LINKADDR,
             mobilePhone: this.customerMessage.MOBILE_NO,
             phone: this.customerMessage.LINKTELEPHONE,
@@ -166,7 +172,9 @@
           }
         })
           .then((response) => {
+            this.$store.dispatch('updateCustomerMessage', this.customerMessage)
             console.log('response', response);
+            this.$router.back()
           })
           .catch((res) => {
             console.log('res', res);

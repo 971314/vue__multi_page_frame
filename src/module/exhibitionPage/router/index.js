@@ -10,7 +10,8 @@ import BusinessPipeline from '../view/businessPipeline.vue'
 import FollowUpRecord from '../view/followUpRecord.vue'
 import CustomerInfo from '../view/customerInfo.vue'
 import PotentialCustomerInfo from '../view/potentialCustomerInfo.vue'
-import Zhanyelunbo from '../view/zhanyelunbo.vue'
+import PotentialCustomerEdit from '../view/potentialCustomerEdit.vue'
+import PotentialCustomerAdd from '../view/potentialCustomerAdd.vue'
 import ccSetTime from '../view/ccSetTime.vue'
 import GetSex from '../view/getSex.vue'
 
@@ -62,14 +63,19 @@ const routes = [
     component: CustomerInfo
   },
   {
+    path: '/potentialCustomerEdit', //编辑潜在客户详细资料
+    name: 'potentialCustomerEdit',
+    component: PotentialCustomerEdit
+  },
+  {
+    path: '/potentialCustomerAdd', //新增潜在客户详细资料
+    name: 'potentialCustomerAdd',
+    component: PotentialCustomerAdd
+  },
+  {
     path: '/potentialCustomerInfo', //潜在客户详细资料
     name: 'potentialCustomerInfo',
     component: PotentialCustomerInfo
-  },
-  {
-    path: '/zhanyelunbo',
-    name: 'zhanyelunbo',
-    component: Zhanyelunbo
   },
   {
     path: '/ccSetTime',

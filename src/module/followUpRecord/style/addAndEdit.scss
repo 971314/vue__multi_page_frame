@@ -3,7 +3,7 @@ body{
 }
 
 textarea::-webkit-input-placeholder{
-　　color:#c0c6cd; 
+　　color:#c0c6cd;
 }
 
 .cmTrends.addAndEdit{
@@ -15,9 +15,10 @@ textarea::-webkit-input-placeholder{
 	.container{
 		overflow: hidden;
 		.group{
-			margin-top: toRem(20px); 
+			margin-top: toRem(20px);
 			padding-left: 0;
 			.cell{
+			    position: relative;
 				padding: toRem(22px) toRem(30px);
 				background-image: none;
 			    border-bottom: solid 1px #e4e7f0;
@@ -43,7 +44,7 @@ textarea::-webkit-input-placeholder{
 									height: toRem(86px);
 									position: absolute;
 									left: 0;
-									top: 0; 
+									top: 0;
 									opacity: 0;
 								}
 								img{
@@ -54,7 +55,7 @@ textarea::-webkit-input-placeholder{
 								.removeImg{
 								    position: absolute;
 								    left: toRem(-14px);
-								    top: toRem(-14px); 
+								    top: toRem(-14px);
 								    z-index: 2;
 									display: inline-block;
 									width: toRem(36px);
@@ -65,7 +66,7 @@ textarea::-webkit-input-placeholder{
 							        background-position: center;
 								}
 							}
-							
+
 						}
 					}
 
@@ -75,6 +76,14 @@ textarea::-webkit-input-placeholder{
 						width:toRem(14px);
 						height:toRem(26px);
 					}
+				}
+				.qType{
+				    position: absolute;
+				    right: 0;
+				    top: 0;
+				    opacity: 0;
+				    width: 100%;
+				    height: toRem(72px);
 				}
 			}
 			.cell:last-child{
@@ -86,7 +95,7 @@ textarea::-webkit-input-placeholder{
 			padding: toRem(30px);
 			width: 100%;
 			height: toRem(250px);
-    		background-color: #fff; 
+    		background-color: #fff;
     		font-size: toRem(32px);
 			color:#c0c6cd;
 			border:0;
@@ -95,7 +104,19 @@ textarea::-webkit-input-placeholder{
 		.lastEditDate{
 			margin-top: toRem(20px);
 			font-size: toRem(26px);
-			color: #808086; 
+			color: #808086;
 		}
 	}
+	/* .picker{
+		.picker-list{
+			.picker-list-item{
+				height: toRem(44px);
+				line-height: toRem(44px);
+				font-size: toRem(32px);
+			}
+			.picker-list-item.active{
+				color: #1a1a1a;
+			}
+		}
+	} */
 }

@@ -5,8 +5,8 @@
     </common-nav>
     <div class="approval_tab">
       <span :class="qrytype == 0?'selected':''" @click="tabClick(0)">全部</span>
-      <span :class="qrytype == 1?'selected':''" @click="tabClick(1)">审批中</span>
-      <span :class="qrytype == 2?'selected':''" @click="tabClick(2)">已完成</span>
+      <span :class="qrytype == 10?'selected':''" @click="tabClick(10)">审批中</span>
+      <span :class="qrytype == 20?'selected':''" @click="tabClick(20)">已完成</span>
     </div>
     <div class="approval_conter">
       <div class="approval_cell" @click="jumpClick(data)" v-for="data in approvalData">
@@ -15,7 +15,7 @@
           <span>{{$$dateInterception(data.appDate, 0, data.appDate.length - 2)}}</span>
         </div>
         <span
-          :class="{'c1':data.auditStatus== '通过','c2':data.auditStatus== '审批中','c3':data.auditStatus== '驳回'}">{{data.auditStatus}}</span>
+          :class="{'c1':data.appStatusName== '通过','c2':data.appStatusName== '审批中','c3':data.appStatusName== '驳回'}">{{data.appStatusName}}</span>
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@
       })
     },
     mounted () {
-      this.getInfo()
+      console.log(this.info)
 //      this.tabClick(0)
     },
     activated () {

@@ -8,6 +8,10 @@ body {
   background: $color22;
 }
 
+input, button {
+  outline: none !important;
+}
+
 .pb-multi-slide {
   .bottom_modal {
     div {
@@ -66,6 +70,9 @@ body {
     flex: 1;
     font-size: $font10;
     color: $color18;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
   span:nth-of-type(2) {
     flex: .3;

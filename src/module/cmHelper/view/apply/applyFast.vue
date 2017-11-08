@@ -44,7 +44,6 @@
     },
     created () {
       this.$loading.toggle(' ')
-      this.getInfo()
     },
     mounted () {
       let _this = this
@@ -75,10 +74,6 @@
       _this.inquireApprovedPersonnel()
     },
     activated () {
-      this.$store.dispatch('updataTemplate', {tplId: '', tplName: ''})
-      this.$store.dispatch('updataAppObject', {
-        appObjectName: '选择申请人姓名'
-      })
     },
     methods: {
       //申请模块点击

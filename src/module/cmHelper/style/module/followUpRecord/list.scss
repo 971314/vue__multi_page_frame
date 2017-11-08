@@ -1,0 +1,71 @@
+@import '../cmHelperIndex/cmTrends.scss';
+
+.cmTrends.recordList{
+	.addFollow{
+		padding-right: toRem(30px);
+		font-size: toRem(30px);
+		color: #fff;
+	}
+	.container{
+		.tabbar{
+		    height: toRem(100px);
+		    border:0;
+			border-bottom:solid toRem(1px) #e4e7f0;
+			font-size: toRem(32px);
+			.tabbar-item{
+				height: toRem(100px);
+				line-height: toRem(100px);
+			}
+		}
+		.group-title{
+			padding: 0;
+			color: #808086;
+			.recordListDate{
+				position: relative;
+				padding: toRem(6px) toRem(30px);
+			}
+		}
+		.group{
+			margin-top: 0;
+			background-image: none;
+			.cell{
+				padding-top: toRem(28px);
+				padding-bottom: toRem(28px);
+				background-image: none;
+				.cell-body{
+			    	width: 100%;
+					h3{
+						font-size: toRem(32px);
+					    text-overflow: ellipsis;
+					    white-space: nowrap;
+					    overflow: hidden;
+					}
+					h3:last-child{
+						margin-bottom: 0;
+						font-size: toRem(26px);
+						color: #808086;
+					}
+				}
+			}
+		}
+		
+	}
+	.mask{
+		z-index: 1030;
+	}
+	.slideup{
+		z-index: 1031;
+		font-size: toRem(36px);
+		.topArea{
+			padding: toRem(10px) 0;
+			border-bottom: solid toRem(1px) #c0c6cd;
+			color: #1a1a1a;
+		}
+		.suItem{
+			padding: toRem(28px) 0;
+		}
+		.suItem.cancelAdd{
+			color: #3366cc;
+		}
+	}
+}

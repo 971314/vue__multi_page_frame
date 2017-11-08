@@ -3,7 +3,6 @@
     <common-nav :search="false" :message="false" :service="false" :goback="false"
                 :gobackUrl="gobackUrl">
       <span slot="body" v-text="customerTitle"></span>
-      <span v-if="this.czType > 0" slot="footer" style="margin-right: 15px;" @click="completeClick">完成</span>
     </common-nav>
     <div class="potential-info-center">
       <div class="customer-info-center">
@@ -11,29 +10,29 @@
           <div class="customer-input-item">
             <div class="input-item-name">姓名</div>
             <div class="input-item-input">
-              <input class="item-input-content" v-model="customerMessage.CUST_NAM" maxlength="12"
+              <input class="item-input-content" disabled v-model="customerMessage.CUST_NAM" maxlength="12"
                      type="text"/>
             </div>
           </div>
           <div class="customer-input-item">
             <div class="input-item-name">性别</div>
-            <div class="input-item-input" @click="chooseSex">
+            <div class="input-item-input">
               {{sex}}
-              <!--<input class="item-input-content" v-model="customerMessage.SEX" maxlength="12" type="text"/>-->
+              <!--<input class="item-input-content" disabled v-model="customerMessage.SEX" maxlength="12" type="text"/>-->
             </div>
             <img class="customer-showdetail-arrow" src="../images/showdetail@2x.png"/>
           </div>
           <div class="customer-input-item">
             <div class="input-item-name">身份证号码</div>
             <div class="input-item-input">
-              <input class="item-input-content" v-model="customerMessage.ID_NO" type="text"/>
+              <input class="item-input-content" disabled v-model="customerMessage.ID_NO" type="text"/>
             </div>
           </div>
           <div class="customer-input-item">
             <div class="input-item-name">出生日期</div>
             <div class="input-item-input">
               <span>{{customerMessage.BIRTH_DT}}</span>
-              <input class="item-input-date" v-model="customerMessage.BIRTH_DT" maxlength="12" type="date"/>
+              <input class="item-input-date" disabled v-model="customerMessage.BIRTH_DT" maxlength="12" type="date"/>
             </div>
             <img class="customer-showdetail-arrow" src="../images/showdetail@2x.png"/>
           </div>
@@ -42,19 +41,19 @@
           <div class="customer-input-item">
             <div class="input-item-name">通讯地址</div>
             <div class="input-item-input">
-              <input class="item-input-content" v-model="customerMessage.LINKADDR" type="text"/>
+              <input class="item-input-content" disabled v-model="customerMessage.LINKADDR" type="text"/>
             </div>
           </div>
           <div class="customer-input-item">
             <div class="input-item-name">手机号码<img class="user-must-icon" src="../images/musticon@2x.png"/></div>
             <div class="input-item-input">
-              <input class="item-input-content" v-model="customerMessage.MOBILE_NO" type="tel"/>
+              <input class="item-input-content" disabled v-model="customerMessage.MOBILE_NO" type="tel"/>
             </div>
           </div>
           <div class="customer-input-item">
             <div class="input-item-name">固定电话</div>
             <div class="input-item-input">
-              <input class="item-input-content" v-model="customerMessage.LINKTELEPHONE" type="tel"/>
+              <input class="item-input-content" disabled v-model="customerMessage.LINKTELEPHONE" type="tel"/>
             </div>
           </div>
         </div>
@@ -62,12 +61,12 @@
           <div class="customer-input-item">
             <div class="input-item-name">客户来源</div>
             <div class="input-item-input">
-              <input class="item-input-content" v-model="customerMessage.CUST_SRC" type="text"/>
+              <input class="item-input-content" disabled v-model="customerMessage.CUST_SRC" type="text"/>
             </div>
           </div>
         </div>
         <div class="customer-remarks">
-          <textarea class="remarks-text-area" v-model="customerMessage.CUST_DESC"></textarea>
+          <textarea class="remarks-text-area" disabled v-model="customerMessage.CUST_DESC"></textarea>
         </div>
       </div>
     </div>
@@ -96,7 +95,6 @@
     },
     computed: {
       ...mapState([
-        'czType',
         'noPotSex'
       ]),
       sex: function () {
@@ -111,16 +109,8 @@
       }
     },
     mounted() {
-      if (this.czType == 0) {
         this.customerTitle = '客户资料'
-      } else if (this.czType == 1) {
-        this.customerTitle = '编辑资料'
-      } else if (this.czType == 2) {
-        this.customerTitle = '新增客户'
-      }
-      if (this.czType !== 2) {
         this.getPInvestorInfo()
-      }
     },
     methods: {
       getSex (flag) {
@@ -138,15 +128,6 @@
           name: 'getSex'
         })
       },
-      completeClick() { //完成点击的操作
-        this.customerMessage.SEX = this.noPotSex
-        if (this.czType == 1) {
-          console.log(this.customerMessage, 'this.customerMessage')
-          this.pInvestorEdit()
-        } else if (this.czType == 2) {
-          this.pInvestorAdd()
-        }
-      },
       getPInvestorInfo() { //获取单一潜在客户信息
         this.$$axios({restUrl: 'pInvestorInfo', join: [this.userId, '100367']})
           .then((response) => {
@@ -156,54 +137,7 @@
             this.customerMessage = response[0]
 //            this.customerMessage.BIRTH_DT = this.$$getTimeFmt(this.customerMessage.BIRTH_DT)
             console.log('response', response[0]);
-
             this.$store.dispatch('updateNoPotSex', this.customerMessage.SEX)
-          })
-          .catch((res) => {
-            console.log('res', res);
-          })
-      },
-      pInvestorAdd() { //新增潜在客户
-        this.$$axios({
-          restUrl: 'pInvestorAdd',
-          join: [this.userId],
-          options: {
-            pInvestorName: this.customerMessage.CUST_NAM,
-            gender: this.customerMessage.SEX,
-            certId: this.customerMessage.ID_NO,
-            birthdate: this.customerMessage.BIRTH_DT,
-            address: this.customerMessage.LINKADDR,
-            mobilePhone: this.customerMessage.MOBILE_NO,
-            phone: this.customerMessage.LINKTELEPHONE,
-            investorSource: this.customerMessage.CUST_SRC,
-            note: this.customerMessage.CUST_DESC
-          }
-        })
-          .then((response) => {
-            console.log('response', response);
-          })
-          .catch((res) => {
-            console.log('res', res);
-          })
-      },
-      pInvestorEdit() { //编辑潜在客户
-        this.$$axios({
-          restUrl: 'pInvestorEdit',
-          join: [this.userId, '100367'],
-          options: {
-            pInvestorName: this.customerMessage.CUST_NAM,
-            gender: this.customerMessage.SEX,
-            certId: this.customerMessage.ID_NO,
-            birthdate: this.$$timeFormate({date: this.customerMessage.BIRTH_DT, format: 'Y-M-D'}), //this.customerMessage.BIRTH_DT
-            address: this.customerMessage.LINKADDR,
-            mobilePhone: this.customerMessage.MOBILE_NO,
-            phone: this.customerMessage.LINKTELEPHONE,
-            investorSource: this.customerMessage.CUST_SRC,
-            note: this.customerMessage.CUST_DESC
-          }
-        })
-          .then((response) => {
-            console.log('response', response);
           })
           .catch((res) => {
             console.log('res', res);

@@ -23,11 +23,21 @@
                     </div>
                 </a>
                 <a class="cell">
-                    <span class="cell-body">{{params.followType || '问题类型'}}</span>
+                    <span class="cell-body">{{qTypeName || '问题类型'}}</span>
                     <div class="cell-footer">
                         <img src="../images/img03.png"/>
                     </div>
+                    <select class="qType" v-model="qType" @change="setQType()">
+                        <option value="">请选择</option>
+                        <option value="01">日常事务</option>
+                        <option value="02">行情推送</option>
+                        <option value="03">答疑解惑</option>
+                        <option value="04">经验指导</option>
+                        <option value="05">持仓异常查询</option>
+                        <option value="06">下单错误投诉</option>
+                    </select>
                 </a>
+                
            </div>
 
            <div class="group">
@@ -62,6 +72,19 @@
 
         </div>
 
+        <!-- <picker v-model="defaultCity" size="sm">
+            <picker-option value="北京">北京</picker-option>
+            <picker-option value="上海">上海</picker-option>
+            <picker-option value="广州">广州</picker-option>
+            <picker-option value="南京">南京</picker-option>
+            <picker-option value="杭州">杭州</picker-option>
+            <picker-option value="天津">天津</picker-option>
+            <picker-option value="深圳">深圳</picker-option>
+            <picker-option value="成都">成都</picker-option>
+            <picker-option value="武汉">武汉</picker-option>
+            <picker-option value="厦门">厦门</picker-option>
+        </picker> -->
+
     </div>
 
   
@@ -79,7 +102,10 @@
             return {
                 cardFront: 'no-file',
                 imgSrcArr : [],
-                params : this.$store.state.addFollow
+                params : this.$store.state.addFollow,
+                qType : '',
+                qTypeName : '',
+                userId : 'sysadmin'
             }
         },
 
@@ -190,25 +216,30 @@
                 var _this = this;
                 console.log(_this.params);
                 if(!_this.params.InvestorId) {
-                  _this.$toast({ message: '请选择客户', position: 'center' }); return; 
+                  _this.$alert({
+                        maskClosable: true,
+                        message: '请选择客户',
+                        btns: [{
+                          text: '确认'
+                        }],
+                  });
+                  return; 
+                }else if(!_this.qType) {
+                  _this.$alert({
+                        maskClosable: true,
+                        message: '请选择问题类型',
+                        btns: [{
+                          text: '确认'
+                        }],
+                  });
+                  return; 
                 }
                 
-                // let src = document.querySelector('#fileFront').getAttribute('src');
-                // var img = src.replace('data:image/jpeg;base64,', 'image/jpg;base64,');
-                // if(_this.imgSrcArr.length > 0){
-                //   for(var i = 0 ; i < _this.imgSrcArr.length ; i++){
-                //     _this.imgSrcArr[i] = _this.imgSrcArr[i].replace('data:image/jpeg;base64,', 'image/jpg;base64,');
-                //   }
-                // }
-                
-
-                _this.params.userId = "test11";
+                _this.params.userId = this.userId;
                 _this.params.attach = _this.imgSrcArr;
 
                 var url = PBHttpServer.apply.serverUrl + "investorFollow/detail/" + _this.params.userId + "/" + _this.params.InvestorId;
-
                 
-                console.log(_this.params);
                 _this.$axios.post(url, _this.params).then(function(result) {
                     console.log(result);
                 }).
@@ -219,6 +250,36 @@
 
             removePreImg(index){
                 this.imgSrcArr.splice(index, 1);
+            },
+
+            //选择【问题类型】
+            setQType(){
+                var _this = this;
+                var follow = this.$store.state.addFollow;
+                follow.followType = this.qType;
+                switch(this.qType){
+                    case '01': _this.qTypeName = '日常事务';break;
+                    case '02': _this.qTypeName = '行情推送';break;
+                    case '03': _this.qTypeName = '答疑解惑';break;
+                    case '04': _this.qTypeName = '经验指导';break;
+                    case '05': _this.qTypeName = '持仓异常查询';break;
+                    case '06': _this.qTypeName = '下单错误投诉';break;
+                    default: _this.qTypeName = '';break;
+                }
+                follow.followTypeName = this.qTypeName;
+                this.$store.dispatch('updateAddFollow', follow);
+                console.log(this);
+            },
+            //查询某个潜在客户跟进列表
+            pInvestorFollow(){
+                var _this = this;
+                var url = PBHttpServer.apply.serverUrl + "pInvestorFollow/list/" + _this.userId + "/" + _this.params.InvestorId;
+                _this.$axios.post(url,null).then(function(result) {
+                    console.log(result);
+                }).
+                catch(function(err) {
+                    console.log('服务器异常', err)
+                });
             }
 
         }

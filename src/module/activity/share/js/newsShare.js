@@ -65,7 +65,7 @@ if (type == 1 && newsId) {//app分享新闻请求
           $('.attachsBody').after('<div class="disclaimer">免责声明<br/>' + data.data[0].disclaimer + '</div>');
         }
         if ($('.content').html().length != 0) {
-          $('img').parent().css({width: '100%', 'fontSize': '0'});
+          $('img').parent().css({width: '100%'});
           $('img').css('width', '100%');
         }
         if (data.data[0].attachs && data.data[0].attachs.length != 0) {

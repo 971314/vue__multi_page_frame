@@ -89,7 +89,7 @@
         data() {
             return {
                 showBase : false,
-                userId : "test11"
+                userId : "sysadmin"
             }
         },
 

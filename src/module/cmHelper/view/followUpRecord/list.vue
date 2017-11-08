@@ -1,0 +1,133 @@
+<template>
+
+    <div class="cmTrends recordList">
+
+        <div>
+            <common-nav>
+                <div slot="body">
+                    <span>跟进记录</span>
+                </div>
+                <div slot="footer" class="addFollow" @click="showBase = true">
+                    新建跟进
+                </div>
+            </common-nav>
+        </div>
+
+        <div class="container">
+            
+
+            <tabbar class="no-margin" @change="changeHandle">
+                <tabbar-item>已开户</tabbar-item>
+                <tabbar-item>未开户</tabbar-item>
+            </tabbar>
+
+            <div class="group-title" v-for="(item, index) in list">
+                <div class="recordListDate"><i>&nbsp;</i><strong>{{item.date}}</strong></div>
+                <div class="group">
+                    <a class="cell" v-for="(d, j) in item.data" @click="goToDetail(d)">
+                        <span class="cell-body">
+                            <h3>{{d.INVESTOR_NAM}}</h3>
+                            <h3>{{d.PROBLEM_DESC}}</h3>
+                        </span>
+                    </a>
+                </div>
+            </div>
+            
+
+            
+
+        </div>
+
+        <slideup v-model="showBase">
+            <div class="topArea">
+                <div class="suItem text-center" @click="goToAddPage(0)">
+                    已开户
+                </div>
+                <div class="suItem text-center" @click="goToAddPage(1)">
+                    未开户
+                </div>
+            </div>
+            <div class="suItem cancelAdd text-center" @click="showBase = false">
+                取消
+            </div>
+        </slideup>
+
+    </div>
+
+  
+</template>
+
+<script>
+
+    import {mapState} from 'vuex'
+    import moment from "moment";
+    import axios from 'axios';
+    import browser from '../../utils/browser';
+    import util from '../../utils/util';
+
+    export default {
+
+        data() {
+            return {
+                showBase : false,
+                userId : "sysadmin",
+                list : [],
+                begin : 1,
+                size : 10,
+                tabIndex:0
+            }
+        },
+        computed: {
+          ...mapState({
+            addFollow: ({followUpRecord}) => followUpRecord.addFollow
+          })
+        },
+        mounted() {
+            this.getList("investorFollow");
+        },
+
+        methods: {
+
+            //切换tab
+            changeHandle(val) {
+                this.tabIndex = val;
+                if(val==0){
+                    //已开户
+                   this.getList("investorFollow"); 
+                }else{
+                    //未开户
+                   this.getList("pInvestorFollow"); 
+                }
+            },
+            //跳转去【新增|编辑】跟进记录 页面
+            goToAddPage(type){
+                this.$router.push({path:'/addAndEdit'});
+            },
+            //查询跟进记录
+            getList(urlSuffix){
+                var _this = this;
+                urlSuffix += "/list/" + this.userId + "?begin=" + this.begin + "&size=" + this.size;
+                this.$axios.get(PBHttpServer.apply.serverUrl + urlSuffix, null).then(function(result) {
+                    _this.list = util.sortGroup(result.data.data, _this.tabIndex);
+                }).
+                catch(function(err) {
+                    console.log('服务器异常', err)
+                });
+            },
+
+            //跳转跟进详情页面
+            goToDetail(o){
+                var follow = this.addFollow;
+                follow.businessType = this.tabIndex+1;//跟进Id
+                if(follow.businessType==1){
+                    //
+                }
+                follow.followId = o.PROBLEM_ID;//跟进Id
+                follow.InvestorId = o.INVESTOR_ID;//客户Id
+                this.$store.dispatch('updateAddFollow', follow);
+                this.$router.push('/addAndEdit');
+            }
+
+        }
+    }
+</script>

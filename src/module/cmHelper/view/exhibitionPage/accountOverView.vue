@@ -353,10 +353,12 @@
     computed: {
       ...mapState({
         customerMessage: ({exhibitionPage}) => exhibitionPage.customerMessage,
-        ccSetTime: ({exhibitionPage}) => exhibitionPage.ccSetTime
+        ccSetTime: ({exhibitionPage}) => exhibitionPage.ccSetTime,
+        addFollow: ({followUpRecord}) => followUpRecord.addFollow
       })
     },
-    mounted() {
+    activated() {
+      console.log(this.addFollow,'addFollow')
       this.startTime = this.$$getCurrentMonth()
       this.endTime = this.$$timeFormate({date: this.$$getCurrentTime(), format: 'Y-M-D'})
 
@@ -443,7 +445,7 @@
       getFundInfo() { //获取单一投资者某一段时间的资金情况
         this.$$axios({
           restUrl: 'fundInfo',
-          join: [this.userId, [this.investorId, ['beginDate', this.startTime], ['endDate', this.endTime]]]
+          join: [this.info.userId, [this.addFollow.InvestorId, ['beginDate', this.startTime], ['endDate', this.endTime]]]
         })
           .then((response) => {
             this.zjClick = true
@@ -493,7 +495,7 @@
       getPositionInfo() {  //获取单一投资者上一日持仓情况
         this.$$axios({
           restUrl: 'positionInfo',
-          join: [this.userId, [this.investorId, ['date', this.ccSetTime], ['type', this.chicangType]]]
+          join: [this.info.userId, [this.addFollow.InvestorId, ['date', this.ccSetTime], ['type', this.chicangType]]]
         })
           .then((response) => {
             this.pzClick = true

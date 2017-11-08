@@ -55,20 +55,23 @@
             pwd: _this.pwd,
             mobilePhone: _this.mobilePhone,
             crmAccount: _this.crmAccount
-          }, {timeout: 10000,
+          }, {
+            timeout: 10000,
             headers: {
               id: _this.info.token
-            }}).then((data) => {
+            }
+          }).then((data) => {
             data = data.data
             console.log(data)
             _this.$loading.hide()
             if (data.retHead == 0) {
               if (pbE.isPoboApp) {
                 pbE.SYS().storePrivateData('managerInfo', JSON.stringify(data.data))
-//                _this.$router.replace('/cmHelperIndex')
               } else {
                 sessionStorage.managerInfo = JSON.stringify(data.data)
               }
+              _this.getInfo()
+              _this.$router.replace('/cmHelperIndex')
             } else {
               _this.$toast(data.desc)
             }
