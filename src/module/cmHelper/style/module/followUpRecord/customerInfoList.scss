@@ -2,6 +2,7 @@
 
 body{
 	-webkit-overflow-scrolling: touch;	
+	overflow: auto;	
 }
 
 input[type="button"], 
@@ -16,9 +17,17 @@ input[type="text"]{
 	.common-nav{
 	    line-height: unset;
 	    .navbar-header{
-	    	line-height: 40px;
+	    	line-height: 44px;
 	    }
 		.navbar-body{
+			.page-title{
+			    position: absolute;
+			    top: 50%;
+			    left: 50%;
+			    z-index: 1;
+			    transform: translate(-50%,-50%);
+			    -webkit-transform: translate(-50%,-50%);
+			}
 			.segmentedCtrl{
 			    display: flex;
 				//width: toRem(370px);
@@ -73,79 +82,87 @@ input[type="text"]{
 	}
 	
 	.selectDept{
-		.mint-indexlist-content{
-			margin-right: 0!important;
-			background-color: #fff;
-		}
-		.mint-indexlist-nav{ 
-			background-color: transparent;
-		}
-		.mint-cell{
-			padding-left: 0;
-			margin:0 15px;
-			height: toRem(130px);
-			border-bottom: solid 1px #e4e7f0;
-			.mint-list{
-				.mobileIcon{
-					position: absolute;
-					right: toRem(46px);
-					top: 50%;
-					z-index: 10;
-					width: toRem(38px);
-					height: toRem(38px);
-					transform: translate(0,-50%);
-					-webkit-transform: translate(0,-50%);
-					img{
-						width: 100%;
-						height: 100%;
+		padding-top: 0;
+		.mint-indexlist{
+			height: 100%;
+			.mint-indexlist-content{
+				margin-bottom: 0;
+				margin-right: 0!important;
+				height: 100%!important;
+				background-color: #fff;
+				.mint-cell{
+					padding-left: 0;
+					margin:0 15px;
+					height: toRem(130px);
+					@include bottom-px1-pixel-ratio;
+					.mobileIcon{
+						position: absolute;
+						right: toRem(46px);
+						top: 50%;
+						z-index: 10;
+						width: toRem(38px);
+						height: toRem(38px);
+						transform: translate(0,-50%);
+						-webkit-transform: translate(0,-50%);
+						background-image: url(../cmHelper/images/followUpRecord/img18.png);
+						background-repeat: no-repeat;
+						background-position: center;
+					    background-size: contain;
+					}
+					.mobileIcon:hover{
+						background-image: url(../cmHelper/images/followUpRecord/img19.png);
+					}
+					.mint-list{
+						margin-right: toRem(160px);
+						
+						.cusName{
+							margin: toRem(22px) 0 toRem(8px) 0;
+							font-size: toRem(32px);
+							color: #1a1a1a;
+						}
+						.cusLevel{
+							img.type1{
+								position: relative;
+								top: toRem(4px);
+								float: left;
+								margin-right: toRem(4px);
+								width: toRem(24px);
+								height: toRem(24px);
+							} 
+							img.type2{
+								position: relative;
+								top: toRem(-2px);
+								width: toRem(37px);
+								margin: 0 toRem(6px);
+							}
+							img.type3{
+								width: toRem(108px);
+								height: toRem(26px);
+								margin: 0;
+							}
+						}
+						
 					}
 				}
-				.cusName{
-					margin: toRem(22px) 0 toRem(8px) 0;
-					font-size: toRem(32px);
-					color: #1a1a1a;
+				.mint-cell.autoHei{
+					height: auto;
 				}
-				.cusLevel{
-					img.type1{
-						position: relative;
-						top: toRem(4px);
-						float: left;
-						margin-right: toRem(4px);
-						width: toRem(24px);
-						height: toRem(24px);
-					} 
-					img.type2{
-						position: relative;
-						top: toRem(-2px);
-						width: toRem(37px);
-						margin: 0 toRem(6px);
-					}
-					img.type3{
-						width: toRem(108px);
-						height: toRem(26px);
-						margin: 0;
-					}
+				.mint-cell:last-child:before{
+					border-bottom: 0;
 				}
-				
 			}
-		}
-		.mint-cell:last-child{
-			border-bottom: 0;
-		}
-		.mint-indexlist-nav{
-			.mint-indexlist-navitem{
-				font-size: toRem(22px);
-			    color: #c0c6cd;
-			    font-weight: bolder;
-			}
-		}
-		.haveOpen{ 
-			margin: 0;
-			height: toRem(100px);
-			line-height: toRem(100px);
-			font-size: toRem(32px);
-			color: #808086;
+			.mint-indexlist-nav{
+				background-color: transparent;
+				.mint-indexlist-navitem{
+					font-size: toRem(22px);
+				    color: #c0c6cd;
+				    font-weight: bolder;
+				}
+			}	
 		} 
+		
+		
+		
 	}
 	.searchbar{
 		position: relative; 
@@ -181,5 +198,15 @@ input[type="text"]{
 	    	padding-left: 9%;
 	    }
 	}
+	.haveOpen{ 
+	    margin: 0;
+		width: 100%;
+		height: toRem(100px);
+		line-height: toRem(100px);
+	    background-color: #fff;
+		font-size: toRem(32px);
+		color: #808086;
+	    border-top: solid 1px #e4e7f0;
+	} 
 	
 }

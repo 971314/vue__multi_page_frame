@@ -1,16 +1,16 @@
 <template>
 
-    <div class="cmTrends myAttention">
+    <div class="cmTrends myAttention pobo-customer-info">
 
         <div>
             <common-nav>
                 <div slot="body">
-                    <span>我的关注</span>
+                    <span>今日关注</span>
                 </div>
             </common-nav>
         </div>
 
-        <div class="container">
+        <div class="container customer-info-center">
             
             <div class="group">
                 <a class="cell">
@@ -58,13 +58,27 @@
                 starLevel : ['','','','','']
             }
         },
-
+        activated() {
+            this.getDailyInvestorMessage();
+        },
         mounted() {
             
         },
 
         methods: {
+            //我的关注
+            getDailyInvestorMessage(){
+                var _this = this;
+                _this.$$loading();
 
+                var url = PBHttpServer.cmHelper.serverUrl + "dailyInvestorMessage/info/" + this.userId;
+
+                _this.$axios.get(url,{headers:{id:this.info.token}}, null).then(function (result) {
+                  _this.$$loaded();
+                }).catch(function (err) {
+                  console.log('服务器异常', err)
+                });
+            }
         }
     }
 </script>

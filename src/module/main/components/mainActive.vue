@@ -44,11 +44,12 @@
         "data": [{}]
       };
       //http://180.169.30.6:8080/poboactivityapp/1_0
-      this.$axios.post('http://180.169.30.6:8080/poboactivityapp/1_0', params).then((response) => {
+      console.log(PBHttpServer.activity.serverUrl,'PBHttpServer.activity.serverUrl')
+      this.$axios.post(PBHttpServer.activity.serverUrl + 'poboactivityapp/1_0', params).then((response) => {
         let result = response.data.data;
         this.activeList.splice(0, this.activeList.length);
         result.map((item, index) => {
-          item.thumbIcon = `http://180.169.30.6:8080/${item.thumbIcon}`;
+          item.thumbIcon = `${PBHttpServer.activity.serverUrl}${item.thumbIcon}`;
           if (index < 6) {
             this.activeList.push(item);
           }

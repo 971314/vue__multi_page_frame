@@ -46,7 +46,8 @@
             </div>
           </div>
           <div class="customer-input-item">
-            <div class="input-item-name">手机号码<img class="user-must-icon" src="../../images/exhibitionPage/musticon@2x.png"/></div>
+            <div class="input-item-name">手机号码<img class="user-must-icon"
+                                                  src="../../images/exhibitionPage/musticon@2x.png"/></div>
             <div class="input-item-input">
               <input class="item-input-content" disabled v-model="customerMessage.MOBILE_NO" type="tel"/>
             </div>
@@ -111,14 +112,33 @@
       }
     },
     activated() {
-        this.customerTitle = '客户资料'
-        this.getPInvestorInfo()
+      this.customerTitle = '客户资料'
+      this.getPInvestorInfo()
     },
     methods: {
+      checkcustomerMessage() {
+        if (!this.customerMessage.MOBILE_NO || this.customerMessage.MOBILE_NO.trim().length === 0) {
+          this.$toast('电话号码不能为空！')
+          return false
+        }
+        return true
+      },
+      clear () {
+        this.customerMessage['CUST_NAM'] = ''
+        this.customerMessage['SEX'] = ''
+        this.customerMessage['ID_NO'] = ''
+        this.customerMessage['BIRTH_DT'] = ''
+        this.customerMessage['LINKADDR'] = ''
+        this.customerMessage['LINKTELEPHONE'] = ''
+        this.customerMessage['MOBILE_NO'] = ''
+        this.customerMessage['CUST_SRC'] = ''
+        this.customerMessage['CUST_DESC'] = ''
+        this.$store.dispatch('updateNoPotSex', '0')
+      },
       editPage() {
-          this.$router.push({
-            name: 'potentialCustomerEdit'
-          })
+        this.$router.push({
+          name: 'potentialCustomerEdit'
+        })
       },
       getSex (flag) {
         if (flag == '1') {
@@ -136,13 +156,18 @@
         })
       },
       getPInvestorInfo() { //获取单一潜在客户信息
-        this.$$axios({restUrl: 'pInvestorInfo', join: [this.userId, this.pInvestor.CUST_ID]})
+        this.$$axios({restUrl: 'pInvestorInfo', join: [this.info.userId, this.pInvestor.CUST_ID]})
           .then((response) => {
             if (response.length <= 0) {
               return
             }
             this.customerMessage = response[0]
-//            this.customerMessage.BIRTH_DT = this.$$getTimeFmt(this.customerMessage.BIRTH_DT, '-')
+            console.log(this.customerMessage.BIRTH_DT, 'this.customerMessage.BIRTH_DT')
+            this.customerMessage.BIRTH_DT = this.customerMessage.BIRTH_DT == '--' || !this.customerMessage.BIRTH_DT ? null : this.$$timeFormate({
+              date: this.customerMessage.BIRTH_DT,
+              format: 'Y-M-D'
+            })
+            console.log('timeformat', this.$$timeFormate({date: this.customerMessage.BIRTH_DT, format: 'Y-M-D'}))
             console.log('response', response[0]);
             this.$store.dispatch('updateNoPotSex', this.customerMessage.SEX)
           })

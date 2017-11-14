@@ -17,6 +17,7 @@
   .bind_input {
     padding-left: toRem(30px);
     background: $color15;
+    position:relative;
   }
   .bind_tip {
     margin: toRem(20px) 0 0 toRem(30px);

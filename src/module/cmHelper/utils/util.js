@@ -4,6 +4,8 @@ module.exports = {
   getDate : function(date){
     var d = null;
     if(date){
+      //将日期中的 - 替换成 / ，因为ios浏览器不支持 带 - 日期格式的转换
+      date = date.replace(/-/g,"/")
       d = new Date(date);
     }else{
       d = new Date();
@@ -26,37 +28,60 @@ module.exports = {
 
   //根据日期分组
   sortGroup : function(arr,type){
-
-    var cities = [];
-
-    if(type==0){
-        for (var i = 0; i < arr.length; i++) {
-          if ( cities[this.getDate(arr[i].PROBLEM_PROCESS_DT)] ) {
-              cities[this.getDate(arr[i].PROBLEM_PROCESS_DT)].push(arr[i])
-          }
-          else {
-              cities[this.getDate(arr[i].PROBLEM_PROCESS_DT)] = [arr[i]]
-          }
+    var map = {},
+       dest = [];
+      for(var i = 0; i < arr.length; i++){
+        var ai = arr[i];
+            ai.date = type==0 ? this.getDate(ai.PROBLEM_PROCESS_DT) : this.getDate(ai.UPDT)
+        if(!map[ai.date]){
+            dest.push({
+                date: ai.date,
+                data: [ai]
+            });
+            map[ai.date] = ai;
+        }else{
+            for(var j = 0; j < dest.length; j++){
+                var dj = dest[j];
+                if( dj.date == ai.date ){
+                    dj.data.push(ai);
+                    break;
+                }
+            }
+        }
       }
-    }else{
-        for (var i = 0; i < arr.length; i++) {
-          if ( cities[this.getDate(arr[i].UPDT)] ) {
-              cities[this.getDate(arr[i].UPDT)].push(arr[i])
-          }
-          else {
-              cities[this.getDate(arr[i].UPDT)] = [arr[i]]
-          }
-      }
-    }
+    return dest;
+  },
 
-    var cList = [];
-    var index = 0;
-    for (var i in cities) {
-        cList[index] = {'date':i,data:cities[i]};
-        index ++;
+  //跟进类型名称 映射成 跟进code
+  followTypeToCode : function(type){
+    switch(type){
+      case "日常事务": return "01";
+      case "行情推送": return "02";
+      case "答疑解惑": return "03";
+      case "经验指导": return "04";
+      case "持仓异常查询": return "05";
+      case "下单错误投诉": return "06";
     }
+  },
 
-    return cList;
+  //跟进code 映射成 跟进类型名称
+  followCodeToType : function(code){
+    switch(code){
+      case "01": return "日常事务";
+      case "02": return "行情推送";
+      case "03": return "答疑解惑";
+      case "04": return "经验指导";
+      case "05": return "持仓异常查询";
+      case "06": return "下单错误投诉";
+    }
+  },
+
+  //按照日期（从大到小）进行排序
+  dateSort : function(arr){
+    arr.sort(function(a, b){
+      return a.date > b.date ? -1 : 1;
+    });
+    return arr;
   }
 
 }

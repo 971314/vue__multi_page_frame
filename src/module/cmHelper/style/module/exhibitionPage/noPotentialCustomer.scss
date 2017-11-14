@@ -2,10 +2,9 @@
   @extend %common-wrapper;
 
   .pobo-customer-header {
-    height: toRem(290px);
-    background-image: url('../images/customerBG@2x.png');
+    background-image: url('../images/88pxpersionalInfo@2x.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     display: flex;
     flex-direction: column;
     .pb-common-nav {
@@ -27,86 +26,129 @@
       }
     }
 
-    .customer-info-grid {
+  }
+  .customer-info-grid {
+    height: toRem(202px);
+    width: 100%;
+    background-image: url('../images/NewcustomerBG@2x.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-bottom: 10px;
+    .customer-info-group {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      padding-left: toRem(30px);
+      padding-right: toRem(30px);
+
+      .left-avatar {
+        position: relative;
+        height: toRem(114px);
+        width: toRem(114px);
+        background-image: url('../images/customer-woman@2x.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        .avatar-cover {
+          position: absolute;
+          box-sizing: content-box;
+          top: toRem(-6px);
+          left: toRem(-6px);
+          height: 100%;
+          width: 100%;
+          border: toRem(6px) solid rgba(255, 255, 255, 0.2);
+          border-radius: 50%;
+          z-index: 1;
+        }
+
+      }
+      .center-info-list {
+        flex: 1;
+        margin-left: toRem(23px);
+        display: flex;
+        flex-direction: column;
+        .info-name-group {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          .info-name {
+            line-height: 1;
+            color: #ffffff;
+            @include font(16px);
+          }
+          .info-star {
+            margin-left: toRem(12px);
+            height: toRem(24px);
+          }
+
+          .info-new {
+            margin-left: toRem(12px);
+            height: toRem(24px);
+          }
+        }
+        .info-zjzh,
+        .info-yingye {
+          line-height: 1;
+          margin-top: toRem(18px);
+          color: rgba(255, 255, 255, 0.7);
+          @include font(13px);
+        }
+      }
+      .right-arrow {
+        height: toRem(29px);
+        width: toRem(15px);
+        background-image: url('../images/showdetail@2x.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    }
+  }
+  .zhanwei-div {
+    height: 43px;
+    width: 100%;
+    background-color: #f7f7fa;
+    display: none;
+    .customer-tab-group {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    .account-tips,
+    .yewu-liushui,
+    .genjin-record {
+      position: relative;
+      @include bottom-px1-pixel-ratio;
       flex: 1;
       display: flex;
-      .customer-info-group {
-        flex: 1;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding-left: toRem(30px);
-        padding-right: toRem(30px);
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      color: #1a1a1a;
+      @include font(16px);
+    }
 
-        .left-avatar {
-          position: relative;
-          height: toRem(114px);
-          width: toRem(114px);
-          background-image: url('../images/customer-woman@2x.png');
-          background-repeat: no-repeat;
-          background-size: cover;
+    .selected-record {
+      color: #3366cc;
 
-          .avatar-cover {
-            position: absolute;
-            box-sizing: content-box;
-            top: toRem(-6px);
-            left: toRem(-6px);
-            height: 100%;
-            width: 100%;
-            border: toRem(6px) solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            z-index: 1;
-          }
-
-        }
-        .center-info-list {
-          flex: 1;
-          margin-left: toRem(23px);
-          display: flex;
-          flex-direction: column;
-          .info-name-group {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            align-items: center;
-            .info-name {
-              line-height: 1;
-              color: #ffffff;
-              @include font(16px);
-            }
-            .info-star {
-              margin-left: toRem(12px);
-              height: toRem(24px);
-            }
-
-            .info-new {
-              margin-left: toRem(12px);
-              height: toRem(24px);
-            }
-          }
-          .info-zjzh,
-          .info-yingye {
-            line-height: 1;
-            margin-top: toRem(18px);
-            color: rgba(255, 255, 255, 0.7);
-            @include font(13px);
-          }
-        }
-        .right-arrow {
-          height: toRem(29px);
-          width: toRem(15px);
-          background-image: url('../images/showdetail@2x.png');
-          background-repeat: no-repeat;
-          background-size: cover;
-        }
+      .selected-line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: toRem(4px);
+        background-color: #3366cc;
       }
     }
   }
 
+  }
   .customer-tab-wrapper {
-    height: toRem(106px);
-    padding-top: toRem(20px);
+    height: 43px;
+    width: 100%;
     background-color: #f7f7fa;
     .customer-tab-group {
       background-color: #ffffff;
@@ -151,6 +193,7 @@
     display: flex;
     flex-direction: column;
     background-color: #f7f7fa;
+    position: relative;
   }
 
   .pobo-customer-footer {

@@ -28,7 +28,7 @@ module.exports = {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
       "underscore": 'underscore',
-      "jquery": "../js/jquery-2.2.0.min.js"
+      "jquery": "jquery"
     }
   },
   plugins: [

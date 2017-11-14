@@ -1,193 +1,217 @@
 <template>
 
-    <div class="cmHelperIndex">
+  <div class="cmHelperIndex pobo-customer-info">
 
-        <div class="headerArea">
-            <common-nav>
-                <div slot="body">
-                    <span>展业</span>
-                </div>
-                <div class="mine" slot="footer">
-                    <img src="../../images/cmHelperIndex/img03.png"/>
-                </div>
-            </common-nav>
+    <div class="headerArea">
+      <common-nav>
+        <div slot="body">
+          <span>展业</span>
         </div>
+        <div class="mine" slot="footer" @click="goToperance" style="font-size: 15px">
+          <!--<img src="../../images/cmHelperIndex/img03.png"/>-->
+          个人业绩
+        </div>
+      </common-nav>
+    </div>
 
-        <div class="container">
-            <div class="myAttention">
-                <div class="group">
-                    <a class="cell">
+    <div class="container customer-info-center">
+      <div class="myAttention">
+        <div class="group">
+          <a class="cell" @click="goToAttention">
                         <span class="cell-body">
                             <div class="media flex-align-top">
                                 <div class="media-object">
-                                    <i>14</i>
+                                    <!-- <i>14</i> -->
                                     <img src="../../images/cmHelperIndex/img01.png">
                                 </div>
                                 <div class="media-body">
-                                    <h3>我的关注<span>09:10</span></h3>
+                                    <h3>今日关注(16)<span>09:10</span></h3>
                                     <p>李某某 股票期权股票期权股票期权股票期权股票期权</p>
                                 </div>
                             </div>
                         </span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="main-header-title bg-fff mt-15">
-              <more-header :leftTitle="'客户管理'" :toWhere="''"></more-header>
-            </div>
-
-            <div class="flex row">
-                <func-nav :title="'我的客户'" :subTitle="'管理留存客户'" :icon="'./images/cmHelperIndex/img04.png'"></func-nav>
-                <func-nav :title="'新增潜在客户'" :subTitle="'快捷添加联系人'" :icon="'./images/cmHelperIndex/img05.png'" :className="['br0']"></func-nav>
-            </div>
-
-            <div class="flex row">
-                <func-nav :title="'开户进度'" :subTitle="'新客开户一目'" :icon="'./images/cmHelperIndex/img06.png'"></func-nav>
-                <func-nav :title="'跟进记录'" :subTitle="'持续记录与客户'" :icon="'./images/cmHelperIndex/img07.png'" :className="['br0']"></func-nav>
-            </div>
-
-            <div class="flex row">
-                <func-nav :title="'权益排行榜'" :subTitle="'快捷添加联系人'" :icon="'./images/cmHelperIndex/img08.png'" :className="['bb0']"></func-nav>
-                <div class="flex-item bg-fff">&nbsp;</div>
-            </div>
-
-            <div class="main-header-title bg-fff mt-15">
-              <more-header :leftTitle="'业务管理'" :toWhere="''"></more-header>
-            </div>
-
-            <div class="flex row">
-                <func-nav :title="'快速申请'" :subTitle="'业务申请一键达'" :icon="'./images/cmHelperIndex/img09.png'" :className="['bb0']"></func-nav>
-                <func-nav :title="'审批进程'" :subTitle="'随时链接业务'" :icon="'./images/cmHelperIndex/img10.png'" :className="['bb0','br0']"></func-nav>
-            </div>
-
-            <div class="main-header-title bg-fff mt-15">
-              <more-header :leftTitle="'客户动态'" :toWhere="'pobo:uncheck=1&pageId=900005&url=cmHelperIndex/index.html#/cmTrends'"></more-header>
-            </div>
-
-            <div class="cusTrends">
-                <div class="group">
-                    <a class="cell">
-                        <span class="cell-body"><i>&nbsp;</i>李某某 开户完成</span>
-                        <div class="cell-footer">
-                            <span>9:10</span>
-                        </div>
-                    </a>
-                    <a class="cell">
-                        <span class="cell-body"><i>&nbsp;</i>何某某 今天生日</span>
-                        <div class="cell-footer">
-                            <span>9:10</span>
-                        </div>
-                    </a>
-                    <a class="cell">
-                        <span class="cell-body"><i>&nbsp;</i>何某某 保证金优惠申请驳回</span>
-                        <div class="cell-footer">
-                            <span>9:10</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="main-header-title bg-fff mt-15">
-              <more-header :leftTitle="'公司公告'" :toWhere="'pobo:uncheck=1&pageId=900005&url=indNews/index.html#/firm?infoId=001'"></more-header>
-            </div>
-
-            <div class="cusTrends company">
-                <div class="group">
-                    <a class="cell" v-for="c in comNewsList" :href="'pobo:uncheck=1&pageId=900005&url=indNews/index.html?#/details?type=2&info=' + c.infoId">
-                        <span class="cell-body">{{c.infoTitle}}</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="bottom-tips text-center">我到底了哦~</div>
-
+          </a>
         </div>
+      </div>
+
+      <div class="main-header-title bg-fff mt-15">
+        <more-header :leftTitle="'客户管理'" :toWhere="''"></more-header>
+      </div>
+
+      <div class="flex row">
+        <func-nav :title="'我的客户'" :subTitle="'管理客户信息'" :icon="'./images/cmHelperIndex/img04.png'"
+                  toWhere="customerInfoList" :jumpType="1"></func-nav>
+        <func-nav :title="'新增未开户'" :subTitle="'一键添加联系人'" :icon="'./images/cmHelperIndex/img05.png'"
+                  toWhere="potentialCustomerAdd" :className="['br0']"></func-nav>
+      </div>
+
+      <div class="flex row">
+        <func-nav :title="'开户进度'" :subTitle="'新客开户即刻看'" :icon="'./images/cmHelperIndex/img06.png'"
+                  toWhere="schedule"></func-nav>
+        <func-nav :title="'跟进记录'" :subTitle="'常与客户多沟通'" :icon="'./images/cmHelperIndex/img07.png'" toWhere="list"
+                  :className="['br0']"></func-nav>
+      </div>
+
+      <div class="flex row">
+        <func-nav :title="'权益排行榜'" :subTitle="'查看优质客户'" :icon="'./images/cmHelperIndex/img08.png'"
+                  toWhere="equityRanking" :className="['bb0']"></func-nav>
+        <div class="flex-item bg-fff">&nbsp;</div>
+      </div>
+
+      <div class="main-header-title bg-fff mt-15">
+        <more-header :leftTitle="'业务管理'" :toWhere="''"></more-header>
+      </div>
+
+      <div class="flex row">
+        <func-nav :title="'快速申请'" :subTitle="'业务申请一键达'" toWhere="applyFast" :icon="'./images/cmHelperIndex/img09.png'"
+                  :className="['bb0']"></func-nav>
+        <func-nav :title="'审批进程'" :subTitle="'随时链接业务'" toWhere="approvalIndex"
+                  :icon="'./images/cmHelperIndex/img10.png'" :className="['bb0','br0']"></func-nav>
+      </div>
+
+      <div class="main-header-title bg-fff mt-15">
+        <more-header :leftTitle="'客户动态'"
+                     :toWhere="'pobo:uncheck=1&pageId=900005&url=cmHelper/index.html#/cmTrends'"></more-header>
+      </div>
+
+      <div class="cusTrends">
+        <div class="group" @click="goToCmTrends()">
+          <a class="cell">
+            <span class="cell-body"><i>&nbsp;</i>李某某 开户完成</span>
+            <div class="cell-footer">
+              <span>9:10</span>
+            </div>
+          </a>
+          <a class="cell">
+            <span class="cell-body"><i>&nbsp;</i>何某某 今天生日</span>
+            <div class="cell-footer">
+              <span>9:10</span>
+            </div>
+          </a>
+          <a class="cell">
+            <span class="cell-body"><i>&nbsp;</i>何某某 保证金优惠申请驳回</span>
+            <div class="cell-footer">
+              <span>9:10</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="main-header-title bg-fff mt-15">
+        <more-header :leftTitle="'公司公告'"
+                     :toWhere="'pobo:uncheck=1&pageId=900005&url=indNews/index.html#/firm?infoId=001'"></more-header>
+      </div>
+
+      <div class="cusTrends company">
+        <div class="group">
+          <a class="cell" v-for="c in comNewsList"
+             :href="'pobo:uncheck=1&pageId=900005&url=indNews/index.html?#/details?type=2&info=' + c.infoId">
+            <span class="cell-body">{{c.infoTitle}}</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="bottom-tips text-center">我到底了哦~</div>
 
     </div>
 
+  </div>
 
 
 </template>
 
 <script>
 
-    import moment from "moment";
-    import axios from 'axios';
-    import MoreHeader from '../../../main/components/moreHeader.vue';
-    import FuncNav from '../../components/funcNav.vue';
-    import util from '../../utils/util';
+  import moment from "moment";
+  import axios from 'axios';
+  import MoreHeader from '../../../main/components/moreHeader.vue';
+  import FuncNav from '../../components/funcNav.vue';
+  import util from '../../utils/util';
 
-    export default {
+  export default {
 
-        components:{
-            MoreHeader,
-            FuncNav
-        },
+    components: {
+      MoreHeader,
+      FuncNav
+    },
 
-        data() {
-            return {
-                //公司公告【数据列表】
-                comNewsList : [],
-                userId : 'sysadmin'
-            }
-        },
+    data() {
+      return {
+        //公司公告【数据列表】
+        comNewsList: []
+      }
+    },
 
-        mounted() {
-            this.getCompanyNotice();
-            this.getCusMessages();
-        },
+    mounted() {
+      this.getCompanyNotice();
+      this.getCusMessages();
+    },
 
-        methods: {
+    methods: {
+      goToperance() {
+        this.$router.push({
+          name: 'performanceCenter'
+        })
+      },
+      goToAttention() {
+          this.$router.push({
+            name: 'myAttention'
+          })
+      },
+      //查询【客户动态】
+      getCusAc(){
+        var params = {
+          "func": "12850",
+          "data": [{
+            "cmUserId": "0",
+            "begindate": util.getDate(),
+            "endDate": util.getDate(),
+            "begin": "1",
+            "size": "3"
+          }]
+        };
+        this.$axios.$get(url, params).then(function (res) {
 
-            //查询【客户动态】
-            getCusAc(){
-                var params = {
-                    "func":"12850",
-                    "data":[{
-                        "cmUserId":"0",
-                        "begindate":util.getDate(),
-                        "endDate":util.getDate(),
-                        "begin":"1",
-                        "size":"3"
-                    }]
-                };
-                this.$axios.$get(url,params).then(function(res){
+        }).catch(function (err) {
+          console.log(err);
+        })
+      },
 
-                }).catch(function(err){
-                    console.log(err);
-                })
-            },
+      //获取【公司公告】
+      getCompanyNotice() {
+        var _this = this;
+        var params = {
+          "func": "10101",
+          "data": [{
+            "infoType": "001",
+            "currentPage": "1",
+            "pageSize": 3
+          }]
+        };
+        var url = PBHttpServer.indNews.serverUrl + 'pobo_info_app/1_0';
+        _this.$axios.post(url, params).then(function (result) {
+          var CONTENTS = result.data.data;
+          _this.comNewsList = CONTENTS;
+        }).catch(function (err) {
+          console.log('服务器异常', err)
+        });
+      },
+      //查询【客户动态】
+      getCusMessages(){
+        // var url = PBHttpServer.cmHelper.serverUrl + 'investorMessages/info/' + this.info.userId + '?beginDate=' + util.getDate() + '&endDate=' + util.getDate() + '&begin=1&size=3';
+        var url = PBHttpServer.cmHelper.serverUrl + 'investorMessages/info/' + this.info.userId + '?beginDate=2017-10-10&endDate=2017-10-10&begin=1&size=3';
+        this.$axios.get(url, null).then(function (result) {
+          console.log(result);
+        }).catch(function (err) {
+          console.log('服务器异常', err)
+        });
+      },
 
-            //获取【公司公告】
-            getCompanyNotice() {
-                var _this = this;
-                var params = {
-                    "func":"10101",
-                    "data": [{
-                        "infoType": "001",
-                        "currentPage":"1",
-                        "pageSize":3
-                    }]
-                };
-                var url = PBHttpServer.indNews.serverUrl + 'pobo_info_app/1_0';
-                _this.$axios.post(url, params).then(function (result) {
-                    var CONTENTS = result.data.data;
-                    _this.comNewsList = CONTENTS;
-                }).catch(function (err) {
-                    console.log('服务器异常', err)
-                });
-            },
-            //查询【客户动态】
-            getCusMessages(){
-                var url = PBHttpServer.apply.serverUrl + 'investorMessages/info/' + this.userId + '?beginDate=' + util.getDate() + '&endDate=' + util.getDate() + '&begin=0&size=3';
-                this.$axios.get(url, null).then(function (result) {
-                    console.log(result);
-                }).catch(function (err) {
-                    console.log('服务器异常', err)
-                });
-            }
+      //跳转【客户动态页面】
+      goToCmTrends(){
+        window.location.href = "pobo:uncheck=1&pageId=900005&url=cmHelper/index.html#/cmTrends";
+      }
 
-        }
     }
+  }
 </script>

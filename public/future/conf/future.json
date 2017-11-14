@@ -31,6 +31,10 @@
         "url":"pobo:uncheck=1&pageId=802004"
       },
       {
+        "name":"我的云条件单",
+        "url":"pobo:uncheck=0&pageId=902304&url=condition/index.html#/mobileList/1"
+      },
+      {
         "name":"行权",
         "url":"pobo:uncheck=1&pageId=802310"
       },

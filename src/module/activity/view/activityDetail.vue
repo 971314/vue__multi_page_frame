@@ -588,8 +588,11 @@
 //          this.showEvent = false
 //        }
 //        this.showEvent1 = !this.showEvent1;
-        let url = this.$encodeURI(`${PBHttpServer.activity.shareUrl}?actId=${this.currentId}&userId=${this.userId}`);
-        window.location.href = `pobo:uncheck=1&pageId=800012&type=0&title=${this.activeDetail.actName}&url=${url}`;
+
+        if(this.isShare) {
+          let url = this.$encodeURI(`${PBHttpServer.activity.shareUrl}?actId=${this.currentId}&userId=${this.userId}`);
+          window.location.href = `pobo:uncheck=1&pageId=800012&type=0&title=${this.activeDetail.actName}&url=${url}`;
+        }
       },
       changeFont() {
         if (this.showEvent1) {

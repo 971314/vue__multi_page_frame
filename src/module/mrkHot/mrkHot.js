@@ -1,24 +1,24 @@
-import 'lib-flexible'; //引入阿里js布局
+import 'lib-flexible' //引入阿里js布局
 import Vue from 'vue'
-import VueRouter from 'vue-router';
-import Impression from 'vue-impression';
+import VueRouter from 'vue-router'
+import Impression from 'vue-impression'
 
-import Axios from 'axios';
+import Axios from 'axios'
 
 import pbUI from '../../components'
 
-import mrkHot from './view/mrkHot.vue';
-import zjlx from './view/zjlx.vue';
-import zjcd from './view/zjcd.vue';
-import hypz from './view/hypz.vue';
-import details from './components/details.vue';
+import mrkHot from './view/mrkHot.vue'
+import zjlx from './view/zjlx.vue'
+import zjcd from './view/zjcd.vue'
+import hypz from './view/hypz.vue'
+import details from './components/details.vue'
 
-
-Vue.use(Impression);
-Vue.use(pbUI);
+Vue.use(Impression)
+Vue.use(pbUI)
 Vue.use(VueRouter)
-/*Vue.use(Axios)*/
 
+Vue.prototype.isShare = pbE.isPoboApp ? pbE.SYS().readConfig('conf/h5/main.json') ? JSON.parse(pbE.SYS().readConfig('conf/h5/main.json')).appSetting.isShare : false : false
+/*Vue.use(Axios)*/
 
 const routers = new VueRouter({
   routes: [
@@ -27,9 +27,9 @@ const routers = new VueRouter({
       path: '/mrkHot', component: mrkHot,
       children: [
         {path: '', component: zjlx},
-        {path: '/mrkHot/zjlx',   component: zjlx},
-        {path: '/mrkHot/zjcd',  component: zjcd},
-        {path: '/mrkHot/hypz',  component: hypz}
+        {path: '/mrkHot/zjlx', component: zjlx},
+        {path: '/mrkHot/zjcd', component: zjcd},
+        {path: '/mrkHot/hypz', component: hypz}
       ]
     },
     {path: '/details', component: details}
@@ -37,11 +37,10 @@ const routers = new VueRouter({
 })
 
 window.parseJSON = function (text) {
-  var tempStr = text.replace(/\r\n/g, "").replace(/\n/g, "").replace(/\\/g, "/");
-  return JSON.parse(tempStr);
+  var tempStr = text.replace(/\r\n/g, '').replace(/\n/g, '').replace(/\\/g, '/')
+  return JSON.parse(tempStr)
 }
 
-
 new Vue({
-  router:routers
-}).$mount('#app');
+  router: routers
+}).$mount('#app')

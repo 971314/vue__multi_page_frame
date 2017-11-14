@@ -20,7 +20,6 @@ import newsGroup from './components/newsGroup.vue';
 
 import newsDCD from './view/news_DCD.vue';
 import newsFirm from './view/news_firm.vue';
-import newsFirm1 from './view/news_firm1.vue';
 import VueLazyload from "vue-lazyload";
 import FastClick from 'fastclick'
 
@@ -117,9 +116,8 @@ Vue.filter('setTitle', function (value) {
 
 const router = new VueRouter({
   routes: [
-    {path: '/', component: newsDCD, name: 'newsDCD'},
-    {path: '/firm', component: newsFirm, name: 'newsFirm'},
-    {path: '/firm1', component: newsFirm1, name: 'newsFirm1'},
+    {path: '/', component: newsFirm, name: 'newsFirm'},
+    {path: '/newsDCD', component: newsDCD, name: 'newsDCD'},
     {path: '/details', component: require('./view/details.vue')}
   ]
 });

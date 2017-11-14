@@ -66,14 +66,18 @@
       });
       this.$forceUpdate();
       this.setBodyBackground();
-      document.getElementsByClassName('noticeView')[0].scrollTop = this.scrollTop;
+      if(document.getElementsByClassName('noticeView')[0]){
+        document.getElementsByClassName('noticeView')[0].scrollTop = this.scrollTop;
+      }
       /*if (this.activeIndex && this.activeIndex != '') {
        this.tabClick(this.activeIndex);
        }*/
     },
     beforeRouteLeave(to, from, next) {
       if (from.name == 'newsFirm') {
-        this.scrollTop = document.getElementsByClassName('noticeView')[0].scrollTop;
+        if(document.getElementsByClassName('noticeView')[0]){
+          this.scrollTop = document.getElementsByClassName('noticeView')[0].scrollTop;
+        }
         next();
       }
     },

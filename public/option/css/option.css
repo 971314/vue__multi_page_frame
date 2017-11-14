@@ -76,3 +76,88 @@ ul,li{margin:0;padding:0;list-style: none;}
     color: #1a1a1a;
     line-height: 13px;
 }
+
+
+.record .query
+{
+    height: 40px;
+  line-height: 40px;
+  background: #fff;
+  display: flex;
+  border-bottom: solid 1px #E7EAF2;
+
+}
+
+.record .query .date
+{
+   margin-left: 20px;
+   width: 100px;
+}
+
+.record .option{
+   color:#3366cc
+}
+
+.time-start-content {
+  position: relative;
+
+  float: left;
+  text-align: right;
+  font-size: 15px;
+}
+.time-start-content input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  outline: none;
+  border: none;
+  opacity: 0;
+  height: 100%;
+}
+.time-start-content span {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.confirmInfo{
+    margin-top: 20px;
+}
+.confirmInfo .title{
+  display: inline-block;
+  height: 28px;
+  width: 33.3%;
+
+  color:#808086
+}
+.confirmInfo .info{
+  display: inline-block;
+  width: 55%;
+}
+
+
+
+.record table{
+  width: 100%;
+  font-size: 13px;
+  background-color: #fff;
+  margin-top: 10px;
+}
+
+.record table tr{
+  border-bottom: solid 1px #E7EAF2;
+}
+
+.record table tr td{
+  text-align: center;
+  height: 50px;
+
+}
+
+
+.record table tr th{
+  text-align: center;
+  height: 40px;
+  color: #808086;
+}

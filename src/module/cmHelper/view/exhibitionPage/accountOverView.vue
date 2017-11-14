@@ -13,6 +13,7 @@
     </div>
     <div class="zijin-info">
       <div class="account-info-title"><span class="info-title-left">资金概览</span></div>
+      <div class="no-message-tips" id="no-message-tips" style="display: none">暂无数据</div>
       <div ref="chart" class="zijin-charts"></div>
       <div class="chart-tab-group">
         <div class="chart-item-list">
@@ -34,34 +35,34 @@
               <div class="info-table-item">
                 <div class="info-item-title">期初权益</div>
                 <div class="info-item-num"
-                     v-text="fundsTips.BEGINEQUITY == '0' ? '无' : $$transformData(fundsTips.BEGINEQUITY)"></div>
+                     v-text="fundsTips.BEGINEQUITY == '0' || fundsTips.BEGINEQUITY == '-0' ? '-' : $$transformData(fundsTips.BEGINEQUITY)"></div>
               </div>
               <div class="info-table-item">
                 <div class="info-item-title">期末权益</div>
                 <div class="info-item-num"
-                     v-text="fundsTips.ENDEQUITY == '0' ? '无' : $$transformData(fundsTips.ENDEQUITY)"></div>
+                     v-text="fundsTips.ENDEQUITY == '0' || fundsTips.ENDEQUITY == '-0' ? '-' : $$transformData(fundsTips.ENDEQUITY)"></div>
               </div>
               <div class="info-table-item">
                 <div class="info-item-title">保证金</div>
                 <div class="info-item-num"
-                     v-text="fundsTips.MARGIN_AMT == '0' ? '无' : $$transformData(fundsTips.MARGIN_AMT)"></div>
+                     v-text="fundsTips.MARGIN_AMT == '0' || fundsTips.MARGIN_AMT == '-0' ? '-' : $$transformData(fundsTips.MARGIN_AMT)"></div>
               </div>
             </div>
             <div class="info-table-row2">
               <div class="info-table-item">
                 <div class="info-item-title">上日结存</div>
                 <div class="info-item-num"
-                     v-text="fundsTips.PRE_RI_AMT == '0' ? '无' : $$transformData(fundsTips.PRE_RI_AMT)"></div>
+                     v-text="fundsTips.PRE_RI_AMT == '0' || fundsTips.PRE_RI_AMT == '-0' ? '-' : $$transformData(fundsTips.PRE_RI_AMT)"></div>
               </div>
               <div class="info-table-item">
                 <div class="info-item-title">本日结存</div>
                 <div class="info-item-num"
-                     v-text="fundsTips.TODAY_RI_AMT == '0' ? '无' : $$transformData(fundsTips.TODAY_RI_AMT)"></div>
+                     v-text="fundsTips.TODAY_RI_AMT == '0' || fundsTips.TODAY_RI_AMT == '-0' ? '-' : $$transformData(fundsTips.TODAY_RI_AMT)"></div>
               </div>
               <div class="info-table-item">
                 <div class="info-item-title">盈亏</div>
                 <div class="info-item-num"
-                     v-text="fundsTips.PROFITLOSS == '0' ? '无' : $$transformData(fundsTips.PROFITLOSS)"></div>
+                     v-text="fundsTips.PROFITLOSS == '0' || fundsTips.PROFITLOSS == '-0' ? '-' : $$transformData(fundsTips.PROFITLOSS)"></div>
               </div>
             </div>
           </div>
@@ -72,9 +73,12 @@
       <div class="account-info-title"><span class="info-title-left">持仓结构</span></div>
       <div class="chicang-chart-group">
         <div class="chicang-left-chart">
-          <div class="chicang-choose-time" @click="chooseccTime">
-            <div class="chicang-time-show" v-text="this.ccSetTime"></div>
-            <img class="chicang-time-icon" src="../../images/exhibitionPage/rili@2x.png"/>
+          <div class="chicang-choose-time">
+            <div class="choose-time-wrapper">
+              <div class="chicang-time-show" v-text="ccTimeSet"></div>
+              <img class="chicang-time-icon" src="../../images/exhibitionPage/rili@2x.png"/>
+              <input class="chicang-time-input" type="date" v-model="ccTimeSet"/>
+            </div>
           </div>
           <div class="chicang-tab-group">
             <div class="chicang-tab-wrapper">
@@ -112,6 +116,7 @@
   export default{
     data() {
       return {
+        ccTimeSet: '2010-04-01',
         pzIndex: 1, //持仓选项卡
         pzClick: true, //设置持仓选项卡多次点击无效
         zjClick: true, //设置资金选项卡多次点击无效
@@ -184,7 +189,7 @@
           },
           yAxis: [
             {
-              name: '资金变动(k)',
+              name: '(k)',  //资金变动
               scale: true,
               splitNumber: 5,
 //              boundaryGap: ['20%', '20%'],
@@ -217,7 +222,7 @@
               }
             }],
           series: [{
-            name: '资金',
+            name: '期末权益',
             type: 'line',
             smooth: true,
             showSymbol: false,
@@ -354,11 +359,11 @@
       ...mapState({
         customerMessage: ({exhibitionPage}) => exhibitionPage.customerMessage,
         ccSetTime: ({exhibitionPage}) => exhibitionPage.ccSetTime,
-        addFollow: ({followUpRecord}) => followUpRecord.addFollow
+        investor: ({followUpRecord}) => followUpRecord.investor
       })
     },
     activated() {
-      console.log(this.addFollow,'addFollow')
+      console.log(this.investor,'investor')
       this.startTime = this.$$getCurrentMonth()
       this.endTime = this.$$timeFormate({date: this.$$getCurrentTime(), format: 'Y-M-D'})
 
@@ -393,6 +398,11 @@
         }
       }
       this.myCharts1.setOption(currentOption)
+    },
+    watch: {
+      ccTimeSet() {
+        this.getPositionInfo()
+      }
     },
     methods: {
       chooseccTime() {
@@ -445,7 +455,7 @@
       getFundInfo() { //获取单一投资者某一段时间的资金情况
         this.$$axios({
           restUrl: 'fundInfo',
-          join: [this.info.userId, [this.addFollow.InvestorId, ['beginDate', this.startTime], ['endDate', this.endTime]]]
+          join: [this.info.userId, [this.investor.INVESTOR_ID, ['beginDate', this.startTime], ['endDate', this.endTime]]]
         })
           .then((response) => {
             this.zjClick = true
@@ -463,9 +473,12 @@
                   }
                 ]
               }
+              document.getElementById('no-message-tips').style.display = 'block'
               this.myCharts.setOption(currentOption)
               return
             }
+            document.getElementById('no-message-tips').style.display = 'none'
+
             this.fundsTips['MARGIN_AMT'] = response['total'][0]['MARGIN_AMT']   //保证金
             this.fundsTips['PRE_RI_AMT'] = response['total'][0]['PRE_RI_AMT']  //上日结存
             this.fundsTips['TODAY_RI_AMT'] = response['total'][0]['TODAY_RI_AMT']  //本日结存
@@ -495,7 +508,7 @@
       getPositionInfo() {  //获取单一投资者上一日持仓情况
         this.$$axios({
           restUrl: 'positionInfo',
-          join: [this.info.userId, [this.addFollow.InvestorId, ['date', this.ccSetTime], ['type', this.chicangType]]]
+          join: [this.info.userId, [this.investor.INVESTOR_ID, ['date', this.ccTimeSet], ['type', this.chicangType]]]
         })
           .then((response) => {
             this.pzClick = true

@@ -94,6 +94,46 @@ var DealContents = React.createClass({
             "卖平今"
           )
         );
+      }else if (content['112'] == 1 && content['117'] == '9') {
+        direction = React.createElement(
+          "p",
+          { className: "c4 display-table-row" },
+          React.createElement(
+            "span",
+            { className: "display-table-cell" },
+            "卖定转"
+          )
+        );
+      }else if (content['112'] == 1 && content['117'] == 'B') {
+        direction = React.createElement(
+          "p",
+          { className: "c4 display-table-row" },
+          React.createElement(
+            "span",
+            { className: "display-table-cell" },
+            "卖转让"
+          )
+        );
+      }else if (content['112'] == 0 && content['117'] == '9') {
+        direction = React.createElement(
+          "p",
+          { className: "c4 display-table-row" },
+          React.createElement(
+            "span",
+            { className: "display-table-cell" },
+            "买定转"
+          )
+        );
+      }else if (content['112'] == 0 && content['117'] == 'B') {
+        direction = React.createElement(
+          "p",
+          { className: "c4 display-table-row" },
+          React.createElement(
+            "span",
+            { className: "display-table-cell" },
+            "买转让"
+          )
+        );
       }
 
       if (content['64']) {
@@ -466,6 +506,46 @@ var EntrustContents = React.createClass({
             "span",
             { className: "display-table-cell" },
             "卖平今"
+          )
+        );
+      }else if (content['112'] == 1 && content['117'] == '9') {
+        direction = React.createElement(
+          "p",
+          { className: "c4 display-table-row" },
+          React.createElement(
+            "span",
+            { className: "display-table-cell" },
+            "卖定转"
+          )
+        );
+      }else if (content['112'] == 1 && content['117'] == 'B') {
+        direction = React.createElement(
+          "p",
+          { className: "c4 display-table-row" },
+          React.createElement(
+            "span",
+            { className: "display-table-cell" },
+            "卖转让"
+          )
+        );
+      }else if (content['112'] == 0 && content['117'] == '9') {
+        direction = React.createElement(
+          "p",
+          { className: "c4 display-table-row" },
+          React.createElement(
+            "span",
+            { className: "display-table-cell" },
+            "买定转"
+          )
+        );
+      }else if (content['112'] == 0 && content['117'] == 'B') {
+        direction = React.createElement(
+          "p",
+          { className: "c4 display-table-row" },
+          React.createElement(
+            "span",
+            { className: "display-table-cell" },
+            "买转让"
           )
         );
       }
@@ -1006,7 +1086,7 @@ var PositionContents = React.createClass({
       }
 
       if (path == null) {
-        path = React.createElement("div", 
+        path = React.createElement("div",
                                    {className: "imageBar pull-left"},
                                    null);
       }

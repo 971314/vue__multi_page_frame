@@ -58,6 +58,21 @@ const urlList = {
     name: '查询开户进度列表',
     url: 'opSchedule/list',
     type: 'Get'
+  },
+  workPerformancBase: {
+    name: '个人业绩本月速览',
+    url: 'workPerformanc/base',
+    type: 'Get'
+  },
+  workPerformancList: {
+    name: '个人业绩近一年历史',
+    url: 'workPerformanc/list',
+    type: 'Get'
+  },
+  workPerformancInfo: {
+    name: '客户权益结构',
+    url: 'workPerformanc/info',
+    type: 'Get'
   }
 }
 

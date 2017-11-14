@@ -44,6 +44,7 @@
       setSex(str) {
         this.sexFlag = str;
         this.$store.dispatch('updateNoPotSex', this.sexFlag)
+        this.$router.back()
       }
     }
   }

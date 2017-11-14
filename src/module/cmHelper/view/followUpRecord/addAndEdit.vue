@@ -1,50 +1,38 @@
 <template>
 
-    <div class="cmTrends addAndEdit">
+    <div class="cmTrends addAndEdit pobo-customer-info">
 
         <div>
             <common-nav>
                 <div slot="body">
-                    <span>新建跟进</span>
+                    <span v-if="isEdit">{{showEditBtn?"跟进记录":"编辑跟进"}}</span>
+                    <span v-if="!isEdit">新建跟进</span>
                 </div>
-                <div slot="footer" class="addFollow" @click="submit()">
+                <div v-if="showEditBtn" slot="footer" class="addFollow" @click="showEditBtn=false">
+                    编辑
+                </div>
+                <div v-if="!showEditBtn" slot="footer" class="addFollow" @click="submit()">
                     完成
                 </div>
             </common-nav>
         </div>
 
-        <div class="container">
+        <div class="container customer-info-center">
 
            <div class="group">
                <a class="cell" @click="goToCusInfoList()">
-                    <span v-if="params.businessType==1" class="cell-body">{{params.name || '客户'}}</span>
+                    <span v-if="params.businessType==1" class="cell-body">客户姓名：{{params.name}}</span>
                     <span v-if="params.businessType==2" class="cell-body">潜在客户：{{params.name}}</span>
-                    <div class="cell-footer">
+                    <div class="cell-footer" v-if="!isEdit">
                         <img src="../../images/followUpRecord/img03.png"/>
                     </div>
                 </a>
-                <div v-if="params.businessType!=1" class="historyFollow">
-                  <div><span>2017-10-22</span> 跟进跟进跟进跟进跟进跟进跟进跟进跟进跟进跟进跟进跟进跟进跟进跟进</div>
-                  <div><span>2017-10-22</span> 跟进跟进跟进跟进跟进跟进跟进跟进跟进跟进跟进跟进跟进跟进跟进跟进</div>
-                </div>
-                <div v-if="params.businessType!=1" class="enclosure">
-                    <div class="group">
-                        <a class="cell">
-                            <img class="toDetail" src="../../images/followUpRecord/img08.png"/>
-                            <span class="cell-body">
-                                <img src="../../images/followUpRecord/img06.png"/>
-                                图片 2012131351212211.jpg
-                            </span>
-                            <span class="cell-footer">235K</span>
-                        </a>
-                    </div>
-                </div>
                 <a class="cell" v-if="params.businessType==1">
-                    <span class="cell-body">{{qTypeName || '问题类型'}}</span>
-                    <div class="cell-footer">
+                    <span class="cell-body">问题类型：{{params.followTypeName}}</span>
+                    <div class="cell-footer" v-if="!showEditBtn && !isEdit">
                         <img src="../../images/followUpRecord/img03.png"/>
                     </div>
-                    <select class="qType" v-model="qType" @change="setQType()">
+                    <select v-if="!showEditBtn" :disabled="isEdit" class="qType" v-model="params.followType" @change="setQType()">
                         <option value="">请选择</option>
                         <option value="01">日常事务</option>
                         <option value="02">行情推送</option>
@@ -54,14 +42,48 @@
                         <option value="06">下单错误投诉</option>
                     </select>
                 </a>
-                
+                <div v-if="detail && showEditBtn">
+                  <!-- <div class="historyFollow" v-if="detail.detail.length>0">
+                      <div class="hisItem" v-if="params.businessType==1">
+                        <div>问题内容：{{detail.detail[0].PROBLEM_DESC}}</div>
+                        <div>处理结果：{{detail.detail[0].PROBLEM_PROCESS_RESULT}}</div>
+                      </div>
+                    <div class="hisItem" v-if="params.businessType!=1" v-for="i in detail.detail[0].FOLLOWDESC">{{i}}</div>
+                  </div> -->
+                  <div class="historyFollow" v-if="params.businessType==1 && detail.detail.length>0">
+                      <div class="hisItem">
+                        <div>问题内容：{{detail.detail[0].PROBLEM_DESC}}</div>
+                        <div>处理结果：{{detail.detail[0].PROBLEM_PROCESS_RESULT}}</div>
+                      </div>
+                  </div>
+
+                  <div v-if="params.businessType==2 && detail.detail.length>0">
+                      <div v-if="detail.detail[0].FOLLOWDESC" class="historyFollow" >
+                        <div class="hisItem" v-if="params.businessType!=1" v-for="i in detail.detail[0].FOLLOWDESC">{{i}}</div>
+                      </div>
+                  </div>
+
+                </div>
+                <div v-if="detail && showEditBtn" class="enclosure">
+                    <div class="group" v-if="detail.attach.length>0">
+                        <a class="cell" v-for="(i, index) in detail.attach">
+                            <img class="toDetail" src="../../images/followUpRecord/img08.png"/>
+                            <span class="cell-body">
+                                <img src="../../images/followUpRecord/img06.png"/>
+                                图片 {{ i.ATTACH_URL.slice( i.ATTACH_URL.lastIndexOf("/") + 1 ) }}
+                            </span>
+                            <!-- <span class="cell-footer">235K</span> -->
+                        </a>
+                    </div>
+                </div>
+
            </div>
 
-           <div class="group">
+           <div class="group" v-if="!showEditBtn">
                 <a class="cell no-padding">
                     <span class="cell-body">
                         <div class="textarea">
-                            <textarea placeholder="新增跟进情况" rows="5" class="textarea-input" v-model="params.followDesc"></textarea>
+                            <textarea :disabled="isEdit && params.businessType==1" placeholder="内容" rows="5" class="textarea-input" v-model="params.followDesc"></textarea>
                             <div class="upload-img">
                                 <div v-if="imgSrcArr.length > 0" class="showImgArea" v-for="(i, index) in imgSrcArr">
                                     <i class="removeImg" @click="removePreImg(index)">&nbsp;</i>
@@ -81,17 +103,18 @@
                 </a>
             </div>
 
-            <div v-if="params.businessType==1"><textarea placeholder="处理结果" rows="5" class="result" v-model="params.followNote"></textarea></div>
+            <div v-if="params.businessType==1 && !showEditBtn"><textarea placeholder="处理结果" rows="5" class="result" v-model="params.followNote"></textarea></div>
 
-            <div v-if="params.businessType==1" class="lastEditDate text-center">
-                创建时间<span>2017-09-09</span> 最后更新时间<span>2017-10-09</span>
+            <div v-if="params.businessType==1 && showEditBtn" class="lastEditDate">
+              <div v-if="detail">创建时间<span> {{detail.detail[0].INPUT_TIME}}</span></div>
+              <div v-if="detail">最后更新时间<span> {{detail.detail[0].PROBLEM_PROCESS_DT}}</span></div>
             </div>
 
         </div>
 
     </div>
 
-  
+
 </template>
 
 <script>
@@ -108,24 +131,35 @@
                 cardFront: 'no-file',
                 imgSrcArr : [],
                 params : {},
-                qType : '',
-                qTypeName : '',
-                userId : 'sysadmin',
+                showEditBtn : "", //是否否显示【编辑】按钮
+                detail : null
             }
         },
         computed: {
           ...mapState({
             addFollow: ({followUpRecord}) => followUpRecord.addFollow,
-            jumpFlag: ({followUpRecord}) => followUpRecord.jumpFlag
+            jumpFlag: ({followUpRecord}) => followUpRecord.jumpFlag,
+            showEditBtnFlag: ({followUpRecord}) => followUpRecord.showEditBtn,
+            isEdit: ({followUpRecord}) => followUpRecord.isEdit
           })
         },
-        mounted() {
+        activated() {
+
             this.params = this.addFollow;
-            if(this.params.businessType==2){
+            this.showEditBtn = this.showEditBtnFlag;
+            this.imgSrcArr = this.addFollow.attach;
+            //使滚动条回到顶部
+            //(document.getElementsByTagName("body")[0]).scrollTop = 0;
+            if(this.params.businessType==2 && this.isEdit){
               //查询某个潜在客户跟进
               this.pInvestorFollow();
+            }else if(this.params.businessType==1 && this.isEdit){
+              //查询某个客户跟进
+              this.investorFollow();
             }
-            //this.$store.dispatch('updateAddFollow', this.ccSetTime1)
+        },
+        mounted() {
+
         },
 
         methods: {
@@ -229,9 +263,21 @@
 
             submit(){
                 var _this = this;
-                _this.params.userId = this.userId;
+
+                if(!_this.params.InvestorId){
+                    _this.$toast('请选择客户！')
+                    return;
+                }else if(!_this.params.followType && this.params.businessType==1){
+                    _this.$toast('请选择问题类型！')
+                    return;
+                }else if(!_this.params.followDesc){
+                    _this.$toast('请输入跟进内容！')
+                    return;
+                }
+                _this.$$loading();
+                _this.params.userId = this.info.userId;
                 _this.params.attach = _this.imgSrcArr;
-                var url = PBHttpServer.apply.serverUrl;
+                var url = PBHttpServer.cmHelper.serverUrl;
                 var temp = util.deepClone(_this.params);
                 var params = {};
                 if(this.params.businessType==1){
@@ -241,7 +287,7 @@
                     params = temp;
                   }else{
                     //编辑留存客户跟进
-                    url += "investorFollow/detail/" + _this.params.userId + "/" + _this.params.InvestorId + "/" + this.addFollow.followId;
+                    url += "investorFollow/detail/" + _this.params.userId + "/" + _this.params.InvestorId + "/" + this.params.followId;
                     params = temp;
                   }
                 }else{
@@ -249,25 +295,59 @@
                   url += "pInvestorFollow/detail/" + _this.params.userId + "/" + _this.params.InvestorId;
                   params.userId = temp.userId;
                   params.pInvestorId = temp.InvestorId;
-                  params.followDesc = temp.followDesc;
-                  params.Attach = temp.attach;
+                  params.followDesc = util.getDate() +' '+ temp.followDesc;
+                  params.attach = temp.attach;
                 }
-                
-                _this.$axios.post(url, params).then(function(result) {
-                    console.log(result);
-                    if(result.data.retHead=="0"){
-                      _this.$alert({
-                          maskClosable: true,
-                          message: '成功！！！',
-                          btns: [{
-                            text: '确认'
-                          }],
+                var follow = {
+                      businessType : '',//1:留存客户跟进   2:潜在客户跟进
+                      followId : '',   //客户跟进Id
+                      InvestorId : '', //投资者ID
+                      name : '',       //投资者姓名
+                      followType : '', //跟进类型code
+                      followTypeName : '', //跟进类型
+                      followDesc : '', //内容
+                      followNote : '', //备注（处理结果）
+                      attach : []      //附件列表
+                };
+
+                if(this.params.followId){
+                        _this.$axios.put(url,params,{headers:{id:this.info.token}}).then(function(result) {
+                          _this.$$loaded();
+                          var msg = "";
+                          if(result.data.retHead=="0"){
+                            msg = "保存成功！";
+                          }else{
+                            msg = "失败！";
+                          }
+                          _this.$store.dispatch('updateAddFollow', follow);
+                          _this.$toast(msg)
+                          setTimeout(() => {
+                              _this.$router.back()
+                          }, 3000)
+                      }).
+                      catch(function(err) {
+                          console.log('服务器异常', err)
                       });
-                    }
-                }).
-                catch(function(err) {
-                    console.log('服务器异常', err)
-                });
+                  }else{
+                      _this.$axios.post(url, params, {headers:{id:this.info.token}}).then(function(result) {
+                          _this.$$loaded();
+                          var msg = "";
+                          if(result.data.retHead=="0"){
+                            msg = "保存成功！";
+                          }else{
+                            msg = "失败！";
+                          }
+                          _this.$store.dispatch('updateAddFollow', follow);
+                          _this.$toast(msg)
+                          setTimeout(() => {
+                              _this.$router.back()
+                          }, 3000)
+                      }).
+                      catch(function(err) {
+                          console.log('服务器异常', err)
+                      });
+                  }
+
             },
 
             removePreImg(index){
@@ -278,30 +358,65 @@
             setQType(){
                 var _this = this;
                 var follow = this.addFollow;
-                follow.followType = this.qType;
-                switch(this.qType){
-                    case '01': _this.qTypeName = '日常事务';break;
-                    case '02': _this.qTypeName = '行情推送';break;
-                    case '03': _this.qTypeName = '答疑解惑';break;
-                    case '04': _this.qTypeName = '经验指导';break;
-                    case '05': _this.qTypeName = '持仓异常查询';break;
-                    case '06': _this.qTypeName = '下单错误投诉';break;
-                    default: _this.qTypeName = '';break;
-                }
-                follow.followTypeName = this.qTypeName;
+                follow.followType = this.params.followType;
+                _this.params.followTypeName = util.followCodeToType(this.params.followType);
+                follow.followTypeName = _this.params.followTypeName;
                 this.$store.dispatch('updateAddFollow', follow);
             },
             //跳转用户信息列表页面
             goToCusInfoList(){
+              if(this.isEdit){ return; }
               this.$store.dispatch('updatepJumpFlag', 2);
               this.$router.push('/customerInfoList');
             },
-            //查询某个潜在客户跟进列表
+            //查询某个潜在客户跟进
             pInvestorFollow(){
                 var _this = this;
-                var url = PBHttpServer.apply.serverUrl + "pInvestorFollow/list/" + _this.userId + "/" + _this.params.InvestorId;
-                _this.$axios.get(url,null).then(function(result) {
-                    console.log(result);
+                _this.$$loading();
+                var url = PBHttpServer.cmHelper.serverUrl + "pInvestorFollow/detail/" + _this.info.userId + "/" + _this.params.InvestorId;
+
+                _this.$axios.get(url,{headers:{id:this.info.token}},null).then(function(result) {
+                    _this.$$loaded();
+                    var data =  result.data.data;
+
+                    _this.params.name = data.detail[0].INVESTOR_NAM;
+                    if(data.detail[0].FOLLOWDESC){
+                      data.detail[0].FOLLOWDESC = (data.detail[0].FOLLOWDESC.replace(/\\n/g,"|")).split("|");
+                      if( (data.detail[0].FOLLOWDESC)[0] == "" ){
+                        data.detail[0].FOLLOWDESC.splice(0, 1);
+                      }
+                    }
+                    if(data.attach.length>0){
+                      for(var i in data.attach){
+                        _this.imgSrcArr.push(data.attach[i].FILEDATA);
+                      }
+                    }
+                    _this.detail = data;
+                }).
+                catch(function(err) {
+                    console.log('服务器异常', err)
+                });
+            },
+            //查询某个客户跟进
+            investorFollow(){
+                var _this = this;
+                _this.$$loading();
+                var url = PBHttpServer.cmHelper.serverUrl + "investorFollow/detail/" + _this.info.userId + "/" + _this.params.InvestorId + "/" + _this.params.followId;
+                _this.$axios.get(url,{headers:{id:this.info.token}},null).then(function(result) {
+                    _this.$$loaded();
+                    var data =  result.data.data;
+
+                    _this.params.name = data.detail[0].INVESTOR_NAM
+                    _this.params.followType = util.followTypeToCode(data.detail[0].PROBLEM_TYP);
+                    _this.params.followTypeName = data.detail[0].PROBLEM_TYP
+                    _this.params.followDesc = data.detail[0].PROBLEM_DESC
+                    _this.params.followNote = data.detail[0].PROBLEM_PROCESS_RESULT
+                    if(data.attach.length>0){
+                      for(var i in data.attach){
+                        _this.imgSrcArr.push(data.attach[i].FILEDATA);
+                      }
+                    }
+                    _this.detail = data;
                 }).
                 catch(function(err) {
                     console.log('服务器异常', err)

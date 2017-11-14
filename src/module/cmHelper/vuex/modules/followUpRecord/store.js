@@ -1,6 +1,8 @@
 export default{
   state: {
     jumpFlag : 1,//1：跳转客户信息详情 2：跳转新建跟进 3：跳转其他
+    showEditBtn : false, //是否显示【新建跟进】页面的【编辑】按钮
+    isEdit : false, //是否是【编辑跟进】
     //跟进情况
     addFollow: {
       businessType : '',//1:留存客户跟进   2:潜在客户跟进
@@ -44,7 +46,14 @@ export default{
     },
     updatepJumpFlag(state, payload) {
       state.jumpFlag = payload.jumpFlag
+    },
+    updatepShowEditBtn(state, payload) {
+      state.showEditBtn = payload.showEditBtn
+    },
+    updatepIsEdit(state, payload) {
+      state.isEdit = payload.isEdit
     }
+    
   },
   actions: {
     updateAddFollow({commit}, addFollow) {
@@ -58,6 +67,12 @@ export default{
     },
     updatepJumpFlag({commit}, jumpFlag) {
       commit({type: 'updatepJumpFlag', jumpFlag: jumpFlag})
+    },
+    updatepShowEditBtn({commit}, showEditBtn) {
+      commit({type: 'updatepShowEditBtn', showEditBtn: showEditBtn})
+    },
+    updatepIsEdit({commit}, isEdit) {
+      commit({type: 'updatepIsEdit', isEdit: isEdit})
     }
   },
   getters: {}

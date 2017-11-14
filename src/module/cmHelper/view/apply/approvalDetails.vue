@@ -106,22 +106,20 @@
       revokedClick () {
         let _this = this
         _this.$loading.toggle(' ')
-        _this.$axios.delete(PBHttpServer.apply.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId + '/' + _this.task.processId + '/' + _this.task.businessKeyId, {
+        _this.$axios.delete(PBHttpServer.cmHelper.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId + '/' + _this.task.processId + '/' + _this.task.businessKeyId, {
           timeout: 10000,
           headers: {
             id: _this.info.token
           }
         }).then((data) => {
           data = data.data
+          console.log(data)
           _this.$loading.hide()
           if (data.retHead == 0) {
-            _this.$alert({
-              maskClosable: true,
-              massage: '<div style="text-align: center">撤回成功</div>',
-              click: () => {
-                _this.$router.push('/approvalIndex')
-              }
-            })
+            _this.$toast('撤回成功！')
+            setTimeout(() => {
+              _this.$router.push('/approvalIndex')
+            }, 1500)
           } else {
             _this.$toast(data.desc)
           }
@@ -135,7 +133,7 @@
       getData () {
         let _this = this
         _this.$loading.toggle(' ')
-        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId + '/' + this.task.businessKeyId, {
+        _this.$axios.get(PBHttpServer.cmHelper.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId + '/' + this.task.businessKeyId, {
           timeout: 10000,
           headers: {
             id: _this.info.token

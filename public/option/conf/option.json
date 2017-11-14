@@ -32,12 +32,20 @@
         "url":"pobo:uncheck=1&pageId=802204"
       },
       {
+        "name":"自动行权",
+        "url":"pobo:uncheck=1&pageId=802209"
+      },
+      {
         "name":"备兑锁定、解锁",
         "url":"pobo:uncheck=1&pageId=802208"
       },
       {
         "name":"资金现状",
         "url":"pobo:uncheck=1&pageId=902307&url=option/view/option-st.html"
+      },
+      {
+        "name":"资金流水",
+        "url":"pobo:uncheck=1&pageId=902307&url=option/view/option-cash.html"
       }
     ]
   },
@@ -62,6 +70,10 @@
       {
         "name":"银衍转账",
         "url":"option-tr.html"
+      },
+      {
+        "name":"预约转账",
+        "url":"option-appoint.html"
       },
       {
         "name":"修改密码",

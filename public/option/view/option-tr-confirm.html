@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>预约确认</title>
+
+  <!-- Bootstrap -->
+  <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../css/common.css" rel="stylesheet">
+  <script src="../../js/adaptation.js"></script>
+  <link href="../css/option.css" rel="stylesheet">
+  <link href="../../css/configStyle.css" rel="stylesheet">
+  <style>
+    .btn-3b0 {
+      background-color: #3366cc;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a href="goBack" class="navbar-brand" id="goBack">
+        <img src="../../images/goback.png" alt="返回">
+      </a>
+    </div>
+    <p class="navbar-text">预约确认</p>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="confirmInfo">
+    <div>
+      <span class="title">银行账户</span>
+      <span class="info" id="backName"></span>
+    </div>
+    <div>
+      <span class="title">币种</span>
+      <span class="info" id="backcode"></span>
+    </div>
+    <div>
+      <span class="title">流水</span>
+      <span class="info" id="statement"></span>
+    </div>
+    <div>
+      <span class="title">预约取款金额</span>
+      <span class="info" id="number"></span>
+    </div>
+
+  </div>
+
+  <div class="clearfix">
+    <div class="row content divide">
+      <div class="col-xs-4 left-title">
+        取款日期
+      </div>
+      <div class="col-xs-8 right-input time-start-content" style="height: 50px; line-height: 50px;">
+
+        <span id="time" style="color:#808086">请选择时间</span>
+        <input id="timeDate" type="date" placeholder="请选择时间"/>
+
+        </label>
+
+        <!-- //<input type="number" placeholder="请选择时间" id="inAmount">-->
+      </div>
+    </div>
+    <div class="row content">
+      <div class="col-xs-4 left-title">
+        取款金额
+      </div>
+      <div class="col-xs-8 right-input" style="padding-top: 0; padding-bottom: 0; line-height: 50px;">
+        <input type="number" placeholder="取款金额" id="owe" style="width: 160px;">
+        <div class="b8 text-center"
+             style="display:inline-block; height: 30px; width: 40px; border: solid 1px #3366cc; line-height: 30px; border-radius: 5px; color: #3366cc;"
+             id="total">全部
+        </div>
+      </div>
+    </div>
+    <div class="row content" id="bankPwd">
+      <div class="col-xs-4 left-title">
+        银行密码
+      </div>
+      <div class="col-xs-8 right-input">
+        <input type="password" placeholder="请输入银行密码" id="inBankPwd">
+      </div>
+    </div>
+    <div class="row content" id="moneyPwd">
+      <div class="col-xs-4 left-title">
+        资金密码
+      </div>
+      <div class="col-xs-8 right-input">
+        <input type="password" placeholder="请输入资金密码" id="inFundPwd">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-center">
+        <input type="button" class="btn btn-block btn-3b0" value="确定" onclick="confirm();">
+      </div>
+    </div>
+    <div class="c3 hide" id="error"></div>
+  </div>
+</div>
+<script src="../../../js/PB.Api.js"></script>
+<script src="../../../js/jquery-2.2.0.min.js"></script>
+<script src="../../../js/PB.Page.js"></script>
+<script src="../../../js/PB.Utils.js"></script>
+</body>
+<script>
+
+  var CID = pbE.WT().wtGetCurrentConnectionCID();
+  var option = {
+    callbacks: [
+      {
+        fun: 9024, module: 90002, callback: function (msg) {
+        if (msg.jData['1'] < 0) {
+          alert(msg.jData['2']);
+        }
+        else {
+          window.location.href = "close";
+        }
+        //todo
+      }
+      }
+    ],
+
+    reload: function () {
+      pbE.SYS().startLoading();
+      CID = pbE.WT().wtGetCurrentConnectionCID();
+
+    },
+    refresh: function () {
+
+    },
+    fresh: function () {
+    },
+
+    doShow: function (flag) {
+
+    }
+  };
+  pbPage.initPage(option);
+
+
+  var data = JSON.parse(pbUtils.GetQueryString("data"));
+  var number = data["739"] - 0;
+  $("#number").text(number);
+  if (data["56"] == "0")
+    $("#backcode").text("人民币");
+
+  $("#statement").text(data["200"]);
+  $("#backName").text(data["account"]);
+
+  $("#total").on("click", function () {
+    $("#owe").val(number);
+  })
+
+  $("#total").on("click", function () {
+    $("#owe").val(number);
+  })
+
+  $("#timeDate").change(function () {
+    $("#time").text($("#timeDate").val())
+    $("#time").css("color", "#000000")
+    if ($("#timeDate").val() == "") {
+      $("#time").text("请选择时间");
+      $("#time").css("color", "#757575");
+    }
+  });
+
+
+  function queryRecord() {
+
+
+  }
+
+  function confirm() {
+
+    if (!$('#timeDate').val()) {
+      $('#error').removeClass('hide');
+      $('#error').html('请输入取款日期');
+      return;
+    }
+    if (!$('#owe').val()) {
+      $('#error').removeClass('hide');
+      $('#error').html('请输入取款金额');
+      return;
+    }
+
+
+
+    if (!$('#inBankPwd').val()) {
+      $('#error').removeClass('hide');
+      $('#error').html('请输入银行密码');
+      return;
+    }
+    if (!$('#inFundPwd').val()) {
+      $('#error').removeClass('hide');
+      $('#error').html('请输入资金密码');
+      return;
+    }
+
+    $('#error').addClass('hide');
+
+    var confirmData = {
+      '200': data["200"],
+      '51': data["51"],
+      '215': data["215"],
+      '56': data["56"],
+      '398': $("#timeDate").val(),
+      '382': $("#owe").val(),
+      '59': $("#inFundPwd").val(),
+      '60': $("#inBankPwd").val(),
+    };
+    console.log(data);
+    pbE.WT().wtGeneralRequest(CID, 9024, JSON.stringify(data));
+  }
+
+</script>
+</html>

@@ -991,16 +991,30 @@ var DealContentsOptionsHis = React.createClass({
       var marketInfo = pbUtils.parseJSON(pbE.WT().wtGetHQInfo(content['63'], content['54'])), //交易信息转换行情信息
           decimal = pbE.HQ().hqGetPriceDecimal(marketInfo.HQCode, marketInfo.HQMarket),
           price = pbUtils.decimalDecPrice(decimal, content['114']);
-      
+
+      var beidui = "";
+
+      if(content['125'] == '1'){
+        beidui = React.createElement(
+          'div',
+          { className: 'pull-left ptposition' },
+          React.createElement('img', { src: '../../images/beidui.png', alt: '备兑', width: '15px', height: '31px' })
+        )
+      }
+
       return React.createElement(
         'div',
         { className: 'folder-row' },
         React.createElement(
           'div',
           { className: 'row content', onClick: this.fold.bind(null, index) },
+
+   
+
           React.createElement(
             'div',
             { className: 'col-my-18 text-left' },
+            beidui,
             React.createElement(
               'p',
               { className: 'b1 display-table-row' },
@@ -1057,20 +1071,6 @@ var DealContentsOptionsHis = React.createClass({
                 null,
                 content['133']
               )
-            ),
-            this.props.hides&&this.props.hides.indexOf(dealTime)!=-1?null:React.createElement(
-                'div',
-                { className: 'col-xs-6' },
-                React.createElement(
-                    'span',
-                    null,
-                    dealTime+'：'
-                ),
-                React.createElement(
-                    'span',
-                    null,
-                    content['116']
-                )
             ),
             this.props.hides&&this.props.hides.indexOf(contractCode)!=-1?null:React.createElement(
               'div',

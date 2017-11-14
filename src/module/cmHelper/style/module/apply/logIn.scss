@@ -1,6 +1,7 @@
 .log_in {
   @extend %initial;
   .log_input {
+    position: relative;
     margin-top: toRem(20px);
     padding-left: toRem(30px);
     background: $color15;

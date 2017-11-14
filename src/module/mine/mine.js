@@ -34,7 +34,7 @@ Vue.mixin({
   data(){
     return {
       url: 'http://101.226.207.143:8888/cloud_trade/1_0',
-      postUrl: 'http://180.169.30.6:8080/pobocertification_rest/1_0',
+      postUrl: PBHttpServer.mine.infoUrl,
       confUrlPbe: 'main/conf/',
       confUrl: '../conf/h5/',
       confUrlH5: 'conf/h5/',

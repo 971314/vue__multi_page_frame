@@ -1,6 +1,6 @@
 <template>
 
-    <div class="cmTrends">
+    <div class="cmTrends pobo-customer-info">
 
         <div>
             <common-nav>
@@ -17,9 +17,9 @@
             </common-nav>
         </div>
 
-        <div class="container">
+        <div class="container customer-info-center">
             
-            <div class="group-title">
+            <div class="group-title setHeight">
                 <i>&nbsp;</i><strong>今天</strong>
             </div>
             <div class="group">
@@ -79,17 +79,22 @@
     import moment from "moment";
     import axios from 'axios';
     import browser from '../../utils/browser';
+    import util from '../../utils/util';
 
     export default {
 
         data() {
             return {
                 pickerValue : '',
+                begin : 1,
+                size : 10,
                 //客户端类型（ios || android）
                 isIos : browser.versions.ios || browser.versions.iPhone || browser.versions.iPad
             }
         },
-
+        activated(){
+            this.getCusDynamic();
+        },
         mounted() {
             
         },
@@ -97,6 +102,18 @@
         methods: {
             changeDate(){
 
+            },
+            //查询【客户动态】
+            getCusDynamic(){
+                var _this = this;
+                _this.$$loading();
+
+                var url = PBHttpServer.cmHelper.serverUrl + "investorMessages/info/"+ this.info.userId +"?beginDate="+util.getDate()+"&endDate="+util.getDate()+"&begin="+ this.begin +"&size=" + this.size;
+                _this.$axios.get(url,{headers:{id:this.info.token}}, null).then(function (result) {
+                  _this.$$loaded();
+                }).catch(function (err) {
+                  console.log('服务器异常', err)
+                });
             }
         }
     }

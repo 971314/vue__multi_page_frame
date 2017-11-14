@@ -8,10 +8,12 @@ import Impression from 'vue-impression'
 import store from './vuex'
 import './utils/mixins'
 import ComponentList from './components'
+import InfiniteScroll from 'mint-ui'
 
 Vue.prototype.$axios = Axios //首次登陆需要的请求
-Vue.use(pbUI)
 Vue.use(Impression)
+Vue.use(pbUI)
+Vue.use(InfiniteScroll)
 
 const componentGater = Object.values(ComponentList)
 

@@ -1,28 +1,43 @@
 @import '../cmHelperIndex/cmTrends.scss';
 
+/* body{
+	overflow: auto;	
+} */
+
+
 .cmTrends.recordList{
+	.common-nav{
+	    height: 44px;
+    	line-height: 44px;
+	}
 	.addFollow{
 		padding-right: toRem(30px);
 		font-size: toRem(30px);
 		color: #fff;
 	}
-	.container{
-		.tabbar{
-		    height: toRem(100px);
-		    border:0;
-			border-bottom:solid toRem(1px) #e4e7f0;
-			font-size: toRem(32px);
-			.tabbar-item{
-				height: toRem(100px);
-				line-height: toRem(100px);
-			}
+	.tabbar{
+	    position: relative;
+	    width: 100%;
+	    height: toRem(100px);
+	    border:0;
+		//border-bottom:solid toRem(1px) #e4e7f0;
+		@include bottom-px1-pixel-ratio;
+		font-size: toRem(32px);
+		.tabbar-item{
+			height: toRem(100px);
+			line-height: toRem(100px);
 		}
+	}
+	.container{
+	    margin-top: 0;
 		.group-title{
 			padding: 0;
 			color: #808086;
 			.recordListDate{
 				position: relative;
-				padding: toRem(6px) toRem(30px);
+				padding: 0 toRem(30px);
+				height: toRem(40px);
+				line-height: toRem(40px);
 			}
 		}
 		.group{

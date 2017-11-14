@@ -1,0 +1,163 @@
+.pobo-performance-index {
+  @extend %common-wrapper;
+
+  .performance-index-header {
+    background-image: url('../images/88pxyingyebu@2x.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: #3366cc;
+    display: flex;
+    flex-direction: column;
+    .pb-common-nav {
+      background-color: transparent;
+    }
+  }
+  .index-header-grid {
+    background-image: url('../images/yuangongdetail@2x.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    .index-header-top {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: toRem(70px);
+      .header-top-number {
+        padding-top: toRem(52px);
+        @include font($font60);
+        line-height: 1;
+        font-weight: bolder;
+        color: $color15;
+        text-align: center;
+      }
+      .header-top-title {
+        padding-top: toRem(30px);
+        @include font($font23);
+        line-height: 1;
+        color: $color15;
+        opacity: 0.8;
+        text-align: center;
+      }
+    }
+    .index-header-footer {
+      height: toRem(130px);
+      padding: toRem(34px) toRem(45px);
+      background-color: rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      .header-footer-items {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .footer-items-number {
+          @include font($font25);
+          color: $color15;
+          line-height: 1;
+        }
+        .footer-items-name {
+          margin-top: toRem(14px);
+          @include font($font11);
+          color: $color15;
+          line-height: 1;
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+  .performance-index-center {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    overflow: auto;
+    //-webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    background-color: #f7f7fa;
+    .kehu-qy-view {
+      background-color: #ffffff;
+      padding: toRem(40px) toRem(30px);
+      .kehu-qy-header {
+        margin-left: toRem(-30px);
+        height: toRem(36px);
+        color: $color18;
+        background-color: rgba(51, 102, 204, 0.2);
+        border-left: toRem(8px) solid #3366cc;
+        line-height: 1;
+        padding-left: toRem(22px);
+        padding-right: toRem(22px);
+        @include font($font26);
+      }
+      .kehu-qy-charts {
+        margin-top: toRem(14px);
+        height: toRem(500px);
+        z-index: 999;
+      }
+    }
+    .khqy-db-view {
+      background-color: #ffffff;
+      padding: toRem(40px) toRem(30px);
+      .khqy-db-header {
+        margin-left: toRem(-30px);
+        height: toRem(36px);
+        color: $color18;
+        background-color: rgba(51, 102, 204, 0.2);
+        border-left: toRem(8px) solid #3366cc;
+        line-height: 1;
+        padding-left: toRem(22px);
+        padding-right: toRem(22px);
+        @include font($font26);
+      }
+      .khqy-db-charts {
+        margin-top: toRem(14px);
+        height: toRem(500px);
+        z-index: 999;
+      }
+    }
+    .kehu-qyjg-view {
+      margin-top: toRem(20px);
+      background-color: #ffffff;
+      padding: toRem(40px) toRem(30px);
+      .kehu-qyjg-header {
+        margin-left: toRem(-30px);
+        height: toRem(36px);
+        color: $color18;
+        background-color: rgba(51, 102, 204, 0.2);
+        border-left: toRem(8px) solid #3366cc;
+        line-height: 1;
+        padding-left: toRem(22px);
+        padding-right: toRem(22px);
+        @include font($font26);
+      }
+      .kehu-qyjg-charts {
+        margin-top: toRem(14px);
+        height: toRem(400px);
+        z-index: 999;
+      }
+    }
+    .khsl-jg-view {
+      margin-top: toRem(20px);
+      background-color: #ffffff;
+      padding: toRem(40px) toRem(30px);
+      .khsl-jg-header {
+        margin-left: toRem(-30px);
+        height: toRem(36px);
+        color: $color18;
+        background-color: rgba(51, 102, 204, 0.2);
+        border-left: toRem(8px) solid #3366cc;
+        line-height: 1;
+        padding-left: toRem(22px);
+        padding-right: toRem(22px);
+        @include font($font26);
+      }
+      .khsl-jg-charts {
+        margin-top: toRem(14px);
+        height: toRem(400px);
+        z-index: 999;
+      }
+    }
+  }
+}

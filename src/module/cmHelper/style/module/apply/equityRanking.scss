@@ -30,7 +30,7 @@
     }
     .TheadWrap {
       position: fixed;
-      height: toRem(80px);
+      //height: toRem(80px);
       width: 100%;
       overflow: hidden;
       z-index: 2;
@@ -57,11 +57,11 @@
       }
     }
     .TbodyInner {
-      margin-top: 34px;
+      margin-top: 39px;
       display: flex;
       overflow: hidden;
       color: $color18;
-      font-size: $font10;
+      font-size: $font33;
       .brief {
         tr {
           td {
@@ -91,6 +91,7 @@
                 line-height: 1;
                 &:nth-of-type(1) {
                   padding-bottom: toRem(10px);
+                  font-size: $font10;
                 }
                 &:nth-of-type(2) {
                   color: $color17;
@@ -190,6 +191,11 @@
           &:nth-child(2) {
             span {
               width: toRem(222px);
+            }
+            img {
+              margin-left: toRem(10px);
+              width: toRem(9px);
+              height: toRem(15px);
             }
           }
           &:nth-child(3) {

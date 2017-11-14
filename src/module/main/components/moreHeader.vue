@@ -7,6 +7,7 @@
 
 <script>
     export default{
+        name: 'more-header',
         props: {
             leftTitle: {
                 type: String,

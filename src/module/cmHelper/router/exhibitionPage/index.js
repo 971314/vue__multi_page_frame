@@ -11,6 +11,7 @@ import PotentialCustomerEdit from '../../view/exhibitionPage/potentialCustomerEd
 import PotentialCustomerAdd from '../../view/exhibitionPage/potentialCustomerAdd.vue'
 import ccSetTime from '../../view/exhibitionPage/ccSetTime.vue'
 import GetSex from '../../view/exhibitionPage/getSex.vue'
+import PerformanceCenter from '../../view/exhibitionPage/performanceCenter.vue'
 
 const routes = [
   {
@@ -81,6 +82,11 @@ const routes = [
     path: '/getSex',
     name: 'getSex',
     component: GetSex
+  },
+  {    //业绩中心
+    path: '/performanceCenter',
+    name: 'performanceCenter',
+    component: PerformanceCenter
   }
 ]
 

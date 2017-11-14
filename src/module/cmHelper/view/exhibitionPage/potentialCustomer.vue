@@ -48,10 +48,10 @@
       <div class="message-footer">
         <img class="message-icon" src="../../images/exhibitionPage/message@2x.png"/>
       </div>
-      <div class="mobile-phone-footer">
+      <div class="mobile-phone-footer" @click="callTel">
         <img class="mobile-phone-icon" src="../../images/exhibitionPage/mobilePhone@2x.png"/>
       </div>
-      <div class="new-follow-footer">
+      <div class="new-follow-footer" @click="addAndEdit">
         <img class="new-follow-icon" src="../../images/exhibitionPage/newfollowUp@2x.png"/>
       </div>
     </div>
@@ -90,14 +90,29 @@
     },
     computed: {
       ...mapState({
-        pInvestor: ({followUpRecord}) => followUpRecord.pInvestor
+        pInvestor: ({followUpRecord}) => followUpRecord.pInvestor,
+        addFollow: ({followUpRecord}) => followUpRecord.addFollow
       })
     },
     activated() {
-      console.log(this.pInvestor,'pInvestor')
+      console.log(this.pInvestor, 'pInvestor')
       this.pInvestorFollowList()
     },
     methods: {
+      callTel() {
+        window.location.href = `pobo:uncheck=1&pageId=800007&tel=${this.pInvestor.MOBILE_NO}`
+      },
+      addAndEdit() { //新建客户跟进
+        var p = this.addFollow;//获取store中的 跟进情况
+        p.InvestorId = this.pInvestor.CUST_ID;//客户代码
+        p.businessType = 2;//客户名称
+        this.$store.dispatch('updateAddFollow', p)
+        this.$store.dispatch('updatepIsEdit', true)
+        this.$store.dispatch('updatepShowEditBtn', false)
+        this.$router.push({
+          name: 'addAndEdit'
+        })
+      },
       showSelected() {
         this.showEvent = !this.showEvent
       },
@@ -121,7 +136,7 @@
         this.showEvent = false
       },
       pInvestorDelete() { //删除潜在客户
-        this.$$axios({restUrl: 'pInvestorDelete', join: [this.userId, this.pInvestor.CUST_ID]})
+        this.$$axios({restUrl: 'pInvestorDelete', join: [this.info.userId, this.pInvestor.CUST_ID]})
           .then((response) => {
             this.$router.replace({
               name: 'customerInfoList'
@@ -133,11 +148,11 @@
           })
       },
       pInvestorFollowList() { //查询某个潜在客户跟进列表
-        this.$$axios({restUrl: 'pInvestorFollowList', join: [this.userId, this.pInvestor.CUST_ID]})
+        this.$$axios({restUrl: 'pInvestorFollowList', join: [this.info.userId, this.pInvestor.CUST_ID]})
           .then((response) => {
             this.recordList.splice(0, this.recordList.length)
             if (response.length <= 0 || !response[0]) {
-                return ;
+              return;
             }
             response.map((item) => {
               let tempObj = {}

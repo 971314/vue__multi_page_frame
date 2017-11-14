@@ -50,40 +50,12 @@
         nowIndex: 1,
         type: 1,
         pipelineList: [
-          {
-            Operation: "手机号码变更申请",
-            Time: "2017-09-01 10:09",
-            Status: "已通过",
-            Note: "",
-            IsDelay: false
-          },
-          {
-            Operation: "身份证号码变更申请",
-            Time: "2017-09-01 10:09",
-            Status: "未通过",
-            Note: "身份证照片不清晰，无法识别",
-            IsDelay: false
-          },
-          {
-            Operation: "邮箱变更申请",
-            Time: "2017-09-01 10:09",
-            Status: "待办理",
-            Note: "",
-            IsDelay: true
-          },
-          {
-            Operation: "结算单申请",
-            Time: "2017-09-01 10:09",
-            Status: "待办理",
-            Note: "",
-            IsDelay: false
-          }
         ]
       }
     },
     computed: {
       ...mapState({
-        addFollow: ({followUpRecord}) => followUpRecord.addFollow
+        investor: ({followUpRecord}) => followUpRecord.investor
       })
     },
     activated() {
@@ -95,7 +67,7 @@
         this.getInvestorBusinessHall()
       },
       getInvestorBusinessHall() { //获取业务流水
-        this.$$axios({restUrl: 'investorBusinessHall', join: [this.info.userId, [this.addFollow.InvestorId, ['type', this.nowIndex - 1]]]})
+        this.$$axios({restUrl: 'investorBusinessHall', join: [this.info.userId, [this.investor.INVESTOR_ID, ['type', this.nowIndex - 1]]]})
           .then((response) => {
             this.pipelineList.splice(0, this.pipelineList.length)
             response.map((item) => {

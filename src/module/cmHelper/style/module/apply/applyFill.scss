@@ -35,9 +35,10 @@
         flex: 1;
       }
       input[type='date'] {
-        width: 96%;
+        width: 50%;
         outline: none;
         position: absolute;
+        right:0;
         opacity: 0;
       }
       span:nth-of-type(2) {
@@ -71,6 +72,7 @@
           height: 100%;
           outline: none;
           opacity: 0;
+          z-index: 100;
         }
       }
       textarea {

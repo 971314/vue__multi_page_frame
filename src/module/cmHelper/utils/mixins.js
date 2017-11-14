@@ -7,7 +7,6 @@ Vue.mixin({
   data () {
     return {
       mixinTest: 'mixin测试',
-      userId: 'sysadmin',
       investorId: 100367,
       cPbeUrl: 'conf/h5/',
       cPcUrl: '../conf/h5/',
@@ -21,6 +20,9 @@ Vue.mixin({
       urlList: urlList
     }
   },
+  created() {
+    this.getInfo()
+  },
   methods: {
     $$axios ({restUrl = '', join = [], options = {}, loading = false} = {}) {
       if (!restUrl) return ''
@@ -31,11 +33,11 @@ Vue.mixin({
         headers: {
           'x-requested-with': 'XMLHttpRequest',
           'Content-Type': 'application/x-www-form-urlencoded',
-          'id': this.info.token
+          id: this.info.token
         }
       }
-      // jsonUrl = PBHttpServer.activity.serverUrl
-      jsonUrl = 'http://192.168.6.49:8080/pobocmhelperapp/0.0.1/pc/'
+      jsonUrl = PBHttpServer.cmHelper.serverUrl
+      // jsonUrl = 'http://192.168.6.119:8080/pobocmhelperapp/0.0.1/pc/'
       if (jsonUrl) {
         hostUrl = jsonUrl
       }
@@ -97,10 +99,10 @@ Vue.mixin({
       return new Date(dateTime.setMonth(dateTime.getMonth()))
     },
     /*
-    * 获取登录信息*/
+     * 获取登录信息*/
     getInfo () {
-      // let info = pbE.isPoboApp ? JSON.parse(pbE.SYS().getPrivateData('managerInfo')) : JSON.parse(localStorage.managerInfo)
-      let info = JSON.parse(pbE.isPoboApp ? pbE.SYS().getPrivateData('managerInfo') : sessionStorage.managerInfo)
+      let info = pbE.isPoboApp ? pbE.SYS().getPrivateData('managerInfo')?JSON.parse(pbE.SYS().getPrivateData('managerInfo')):'' : sessionStorage.managerInfo?JSON.parse(sessionStorage.managerInfo):''
+      // let info = JSON.parse(pbE.isPoboApp ? pbE.SYS().getPrivateData('managerInfo') : sessionStorage.managerInfo)
       this.info['userId'] = info.userId
       this.info['crmAccount'] = info.crmAccount //工号
       this.info['userName'] = info.name //姓名
@@ -108,13 +110,13 @@ Vue.mixin({
       this.info['token'] = info.token
     },
     /*
-    * 获取par个月日期*/
+     * 获取par个月日期*/
     getTimeByParam (par) {
       let dateTime = new Date()
       return new Date(dateTime.setMonth(dateTime.getMonth() - par))
     },
     /*
-    * 获取AddDayCount天日期*/
+     * 获取AddDayCount天日期*/
     GetDateStr (AddDayCount) {
       let dd = new Date()
       dd.setDate(dd.getDate() + AddDayCount)//获取AddDayCount天后的日期
@@ -124,7 +126,7 @@ Vue.mixin({
       return y + '-' + m + '-' + d
     },
     /*
-    * 时间格式化函数*/
+     * 时间格式化函数*/
     $$timeFormate ({date = new Date(), format = 'Y-M-D h:m:s', week = 0} = {}) {
       let r, wk, wk1
       if (Object.prototype.toString.call(date) === '[object String]'
@@ -149,7 +151,7 @@ Vue.mixin({
       return format
     },
     /*
-    * 日期戳转换s:-*/
+     * 日期戳转换s:-*/
     $$getTimeFmt (value, s) {
       value = value + ''
       let yearServer = value.substr(0, 4)
@@ -167,12 +169,12 @@ Vue.mixin({
       }
     },
     /*
-    * 截取数据*/
+     * 截取数据*/
     $$dateInterception (value, start, stop) {
       return value.substring(start, stop)
     },
     /*
-    * 数字加逗号(去掉尾部多余的0)*/
+     * 数字加逗号(去掉尾部多余的0)*/
     $$comma (parm, n = 3) {
       parm = Number((parm || 0)).toString()  //使用Number强转一下再toString
       let integer = ``,
@@ -199,11 +201,11 @@ Vue.mixin({
       return result
     },
     /*
-    * 指标数值：默认保留两位小数，整数不保留，三位一逗号
-      单位根据数值大小而定，默认保留两位小数：
-      大于等于5位数，小于9位数：单位“万”
-      大于等于9位数：单位“亿”
-      //数字单位转换(万/亿/个位数不加小数点)*/
+     * 指标数值：默认保留两位小数，整数不保留，三位一逗号
+     单位根据数值大小而定，默认保留两位小数：
+     大于等于5位数，小于9位数：单位“万”
+     大于等于9位数：单位“亿”
+     //数字单位转换(万/亿/个位数不加小数点)*/
     $$transformData (data) {
       data = Number((data || 0)).toString()
       let integer = ``,
@@ -264,21 +266,26 @@ Vue.mixin({
       return result
     },
     /*
-    * 柱形图计算
-    * data 计算数据
-    * data1 依据数据*/
+     * 柱形图计算
+     * data 计算数据
+     * data1 依据数据*/
     calculationPercentage (data, data2) {
       return (100 / data2 * data) + '%'
     },
     /*
-    *图片预览
+     *图片预览
      */
     imgModal (url) {
       this.$alert({
         maskClosable: true,
-        message: '<img class="imgView" src="' + PBHttpServer.apply.serverUrl + this.urlList.imageView.url + this.info.userId + '/' + url + '"/>',
-        title: '图片预览'
+        message: '<img class="imgView" src="' + PBHttpServer.cmHelper.serverUrl + this.urlList.imageView.url + this.info.userId + '/' + url + '"/>',
+        title: '预览'
       })
     },
+    /*
+    * 保留n位小数*/
+    decimalPlaceReserved(data,n){
+      return Number(data).toFixed(n)
+    }
   }
 })

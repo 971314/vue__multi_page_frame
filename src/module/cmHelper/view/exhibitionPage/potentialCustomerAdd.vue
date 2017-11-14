@@ -77,8 +77,9 @@
 
 <script>
   import {mapState} from 'vuex'
-  export default{
-    data() {
+
+  export default {
+    data () {
       return {
         customerTitle: '客户资料',
         gobackUrl: 'goBack',
@@ -101,42 +102,85 @@
       }),
       sex: function () {
         if (this.noPotSex) {
-          let sex = this.getSex(this.noPotSex);
-          return sex;
+          let sex = this.getSex(this.noPotSex)
+          return sex
         } else if (this.noPotSex == '0' || this.noPotSex == 0) {
-          let sex = this.getSex(this.noPotSex);
-          return sex;
+          let sex = this.getSex(this.noPotSex)
+          return sex
         }
-        return '';
+        return ''
       }
     },
-    activated() {
+    activated () {
       this.customerTitle = '新增客户'
     },
     methods: {
+      $isTel (str) { // 是否为固定电话
+        return /^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/.test(str)
+      },
+      $isMobile (str) { // 是否是手机号码
+        return /^1\d{10}$/.test(str)
+      },
+      checkcustomerMessage() {
+        if (!this.customerMessage.CUST_NAM || this.customerMessage.CUST_NAM.trim().length === 0) {
+          this.$toast('姓名不能为空！')
+          return false
+        }
+
+        if (!this.customerMessage.MOBILE_NO || this.customerMessage.MOBILE_NO.trim().length === 0) {
+          this.$toast('手机号码不能为空！')
+          return false
+        }
+
+        if (!this.$isMobile(this.customerMessage.MOBILE_NO)) {
+          this.$toast('手机号码格式不正确！')
+          return false
+        }
+
+        if (this.customerMessage.LINKTELEPHONE && !$isTel(this.customerMessage.LINKTELEPHONE)) {
+          this.$toast('固定电话格式不正确！')
+          return false
+        }
+        return true
+      },
+      clear () {
+        this.customerMessage['CUST_NAM'] = ''
+        this.customerMessage['SEX'] = ''
+        this.customerMessage['ID_NO'] = ''
+        this.customerMessage['BIRTH_DT'] = ''
+        this.customerMessage['LINKADDR'] = ''
+        this.customerMessage['LINKTELEPHONE'] = ''
+        this.customerMessage['MOBILE_NO'] = ''
+        this.customerMessage['CUST_SRC'] = ''
+        this.customerMessage['CUST_DESC'] = ''
+        this.$store.dispatch('updateNoPotSex', '0')
+      },
       getSex (flag) {
         if (flag == '1') {
-          return '男';
+          return '男'
         } else if (flag == '2') {
-          return '女';
+          return '女'
         } else if (flag == '3') {
-          return '非人类';
+          return '非人类'
         }
-        return '未知';
+        return '未知'
       },
-      chooseSex() {
+      chooseSex () {
         this.$router.push({
           name: 'getSex'
         })
       },
-      completeClick() { //完成点击的操作
+      completeClick () { //完成点击的操作
         this.customerMessage.SEX = this.noPotSex
+        if (!this.checkcustomerMessage()) {
+          return
+        }
         this.pInvestorAdd()
       },
-      pInvestorAdd() { //新增潜在客户
+      pInvestorAdd () { //新增潜在客户
         this.$$axios({
           restUrl: 'pInvestorAdd',
-          join: [this.userId],
+          join: [this.info.userId],
           options: {
             pInvestorName: this.customerMessage.CUST_NAM,
             gender: this.customerMessage.SEX,
@@ -150,12 +194,15 @@
           }
         })
           .then((response) => {
-//            this.$store.dispatch('updateCustomerMessage', this.customerMessage)
-            console.log('response', response);
-            this.$router.back()
+            console.log('response', response)
+            this.$toast('添加成功!')
+            setTimeout(() => {
+              this.$router.back()
+              this.clear()
+            }, 1500)
           })
           .catch((res) => {
-            console.log('res', res);
+            console.log('res', res)
           })
       }
     }

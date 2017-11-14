@@ -7,7 +7,7 @@ import staffInfo from '../../view/followUpRecord/staffInfo'
 import customerInfoList from '../../view/followUpRecord/customerInfoList'
 
 const routes = [
-      {path: '/list',component: list},
+      {path: '/list', name: 'list',component: list},
       {path: '/addAndEdit',name : 'addAndEdit' ,component: addAndEdit},
       {path: '/approTask',component: approTask},
       {path: '/approProcess',component: approProcess},

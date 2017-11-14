@@ -11,11 +11,11 @@
     <div class="approval_conter">
       <div class="approval_cell" @click="jumpClick(data)" v-for="data in approvalData">
         <div>
-          <span>{{data.appObjectName}}&nbsp;&nbsp;{{data.bizType}}</span>
+          <span>{{data.appObjectName}}&nbsp;&nbsp;{{data.processName}}</span>
           <span>{{$$dateInterception(data.appDate, 0, data.appDate.length - 2)}}</span>
         </div>
         <span
-          :class="{'c1':data.appStatusName== '通过','c2':data.appStatusName== '审批中','c3':data.appStatusName== '驳回'}">{{data.appStatusName}}</span>
+          :class="{'c1':data.appStatus== '2','c2':data.appStatus== '0' || data.appStatus== '9','c3':data.appStatus== '3'}">{{data.appStatusName}}</span>
       </div>
     </div>
   </div>
@@ -36,7 +36,6 @@
       })
     },
     mounted () {
-      console.log(this.info)
 //      this.tabClick(0)
     },
     activated () {
@@ -65,7 +64,7 @@
         flag ? flag = flag : flag = null
         let _this = this
         _this.$loading.toggle(' ')
-        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalToView.url + _this.info.userId + '?qrytype=' + flag + '&begin=1&size=1000', {
+        _this.$axios.get(PBHttpServer.cmHelper.serverUrl + this.urlList.approvalToView.url + _this.info.userId + '?qrytype=' + flag + '&begin=1&size=1000', {
           timeout: 10000,
           headers: {
             id: _this.info.token

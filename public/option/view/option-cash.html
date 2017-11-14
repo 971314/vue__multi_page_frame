@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>资金流水</title>
+
+  <!-- Bootstrap -->
+  <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../css/common.css" rel="stylesheet">
+  <script src="../../js/adaptation.js"></script>
+  <link href="../css/option.css" rel="stylesheet">
+  <link href="../../css/configStyle.css" rel="stylesheet">
+  <style>
+    .right {
+      display: inline-block;
+      width: 59%;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a id="goBack" class="navbar-brand" href="goBack">
+        <img src="../../images/goback.png" alt="返回">
+      </a>
+    </div>
+    <p class="navbar-text">资金流水</p>
+  </div>
+</nav>
+<div class="record">
+  <div class="query">
+    <div style="flex: 1"></div>
+    <div class="date time-start-content">
+      <span></span>
+      <input id="start" type="date"/>
+    </div>
+    <div style="width: 30px">
+      <img src="../../images/date.png" alt="" width="18"/>
+    </div>
+    <div>至</div>
+    <div class="date time-start-content">
+      <span></span>
+      <input id="end" type="date"/>
+    </div>
+    <div style="width: 30px">
+
+      <img src="../../images/date.png" alt="" width="18"/>
+    </div>
+    <div style="flex: 1"></div>
+  </div>
+  <table>
+    <thead>
+    <tr>
+
+      <th width="20%">摘要</th>
+      <th width="40%">提交日期/取款日期</th>
+      <th width="40%">发送金额/剩余金额</th>
+    </tr>
+    </thead>
+    <tbody id="tList">
+    </tbody>
+  </table>
+
+
+</div>
+<script src="../../../js/PB.Api.js"></script>
+<script src="../../../js/jquery-2.2.0.min.js"></script>
+<script src="../../../js/PB.Utils.js"></script>
+<script src="../../../js/PB.Page.js"></script>
+</body>
+<script>
+  var CID = pbE.WT().wtGetCurrentConnectionCID();
+  var option = {
+    callbacks: [
+      {
+        fun: 6093, module: 90002, callback: function (msg) {
+        console.log(msg);
+        if (msg.jData['1'] < 0) {
+          alert(msg.jData['2']);
+        }
+        addRecord(msg.jData.data);//todo
+      }
+      }
+    ],
+
+    reload: function () {
+      pbE.SYS().startLoading();
+      CID = pbE.WT().wtGetCurrentConnectionCID();
+
+    },
+    refresh: function () {
+
+    },
+    fresh: function () {
+    },
+
+    doShow: function (flag) {
+
+    }
+  };
+  pbPage.initPage(option);
+
+  function initRecord() {
+    $("#start").val(pbUtils.dateFormat(new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 30), 'yyyy-MM-dd'))
+    $("#end").val(pbUtils.dateFormat(new Date(), 'yyyy-MM-dd'))
+    $("#start").prev().text($("#start").val())
+    $("#end").prev().text($("#end").val())
+    queryRecord();
+  }
+
+  function queryRecord() {
+    var data = {
+      '171': $("#start").val(),
+      '172': $("#end").val()
+    };
+    console.log(data);
+    pbE.WT().wtGeneralRequest(CID, 6093, JSON.stringify(data));
+
+  }
+
+  function addRecord(records) {
+    var html = "";
+    for (var i = 0; i < records.length; i++) {
+      var item = records[i];
+      console.log(item);
+      var date1 = item["202"] || "";
+      var date2 = item["201"] || "";
+      var zhaiyao = item["211"] || "";
+      var balance = item["91"]|| "";
+      var amount = item["209"]|| "";
+
+
+      html += "<tr><td><div>" + zhaiyao + "</div></td> <td><div>" + date1 + "</div><div>" + date2 + "</div></td><td><div>" + amount + "</div><div>" + balance + "</div></td></tr></tr>";
+    }
+    $("#tList").html("");
+    $("#tList").append(html);
+  }
+
+
+  $(function () {
+
+    $("#start").change(function () {
+      $("#start").prev().text($("#start").val())
+      if ($('#start').val() >= $('#end').val())
+      {
+        alert('起始日期不得大于截止日期');
+      }
+      queryRecord();
+    })
+
+    $("#end").change(function () {
+      $("#end").prev().text($("#end").val())
+      if ($('#start').val() >= $('#end').val())
+      {
+        alert('起始日期不得大于截止日期');
+      }
+      queryRecord();
+    })
+
+    initRecord();
+
+  })
+
+</script>
+</html>

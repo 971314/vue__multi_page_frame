@@ -123,17 +123,39 @@ table {
 
 .input {
   width: 100%;
-  height: toRem(100px);
-  line-height: toRem(100px);
+  //height: toRem(100px);
+  //line-height: toRem(98px);
+  padding: toRem(25px) 0;
   border: 0;
   outline: none;
   position: relative;
   border-bottom: 1px solid $color23;
   font-size: $font33;
+  box-sizing: content-box;
 }
 
 .input:last-child {
   border-bottom: 0;
+}
+
+.close, .open {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: toRem(100px);
+  height: toRem(99px);
+  z-index: 2;
+}
+
+.close {
+  background: url("../images/close.png") no-repeat center center;
+  background-size: toRem(35px) toRem(14px);
+}
+
+.open {
+  background: url("../images/open.png") no-repeat center center;
+  background-size: toRem(35px) toRem(20px);
 }
 
 .button {
@@ -145,6 +167,7 @@ table {
   border-radius: toRem(8px);
   color: $color15;
   font-size: $font25;
+  background: $color28;
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */

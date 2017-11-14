@@ -9,25 +9,26 @@
     font-size: $font-size * 3;
   }
 }
+
 @function toRem($px) {
   @return $px / 75px * 1rem;
 }
 
 //文字过多显示 省略号
-.ellipsis{
+.ellipsis {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
 
-.ellipsis2{
+.ellipsis2 {
   margin-top: toRem(-8px);
   margin-bottom: 0;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .media-body {
@@ -43,135 +44,132 @@
   }
 }
 
-.infolist2.content-news{
+.infolist2.content-news {
 
-    .main-header-title{
-      padding: 0 0 0 15px;
-      background-color: #fff;
-      .common-main-header{
-        border-bottom: solid 1px #F3F4F8;
-      }
+  .main-header-title {
+    padding: 0 0 0 15px;
+    background-color: #fff;
+    .common-main-header {
+      border-bottom: solid 1px #F3F4F8;
     }
+  }
 
-    .tab-more {
-      width:toRem(200px);
-      padding: 0 toRem(30px);
-      font-size: toRem(26px);
-      a{
+  .tab-more {
+    width: toRem(200px);
+    padding: 0 toRem(30px);
+    font-size: toRem(26px);
+    a {
+      color: #808086;
+    }
+    .more {
+      margin-left: toRem(14px);
+      top: toRem(-4px);
+      height: toRem(23px);
+      width: toRem(12px);
+    }
+  }
+  .tab-item {
+    padding: 0 toRem(30px);
+    a {
+      padding-left: toRem(22px);
+      background-image: url(../main/images/infolist2_02.png);
+      background-size: toRem(6px) toRem(31px);
+      background-repeat: no-repeat;
+      background-position: center left;
+      color: #1a1a1a;
+    }
+  }
+  .news-content {
+    .group {
+
+      margin-top: 0;
+      background: none;
+
+      .cell {
+        margin: 0 toRem(30px);
+        padding: toRem(20px) 0;
+        height: inherit;
+        border-bottom: 1px solid #F3F4F8;
+        h3 {
+          font-size: toRem(32px);
+          color: #4c4c55;
+          font-weight: normal;
+          line-height: toRem(52px);
+
+        }
+        p {
+          margin-bottom: 0;
+          color: #808086;
+          font-size: toRem(26px);
+        }
+        .media-object {
+          padding-left: toRem(30px);
+          position: relative;
+          img {
+            width: toRem(220px);
+            height: toRem(136px);
+            border-radius: 0 !important;
+          }
+          span {
+            position: absolute;
+            padding: toRem(4px) toRem(8px);
+            right: 0;
+            bottom: toRem(1px);
+            //bottom: 0;
+            background-color: rgba(26, 26, 26, .6);
+            font-size: toRem(24px);
+            color: #fff;
+          }
+        }
+
+      }
+      .cell:before {
+        border-bottom: 0;
+      }
+
+    }
+    .group:last-child .cell {
+      border-bottom: 0;
+    }
+    .group.template2 {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      padding-top: toRem(40px);
+      .template2-time {
+        margin-right: toRem(30px);
+        @include font(13px);
         color: #808086;
       }
-      .more {
-        margin-left: toRem(14px);
-        top:toRem(-4px);
-        height: toRem(23px);
-        width: toRem(12px);
+      .cell {
+        flex: 1;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-bottom: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        .media-body {
+          width: 100%;
+          height: inherit;
+        }
+        p {
+          margin-bottom: 0;
+        }
+      }
+      .cell:before {
+        border-bottom: 0;
+      }
+      h3 {
+        margin-bottom: 0;
+        @extend .ellipsis;
       }
     }
-    .tab-item {
-      padding: 0 toRem(30px);
-      a{
-        padding-left: toRem(22px);
-        background-image:url(../main/images/infolist2_02.png);
-        background-size: toRem(6px) toRem(31px);
-        background-repeat: no-repeat;
-        background-position: center left;
-        color: #1a1a1a;
-      }
+    .group.template2:last-child {
+      padding-bottom: toRem(40px);
     }
-    .news-content {
-      .group {
 
-        margin-top: 0;
-        background: none;
-
-        .cell {
-            margin: 0 toRem(30px);
-            padding: toRem(20px) 0;
-            height: inherit;
-            border-bottom: 1px solid #F3F4F8;
-            h3 {
-              font-size: toRem(32px);
-              color: #4c4c55;
-              font-weight: normal;
-              line-height: toRem(52px);
-
-
-
-            }
-            p{
-              margin-bottom: 0;
-              color: #808086;
-              font-size: toRem(26px);
-            }
-            .media-object {
-              padding-left: toRem(30px);
-              position: relative;
-              img {
-                width: toRem(220px);
-                height: toRem(136px);
-                border-radius: 0!important;
-              }
-              span{
-                position: absolute;
-                padding:toRem(4px) toRem(8px);
-                right: 0;
-                bottom: toRem(1px);
-                //bottom: 0;
-                background-color: rgba(26,26,26,.6);
-                font-size: toRem(24px);
-                color: #fff;
-              }
-            }
-
-          }
-          .cell:before{
-            border-bottom: 0;
-          }
-
-        }
-        .group:last-child .cell{
-          border-bottom: 0;
-        }
-        .group.template2{
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: center;
-          padding-top: toRem(40px);
-          .template2-time {
-            margin-right: toRem(30px);
-          }
-          .cell{
-            flex: 1;
-            padding-top: 0;
-            padding-bottom: 0;
-            border-bottom: 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            .media-body{
-              width: 100%;
-              height: inherit;
-            }
-            p{
-              margin-bottom: 0;
-            }
-          }
-          .cell:before{
-            border-bottom:0;
-          }
-          h3{
-            margin-bottom: 0;
-            @extend .ellipsis;
-          }
-        }
-        .group.template2:last-child{
-          padding-bottom: toRem(40px);
-        }
-
-
-      }
-
-
+  }
 
 }

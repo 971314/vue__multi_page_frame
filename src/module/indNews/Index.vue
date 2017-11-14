@@ -2,10 +2,10 @@
   <div class="indNews">
     <common-nav :goback="false" v-show="this.$route.name == 'newsFirm' || this.$route.name == 'newsDCD'">
       <div slot="body" class="navtab">
-        <router-link to="/firm" replace class="navTab1" :class=" this.$route.name == 'newsFirm' ? 'background': ''">
+        <router-link to="/" replace class="navTab1" :class=" this.$route.name == 'newsFirm' ? 'background': ''">
           公司专栏
         </router-link>
-        <router-link to="/" class="navTab1" :class=" this.$route.name == 'newsDCD' ? 'background': ''"
+        <router-link to="/newsDCD" class="navTab1" :class=" this.$route.name == 'newsDCD' ? 'background': ''"
                      replace>
           新闻快讯
         </router-link>
@@ -52,9 +52,9 @@
           query: {type: this.$route.query.type, info: this.$route.query.info}
         });
       } else if (this.$route.query.infoId) {
-        this.$router.replace({path: '/firm', query: {infoId: this.$route.query.infoId}});
+        this.$router.replace({path: '/', query: {infoId: this.$route.query.infoId}});
       } else {
-        this.$router.replace('/firm');
+        this.$router.replace('/');
       }
     }
   }

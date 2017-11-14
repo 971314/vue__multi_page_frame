@@ -518,10 +518,12 @@
 
       },
       shareClick() {
-        if (this.$route.query.type == 2 && this.$route.query.info) {
-          location.href = 'pobo:uncheck=1&pageId=800012&title=' + this.particularsInfo.title + '&type=0&url=' + encodeURIComponent(PBHttpServer.indNews.shareUrl + 'type=' + this.$route.query.type + '&infoId=' + this.$route.query.info);
-        } else if (this.$route.query.type == 1 && this.$route.query.newsId) {
-          location.href = 'pobo:uncheck=1&pageId=800012&title=' + this.particularsInfo.title.substr(6) + '&type=0&url=' + encodeURIComponent(PBHttpServer.indNews.shareUrl + 'type=' + this.$route.query.type + '&newsId=' + this.$route.query.newsId);
+        if(this.isShare){
+          if (this.$route.query.type == 2 && this.$route.query.info) {
+            location.href = 'pobo:uncheck=1&pageId=800012&title=' + this.particularsInfo.title + '&type=0&url=' + encodeURIComponent(PBHttpServer.indNews.shareUrl + 'type=' + this.$route.query.type + '&infoId=' + this.$route.query.info);
+          } else if (this.$route.query.type == 1 && this.$route.query.newsId) {
+            location.href = 'pobo:uncheck=1&pageId=800012&title=' + this.particularsInfo.title.substr(6) + '&type=0&url=' + encodeURIComponent(PBHttpServer.indNews.shareUrl + 'type=' + this.$route.query.type + '&newsId=' + this.$route.query.newsId);
+          }
         }
       },
       nativeInteraction() {

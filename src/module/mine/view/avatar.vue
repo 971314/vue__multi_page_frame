@@ -190,7 +190,7 @@
               image.src = canvas.toDataURL('image/jpeg');
 //              this.$loading.hide();
               canvas = document.createElement('canvas')
-              canvas.width = cropBoxRect.height * 2;
+              canvas.width = cropBoxRect.width;  //把拍照的图片变得更清晰 所以乘以2
               canvas.height = cropBoxRect.height;
               ctx = canvas.getContext('2d')
               // 添加白色背景

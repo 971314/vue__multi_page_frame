@@ -5,7 +5,7 @@
     </common-nav>
     <div class="conter">
       <div @click="chooseClick(data)" v-for="data in subTemplate">
-        <span>{{data.tplName}}</span>
+        <span :class="{'c1':data.tplName == template.tplName}">{{data.tplName}}</span>
         <i @click.stop="iconClick(data)"></i>
       </div>
     </div>
@@ -27,7 +27,6 @@
       })
     },
     mounted () {
-
     },
     activated () {
       this.subTemplate = null
@@ -40,7 +39,7 @@
         steData['tplId'] = data.tplId
         steData['tplName'] = data.tplName
         this.$store.dispatch('updataTemplate', steData)
-        this.$router.back(-1)
+        this.$router.back()
       },
       //模板介绍模态框
       iconClick (data) {
@@ -54,7 +53,7 @@
       request () {
         let _this = this
         _this.$loading.toggle(' ')
-        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalSelect.url + _this.info.userId + '/' + _this.apply.processId, {
+        _this.$axios.get(PBHttpServer.cmHelper.serverUrl + this.urlList.approvalSelect.url + _this.info.userId + '/' + _this.apply.processId, {
           timeout: 10000,
           headers: {
             id: _this.info.token

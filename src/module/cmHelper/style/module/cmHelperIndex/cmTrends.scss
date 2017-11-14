@@ -4,8 +4,8 @@ body{
 
 .cmTrends{
 	.common-nav{
-		height: toRem(88px);
-		line-height: toRem(88px); 
+		/* height: toRem(88px);
+		line-height: toRem(88px);  */
 		.picker-area{
 		    position: relative;
 		    padding-right: toRem(30px);
@@ -33,13 +33,15 @@ body{
 		}
 	}
 	.container{
-		margin-top: toRem(88px);
+		margin-top: 0;
 		.group-title{
 			position: relative;
-			padding: toRem(20px) toRem(30px);
+			padding: 0 toRem(30px);
+			
 			strong{
-				padding-left: toRem(19px);
+				padding-left: toRem(20px);
 				font-size: toRem(26px);
+				font-weight: normal;
 				color: #808086;
 			}
 			i{
@@ -54,20 +56,27 @@ body{
 				transform: translate(0,-50%);
 			}
 		}
+		.group-title.setHeight{
+			height: toRem(40px);
+			line-height: toRem(40px);
+		}
 		.group{
 			padding: 0 0 0 toRem(30px);
 		    background-image: none;
 			.cell{
-				padding: toRem(28px) toRem(30px) toRem(28px) 0;
-				border-bottom: solid 1px #e4e7f0;
+				position: relative;
+				padding: toRem(20px) toRem(30px) toRem(20px) 0;
+				height: toRem(130px);
+				@include bottom-px1-pixel-ratio;
 			    background-image: none;
 				.cell-body{
 					color: #808086;
 					font-size: toRem(26px);
 					h3{
-						margin-bottom: toRem(12px); 
+						margin-bottom: toRem(10px); 
 						font-size: toRem(32px);
 						color: #1a1a1a;
+						font-weight: normal;
 						span{
 							float: right;
 							font-size: toRem(26px);
@@ -77,7 +86,7 @@ body{
 					}
 				}
 			}
-			.cell:last-child{
+			.cell:last-child:before{
 				border-bottom: 0;
 			}
 		}

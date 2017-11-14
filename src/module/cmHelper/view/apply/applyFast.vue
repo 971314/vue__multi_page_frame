@@ -43,12 +43,11 @@
       })
     },
     created () {
-      this.$loading.toggle(' ')
     },
     mounted () {
       let _this = this
       _this.$loading.toggle(' ')
-      _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalModules.url + _this.info.userId, {
+      _this.$axios.get(PBHttpServer.cmHelper.serverUrl + this.urlList.approvalModules.url + _this.info.userId, {
         timeout: 10000,
         headers: {
           id: _this.info.token
@@ -86,7 +85,7 @@
         if (flag === 1) {
           this.$router.push('/applyFill')
         } else {
-          console.log(flag)
+          this.$router.push('/nonTemplate')
         }
         this.showEvent = false
       },
@@ -94,7 +93,7 @@
       inquireApprovedPersonnel () {
         let _this = this
         _this.$loading.toggle(' ')
-        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.inquireApprovedPersonnel.url + _this.info.userId, {
+        _this.$axios.get(PBHttpServer.cmHelper.serverUrl + this.urlList.inquireApprovedPersonnel.url + _this.info.userId, {
           timeout: 10000,
           headers: {
             id: _this.info.token

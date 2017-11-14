@@ -2,32 +2,38 @@
 
 .cmTrends.myAttention{
 	.container{
+		margin-top: 0;
 		.group{
+			margin-top: 0;
 			.cell{
 				padding-top: toRem(34px);
-				padding-bottom: toRem(30px);
-				h3{
-					overflow: hidden;
-					img{
-						position: relative;
-    					top: toRem(4px);
-						float: left;
-						margin-right: toRem(4px);
-						width: toRem(24px);
-						height: toRem(24px);
-					} 
-					span{
-						font-size: toRem(30px);
-						color: #1a1a1a;
-						font-weight: bolder;
+				padding-bottom: toRem(34px);
+				height: toRem(140px);
+				.cell-body{
+					h3{
+						overflow: hidden;
+						margin-bottom: toRem(14px);
+						line-height: toRem(36px);
+					    font-weight: normal;
+						img{
+							position: relative;
+	    					top: toRem(4px);
+							float: left;
+							margin-right: toRem(4px);
+							width: toRem(24px);
+							height: toRem(24px);
+						} 
+						span{
+							font-size: toRem(30px);
+							color: #1a1a1a;
+							font-weight: normal;
+						}
 					}
-				}
-				h3:last-child{
-					margin-bottom: 0;
-					span{
-						font-weight: normal;
-						font-size: toRem(26px);
-						color: #808086;
+					h3:last-child{
+						margin-bottom: 0;
+						span{
+							font-size: toRem(26px);
+						}
 					}
 				}
 			}

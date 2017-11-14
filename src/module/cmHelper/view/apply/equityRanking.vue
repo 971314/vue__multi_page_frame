@@ -27,7 +27,7 @@
             <thead>
             <tr>
               <td><span>期末权益(万)</span></td>
-              <td><span>日均权益(万)</span></td>
+              <td><span>日均权益(万)</span><img src="../../images/apply/youHua.png"/></td>
               <td><span>保证金(万)</span></td>
               <td><span>风险度(%)</span></td>
               <td><span>成交金额(万)</span></td>
@@ -53,9 +53,9 @@
               <td v-else>
                 <div>{{i + 1}}</div>
               </td>
-              <td>
+              <td @click.stop="jumPage(data.CAPITALACCOUNT)">
                 <div>{{data.INVESTOR_NAM }}</div>
-                <div>{{data.CAPITALACCOUNT }}</div>
+                <div>{{data.CAPITALACCOUNT}}</div>
               </td>
             </tr>
             </tbody>
@@ -64,15 +64,15 @@
             <table class="detail">
               <tbody>
               <tr v-for="(data,i) in rankingData" class="borderBottom">
-                <td><span>{{data.FINALEQUITY}}</span></td>
-                <td><span>{{data.DAILYEQUITY}}</span></td>
-                <td><span>{{data.MARGIN}}</span></td>
-                <td><span>{{data.RISK}}</span></td>
-                <td><span>{{data.TURNVOLUME }}</span></td>
-                <td><span>{{data.VOLUME}}</span></td>
-                <td><span>{{data.GOLD}}</span></td>
-                <td><span>{{data.DEPOSIT}}</span></td>
-                <td><span>{{data.NETDEPOSIT}}</span></td>
+                <td><span>{{decimalPlaceReserved(data.FINALEQUITY, 2)}}</span></td>
+                <td><span>{{decimalPlaceReserved(data.DAILYEQUITY, 2)}}</span></td>
+                <td><span>{{decimalPlaceReserved(data.MARGIN, 2)}}</span></td>
+                <td><span>{{decimalPlaceReserved(data.RISK, 2)}}</span></td>
+                <td><span>{{decimalPlaceReserved(data.TURNVOLUME, 2)}}</span></td>
+                <td><span>{{decimalPlaceReserved(data.VOLUME, 2)}}</span></td>
+                <td><span>{{decimalPlaceReserved(data.GOLD, 2)}}</span></td>
+                <td><span>{{decimalPlaceReserved(data.DEPOSIT, 2)}}</span></td>
+                <td><span>{{decimalPlaceReserved(data.NETDEPOSIT, 2)}}</span></td>
                 <td><span>{{data.DEPOSITDATE}}</span></td>
                 <td><span></span></td>
               </tr>
@@ -107,11 +107,15 @@
     computed: {
       ...mapState({
         rankingTime: ({apply}) => apply.rankingTime,
+        investor: ({followUpRecord}) => followUpRecord.investor
       })
     },
     created () {
       this.$store.dispatch('updataRankingTime', {
-        startTime: this.GetDateStr(0),
+        startTime: this.$$timeFormate({
+          date: this.getTimeByParam(12),
+          format: 'Y-M-D'
+        }),
         endTime: this.GetDateStr(0)
       })
 //      this.getData()
@@ -158,7 +162,7 @@
       getData () {
         let _this = this
         _this.$loading.toggle(' ')
-        /*_this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalRanking.url + _this.info.userId + '?beginDate=' + _this.$$timeFormate({
+        _this.$axios.get(PBHttpServer.cmHelper.serverUrl + this.urlList.approvalRanking.url + _this.info.userId + '?beginDate=' + _this.$$timeFormate({
           date: _this.rankingTime.startTime,
           format: 'Y-M-D'
         }) + '&endDate=' + _this.$$timeFormate({
@@ -182,8 +186,8 @@
           _this.$loading.hide()
           _this.$toast('网络超时，请稍后重试！')
           console.log(err)
-        })*/
-        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalRanking.url + 'test11?beginDate=2010-01-01&endDate=2017-03-03\n').then((data) => {
+        })
+        /*_this.$axios.get(PBHttpServer.cmHelper.serverUrl + this.urlList.approvalRanking.url + 'test11?beginDate=2010-01-01&endDate=2017-03-03\n').then((data) => {
           data = data.data
           console.log(data)
           _this.$loading.hide()
@@ -196,7 +200,12 @@
           _this.$loading.hide()
           _this.$toast('网络超时，请稍后重试！')
           console.log(err)
-        })
+        })*/
+      },
+//      跳转
+      jumPage (data) {
+        this.$store.dispatch('updateInvestor', {INVESTOR_ID: data})
+        this.$router.push({name: 'noPotentialCustomer'})
       }
     }
   }

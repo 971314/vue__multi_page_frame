@@ -25,12 +25,13 @@
         align-items: center;
         & > div {
           height: 29px;
+          width:99%;
         }
       }
     }
   }
   .navtab {
-    width: 185px;
+    width: 100%;
     display: flex;
     @include font(15px);
     justify-content: center;

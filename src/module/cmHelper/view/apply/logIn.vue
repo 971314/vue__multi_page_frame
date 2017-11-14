@@ -5,7 +5,11 @@
     </common-nav>
     <div class="log_input">
       <input type="text" placeholder="请输入CRM用户名" class="input" v-model="crmAccount"/>
-      <input type="password" placeholder="请输入CRM用户口令" class="input" v-model="pwd"/>
+      <!--<img src="../../../../assets/images/open.png" class="open" @click="openclose" v-if="openClose"/>
+      <img src="../../../../assets/images/close.png" class="close" @click="openclose" v-else/>-->
+      <span :class="openClose?'open':'close'" @click.stop="openclose"></span>
+      <input type="text" placeholder="请输入CRM用户口令" class="input" v-model="pwd" v-if="openClose"/>
+      <input type="password" placeholder="请输入CRM用户口令" class="input" v-model="pwd" v-else/>
     </div>
     <button v-if="checkFlag" class="button available" @click="submit">登录</button>
     <button class="button" v-else>登录</button>
@@ -21,7 +25,8 @@
         crmAccount: '',
         pwd: '',
         checkFlag: false,
-        mobilePhone: ''
+        mobilePhone: '',
+        openClose: false
       }
     },
     watch: {
@@ -51,7 +56,7 @@
         let _this = this
         if (_this.crmAccount && _this.pwd) {
           _this.$loading.toggle(' ')
-          _this.$axios.post(PBHttpServer.apply.serverUrl + this.urlList.approvalLog.url + _this.crmAccount, {
+          _this.$axios.post(PBHttpServer.cmHelper.serverUrl + this.urlList.approvalLog.url + _this.crmAccount, {
             pwd: _this.pwd,
             mobilePhone: _this.mobilePhone,
             crmAccount: _this.crmAccount
@@ -70,7 +75,6 @@
               } else {
                 sessionStorage.managerInfo = JSON.stringify(data.data)
               }
-              _this.getInfo()
               _this.$router.replace('/cmHelperIndex')
             } else {
               _this.$toast(data.desc)
@@ -97,6 +101,10 @@
         } else {
           this.checkFlag = false
         }
+      },
+      //密码显示隐藏
+      openclose () {
+        this.openClose = !this.openClose
       }
     }
   }

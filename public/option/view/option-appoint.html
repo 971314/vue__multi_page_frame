@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>预约转账</title>
+
+  <!-- Bootstrap -->
+  <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../css/common.css" rel="stylesheet">
+  <link href="../css/option.css" rel="stylesheet">
+  <script src="../../js/adaptation.js"></script>
+  <link rel="stylesheet" href="../../css/configStyle.css">
+  <style>
+    .col-center {
+      margin-top: 52px;
+    }
+
+    .btn-3b0, .btn-3d0 {
+      background-color: #3366cc;
+    }
+
+    #indicate {
+      width: 60%;
+      position: absolute;
+      top: 150px;
+      left: 20%;
+    }
+
+    #indicate .btn-3b0 {
+      background-color: #e4e4e4;
+      color: #000;
+      height: 50px;
+      line-height: 40px;
+    }
+
+    .divTab {
+      display: flex;
+      height: 40px;
+      line-height: 40px;
+      flex-direction: row;
+      background-color: #fff;
+      border-bottom: solid 1px #E4E7F0;
+
+    }
+
+    .tab {
+      flex: 1;
+      text-align: center;
+      vertical-align: middle;
+
+    }
+
+    .active {
+      color: #3366CC;
+
+    }
+    .active span{
+      display: inline-block;
+      width: 100px;
+      border-bottom: solid 2px #3366CC;
+    }
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a id="goBack" class="navbar-brand" href="goBack">
+        <img src="../../images/goback.png" alt="返回">
+      </a>
+    </div>
+    <p class="navbar-text">资金转出</p>
+  </div>
+</nav>
+
+<div class="divTab">
+
+  <div onclick="setTab(0,this)" class="tab active">
+      <span>预约申请</span>
+  </div>
+  <div onclick="setTab(1,this)" class="tab">
+      <span> 预约记录</span>
+  </div>
+
+</div>
+
+<div class="appointment" style="">
+  <div class="container-fluid">
+    <div class="clearfix">
+      <div class="row content">
+        <div class="col-xs-3 left-title">
+          转出账户
+        </div>
+        <div class="col-xs-6 select bank-div">
+          <div id="bank" class="text-center"></div>
+          <input id="bank-name" type="hidden" value="">
+          <input id="bank-val" type="hidden" value="">
+          <input id="bank-code" type="hidden" value="">
+          <input id="bank-currency" type="hidden" value="">
+          <input id="fund-account" type="hidden" value="">
+          <input id="bank-center" type="hidden" value="">
+        </div>
+        <div class="col-xs-3 select bank-div">
+          <img src="../../images/select2.png" alt=""  width="15">
+        </div>
+      </div>
+      <div class="row select-options">
+        <ul class="col-xs-6 option-ul hide" id="bank-ul">
+        </ul>
+      </div>
+      <div class="row content divide">
+        <div class="col-xs-3 left-title">
+          选择币种
+        </div>
+        <div class="col-xs-6 select currency-div">
+          <div id="currency" class="text-center"></div>
+          <input type="hidden" id="currency-unit" value="">
+        </div>
+        <div class="col-xs-3 select currency-div">
+          <img src="../../images/select2.png" alt="" width="15">
+        </div>
+      </div>
+      <div class="row select-options">
+        <ul class="col-xs-6 option-ul hide" id="currency-ul">
+          <!--<li value="cny" id="currency-0" class="hover">人民币</li>
+          <li value="usd" id="currency-1" class="">美元</li>
+          <li value="hkd" id="currency-2" class="">港币</li>-->
+        </ul>
+      </div>
+      <div class="row content divide">
+        <div class="col-xs-4 left-title">
+          转出时间
+        </div>
+        <div class="col-xs-8 right-input time-start-content"  style="height: 50px; line-height: 50px;">
+
+          <span id="time"  style="color:#808086">请选择时间</span>
+          <input id="timeDate" type="date" placeholder="请选择时间" />
+
+          </label>
+
+         <!-- //<input type="number" placeholder="请选择时间" id="inAmount">-->
+        </div>
+      </div>
+      <div class="row content">
+        <div class="col-xs-4 left-title">
+          转出金额
+        </div>
+        <div class="col-xs-8 right-input">
+          <input id="mumber" type="number" placeholder="请输入转出金额">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-center">
+          <input type="button" class="btn btn-block btn-3b0" value="提交预约" onclick="submitAppoint();">
+        </div>
+      </div>
+      <div class="c3 hide" id="error"></div>
+    </div>
+  </div>
+</div>
+<div class="record" style="display: none">
+     <div class="query">
+       <div style="flex: 1"></div>
+       <div class="date time-start-content">
+         <span></span>
+         <input id="start"  type="date"/>
+       </div>
+       <div style="width: 30px">
+         <img src="../../images/date.png" alt=""  width="18"/>
+       </div>
+       <div>至</div>
+       <div  class="date time-start-content">
+         <span></span>
+         <input id="end" type="date"   />
+       </div>
+       <div  style="width: 30px">
+
+         <img src="../../images/date.png" alt=""  width="18"/>
+       </div>
+       <div style="flex: 1"></div>
+     </div>
+     <table >
+       <thead>
+          <tr>
+            <th width="40%">提交日期/取款日期</th>
+            <th width="30%">预约金额</th>
+            <th width="30%">状态</th>
+          </tr>
+       </thead>
+       <tbody id="tList">
+       </tbody>
+     </table>
+
+
+</div>
+<div class="col-center hide" id="indicate">
+  <a class="btn btn-block btn-3b0"></a>
+</div>
+<script src="../../../js/PB.Api.js"></script>
+<script src="../../../js/PB.Page.js"></script>
+<script src="../../../js/jquery-2.2.0.min.js"></script>
+<script src="../../../js/PB.Utils.js"></script>
+<script src="../js/option-appoint.js"></script>
+
+<script>
+
+  var dataTest = {
+    moduleId: 90002,
+    functionNO: 9023,
+    jData: {
+      data: [
+        {
+          '398': '2017-01-01',
+          '315': '2017-01-01',
+          '739': '2000',
+          '544': '0',
+          '215': '9902',
+          '200':'123456',
+          '739':'2000',
+          '56':'0'
+
+        },
+        {
+          '398': '2017-01-01',
+          '315': '2017-01-01',
+          '739': '2000',
+          '544': '1',
+          '215': '9902',
+          '200':'123454',
+          '739':'2000',
+          '56':'0'
+        },
+        {
+          '398': '2017-01-01',
+          '315': '2017-01-01',
+          '739': '2000',
+          '544': '2',
+          '215': '9902',
+          '200':'123556',
+          '739':'2000',
+          '56':'0'
+        },
+        {
+          '398': '2017-01-01',
+          '315': '2017-01-01',
+          '739': '2000',
+          '544': '3',
+          '215': '9902',
+          '200':'1234156',
+          '739':'2000',
+          '56':'0'
+        }
+      ]
+    }
+  };
+
+</script>
+</body>
+</html>

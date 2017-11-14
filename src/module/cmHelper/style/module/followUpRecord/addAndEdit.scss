@@ -1,9 +1,13 @@
 body{
 	background-color: #f7f7fa;
+	overflow: auto;	
 }
 
 textarea::-webkit-input-placeholder{
 　　color:#c0c6cd;
+}
+textarea[disabled="disabled"]{
+	background-color: #fff;
 }
 
 .cmTrends.addAndEdit{
@@ -13,6 +17,7 @@ textarea::-webkit-input-placeholder{
 		color: #fff;
 	}
 	.container{
+		margin-top: 0;
 		overflow: hidden;
 		.group{
 			margin-top: toRem(20px);
@@ -20,17 +25,22 @@ textarea::-webkit-input-placeholder{
 			.cell{
 			    position: relative;
 				padding: toRem(22px) toRem(30px);
+				height: inherit;
 				background-image: none;
-			    border-bottom: solid 1px #e4e7f0;
+			    @include bottom-px1-pixel-ratio;
 				span{
 					font-size: toRem(32px);
 					color: #1a1a1a;
+				    text-overflow: ellipsis;
+				    white-space: nowrap;
+				    overflow: hidden;
 				}
 				.cell-body{
 					.textarea{
-						padding: toRem(34px) toRem(30px);
+						padding: toRem(34px) toRem(30px) 0;
 						textarea{
 							padding: 0;
+							height: toRem(260px);
 							font-size: toRem(32px);
 							color: #1a1a1a;
 						}
@@ -91,11 +101,14 @@ textarea::-webkit-input-placeholder{
 			}
 			.historyFollow{
 				padding: toRem(22px) toRem(30px);
-			    border-bottom: solid 1px #e4e7f0;
+			    @include bottom-px1-pixel-ratio;
 			    font-size: toRem(28px);
 				color: #808086;
-				div:first-child{
+				.hisItem{
 					margin-bottom: toRem(10px);
+				}
+				.hisItem:last-child{
+					margin-bottom: 0;
 				}
 			}
 			.enclosure{
@@ -118,7 +131,7 @@ textarea::-webkit-input-placeholder{
 						padding: 0 toRem(60px) 0 0;
 						height: toRem(86px);
 						line-height: toRem(86px);
-						border-bottom:solid 1px #e4e7f0;
+						@include bottom-px1-pixel-ratio;
 						font-size: toRem(30px);
 						color: #1a1a1a;
 						.toDetail{
@@ -163,11 +176,11 @@ textarea::-webkit-input-placeholder{
 			height: toRem(250px);
     		background-color: #fff;
     		font-size: toRem(32px);
-			color:#c0c6cd;
 			border:0;
 			outline:none;
 		}
 		.lastEditDate{
+			padding: 0 toRem(30px);
 			margin-top: toRem(20px);
 			font-size: toRem(26px);
 			color: #808086;

@@ -10,7 +10,9 @@
     <div class="bind_input">
       <input type="text" placeholder="请输入员工姓名" class="input" v-model="name"/>
       <input type="text" placeholder="请输入CRM用户名" class="input" v-model="crmAccount"/>
-      <input type="password" placeholder="请输入CRM口令" class="input" v-model="pwd"/>
+      <span :class="openClose?'open':'close'" @click.stop="openclose"></span>
+      <input type="text" placeholder="请输入CRM口令" class="input" v-model="pwd" v-if="openClose"/>
+      <input type="password" placeholder="请输入CRM口令" class="input" v-model="pwd" v-else/>
     </div>
     <div class="bind_tip">App不会已任何形式保存CRM口令</div>
     <button v-if="checkFlag" class="button available" @click="submit">申请绑定</button>
@@ -27,7 +29,8 @@
         name: '',//用户姓名
         gender: '',//性别
         mail: '',//邮箱
-        checkFlag: false
+        checkFlag: false,
+        openClose:false
       }
     },
     watch: {
@@ -64,7 +67,7 @@
         let _this = this
         if (_this.name && _this.crmAccount && _this.pwd && _this.mobilePhone) {
           _this.$loading.toggle(' ')
-          _this.$axios.post(PBHttpServer.apply.serverUrl + this.urlList.approvalBind.url + _this.crmAccount, {
+          _this.$axios.post(PBHttpServer.cmHelper.serverUrl + this.urlList.approvalBind.url + _this.crmAccount, {
             crmAccount: _this.crmAccount,
             pwd: _this.pwd,
             mobilePhone: _this.mobilePhone,
@@ -110,6 +113,10 @@
         } else {
           this.checkFlag = false
         }
+      },
+      //密码显示隐藏
+      openclose () {
+        this.openClose = !this.openClose
       }
     }
   }

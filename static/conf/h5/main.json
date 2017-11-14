@@ -1,7 +1,8 @@
 {
   "appSetting":{
     "appName":"博易大师",
-    "baseColor":"#3366CC"
+    "baseColor":"#3366CC",
+    "isShare":false
   },
   "banners": {
     "version": 1,

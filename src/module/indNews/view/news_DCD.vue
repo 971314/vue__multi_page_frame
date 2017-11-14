@@ -483,7 +483,9 @@
         }
       },
       shareClick(value) {
-        location.href = 'pobo:uncheck=1&pageId=800012&title=' + value.Title.substr(6) + '&type=0&url=' + encodeURIComponent(PBHttpServer.indNews.shareUrl + 'type=1&newsId=' + value.ID);
+        if(this.isShare){
+          location.href = 'pobo:uncheck=1&pageId=800012&title=' + value.Title.substr(6) + '&type=0&url=' + encodeURIComponent(PBHttpServer.indNews.shareUrl + 'type=1&newsId=' + value.ID);
+        }
       }
     }
   }

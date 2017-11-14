@@ -12,10 +12,10 @@
       <div class="process_bottom">
         <div class="process_cell" v-for=" (datas,i) in processData">
           <div>
-            <span>{{$$dateInterception(datas.operateTime, 0, 10)}}</span>
-            <i v-if="datas.operateTypeId == '2'" class="by"></i>
-            <i v-else-if="datas.operateTypeId == '1'" class="by1"></i>
-            <i v-else-if="datas.operateTypeId == '3'" class="by2"></i>
+            <span>{{i == 0 ? '当前':$$dateInterception(datas.operateTime, 0, 10)}}</span>
+            <i v-if="i == 0 && datas.operateTypeId == '0' || i == 0 && datas.operateTypeId == '1' || i == 0 && datas.operateTypeId == '5' " class="by1"></i>
+            <i v-else-if=" i == 0 && datas.operateTypeId == '2'" class="by"></i>
+            <i v-else-if="i == 0 && datas.operateTypeId == '4' || i == 0 && datas.operateTypeId == '3'" class="by2"></i>
             <i v-else class="by"></i>
             <span class="line"></span>
           </div>
@@ -57,7 +57,7 @@
       getData () {
         let _this = this
         _this.$loading.toggle(' ')
-        _this.$axios.get(PBHttpServer.apply.serverUrl + this.urlList.approvalHistory.url + _this.info.userId + '/' + this.task.businessKeyId, {
+        _this.$axios.get(PBHttpServer.cmHelper.serverUrl + this.urlList.approvalHistory.url + _this.info.userId + '/' + this.task.businessKeyId, {
           timeout: 10000,
           headers: {
             id: _this.info.token

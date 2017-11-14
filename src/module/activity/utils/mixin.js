@@ -6,14 +6,15 @@ import axios from 'axios';
 import RetUrl from '../config/retUrlInfo.js';
 
 axios.defaults.headers['x-requested-with'] = "XMLHttpRequest"; //定义协议头
-
+let isShare = pbE.isPoboApp?pbE.SYS().readConfig("conf/h5/main.json")?JSON.parse(pbE.SYS().readConfig("conf/h5/main.json")).appSetting.isShare:false : false
 Vue.mixin({
   data() {
     return {
       userId: pbE.isPoboApp ? (pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_UserId') ? pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_UserId') : '0') : '0',
       token: pbE.isPoboApp ? pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_Token') : "1",//token
       serverUrl: PBHttpServer.activity.serverUrl ,
-      UrlInfo: RetUrl
+      UrlInfo: RetUrl,
+      isShare:isShare
     }
   },
   methods: {

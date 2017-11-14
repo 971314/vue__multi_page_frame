@@ -51,13 +51,13 @@
         <span>{{template.tplName}}</span>
         <img src="../../images/apply/gengDuo.png" class="gengduo"/>
       </div>
-      <div class="fill_group">
+      <div class="fill_group" v-show="apply.processhasDate == '1'">
         <span>申请起效时间</span>
         <span class="c1">{{startTime}}</span>
         <img src="../../images/apply/gengDuo.png" class="gengduo"/>
         <input type="date" v-model="startTime"/>
       </div>
-      <div class="fill_group">
+      <div class="fill_group" v-show="apply.processhasDate == '1'">
         <span>申请终止时间</span>
         <span class="c1">{{endTime}}</span>
         <img src="../../images/apply/gengDuo.png" class="gengduo"/>
@@ -104,15 +104,17 @@
           InvestorId: '123'//投资者编号
         },
         attachs: [],//附件
-        startTime: this.GetDateStr(0),//起始时间
-        endTime: this.GetDateStr(0),//终止时间
+        startTime: this.apply.processhasDate == 1 ? this.GetDateStr(0) : '',//起始时间
+        endTime: this.apply.processhasDate == 1 ? this.$$timeFormate({
+          date: this.getTimeByParam(12),
+          format: 'Y-M-D'
+        }) : '',//终止时间
         showEvent: false
       }
     },
     mounted () {
     },
     activated () {
-
     },
     computed: {
       ...mapState({
@@ -121,7 +123,8 @@
         appObject: ({apply}) => apply.appObject,
         approvedPersonnelInfo: ({apply}) => apply.approvedPersonnelInfo,
         jumpFlag: ({followUpRecord}) => followUpRecord.jumpFlag,
-        investor: ({followUpRecord}) => followUpRecord.investor
+        investor: ({followUpRecord}) => followUpRecord.investor,
+        addFollow: ({followUpRecord}) => followUpRecord.addFollow
       })
     },
     watch: {
@@ -151,67 +154,75 @@
       //提交
       submitClick () {
         let _this = this
-        if (this.template.tplId && this.template.tplId != '' && this.fillData.investorType && this.appObject.appObjectName) {
-          if (this.$$timeFormate({date: this.startTime, format: 'YMD'}) <= this.$$timeFormate({
-              date: this.endTime,
-              format: 'YMD'
-            })) {
-            this.$loading.toggle(' ')
-            _this.$axios.post(PBHttpServer.apply.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId, {
-              operatorId: _this.approvedPersonnelInfo.operatorId,
-              operatorName: _this.approvedPersonnelInfo.operatorName,
-              departId: _this.approvedPersonnelInfo.departId,
-              departName: _this.approvedPersonnelInfo.departName,
-              operatorposition: _this.approvedPersonnelInfo.operatorposition,
-              appObjectType: _this.appObject.appObjectType,
-              appObjectId: _this.appObject.appObjectId,
-              appObjectName: _this.appObject.appObjectId,
-              tplId: _this.template.tplId,
-              availBeginDate: _this.$$timeFormate({date: _this.startTime, format: 'Y-M-D h:m:s'}),
-              availEndDate: _this.$$timeFormate({date: _this.endTime, format: 'Y-M-D h:m:s'}),
-              note: _this.fillData.note,
-              attachlist: _this.attachs,
-              processKey: _this.apply.processKey,
-              processId: _this.apply.processId
-            }, {
-              timeout: 10000,
-              headers: {
-                id: _this.info.token
-              }
-            }).then((data) => {
-              data = data.data
-              console.log(data)
-              _this.$loading.hide()
-              if (data.retHead == 0) {
-                _this.$toast('提交成功')
-                setTimeout(() => {
-                  _this.attachs = []
-                  _this.fillData['investorType'] = '选择申请类型'
-                  _this.$store.dispatch('updataAppObject', {
-                    appObjectName: '选择申请人姓名'
-                  })
-                  _this.$store.dispatch('updataTemplate', {tplId: '', tplName: ''})
-                  _this.fillData.note = ''
-                  _this.$router.replace('/approvalIndex')
-                }, 1500)
-              } else {
-                _this.$toast(data.desc)
-              }
-            }).catch((err) => {
-              _this.$loading.hide()
-              _this.$toast('网络超时，请稍后重试！')
-              console.log(err)
-            })
-          } else {
-            this.$toast('起始时间不能大于终止时间！')
-          }
-        } else {
-          _this.$toast('请选择模板/申请类型/申请人姓名！')
+        if (this.fillData.investorType == '选择申请类型') {
+          _this.$toast('请选择申请类型！')
+          return
         }
-
+        if (this.appObject.appObjectName == '选择申请人姓名') {
+          _this.$toast('请选择申请人姓名！')
+          return
+        }
+        if (!this.template.tplId) {
+          _this.$toast('请选择模板!')
+          return
+        }
+        if (this.$$timeFormate({date: this.startTime, format: 'YMD'}) > this.$$timeFormate({
+            date: this.endTime,
+            format: 'YMD'
+          })) {
+          this.$toast('起始时间不能大于终止时间！')
+          return
+        }
+        this.$loading.toggle(' ')
+        _this.$axios.post(PBHttpServer.cmHelper.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId, {
+          operatorId: _this.approvedPersonnelInfo.operatorId,
+          operatorName: _this.approvedPersonnelInfo.operatorName,
+          departId: _this.approvedPersonnelInfo.departId,
+          departName: _this.approvedPersonnelInfo.departName,
+          operatorposition: _this.approvedPersonnelInfo.operatorposition,
+          appObjectType: _this.appObject.appObjectType,
+          appObjectId: _this.appObject.appObjectId,
+          appObjectName: _this.appObject.appObjectName,
+          tplId: _this.template.tplId,
+          availBeginDate: _this.$$timeFormate({date: _this.startTime, format: 'Y-M-D h:m:s'}),
+          availEndDate: _this.$$timeFormate({date: _this.endTime, format: 'Y-M-D h:m:s'}),
+          note: _this.fillData.note,
+          attachlist: _this.attachs,
+          processKey: _this.apply.processKey,
+          processId: _this.apply.processId
+        }, {
+          timeout: 10000,
+          headers: {
+            id: _this.info.token
+          }
+        }).then((data) => {
+          data = data.data
+          console.log(data)
+          _this.$loading.hide()
+          if (data.retHead == 0) {
+            _this.$toast('提交成功')
+            setTimeout(() => {
+              _this.attachs = []
+              _this.fillData['investorType'] = '选择申请类型'
+              _this.$store.dispatch('updataAppObject', {
+                appObjectName: '选择申请人姓名'
+              })
+              _this.$store.dispatch('updataTemplate', {tplId: '', tplName: ''})
+              _this.fillData.note = ''
+              _this.$router.replace('/approvalIndex')
+            }, 1500)
+          } else {
+            _this.$toast(data.desc)
+          }
+        }).catch((err) => {
+          _this.$loading.hide()
+          _this.$toast('网络超时，请稍后重试！')
+          console.log(err)
+        })
       },
       //图片上传
       turnBase64 () {
+        this.$loading.toggle(' ')
         //图片转换base64
         /*let imgs = document.getElementById('upLoad').files
         let reader = new FileReader(), attach = {attachName: '', attachUrl: '', size: ''}
@@ -227,14 +238,14 @@
           formData = new FormData(),
           imgs = document.getElementById('upLoad').files[0]
         formData.append('file', imgs)
-        _this.$axios.post(PBHttpServer.apply.serverUrl + this.urlList.imageUpload.url + _this.info.userId, formData, {
-          timeout: 10000,
+        _this.$axios.post(PBHttpServer.cmHelper.serverUrl + this.urlList.imageUpload.url + _this.info.userId, formData, {
           headers: {
             id: _this.info.token,
             'Content-Type': 'multipart/form-data'
           }
         }).then((data) => {
           data = data.data
+          _this.$loading.hide()
           console.log(data)
           if (data.retHead == 0) {
             this.attachs.push(data.data)
@@ -242,6 +253,7 @@
             _this.$toast(data.desc)
           }
         }).catch((err) => {
+          _this.$loading.hide()
           _this.$toast('网络超时，请稍后重试！')
           console.log(err)
         })
@@ -271,8 +283,9 @@
       },
       //选择申请人姓名
       selectName () {
-        if (this.appObject.appObjectName != '客户经理' && this.fillData.investorType != '选择申请类型') {
+        if (this.fillData.investorType != '客户经理' && this.fillData.investorType != '选择申请类型') {
           this.$store.dispatch('updatepJumpFlag', 3)
+          this.$store.dispatch('updateAddFollow', Object.assign(this.addFollow, {businessType: '1'}))
           this.$router.push('/customerInfoList')
         } else {
           if (this.fillData.investorType == '选择申请类型') {

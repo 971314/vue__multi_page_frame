@@ -4,10 +4,9 @@
       <common-nav :search="false" :message="false" :service="false" :goback="false"
                   :gobackUrl="gobackUrl">
         <span slot="body">客户详情</span>
-        <!--<a slot="footer" class="customer-add-delete" @click="showSelected">-->
-        <!--<img class="add-delete-icon" src="../images/sandianicon@2x.png"/>-->
-        <!--</a>-->
       </common-nav>
+    </div>
+    <div class="pobo-customer-center" id="pobo-customer-center">
       <div class="customer-info-grid" @click="gotoDetail">
         <div class="customer-info-group">
           <div class="left-avatar">
@@ -27,24 +26,41 @@
           <div class="right-arrow"></div>
         </div>
       </div>
-    </div>
-    <div class="customer-tab-wrapper">
-      <div class="customer-tab-group">
-        <div class="account-tips" :class="{'selected-record': nowIndex == 1}" @click="LinkToTab('accountOverView', 1)">
-          账户概览
-          <div class="selected-line"></div>
-        </div>
-        <div class="yewu-liushui" :class="{'selected-record': nowIndex == 2}" @click="LinkToTab('businessPipeline', 2)">
-          业务流水
-          <div class="selected-line"></div>
-        </div>
-        <div class="genjin-record" :class="{'selected-record': nowIndex == 3}" @click="LinkToTab('followUpRecord', 3)">
-          跟进记录
-          <div class="selected-line"></div>
+      <div class="customer-tab-wrapper" id="customer-tab-wrapper">
+        <div class="customer-tab-group">
+          <div class="account-tips" :class="{'selected-record': nowIndex == 1}"
+               @click="LinkToTab('accountOverView', 1)">
+            账户概览
+            <div class="selected-line"></div>
+          </div>
+          <div class="yewu-liushui" :class="{'selected-record': nowIndex == 2}"
+               @click="LinkToTab('businessPipeline', 2)">
+            业务流水
+            <div class="selected-line"></div>
+          </div>
+          <div class="genjin-record" :class="{'selected-record': nowIndex == 3}"
+               @click="LinkToTab('followUpRecord', 3)">
+            跟进记录
+            <div class="selected-line"></div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="pobo-customer-center">
+      <div class="zhanwei-div" id="zhanwei-div">
+        <div class="customer-tab-group">
+          <div class="account-tips">
+            账户概览
+            <div class="selected-line"></div>
+          </div>
+          <div class="yewu-liushui">
+            业务流水
+            <div class="selected-line"></div>
+          </div>
+          <div class="genjin-record">
+            跟进记录
+            <div class="selected-line"></div>
+          </div>
+        </div>
+      </div>
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
@@ -53,10 +69,10 @@
       <div class="message-footer">
         <img class="message-icon" src="../../images/exhibitionPage/message@2x.png"/>
       </div>
-      <div class="mobile-phone-footer">
+      <div class="mobile-phone-footer" @click="callTel">
         <img class="mobile-phone-icon" src="../../images/exhibitionPage/mobilePhone@2x.png"/>
       </div>
-      <div class="new-follow-footer">
+      <div class="new-follow-footer" @click="addAndEdit">
         <img class="new-follow-icon" src="../../images/exhibitionPage/newfollowUp@2x.png"/>
       </div>
     </div>
@@ -94,13 +110,42 @@
     computed: {
       ...mapState({
         customerMessage: ({exhibitionPage}) => exhibitionPage.customerMessage,
+        investor: ({followUpRecord}) => followUpRecord.investor,
         addFollow: ({followUpRecord}) => followUpRecord.addFollow
       })
     },
     activated() {
+      this.domScroll()
       this.getInvestorOpen()
+      this.LinkToTab('accountOverView', 1)
+      document.getElementById('pobo-customer-center').onscroll = this.domScroll
     },
     methods: {
+      domScroll() {
+        let distance = document.getElementById('pobo-customer-center').getElementsByClassName('customer-info-grid')[0].offsetHeight + 10
+        if (document.getElementById('pobo-customer-center').scrollTop > distance) {
+          document.getElementById('customer-tab-wrapper').style.position = 'fixed'
+          document.getElementById('customer-tab-wrapper').style.zIndex = '9999'
+          document.getElementById('zhanwei-div').style.display = 'block'
+        } else {
+          document.getElementById('customer-tab-wrapper').style.position = 'static'
+          document.getElementById('zhanwei-div').style.display = 'none'
+        }
+      },
+      callTel() {
+        window.location.href = `pobo:uncheck=1&pageId=800007&tel=${this.investor.MOBILE_NO}`
+      },
+      addAndEdit() { //新建客户跟进
+        var p = this.addFollow;//获取store中的 跟进情况
+        p.InvestorId = this.investor.INVESTOR_ID;//客户代码
+        p.businessType = 1;//客户名称
+        this.$store.dispatch('updateAddFollow', p)
+        this.$store.dispatch('updatepIsEdit', true)
+        this.$store.dispatch('updatepShowEditBtn', false)
+        this.$router.push({
+          name: 'addAndEdit'
+        })
+      },
       LinkToTab(routerViewName, index) {
         this.nowIndex = index
         this.$router.replace({
@@ -127,7 +172,8 @@
         this.showEvent = false
       },
       getInvestorOpen() { //单一投资者开户信息
-        this.$$axios({restUrl: 'investorOpen', join: [this.info.userId, this.addFollow.InvestorId]})
+        console.log('investor', this.investor)
+        this.$$axios({restUrl: 'investorOpen', join: [this.info.userId, this.investor.INVESTOR_ID]})
           .then((response) => {
             console.log('response', response);
             this.customerInfo['INVESTOR_NAM'] = response[0]['INVESTOR_NAM']

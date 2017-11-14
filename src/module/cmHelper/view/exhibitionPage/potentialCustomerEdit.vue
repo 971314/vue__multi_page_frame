@@ -116,6 +116,29 @@
       this.getPInvestorInfo()
     },
     methods: {
+      $isTel (str) { // 是否为固定电话
+        return /^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/.test(str)
+      },
+      $isMobile (str) { // 是否是手机号码
+        return /^1\d{10}$/.test(str)
+      },
+      checkcustomerMessage() {
+        if (!this.customerMessage.MOBILE_NO || this.customerMessage.MOBILE_NO.trim().length === 0) {
+          this.$toast('电话号码不能为空！')
+          return false
+        }
+
+        if (this.customerMessage.MOBILE_NO || !$isMobile(this.customerMessage.MOBILE_NO)) {
+          this.$toast('移动电话格式不正确！')
+          return false
+        }
+
+        if (this.customerMessage.LINKTELEPHONE && !$isTel(this.customerMessage.LINKTELEPHONE)) {
+          this.$toast('固定电话格式不正确！')
+          return false
+        }
+        return true
+      },
       getSex (flag) {
         if (flag == '1') {
           return '男';
@@ -133,10 +156,13 @@
       },
       completeClick() { //完成点击的操作
         this.customerMessage.SEX = this.noPotSex
+        if (!this.checkcustomerMessage()) {
+          return
+        }
         this.pInvestorEdit()
       },
       getPInvestorInfo() { //获取单一潜在客户信息
-        this.$$axios({restUrl: 'pInvestorInfo', join: [this.userId, this.pInvestor.CUST_ID]})
+        this.$$axios({restUrl: 'pInvestorInfo', join: [this.info.userId, this.pInvestor.CUST_ID]})
           .then((response) => {
             if (response.length <= 0) {
               return
@@ -155,7 +181,7 @@
         console.log(this.customerMessage.BIRTH_DT, 'this.customerMessage.BIRTH_DT');
         this.$$axios({
           restUrl: 'pInvestorEdit',
-          join: [this.userId, this.pInvestor.CUST_ID],
+          join: [this.info.userId, this.pInvestor.CUST_ID],
           options: {
             pInvestorName: this.customerMessage.CUST_NAM,
             gender: this.customerMessage.SEX,

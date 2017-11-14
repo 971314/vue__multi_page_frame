@@ -6,6 +6,10 @@
         "url":"pobo:uncheck=1&pageId=802150"
       },
       {
+        "name":"国债逆回购",
+        "url":"pobo:uncheck=1&pageId=802152"
+      },
+      {
         "name":"历史委托",
         "url":"pobo:uncheck=1&pageId=902105&url=stock/view/stock-en-his.html"
       },
