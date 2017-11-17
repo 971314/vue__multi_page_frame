@@ -12,7 +12,7 @@
               <span class="item-name" v-text="item.INVESTOR_NAM">张豪</span>
               <span v-if="item.OPDT" class="item-time" v-text="item.OPDT">09-12 10:09</span>
             </div>
-            <div class="item-right" :class="{'kaihu-success': item.OPENSTATUS == '已开户'}" v-text="item.OPENSTATUS">开户完成</div>
+            <div class="item-right" v-text="item.OPENSTATUS">开户完成</div>
           </div>
         </div>
       </div>

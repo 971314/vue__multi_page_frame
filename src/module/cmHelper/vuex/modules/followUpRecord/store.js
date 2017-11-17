@@ -53,10 +53,11 @@ export default{
     updatepIsEdit(state, payload) {
       state.isEdit = payload.isEdit
     }
-    
+
   },
   actions: {
     updateAddFollow({commit}, addFollow) {
+      console.log(addFollow, 'store addFollow')
       commit({type: 'updateAddFollow', addFollow: addFollow})
     },
     updateInvestor({commit}, investor) {

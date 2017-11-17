@@ -15,8 +15,7 @@
 		line-height: toRem(88px); 
 	}
 	.container{
-	    overflow: hidden;
-		margin-top: toRem(88px);
+		margin-top: 0;
 		.group{
 			background-image: none;
 			.cell{
@@ -24,18 +23,32 @@
 			}
 		}
 		.group.cusInfo{
+			position: relative; 
 			margin-top: 0;
 		    padding: 0;
-		    border-bottom:solid 1px #e4e7f0;
+
+		    @include bottom-px1-pixel-ratio;
 		    .cell{
 		    	padding: toRem(46px) toRem(30px);
 		    	.cell-body{
 		    		.media{
 		    			.media-object{
-		    				padding-right: toRem(28px);
+		    				position: relative;
+		    				margin-right: toRem(30px);
+		    				padding-right: 0;
+		    				width: toRem(134px);
+	    					height: toRem(134px);
+	    					background-color: rgba(255,255,255,0.2);
+		    				border-radius: 50%;
 		    				img{
-		    					width: toRem(114px);
+		    					position: absolute;
+							    left: 50%;
+							    top: 50%;
+							    z-index: 1;
+							    width: toRem(114px);
 		    					height: toRem(114px);
+							    transform: translate(-50%,-50%);
+							    -webkit-transform: translate(-50%,-50%);
 		    				}
 		    			}
 		    			.media-body{
@@ -76,11 +89,11 @@
 					}
 				}
 				.cell.accMana{
+					position: relative;
 					margin-bottom: 0;
 					padding: toRem(40px) toRem(30px);
 					@extend .font1;
-					border-top: solid 1px #e4e7f0;
-					border-bottom: solid 1px #e4e7f0;
+					@include px1-pixel-ratio;
 					.cell-footer{
 						@extend .font2;
 					}
@@ -90,15 +103,16 @@
 
 		.enclosure{
 			margin-top: toRem(20px);
-			margin-bottom: toRem(200px);
+			margin-bottom: toRem(100px);
 			padding-left: toRem(30px);
 			background-color: #fff;
 			.enclosureIitle{
+				position: relative;
 				margin-bottom: 0;
 				height: toRem(76px);
 				line-height: toRem(76px);
 				@extend .font1;
-				border-bottom:solid 1px #e4e7f0;
+				@include bottom-px1-pixel-ratio;
 			}
 			.group{
 				margin: 0;
@@ -108,7 +122,7 @@
 					padding: 0 toRem(60px) 0 0;
 					height: toRem(86px);
 					line-height: toRem(86px);
-					border-bottom:solid 1px #e4e7f0;
+					@include bottom-px1-pixel-ratio;
 					font-size: toRem(30px);
 					color: #1a1a1a;
 					.toDetail{
@@ -147,12 +161,12 @@
 	}
 
 	.approSubmit{
-			overflow: hidden;
+			/* overflow: hidden;
 		    position: fixed;
 		    bottom: 0;
 		    left: 0;
 		    z-index: 11;
-		    width: 100%;
+		    width: 100%; */
 			button{
 				float: left;
 				padding: 0;

@@ -9,8 +9,8 @@
                 </div>
                 <div slot="footer">
                     <div class="picker-area">
-                        <input class="date-picker" v-if="isIos" v-model="pickerValue" type="date" @blur = "changeDate()"/>
-                        <input class="date-picker" v-if="!isIos" v-model="pickerValue" type="date" @change = "changeDate()"/>
+                        <input class="date-picker" v-if="isIos" v-model="date" type="date" @blur = "changeDate()"/>
+                        <input class="date-picker" v-if="!isIos" v-model="date" type="date" @change = "changeDate()"/>
                         <img class="calendar-icon" src="../../images/cmHelperIndex/img15.png"/>
                     </div>
                 </div>
@@ -18,53 +18,19 @@
         </div>
 
         <div class="container customer-info-center">
-            
-            <div class="group-title setHeight">
-                <i>&nbsp;</i><strong>今天</strong>
-            </div>
-            <div class="group">
-                <a class="cell">
-                    <span class="cell-body">
-                        <h3>李XX<span>13:23</span></h3>
-                        出入金变动
-                    </span>
-                </a>
-                <a class="cell">
-                    <span class="cell-body">
-                        <h3>李XX<span>13:23</span></h3>
-                        出入金变动
-                    </span>
-                </a>
-                <a class="cell">
-                    <span class="cell-body">
-                        <h3>李XX<span>13:23</span></h3>
-                        出入金变动
-                    </span>
-                </a>
-            </div>
-
-            <div class="group-title">
-                <i>&nbsp;</i><strong>今天</strong>
-            </div>
-            <div class="group">
-                <a class="cell">
-                    <span class="cell-body">
-                        <h3>李XX<span>13:23</span></h3>
-                        出入金变动
-                    </span>
-                </a>
-                <a class="cell">
-                    <span class="cell-body">
-                        <h3>李XX<span>13:23</span></h3>
-                        出入金变动
-                    </span>
-                </a>
-                <a class="cell">
-                    <span class="cell-body">
-                        <h3>李XX<span>13:23</span></h3>
-                        出入金变动
-                    </span>
-                </a>
+            <div v-if="lists"><div class="text-center" v-if="lists.length <= 0" style="padding:10px 0;">无数据</div></div>
+            <div class="cmTrendsGroup" v-for="(item, index) in lists">
+                <div class="group-title setHeight">
+                    <i>&nbsp;</i><strong>{{item.MSGTIME}}</strong>
+                </div>
+                <div class="group">
+                    <a class="cell">
+                        <span class="cell-body">
+                            <h3>{{item.INVESTOR_NAM}}<span>{{item.MSGTIME}}</span></h3>
+                            {{item.REMINDMSG}}
+                        </span>
+                    </a>
+                </div>
             </div>
 
         </div>
@@ -86,8 +52,10 @@
         data() {
             return {
                 pickerValue : '',
+                lists : null,
                 begin : 1,
                 size : 10,
+                date : util.getDate(),
                 //客户端类型（ios || android）
                 isIos : browser.versions.ios || browser.versions.iPhone || browser.versions.iPad
             }
@@ -101,16 +69,17 @@
 
         methods: {
             changeDate(){
-
+                this.getCusDynamic();
             },
             //查询【客户动态】
             getCusDynamic(){
                 var _this = this;
                 _this.$$loading();
 
-                var url = PBHttpServer.cmHelper.serverUrl + "investorMessages/info/"+ this.info.userId +"?beginDate="+util.getDate()+"&endDate="+util.getDate()+"&begin="+ this.begin +"&size=" + this.size;
+                var url = PBHttpServer.cmHelper.serverUrl + "investorMessages/info/"+ this.info.userId +"/?beginDate="+this.date+"&endDate="+this.date+"&begin="+ this.begin +"&size=" + this.size;
                 _this.$axios.get(url,{headers:{id:this.info.token}}, null).then(function (result) {
                   _this.$$loaded();
+                  _this.lists = result.data.data;
                 }).catch(function (err) {
                   console.log('服务器异常', err)
                 });

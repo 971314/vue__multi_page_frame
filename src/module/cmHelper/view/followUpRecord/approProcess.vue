@@ -1,6 +1,6 @@
 <template>
 
-    <div class="approProcess">
+    <div class="approProcess pobo-customer-info">
 
         <div>
             <common-nav>
@@ -10,7 +10,7 @@
             </common-nav>
         </div>
 
-        <div class="container">
+        <div class="container customer-info-center">
 
             <div class="group cusInfo">
                 <a class="cell">

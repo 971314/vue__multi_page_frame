@@ -25,8 +25,8 @@
                                     <img src="../../images/cmHelperIndex/img01.png">
                                 </div>
                                 <div class="media-body">
-                                    <h3>今日关注(16)<span>09:10</span></h3>
-                                    <p>李某某 股票期权股票期权股票期权股票期权股票期权</p>
+                                    <h3>今日关注（{{lists.length}}）<span v-if="lists.length > 0">{{lists[0].MSGTIME || ''}}</span></h3>
+                                    <p v-if="lists.length > 0">{{lists[0].INVESTOR_NAM || ''}} {{lists[0].REALMSG || ''}} </p>
                                 </div>
                             </div>
                         </span>
@@ -65,7 +65,7 @@
       <div class="flex row">
         <func-nav :title="'快速申请'" :subTitle="'业务申请一键达'" toWhere="applyFast" :icon="'./images/cmHelperIndex/img09.png'"
                   :className="['bb0']"></func-nav>
-        <func-nav :title="'审批进程'" :subTitle="'随时链接业务'" toWhere="approvalIndex"
+        <func-nav :title="'审批进程'" :subTitle="'申请进度随时看'" toWhere="approvalIndex"
                   :icon="'./images/cmHelperIndex/img10.png'" :className="['bb0','br0']"></func-nav>
       </div>
 
@@ -76,33 +76,23 @@
 
       <div class="cusTrends">
         <div class="group" @click="goToCmTrends()">
-          <a class="cell">
-            <span class="cell-body"><i>&nbsp;</i>李某某 开户完成</span>
+          <a class="cell" v-for="item in lists">
+            <span class="cell-body"><i>&nbsp;</i>{{item.INVESTOR_NAM
+}} {{item.REALMSG}}</span>
             <div class="cell-footer">
-              <span>9:10</span>
+              <span>{{item.MSGTIME}}</span>
             </div>
           </a>
-          <a class="cell">
-            <span class="cell-body"><i>&nbsp;</i>何某某 今天生日</span>
-            <div class="cell-footer">
-              <span>9:10</span>
-            </div>
-          </a>
-          <a class="cell">
-            <span class="cell-body"><i>&nbsp;</i>何某某 保证金优惠申请驳回</span>
-            <div class="cell-footer">
-              <span>9:10</span>
-            </div>
-          </a>
+          
         </div>
       </div>
 
-      <div class="main-header-title bg-fff mt-15">
+      <div v-if="false" class="main-header-title bg-fff mt-15">
         <more-header :leftTitle="'公司公告'"
                      :toWhere="'pobo:uncheck=1&pageId=900005&url=indNews/index.html#/firm?infoId=001'"></more-header>
       </div>
 
-      <div class="cusTrends company">
+      <div v-if="false" class="cusTrends company">
         <div class="group">
           <a class="cell" v-for="c in comNewsList"
              :href="'pobo:uncheck=1&pageId=900005&url=indNews/index.html?#/details?type=2&info=' + c.infoId">
@@ -138,13 +128,18 @@
     data() {
       return {
         //公司公告【数据列表】
-        comNewsList: []
+        comNewsList: [],
+        lists : []
       }
     },
+    activated() {
 
+    },
     mounted() {
+      //document.querySelector('body').setAttribute('style', '-webkit-overflow-scrolling: auto')
       this.getCompanyNotice();
       this.getCusMessages();
+      this.getDailyInvestorMessage();
     },
 
     methods: {
@@ -157,24 +152,6 @@
           this.$router.push({
             name: 'myAttention'
           })
-      },
-      //查询【客户动态】
-      getCusAc(){
-        var params = {
-          "func": "12850",
-          "data": [{
-            "cmUserId": "0",
-            "begindate": util.getDate(),
-            "endDate": util.getDate(),
-            "begin": "1",
-            "size": "3"
-          }]
-        };
-        this.$axios.$get(url, params).then(function (res) {
-
-        }).catch(function (err) {
-          console.log(err);
-        })
       },
 
       //获取【公司公告】
@@ -200,7 +177,7 @@
       getCusMessages(){
         // var url = PBHttpServer.cmHelper.serverUrl + 'investorMessages/info/' + this.info.userId + '?beginDate=' + util.getDate() + '&endDate=' + util.getDate() + '&begin=1&size=3';
         var url = PBHttpServer.cmHelper.serverUrl + 'investorMessages/info/' + this.info.userId + '?beginDate=2017-10-10&endDate=2017-10-10&begin=1&size=3';
-        this.$axios.get(url, null).then(function (result) {
+        this.$axios.get(url,{headers:{id:this.info.token}}, null).then(function (result) {
           console.log(result);
         }).catch(function (err) {
           console.log('服务器异常', err)
@@ -210,6 +187,20 @@
       //跳转【客户动态页面】
       goToCmTrends(){
         window.location.href = "pobo:uncheck=1&pageId=900005&url=cmHelper/index.html#/cmTrends";
+      },
+      //查询【今日关注】
+      getDailyInvestorMessage(){
+          var _this = this;
+          _this.$$loading();
+
+          var url = PBHttpServer.cmHelper.serverUrl + "dailyInvestorMessage/info/" + this.info.userId;
+
+          _this.$axios.get(url,{headers:{id:this.info.token}}, null).then(function (result) {
+            _this.$$loaded();
+            _this.lists = result.data.data;
+          }).catch(function (err) {
+            console.log('服务器异常', err)
+          });
       }
 
     }

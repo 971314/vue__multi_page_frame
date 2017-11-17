@@ -1,0 +1,16 @@
+.intermediary {
+  .selectDept {
+    .mint-indexlist {
+      .mint-indexlist-content {
+        .mint-cell {
+          display: flex;
+          height: toRem(86px);
+          align-items: center;
+          position: relative;
+          font-size: $font33;
+          @include border-Bbottom-color23;
+        }
+      }
+    }
+  }
+}

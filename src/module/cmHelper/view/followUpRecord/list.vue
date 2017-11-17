@@ -24,7 +24,11 @@
 
             <div v-infinite-scroll="loadMore"  infinite-scroll-distance="10">
                 <div class="group-title" v-for="(item, index) in list">
-                    <div class="recordListDate"><i>&nbsp;</i><strong>{{item.date}}</strong></div>
+                    <div class="recordListDate"><i>&nbsp;</i>
+                        <strong v-if="item.date==today">今天</strong>
+                        <strong v-else-if="item.date==yesToday">昨天</strong>
+                        <strong v-else>{{item.date}}</strong>
+                    </div>
                     <div class="group">
                         <a class="cell" v-for="(d, j) in item.data" @click="goToDetail(d)">
                             <span class="cell-body">
@@ -77,7 +81,9 @@
                 size : 10,
                 tabIndex:0,
                 loading : false,
-                urlSuffix : 'investorFollow'
+                urlSuffix : 'investorFollow',
+                today : util.getDate(),
+                yesToday : util.addDate(null,-1)
             }
         },
         computed: {
@@ -91,6 +97,9 @@
 
         },
         activated() {
+            this.begin = 1;
+            this.list = [];
+            this.sourceList = [];
             this.showBase = false;
             this.getList();
         },
@@ -134,10 +143,8 @@
             getList(){
                 var _this = this;
                 _this.$$loading();
-                console.log(this.info.userId);
                 var url = PBHttpServer.cmHelper.serverUrl + this.urlSuffix + "/list/" + this.info.userId + "?begin=" + this.begin + "&size=" + this.size;
                 this.$axios.get(url,{headers:{id:this.info.token}}, null).then(function(result) {
-                    _this.$$loaded();
                     var datas = result.data.data;
                     if(datas.length <= 0){
                         _this.loading = false
@@ -147,13 +154,17 @@
                     }else{
                         _this.loading = true
                     }
-
+                    if(_this.tabIndex==1){
+                        for (var i = 0; i < datas.length; i++) {
+                            datas[i].FOLLOWDESC = datas[i].FOLLOWDESC.replace(/\\n/g," ");
+                        }
+                    }
+                    
                     _this.sourceList = _this.sourceList.concat(datas);
                     var tempList = util.deepClone(_this.sourceList);
                     _this.list = util.dateSort(util.sortGroup(tempList, _this.tabIndex));;
-                    console.log(_this.list);
                     _this.begin += 1;
-
+                    _this.$$loaded();
                 }).
                 catch(function(err) {
                     console.log('服务器异常', err)
@@ -181,7 +192,6 @@
                 this.$store.dispatch('updateAddFollow', follow);
                 this.$store.dispatch('updatepShowEditBtn', true);
                 this.$store.dispatch('updatepIsEdit', true);
-                console.log(follow);
                 this.$router.push('/addAndEdit');
             }
 

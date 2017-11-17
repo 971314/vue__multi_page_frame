@@ -27,7 +27,7 @@
             <thead>
             <tr>
               <td><span>期末权益(万)</span></td>
-              <td><span>日均权益(万)</span><img src="../../images/apply/youHua.png"/></td>
+              <td><span>日均权益(万)</span><img v-show="isShow" src="../../images/apply/youHua.png"/></td>
               <td><span>保证金(万)</span></td>
               <td><span>风险度(%)</span></td>
               <td><span>成交金额(万)</span></td>
@@ -46,14 +46,14 @@
         <div class="TbodyInner">
           <table class="brief">
             <tbody>
-            <tr v-for="(data,i) in rankingData" class="borderBottom">
+            <tr v-for="(data,i) in rankingData" class="borderBottom clickBack">
               <td v-if="i == 0"><img src="../../images/apply/ranking1.png"/></td>
               <td v-else-if="i == 1"><img src="../../images/apply/ranking2.png"/></td>
               <td v-else-if="i == 2"><img src="../../images/apply/ranking3.png"/></td>
               <td v-else>
                 <div>{{i + 1}}</div>
               </td>
-              <td @click.stop="jumPage(data.CAPITALACCOUNT)">
+              <td v-tap="[jumPage,data.CAPITALACCOUNT,i]">
                 <div>{{data.INVESTOR_NAM }}</div>
                 <div>{{data.CAPITALACCOUNT}}</div>
               </td>
@@ -62,14 +62,14 @@
           </table>
           <div class="detailOuter">
             <table class="detail">
-              <tbody>
-              <tr v-for="(data,i) in rankingData" class="borderBottom">
+              <tbody id="detail">
+              <tr v-for="(data,i) in rankingData" class="borderBottom clickBack1">
                 <td><span>{{decimalPlaceReserved(data.FINALEQUITY, 2)}}</span></td>
                 <td><span>{{decimalPlaceReserved(data.DAILYEQUITY, 2)}}</span></td>
                 <td><span>{{decimalPlaceReserved(data.MARGIN, 2)}}</span></td>
                 <td><span>{{decimalPlaceReserved(data.RISK, 2)}}</span></td>
                 <td><span>{{decimalPlaceReserved(data.TURNVOLUME, 2)}}</span></td>
-                <td><span>{{decimalPlaceReserved(data.VOLUME, 2)}}</span></td>
+                <td><span>{{decimalPlaceReserved(data.VOLUME, 0)}}</span></td>
                 <td><span>{{decimalPlaceReserved(data.GOLD, 2)}}</span></td>
                 <td><span>{{decimalPlaceReserved(data.DEPOSIT, 2)}}</span></td>
                 <td><span>{{decimalPlaceReserved(data.NETDEPOSIT, 2)}}</span></td>
@@ -101,7 +101,8 @@
     data () {
       return {
         showEvent: false,
-        rankingData: []
+        rankingData: [],
+        isShow: true
       }
     },
     computed: {
@@ -125,8 +126,15 @@
         frozen: true,
         wheelSpeed: 200
       })
+      document.getElementById('ranking').addEventListener('ps-x-reach-start', (e) => {
+        this.isShow = true
+      })
+      document.getElementById('ranking').addEventListener('ps-scroll-right', (e) => {
+        this.isShow = false
+      })
     },
     activated () {
+      this.isShow = true
       this.getData()
     },
     updated: function () {
@@ -184,26 +192,20 @@
           }
         }).catch((err) => {
           _this.$loading.hide()
-          _this.$toast('网络超时，请稍后重试！')
+          if(err.response && err.response.status == 401){
+            _this.$router.replace('/')
+          }else if(err.response){
+            _this.$toast(err.response.data.desc)
+          }else{
+            _this.$toast('网络超时，请稍后重试！')
+          }
           console.log(err)
         })
-        /*_this.$axios.get(PBHttpServer.cmHelper.serverUrl + this.urlList.approvalRanking.url + 'test11?beginDate=2010-01-01&endDate=2017-03-03\n').then((data) => {
-          data = data.data
-          console.log(data)
-          _this.$loading.hide()
-          if (data.retHead == 0) {
-            _this.rankingData = data.data
-          } else {
-            _this.$toast(data.desc)
-          }
-        }).catch((err) => {
-          _this.$loading.hide()
-          _this.$toast('网络超时，请稍后重试！')
-          console.log(err)
-        })*/
       },
 //      跳转
-      jumPage (data) {
+      jumPage (data,i) {
+        /*$('.clickBack').eq(i).addClass("tableCheckCss").siblings().removeClass("tableCheckCss");
+        $('.clickBack1').eq(i).addClass("tableCheckCss").siblings().removeClass("tableCheckCss");*/
         this.$store.dispatch('updateInvestor', {INVESTOR_ID: data})
         this.$router.push({name: 'noPotentialCustomer'})
       }

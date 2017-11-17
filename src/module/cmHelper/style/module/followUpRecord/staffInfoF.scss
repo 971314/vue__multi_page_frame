@@ -1,0 +1,91 @@
+.approProcess.staffInfoF {
+
+  background-color: #f7f7fa;
+
+  .container {
+
+    .group.cusInfo {
+      background: url(../cmHelper/images/followUpRecord/img20.png) no-repeat center center;
+      background-size: 100% 100%;
+      .cell {
+        padding: toRem(18px) toRem(30px) toRem(58px);
+        background-color: transparent;
+        .cell-body {
+          .media {
+            background-color: transparent;
+            .media-body {
+              h3 {
+                color: #fff;
+              }
+              p {
+                color: #fff;
+                opacity: 0.7;
+              }
+            }
+          }
+        }
+      }
+    }
+    .applyInfo {
+      padding-top: 0;
+      overflow: hidden;
+      background-color: transparent;
+      .applyIitle {
+        margin: 0;
+        padding: toRem(40px) toRem(30px) toRem(34px) toRem(30px);
+        background-color: #fff;
+      }
+      .applyIitle:before {
+        border-bottom: 0;
+      }
+      .group {
+        padding: 0;
+        background-color: transparent;
+        .cell {
+          margin: 0;
+          padding: 0 toRem(30px) toRem(34px);
+        }
+        .cell.accMana {
+          padding: toRem(40px) toRem(30px);
+          .toDetail {
+            position: absolute;
+            right: .4rem;
+            top: 50%;
+            z-index: 2;
+            width: .21333rem;
+            height: .4rem;
+            transform: translate(0, -50%);
+            -webkit-transform: translate(0, -50%);
+          }
+          span.color1 {
+            color: #808086;
+          }
+          span.color2 {
+            font-size: toRem(32px);
+          }
+        }
+        .cell.mailNo {
+          position: relative;
+          padding-bottom: toRem(40px);
+          @include bottom-px1-pixel-ratio;
+        }
+        .cell.accMana:before {
+          border: 0;
+        }
+        .mt20 {
+          margin-top: toRem(20px);
+
+        }
+      }
+    }
+    .enclosure {
+      .group {
+        .cell {
+
+        }
+      }
+    }
+
+  }
+
+}

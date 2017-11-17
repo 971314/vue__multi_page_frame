@@ -1,12 +1,14 @@
 .pobo-customer-info {
   @extend %common-wrapper;
+  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
   .customer-info-center {
     -webkit-box-flex: 1;
     -ms-flex: 1;
     flex: 1;
     overflow: auto;
     background-color: #f7f7fa;
-    -webkit-overflow-scrolling: touch;
+    //-webkit-overflow-scrolling: auto;
 
     .customer-input-group {
       background-color: #ffffff;
@@ -78,9 +80,14 @@
       }
 
       .customer-breakword-item {
+        align-items: flex-start;
         height: auto;
         line-height: toRem(46px);
         word-break: break-all;
+        .input-item-name {
+          padding-top: toRem(32px);
+          padding-bottom: toRem(32px);
+        }
       }
     }
 

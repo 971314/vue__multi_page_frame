@@ -37,9 +37,9 @@
       }
     }
     .details_info {
-      padding: toRem(40px) toRem(30px) 0 toRem(30px);
+      padding: toRem(38px) toRem(30px);
       div {
-        padding-bottom: toRem(34px);
+        padding-bottom: toRem(30px);
         line-height: 1;
         display: flex;
         &:nth-of-type(1) {
@@ -47,6 +47,9 @@
         }
         &:nth-of-type(2), &:nth-of-type(3), &:nth-of-type(4) {
           @extend %c17f23;
+        }
+        &:last-child{
+          padding-bottom: 0;
         }
         span {
           &:nth-of-type(2) {

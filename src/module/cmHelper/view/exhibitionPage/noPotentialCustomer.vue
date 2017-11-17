@@ -26,7 +26,7 @@
           <div class="right-arrow"></div>
         </div>
       </div>
-      <div class="customer-tab-wrapper" id="customer-tab-wrapper">
+      <div class="customer-tab-wrapper">
         <div class="customer-tab-group">
           <div class="account-tips" :class="{'selected-record': nowIndex == 1}"
                @click="LinkToTab('accountOverView', 1)">
@@ -45,22 +45,22 @@
           </div>
         </div>
       </div>
-      <div class="zhanwei-div" id="zhanwei-div">
-        <div class="customer-tab-group">
-          <div class="account-tips">
-            账户概览
-            <div class="selected-line"></div>
-          </div>
-          <div class="yewu-liushui">
-            业务流水
-            <div class="selected-line"></div>
-          </div>
-          <div class="genjin-record">
-            跟进记录
-            <div class="selected-line"></div>
-          </div>
-        </div>
-      </div>
+      <!--<div class="zhanwei-div" id="zhanwei-div">-->
+      <!--<div class="customer-tab-group">-->
+      <!--<div class="account-tips">-->
+      <!--账户概览-->
+      <!--<div class="selected-line"></div>-->
+      <!--</div>-->
+      <!--<div class="yewu-liushui">-->
+      <!--业务流水-->
+      <!--<div class="selected-line"></div>-->
+      <!--</div>-->
+      <!--<div class="genjin-record">-->
+      <!--跟进记录-->
+      <!--<div class="selected-line"></div>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
@@ -107,6 +107,15 @@
         }
       }
     },
+    watch: {
+      $route(to, from) {
+        if (to.name == 'customerInfoList' && from.name == 'noPotentialCustomer') {
+          this.$store.dispatch('updateAddFollow', Object.assign(this.addFollow, {
+            businessType: ''
+          }))
+        }
+      }
+    },
     computed: {
       ...mapState({
         customerMessage: ({exhibitionPage}) => exhibitionPage.customerMessage,
@@ -115,10 +124,10 @@
       })
     },
     activated() {
-      this.domScroll()
+//      this.domScroll()
       this.getInvestorOpen()
       this.LinkToTab('accountOverView', 1)
-      document.getElementById('pobo-customer-center').onscroll = this.domScroll
+//      document.getElementById('pobo-customer-center').onscroll = this.domScroll
     },
     methods: {
       domScroll() {
@@ -138,9 +147,10 @@
       addAndEdit() { //新建客户跟进
         var p = this.addFollow;//获取store中的 跟进情况
         p.InvestorId = this.investor.INVESTOR_ID;//客户代码
+        p.name = this.investor.INVESTOR_NAM;//客户代码
         p.businessType = 1;//客户名称
         this.$store.dispatch('updateAddFollow', p)
-        this.$store.dispatch('updatepIsEdit', true)
+        this.$store.dispatch('updatepIsEdit', false)
         this.$store.dispatch('updatepShowEditBtn', false)
         this.$router.push({
           name: 'addAndEdit'

@@ -3,7 +3,7 @@
     <common-nav :search="false" :message="false" :service="false" :goback="false"
                 :gobackUrl="gobackUrl">
       <span slot="body" v-text="customerTitle"></span>
-      <span slot="footer" style="margin-right: 15px;" @click="editPage">编辑</span>
+      <span slot="footer" style="margin-right: 15px; font-size: 15px;" @click="editPage">编辑</span>
     </common-nav>
     <div class="potential-info-center">
       <div class="customer-info-center">
@@ -11,51 +11,60 @@
           <div class="customer-input-item">
             <div class="input-item-name">姓名</div>
             <div class="input-item-input">
-              <input class="item-input-content" disabled v-model="customerMessage.CUST_NAM" maxlength="12"
-                     type="text"/>
+              <!--<input class="item-input-content" style="color: #808086" disabled v-model="customerMessage.CUST_NAM" maxlength="12"-->
+              <!--type="text"/>-->
+              {{customerMessage.CUST_NAM}}
             </div>
           </div>
           <div class="customer-input-item">
             <div class="input-item-name">性别</div>
-            <div class="input-item-input">
-              {{sex}}
+            <div class="input-item-input" style="color: #808086">
+              {{noPotSex ? sex : '--'}}
               <!--<input class="item-input-content" disabled v-model="customerMessage.SEX" maxlength="12" type="text"/>-->
             </div>
-            <img class="customer-showdetail-arrow" src="../../images/exhibitionPage/showdetail@2x.png"/>
+            <!--<img class="customer-showdetail-arrow" src="../../images/exhibitionPage/showdetail@2x.png"/>-->
           </div>
           <div class="customer-input-item">
             <div class="input-item-name">身份证号码</div>
             <div class="input-item-input">
-              <input class="item-input-content" disabled v-model="customerMessage.ID_NO" type="text"/>
+              <!--<input class="item-input-content" style="color: #808086" disabled v-model="customerMessage.ID_NO"-->
+              <!--type="text"/>-->
+              {{customerMessage.ID_NO}}
             </div>
           </div>
           <div class="customer-input-item">
             <div class="input-item-name">出生日期</div>
             <div class="input-item-input">
-              <span>{{customerMessage.BIRTH_DT}}</span>
-              <input class="item-input-date" disabled v-model="customerMessage.BIRTH_DT" maxlength="12" type="date"/>
+              <span style="color: #808086">{{customerMessage.BIRTH_DT}}</span>
+              <!--<input class="item-input-date" disabled v-model="customerMessage.BIRTH_DT" maxlength="12" type="text"/>-->
             </div>
-            <img class="customer-showdetail-arrow" src="../../images/exhibitionPage/showdetail@2x.png"/>
+            <!--<img class="customer-showdetail-arrow" src="../../images/exhibitionPage/showdetail@2x.png"/>-->
           </div>
         </div>
         <div class="customer-input-group">
           <div class="customer-input-item">
             <div class="input-item-name">通讯地址</div>
             <div class="input-item-input">
-              <input class="item-input-content" disabled v-model="customerMessage.LINKADDR" type="text"/>
+              <!--<input class="item-input-content" style="color: #808086" disabled v-model="customerMessage.LINKADDR"-->
+              <!--type="text"/>-->
+              {{customerMessage.LINKADDR}}
             </div>
           </div>
           <div class="customer-input-item">
             <div class="input-item-name">手机号码<img class="user-must-icon"
                                                   src="../../images/exhibitionPage/musticon@2x.png"/></div>
             <div class="input-item-input">
-              <input class="item-input-content" disabled v-model="customerMessage.MOBILE_NO" type="tel"/>
+              <!--<input class="item-input-content" style="color: #808086" disabled v-model="customerMessage.MOBILE_NO"-->
+              <!--type="tel"/>-->
+              {{customerMessage.MOBILE_NO}}
             </div>
           </div>
           <div class="customer-input-item">
             <div class="input-item-name">固定电话</div>
             <div class="input-item-input">
-              <input class="item-input-content" disabled v-model="customerMessage.LINKTELEPHONE" type="tel"/>
+              <!--<input class="item-input-content" style="color: #808086" disabled v-model="customerMessage.LINKTELEPHONE"-->
+              <!--type="tel"/>-->
+              {{customerMessage.LINKTELEPHONE}}
             </div>
           </div>
         </div>
@@ -63,12 +72,16 @@
           <div class="customer-input-item">
             <div class="input-item-name">客户来源</div>
             <div class="input-item-input">
-              <input class="item-input-content" disabled v-model="customerMessage.CUST_SRC" type="text"/>
+              <!--<input class="item-input-content" style="color: #808086" disabled v-model="customerMessage.CUST_SRC"-->
+              <!--type="text"/>-->
+              {{customerMessage.CUST_SRC}}
             </div>
           </div>
         </div>
-        <div class="customer-remarks">
-          <textarea class="remarks-text-area" disabled v-model="customerMessage.CUST_DESC"></textarea>
+        <div class="customer-remarks" style="font-size: 16px; color: #808086;">
+          {{customerMessage.CUST_DESC}}
+          <!--<textarea class="remarks-text-area" style="color: #808086" disabled-->
+          <!--v-model="customerMessage.CUST_DESC"></textarea>-->
         </div>
       </div>
     </div>

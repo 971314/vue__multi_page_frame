@@ -9,6 +9,9 @@ import equityRanking from '../../view/apply/equityRanking.vue'
 import setTime from '../../view/apply/setTime.vue'
 import logIn from '../../view/apply/logIn.vue'
 import bindCRM from '../../view/apply/bindCRM.vue'
+import preview from '../../view/apply/preview.vue'
+import intermediary from '../../view/apply/intermediary.vue'
+import information from '../../view/apply/information.vue'
 
 const routes = [
   {path: '/applyFast', name: 'applyFast', component: applyFast},//选择申请
@@ -21,7 +24,10 @@ const routes = [
   {path: '/equityRanking', name: 'equityRanking', component: equityRanking},//权益排行榜
   {path: '/setTime', component: setTime},//自定义时间
   {path: '/', component: logIn},//登录
-  {path: '/bindCRM', component: bindCRM}//绑定CRM
+  {path: '/bindCRM', component: bindCRM},//绑定CRM
+  {path: '/preview', component: preview},//预览
+  {path: '/intermediary', component: intermediary},//居间人
+  {path: '/information', component: information}//消息
 ]
 
 export default routes

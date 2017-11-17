@@ -1,6 +1,6 @@
 body{
 	background-color: #f7f7fa;
-	overflow: auto;	
+	overflow: auto;
 }
 
 textarea::-webkit-input-placeholder{
@@ -11,6 +11,8 @@ textarea[disabled="disabled"]{
 }
 
 .cmTrends.addAndEdit{
+  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
 	.addFollow{
 		padding-right: toRem(30px);
 		font-size: toRem(30px);
@@ -64,12 +66,15 @@ textarea[disabled="disabled"]{
 								}
 								.removeImg{
 								    position: absolute;
-								    left: toRem(-14px);
-								    top: toRem(-14px);
-								    z-index: 2; 
+								    // left: toRem(-14px);
+								    left: 0;
+								    top: 0;
+								    // top: toRem(-14px);
+								    z-index: 10;
 									display: inline-block;
 									width: toRem(36px);
 									height: toRem(36px);
+									background-color: #fff;
 									background-image:url(../../../cmHelper/images/followUpRecord/img04.png);
 							        background-size: 99% 100%;
 							        background-repeat: no-repeat;
@@ -100,7 +105,7 @@ textarea[disabled="disabled"]{
 				border-bottom: 0;
 			}
 			.historyFollow{
-				padding: toRem(22px) toRem(30px);
+				padding: toRem(40px) toRem(30px);
 			    @include bottom-px1-pixel-ratio;
 			    font-size: toRem(28px);
 				color: #808086;
@@ -161,7 +166,7 @@ textarea[disabled="disabled"]{
 							@extend .font2;
 						}
 					}
-					.cell:last-child{
+					.cell:last-child:before{
 						border:0;
 					}
 				}

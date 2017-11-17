@@ -11,10 +11,15 @@
       padding: 0;
       padding-right: toRem(30px);
       height: toRem(88px);
-      border-bottom: 1px solid #e4e7f0;
+      position: relative;
+      box-sizing: border-box;
+      @include bottom-px1-pixel-ratio;
+      //border-bottom: 1px solid #e4e7f0;
       background-image: none;
       &:last-child {
-        border-bottom: none;
+        &:before {
+          border-bottom: none;
+        }
       }
       .cell-body {
         @include font(16px);

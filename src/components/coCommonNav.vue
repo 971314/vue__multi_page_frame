@@ -14,7 +14,7 @@
           <a v-if="search" class="search" :href="searchUrl">
             <img src="../assets/images/title-search.png">
           </a>
-          <slot></slot>
+          <slot name="head"></slot>
         </div>
       </div>
       <div class="navbar-body">

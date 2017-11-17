@@ -1,0 +1,30 @@
+.information {
+  background: $color15;
+  @extend %initial;
+  .navbar-header, .navbar-footer {
+    font-size: $font10;
+  }
+  .navbar-header {
+    padding-left: toRem(30px);
+  }
+  .navbar-footer {
+    padding-right: toRem(30px);
+  }
+  .textNum {
+    position: absolute;
+    bottom: toRem(30px);
+    right: toRem(30px);
+    color: $color17;
+    font-size: $font26;
+  }
+  textarea {
+    font-family: Microsoft Yahei, Arial, Helvetica, sans-serif;
+    font-size: $font33;
+    border: 0;
+    outline: none;
+    width: 100%;
+    height: toRem(300px);
+    padding: toRem(30px);
+    line-height: toRem(50px);
+  }
+}

@@ -5,17 +5,17 @@
     </common-nav>
     <div class="approval_tab">
       <span :class="qrytype == 0?'selected':''" @click="tabClick(0)">全部</span>
-      <span :class="qrytype == 10?'selected':''" @click="tabClick(10)">审批中</span>
-      <span :class="qrytype == 20?'selected':''" @click="tabClick(20)">已完成</span>
+      <span :class="qrytype == 1?'selected':''" @click="tabClick(1)">审批中</span>
+      <span :class="qrytype == 2?'selected':''" @click="tabClick(2)">已完成</span>
     </div>
     <div class="approval_conter">
       <div class="approval_cell" @click="jumpClick(data)" v-for="data in approvalData">
         <div>
-          <span>{{data.appObjectName}}&nbsp;&nbsp;{{data.processName}}</span>
+          <span>{{data.appObjectName}} | {{data.processName}}</span>
           <span>{{$$dateInterception(data.appDate, 0, data.appDate.length - 2)}}</span>
         </div>
         <span
-          :class="{'c1':data.appStatus== '2','c2':data.appStatus== '0' || data.appStatus== '9','c3':data.appStatus== '3'}">{{data.appStatusName}}</span>
+          :class="{'c3':data.appStatus== '3'}">{{data.appStatusName}}</span>
       </div>
     </div>
   </div>
@@ -80,7 +80,13 @@
           }
         }).catch((err) => {
           _this.$loading.hide()
-          _this.$toast('网络超时，请稍后重试！')
+          if (err.response && err.response.status == 401) {
+            _this.$router.replace('/')
+          } else if (err.response) {
+            _this.$toast(err.response.data.desc)
+          } else {
+            _this.$toast('网络超时，请稍后重试！')
+          }
           console.log(err)
         })
       }

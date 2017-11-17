@@ -1,12 +1,17 @@
 @import '../../../../adequacy/style/_selectDept.scss';
 
 body{
-	-webkit-overflow-scrolling: touch;	
-	overflow: auto;	
+	//-webkit-overflow-scrolling: touch;
+	overflow: auto;
 }
 
-input[type="button"], 
-input[type="submit"], 
+input, textarea {
+    -webkit-user-select: auto!important;
+    user-select: auto!important;
+}
+
+input[type="button"],
+input[type="submit"],
 input[type="reset"],
 input[type="text"]{
 	-webkit-appearance: none;
@@ -14,6 +19,8 @@ input[type="text"]{
 
 
 .customerInfo{
+  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
 	.common-nav{
 	    line-height: unset;
 	    .navbar-header{
@@ -34,7 +41,7 @@ input[type="text"]{
 				height: toRem(58px);
 				line-height: toRem(58px);
 			    position: absolute;
-			    left: 50%; 
+			    left: 50%;
 			    top: 50%;
 			    transform: translate(-50%,-50%);
 			    -webkit-transform: translate(-50%,-50%);
@@ -51,7 +58,7 @@ input[type="text"]{
 					border-top-left-radius: toRem(6px);
 				}
 				div:last-child{
-					border-left: 0;	
+					border-left: 0;
 					border-bottom-right-radius: toRem(6px);
 					border-top-right-radius: toRem(6px);
 				}
@@ -76,20 +83,24 @@ input[type="text"]{
 			    	padding: 0;
 			    	color: #fff;
 			    }
-			}	
+			}
 		}
-		
+
 	}
-	
+
 	.selectDept{
 		padding-top: 0;
 		.mint-indexlist{
-			height: 100%;
+			//height: 100%;
 			.mint-indexlist-content{
 				margin-bottom: 0;
 				margin-right: 0!important;
-				height: 100%!important;
+				//height: 100%!important;
 				background-color: #fff;
+				.mint-indexsection-index{
+					font-size: toRem(28px);
+					color: #808086;
+				}
 				.mint-cell{
 					padding-left: 0;
 					margin:0 15px;
@@ -114,11 +125,15 @@ input[type="text"]{
 					}
 					.mint-list{
 						margin-right: toRem(160px);
-						
+
 						.cusName{
 							margin: toRem(22px) 0 toRem(8px) 0;
 							font-size: toRem(32px);
 							color: #1a1a1a;
+							span{
+								font-size: toRem(26px);
+								color: #808086;
+							}
 						}
 						.cusLevel{
 							img.type1{
@@ -128,7 +143,7 @@ input[type="text"]{
 								margin-right: toRem(4px);
 								width: toRem(24px);
 								height: toRem(24px);
-							} 
+							}
 							img.type2{
 								position: relative;
 								top: toRem(-2px);
@@ -141,7 +156,7 @@ input[type="text"]{
 								margin: 0;
 							}
 						}
-						
+
 					}
 				}
 				.mint-cell.autoHei{
@@ -152,53 +167,94 @@ input[type="text"]{
 				}
 			}
 			.mint-indexlist-nav{
+				// position: fixed;
 				background-color: transparent;
 				.mint-indexlist-navitem{
 					font-size: toRem(22px);
 				    color: #c0c6cd;
 				    font-weight: bolder;
 				}
-			}	
-		} 
-		
-		
-		
+			}
+		}
+
+
+
 	}
 	.searchbar{
-		position: relative; 
-	    background-color: #e6e6ec;
-	    i{
-    	    position: absolute;
-		    left: 40%;
-		    top: 50%;
-		    z-index: 2;
-		    color: #808086;
-		    transform: translate(0,-50%);
-		    -webkit-transform: translate(0,-50%);
-	    }
-	    .alignLeft{
-	    	left: 7%;
-	    }
+		height: toRem(88px);
+		background-color: #e6e6ec;
 		.searchbar-input{
-			margin: toRem(15px) toRem(30px);
-			padding: 0 toRem(20px);
-			height: toRem(68px);
-			line-height: toRem(68px);
+		    position: relative;
+			margin: 0 toRem(30px);
+			padding: 0;
 			background-color: #fff;
-			font-size: toRem(28px);
-			color: #808086;	
+			height: toRem(58px);
+		    line-height: toRem(58px);
+		    font-size: toRem(28px);
+			color: #808086;
 		    border-radius: toRem(8px);
-		    text-align: center;
-		    outline: none;
-		    transition: text-align 2s;
-			-webkit-transition: text-align 2s; /* Safari 和 Chrome */
+		    .searchbar-input-placeholder{
+		    	position: absolute;
+			    left: 0;
+			    top: 50%;
+			    z-index: 1;
+			    width: 100%;
+			    height: toRem(40px);
+		    	line-height: toRem(40px);
+	    	    opacity: 1;
+	    	    transform: translate(0,-50%);
+			    -webkit-transform: translate(0,-50%);
+			    span{
+			    	-webkit-transition: all .3s ease;
+			    	transition: all .3s ease;
+			    }
+		    	i{
+		    		position: relative;
+		    		top: toRem(-2px);
+		    	    display: inline-block;
+		    	    margin-left: toRem(20px);
+		    	    margin-right: toRem(14px);
+		    	    width: toRem(26px);
+		    	    height: toRem(26px);
+		    	    background: url(../cmHelper/images/followUpRecord/img09.png) no-repeat center;
+		    	    background-size: contain;
+			    }
+		    }
+		    input{
+	    	    width: 100%;
+			    position: absolute;
+			    left: 0;
+			    top: 50%;
+			    z-index: 3;
+			    transform: translate(0,-50%);
+			    -webkit-transform: translate(0,-50%);
+		    	padding: 0 0 0 toRem(60px);
+		    	height: toRem(40px);
+		    	line-height: toRem(40px);
+		    	font-size: toRem(28px);
+				color: #808086; 
+		    }
+		    input::-webkit-input-placeholder {
+                color:#808086;
+            }
 		}
 		.searchbar-input.inputFocus{
-	    	text-align: left;
-	    	padding-left: 9%;
-	    }
+			.searchbar-input-placeholder{
+				width: 0.5rem;
+			}
+		}
 	}
-	.haveOpen{ 
+	.searchbar.active{
+		.searchbar-input-placeholder{
+			width: 0.8rem;
+			span{
+				display: none;
+			}
+		}
+	}
+
+	.haveOpen{
+		position: relative;
 	    margin: 0;
 		width: 100%;
 		height: toRem(100px);
@@ -206,7 +262,7 @@ input[type="text"]{
 	    background-color: #fff;
 		font-size: toRem(32px);
 		color: #808086;
-	    border-top: solid 1px #e4e7f0;
-	} 
-	
+	    @include top-px1-pixel-ratio;
+	}
+
 }

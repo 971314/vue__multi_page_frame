@@ -5,7 +5,7 @@
     -ms-flex: 1;
     flex: 1;
     overflow: auto;
-    -webkit-overflow-scrolling: touch;
+    //-webkit-overflow-scrolling: auto;
 
     .center-backgrand-warpper {
       height: 100%;
@@ -54,7 +54,7 @@
             flex: 1;
             align-items: center;
             text-align: right;
-            color: #808086;
+            color: #1a1a1a;
             @include font(16px);
           }
 

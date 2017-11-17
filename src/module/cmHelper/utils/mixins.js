@@ -31,8 +31,6 @@ Vue.mixin({
       let tempOption = {
         timeout: 10000,
         headers: {
-          'x-requested-with': 'XMLHttpRequest',
-          'Content-Type': 'application/x-www-form-urlencoded',
           id: this.info.token
         }
       }
@@ -64,26 +62,54 @@ Vue.mixin({
         }
       }
 
+      function isEmptyObject(obj) {
+        for (let key in obj) {
+          return false
+        }
+        return true
+      }
+
       getUrl = join.length > 0 ? `${hostUrl}${urlList[restUrl].url}${joinString}` : `${hostUrl}${urlList[restUrl].url}`
       return new Promise((resolve, reject) => {
-        axios[urlList[restUrl].type.toLowerCase()](getUrl, Object.assign(tempOption, options))
-          .then(res => {
-            loading && this.$$loaded()
+        if (isEmptyObject(options)) {
+          axios[urlList[restUrl].type.toLowerCase()](getUrl, tempOption)
+            .then(res => {
+              loading && this.$$loaded()
 
-            if (res.data.retHead == 0) {
-              resolve ? resolve(res.data.data || {}) : null
-            }
-            // this.$toast(res.data.desc)
-            reject ? reject(res) : null
-          }, res => {
-            loading && this.$$loaded()
-            // if (res.message.split(' ')[0] == 'timeout') { //延时操作
-            //   this.$toast("请求超时，请稍后再试");
-            // }else {
-            //   this.$toast("请求服务器失败，请稍后再试")
-            // }
-            reject ? reject(res) : null
-          })
+              if (res.data.retHead == 0) {
+                resolve ? resolve(res.data.data || {}) : null
+              }
+              // this.$toast(res.data.desc)
+              reject ? reject(res) : null
+            }, res => {
+              loading && this.$$loaded()
+              // if (res.message.split(' ')[0] == 'timeout') { //延时操作
+              //   this.$toast("请求超时，请稍后再试");
+              // }else {
+              //   this.$toast("请求服务器失败，请稍后再试")
+              // }
+              reject ? reject(res) : null
+            })
+        } else {
+          axios[urlList[restUrl].type.toLowerCase()](getUrl, Object.assign({}, options), tempOption)
+            .then(res => {
+              loading && this.$$loaded()
+
+              if (res.data.retHead == 0) {
+                resolve ? resolve(res.data.data || {}) : null
+              }
+              // this.$toast(res.data.desc)
+              reject ? reject(res) : null
+            }, res => {
+              loading && this.$$loaded()
+              // if (res.message.split(' ')[0] == 'timeout') { //延时操作
+              //   this.$toast("请求超时，请稍后再试");
+              // }else {
+              //   this.$toast("请求服务器失败，请稍后再试")
+              // }
+              reject ? reject(res) : null
+            })
+        }
       })
     },
     $$loading () {
@@ -101,7 +127,7 @@ Vue.mixin({
     /*
      * 获取登录信息*/
     getInfo () {
-      let info = pbE.isPoboApp ? pbE.SYS().getPrivateData('managerInfo')?JSON.parse(pbE.SYS().getPrivateData('managerInfo')):'' : sessionStorage.managerInfo?JSON.parse(sessionStorage.managerInfo):''
+      let info = pbE.isPoboApp ? pbE.SYS().getPrivateData('managerInfo') ? JSON.parse(pbE.SYS().getPrivateData('managerInfo')) : '' : sessionStorage.managerInfo ? JSON.parse(sessionStorage.managerInfo) : ''
       // let info = JSON.parse(pbE.isPoboApp ? pbE.SYS().getPrivateData('managerInfo') : sessionStorage.managerInfo)
       this.info['userId'] = info.userId
       this.info['crmAccount'] = info.crmAccount //工号
@@ -110,10 +136,16 @@ Vue.mixin({
       this.info['token'] = info.token
     },
     /*
-     * 获取par个月日期*/
+     * 获取par前个月日期*/
     getTimeByParam (par) {
       let dateTime = new Date()
       return new Date(dateTime.setMonth(dateTime.getMonth() - par))
+    },
+    /*
+    * 获取par个月日期*/
+    getTimeParam (par) {
+      let dateTime = new Date()
+      return new Date(dateTime.setMonth(dateTime.getMonth() + par))
     },
     /*
      * 获取AddDayCount天日期*/
@@ -283,8 +315,8 @@ Vue.mixin({
       })
     },
     /*
-    * 保留n位小数*/
-    decimalPlaceReserved(data,n){
+     * 保留n位小数*/
+    decimalPlaceReserved(data, n){
       return Number(data).toFixed(n)
     }
   }

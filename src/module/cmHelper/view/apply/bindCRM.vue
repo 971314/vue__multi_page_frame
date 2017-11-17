@@ -30,7 +30,7 @@
         gender: '',//性别
         mail: '',//邮箱
         checkFlag: false,
-        openClose:false
+        openClose: false
       }
     },
     watch: {
@@ -68,8 +68,8 @@
         if (_this.name && _this.crmAccount && _this.pwd && _this.mobilePhone) {
           _this.$loading.toggle(' ')
           _this.$axios.post(PBHttpServer.cmHelper.serverUrl + this.urlList.approvalBind.url + _this.crmAccount, {
-            crmAccount: _this.crmAccount,
-            pwd: _this.pwd,
+            crmAccount: _this.crmAccount.trim(),
+            pwd: _this.pwd.trim(),
             mobilePhone: _this.mobilePhone,
             name: _this.name,
             gender: _this.gender,
@@ -82,10 +82,13 @@
           }).then((data) => {
             data = data.data
             console.log(data)
-            this.$router.push('/')
             _this.$loading.hide()
             if (data.retHead == 0) {
-
+              _this.$toast('绑定成功！')
+              setTimeout(() => {
+//                window.close()
+                location.href = 'close'
+              }, 1500)
             } else {
               _this.$toast(data.desc)
             }
@@ -94,7 +97,13 @@
             if (err.message.split(' ')[0] == 'timeout') {
               _this.$toast('网络超时，请稍后重试！')
             } else {
-              _this.$toast('网络异常，请稍后重试！')
+              if(err.response && err.response.status == 401){
+                _this.$router.replace('/')
+              }else if(err.response){
+                _this.$toast(err.response.data.desc)
+              }else{
+                _this.$toast('网络超时，请稍后重试！')
+              }
             }
             console.log(err)
           })

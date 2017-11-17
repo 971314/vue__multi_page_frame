@@ -83,6 +83,11 @@
               type: 'cross'
             }
           },
+          axisPointer: { //修改提示框的颜色(包括x轴上的提示框)
+            label: {
+              backgroundColor: '#808086'
+            }
+          },
           legend: {
             data: ['日均权益', '月末权益'],
             x: 'left',
@@ -130,27 +135,7 @@
                 color: ['#e4e7f0'],
                 type: 'dashed'
               }
-            },
-            data: [
-              '2016-07-01',
-              '2016-07-02',
-              '2016-07-03',
-              '2016-07-04',
-              '2016-07-05',
-              '2016-07-06',
-              '2016-07-07',
-              '2016-07-08',
-              '2016-07-09',
-              '2016-07-10',
-              '2016-07-11',
-              '2016-07-12',
-              '2016-07-13',
-              '2016-07-14',
-              '2016-07-15',
-              '2016-07-16',
-              '2016-07-17',
-              '2016-07-18'
-            ]
+            }
           },
           yAxis: [
             {
@@ -190,26 +175,6 @@
             type: 'line',
             symbol: 'circle',
             showSymbol: false,
-            data: [
-              10.12,
-              15.92,
-              18.92,
-              12.92,
-              16.92,
-              13.22,
-              12.92,
-              11.32,
-              15.92,
-              13.92,
-              11.92,
-              18.92,
-              17.92,
-              16.92,
-              15.02,
-              14.22,
-              12.32,
-              19.02,
-            ],
             lineStyle: {
               normal: {
                 width: 1
@@ -221,26 +186,6 @@
               type: 'line',
               symbol: 'circle',
               showSymbol: false,
-              data: [
-                17.12,
-                17.92,
-                16.92,
-                15.92,
-                18.92,
-                17.22,
-                17.92,
-                17.32,
-                17.92,
-                14.92,
-                16.92,
-                19.92,
-                12.92,
-                15.92,
-                17.02,
-                18.22,
-                15.32,
-                17.02,
-              ],
               lineStyle: {
                 normal: {
                   width: 1
@@ -269,9 +214,14 @@
               return `${name}(万)`
             }
           },
+          axisPointer: { //修改提示框的颜色(包括x轴上的提示框)
+            label: {
+              backgroundColor: '#808086'
+            }
+          },
           grid: {
             top: '13%',
-            left: '0',
+            left: '1%',
             right: '0',
             bottom: '0',
             containLabel: true
@@ -377,11 +327,7 @@
               normal: {
                 opacity: 0.5
               }
-            },
-            data: [
-              49174399,
-              30903
-            ]
+            }
           },
             {
               yAxisIndex: 1,
@@ -392,17 +338,13 @@
                   opacity: 0.5
                 }
               },
-              type: 'bar',
-              data: [
-                1,
-                1
-              ]
+              type: 'bar'
             }]
         },
         basicOption2: {
           tooltip: {
             trigger: 'item',
-            formatter: "{a} <br/>{b}: {c} ({d}%)"
+            formatter: "{b}: {c} ({d}%)"
           },
           color: ['#fe8b6c', '#41c5ee', '#fbc647', '#8dddff', '#a499dc', '#f78ab7', '#5bcb9d'],
           legend: {
@@ -415,8 +357,7 @@
             textStyle: {
               color: '#808086',
               fontSize: 13
-            },
-            data: ['1000万以上', '100~1000万', '50~100万', '10~50万', '10万以下']
+            }
           },
           grid: {
             top: '0',
@@ -427,7 +368,7 @@
           },
           series: [
             {
-              name: '访问来源',
+//              name: '访问来源',
               type: 'pie',
               radius: ['50%', '73%'],
               center: ['25%', '50%'],
@@ -449,21 +390,14 @@
                 normal: {
                   show: false
                 }
-              },
-              data: [
-                {value: 335, name: '1000万以上'},
-                {value: 310, name: '100~1000万'},
-                {value: 234, name: '50~100万'},
-                {value: 135, name: '10~50万'},
-                {value: 1548, name: '10万以下'}
-              ]
+              }
             }
           ]
         },
         basicOption3: {
           tooltip: {
             trigger: 'item',
-            formatter: "{a} <br/>{b}: {c} ({d}%)"
+            formatter: "{b}: {c} ({d}%)"
           },
           color: ['#fe8b6c', '#41c5ee', '#fbc647', '#8dddff', '#a499dc', '#f78ab7', '#5bcb9d'],
           legend: {
@@ -476,8 +410,7 @@
             textStyle: {
               color: '#808086',
               fontSize: 13
-            },
-            data: ['1000万以上', '100~1000万', '50~100万', '10~50万', '10万以下']
+            }
           },
           grid: {
             top: '0',
@@ -488,7 +421,7 @@
           },
           series: [
             {
-              name: '访问来源',
+//              name: '访问来源',
               type: 'pie',
               radius: ['50%', '73%'],
               center: ['25%', '50%'],
@@ -510,14 +443,7 @@
                 normal: {
                   show: false
                 }
-              },
-              data: [
-                {value: 335, name: '1000万以上'},
-                {value: 310, name: '100~1000万'},
-                {value: 234, name: '50~100万'},
-                {value: 135, name: '10~50万'},
-                {value: 1548, name: '10万以下'}
-              ]
+              }
             }
           ]
         }
@@ -606,10 +532,10 @@
 
           response.map((item) => {
             xArray.push(item.S_NAM)
-            yArray1.push(item.RI_AMT)
+            yArray1.push((item.RI_AMT / 10000).toFixed(0))
             yArray2.push(item.CUST_CNT)
             yArrayPie1.push({
-              value: item.RI_AMT,
+              value: (item.RI_AMT / 10000).toFixed(0),
               name: item.S_NAM
             })
             yArrayPie2.push({

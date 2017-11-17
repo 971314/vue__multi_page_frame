@@ -33,7 +33,7 @@
           跟进记录
         </div>
         <div class="followup-record-content">
-          <div class="record-item" v-for="(recordItem, index) in recordList">
+          <div class="record-item" v-for="(recordItem, index) in recordList" @click="goToRecord">
             <div class="item-left">
               <!--<span class="item-name">日常事务</span>-->
               <span class="item-time" v-text="recordItem.UPDT"></span>
@@ -41,6 +41,7 @@
             <div class="item-right" v-text="recordItem.FOLLOWDESC"></div>
             <img class="record-arrow" src="../../images/exhibitionPage/showdetail@2x.png">
           </div>
+          <div v-if="recordList.length <= 0" class="record-item" style="justify-content: center; font-size: 16px;">暂无数据</div>
         </div>
       </div>
     </div>
@@ -73,18 +74,6 @@
         gobackUrl: 'goBack',
         showEvent: false,
         recordList: [
-          {
-            FOLLOWDESC: "确认下次回访时间地点确认下次回访时间地点确认下次回访时间地点",
-            UPDT: "2017-09-12",
-          },
-          {
-            FOLLOWDESC: "确认下次回访时间地点",
-            UPDT: "2017-08-30",
-          },
-          {
-            FOLLOWDESC: "介绍近期投资方向",
-            UPDT: "2017-08-30",
-          }
         ]
       }
     },
@@ -99,15 +88,27 @@
       this.pInvestorFollowList()
     },
     methods: {
+      goToRecord() {
+        var p = this.addFollow;//获取store中的 跟进情况
+        p.InvestorId = this.pInvestor.CUST_ID;//客户代码
+        p.businessType = 2;//客户名称
+        this.$store.dispatch('updateAddFollow', p)
+        this.$store.dispatch('updatepIsEdit', true)
+        this.$store.dispatch('updatepShowEditBtn', true)
+        this.$router.push({
+          name: 'addAndEdit'
+        })
+      },
       callTel() {
         window.location.href = `pobo:uncheck=1&pageId=800007&tel=${this.pInvestor.MOBILE_NO}`
       },
       addAndEdit() { //新建客户跟进
         var p = this.addFollow;//获取store中的 跟进情况
         p.InvestorId = this.pInvestor.CUST_ID;//客户代码
+        p.name = this.pInvestor.CUST_NAM;//客户代码
         p.businessType = 2;//客户名称
         this.$store.dispatch('updateAddFollow', p)
-        this.$store.dispatch('updatepIsEdit', true)
+        this.$store.dispatch('updatepIsEdit', false)
         this.$store.dispatch('updatepShowEditBtn', false)
         this.$router.push({
           name: 'addAndEdit'

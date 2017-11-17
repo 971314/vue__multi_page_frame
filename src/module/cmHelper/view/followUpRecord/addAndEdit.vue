@@ -5,11 +5,15 @@
         <div>
             <common-nav>
                 <div slot="body">
-                    <span v-if="isEdit">{{showEditBtn?"跟进记录":"编辑跟进"}}</span>
+                    <!-- <span v-if="isEdit">{{showEditBtn?"跟进记录":"编辑跟进"}}</span>
+                    <span v-if="!isEdit">新建跟进</span> -->
+                    <span v-if="isEdit && showEditBtn">跟进记录</span>
+                    <span v-else-if="isEdit && !showEditBtn">{{params.businessType==1?'编辑跟进':'新建跟进'}}</span>
                     <span v-if="!isEdit">新建跟进</span>
                 </div>
                 <div v-if="showEditBtn" slot="footer" class="addFollow" @click="showEditBtn=false">
-                    编辑
+                    <span v-if="params.businessType==1">编辑</span>
+                    <span v-if="params.businessType==2">新增</span>
                 </div>
                 <div v-if="!showEditBtn" slot="footer" class="addFollow" @click="submit()">
                     完成
@@ -66,7 +70,7 @@
                 </div>
                 <div v-if="detail && showEditBtn" class="enclosure">
                     <div class="group" v-if="detail.attach.length>0">
-                        <a class="cell" v-for="(i, index) in detail.attach">
+                        <a class="cell" v-for="(i, index) in detail.attach" @click="$router.push({path:'/preview',query: {imgurl: i.FILEDATA}})">
                             <img class="toDetail" src="../../images/followUpRecord/img08.png"/>
                             <span class="cell-body">
                                 <img src="../../images/followUpRecord/img06.png"/>
@@ -132,7 +136,8 @@
                 imgSrcArr : [],
                 params : {},
                 showEditBtn : "", //是否否显示【编辑】按钮
-                detail : null
+                detail : null,
+                isEdit : false
             }
         },
         computed: {
@@ -140,16 +145,15 @@
             addFollow: ({followUpRecord}) => followUpRecord.addFollow,
             jumpFlag: ({followUpRecord}) => followUpRecord.jumpFlag,
             showEditBtnFlag: ({followUpRecord}) => followUpRecord.showEditBtn,
-            isEdit: ({followUpRecord}) => followUpRecord.isEdit
+            isEditFlag: ({followUpRecord}) => followUpRecord.isEdit
           })
         },
         activated() {
-
-            this.params = this.addFollow;
+            //console.log(this.addFollow);
+            this.params = util.deepClone(this.addFollow);
             this.showEditBtn = this.showEditBtnFlag;
+            this.isEdit = this.isEditFlag;
             this.imgSrcArr = this.addFollow.attach;
-            //使滚动条回到顶部
-            //(document.getElementsByTagName("body")[0]).scrollTop = 0;
             if(this.params.businessType==2 && this.isEdit){
               //查询某个潜在客户跟进
               this.pInvestorFollow();
@@ -161,7 +165,27 @@
         mounted() {
 
         },
-
+        beforeRouteLeave(to, from, next) {
+          if(to.name=="list"){
+            var follow = {
+                businessType : '',
+                followId : '',   
+                InvestorId : '', 
+                name : '',       
+                followType : '', 
+                followTypeName : '',
+                followDesc : '', 
+                followNote : '', 
+                attach : []
+            };
+            this.$store.dispatch('updateAddFollow', follow);
+          }else if(to.name=="potentialCustomer" || to.name=="accountOverView" || to.name=="businessPipeline" || to.name=="followUpRecord"){
+            var follow = this.addFollow;
+            follow.businessType = '';
+            this.$store.dispatch('updateAddFollow', follow);
+          }
+          next()
+        },
         methods: {
 
             readImageFront (event) {
@@ -320,10 +344,21 @@
                             msg = "失败！";
                           }
                           _this.$store.dispatch('updateAddFollow', follow);
-                          _this.$toast(msg)
-                          setTimeout(() => {
-                              _this.$router.back()
-                          }, 3000)
+                          //_this.$toast(msg)
+                          // _this.$alert({
+                          //   maskClosable: true,
+                          //   btns: [{
+                          //       text: '关闭',
+                          //       click() {
+                          //           console.log('close!!!');
+                          //       },
+                          //   }],
+                          //   title: '<span class="text-default">提示</span>',
+                          //   message: msg,
+                          // });
+                          // setTimeout(() => {
+                          //     _this.$router.back()
+                          // }, 3000)
                       }).
                       catch(function(err) {
                           console.log('服务器异常', err)
@@ -338,10 +373,21 @@
                             msg = "失败！";
                           }
                           _this.$store.dispatch('updateAddFollow', follow);
-                          _this.$toast(msg)
-                          setTimeout(() => {
-                              _this.$router.back()
-                          }, 3000)
+                          //_this.$toast(msg)
+                          // _this.$alert({
+                          //   maskClosable: true,
+                          //   btns: [{
+                          //       text: '关闭',
+                          //       click() {
+                          //           console.log('close!!!');
+                          //       },
+                          //   }],
+                          //   title: '<span class="text-default">提示</span>',
+                          //   message: msg,
+                          // });
+                          // setTimeout(() => {
+                          //     _this.$router.back()
+                          // }, 3000)
                       }).
                       catch(function(err) {
                           console.log('服务器异常', err)
@@ -365,9 +411,17 @@
             },
             //跳转用户信息列表页面
             goToCusInfoList(){
+              var _this = this;
               if(this.isEdit){ return; }
+
               this.$store.dispatch('updatepJumpFlag', 2);
-              this.$router.push('/customerInfoList');
+              //this.$router.push('/customerInfoList');
+              setTimeout(function(){
+                _this.$router.push({
+                  name: 'customerInfoList'
+                })
+              },300);
+
             },
             //查询某个潜在客户跟进
             pInvestorFollow(){
@@ -421,6 +475,10 @@
                 catch(function(err) {
                     console.log('服务器异常', err)
                 });
+            },
+            //图片预览
+            imgPreview(){
+
             }
 
         }

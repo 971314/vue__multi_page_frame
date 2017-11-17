@@ -11,14 +11,14 @@
           <div class="customer-input-item">
             <div class="input-item-name">姓名</div>
             <div class="input-item-input">
-              <input class="item-input-content" v-model="customerMessage.CUST_NAM" maxlength="12"
+              <input class="item-input-content" placeholder="请填写姓名" v-model="customerMessage.CUST_NAM" maxlength="12"
                      type="text"/>
             </div>
           </div>
           <div class="customer-input-item">
             <div class="input-item-name">性别</div>
             <div class="input-item-input" @click="chooseSex">
-              {{sex}}
+              {{noPotSex ? sex : '--'}}
               <!--<input class="item-input-content" v-model="customerMessage.SEX" maxlength="12" type="text"/>-->
             </div>
             <img class="customer-showdetail-arrow" src="../../images/exhibitionPage/showdetail@2x.png"/>
@@ -26,7 +26,7 @@
           <div class="customer-input-item">
             <div class="input-item-name">身份证号码</div>
             <div class="input-item-input">
-              <input class="item-input-content" v-model="customerMessage.ID_NO" type="text"/>
+              <input class="item-input-content" placeholder="请填写身份证号码" v-model="customerMessage.ID_NO" type="text"/>
             </div>
           </div>
           <div class="customer-input-item">
@@ -39,23 +39,29 @@
           </div>
         </div>
         <div class="customer-input-group">
-          <div class="customer-input-item">
+          <div class="customer-input-item customer-breakword-item">
             <div class="input-item-name">通讯地址</div>
-            <div class="input-item-input">
-              <input class="item-input-content" v-model="customerMessage.LINKADDR" type="text"/>
+            <div class="input-item-input" @click="clickEvent" @blur="blurEvent"
+                 id="input-item-input" style="-webkit-user-select:text;display: block;"
+                 v-text="customerMessage.LINKADDR"
+                 :class="{'item-input-color': !isfocus}">
+              <!--{{customerMessage.LINKADDR ? customerMessage.LINKADDR : "请填写通讯地址"}}-->
+              <!--<input class="item-input-content" placeholder="请填写通讯地址"-->
+              <!--v-model="customerMessage.LINKADDR" type="text"/>-->
             </div>
           </div>
           <div class="customer-input-item">
             <div class="input-item-name">手机号码<img class="user-must-icon"
                                                   src="../../images/exhibitionPage/musticon@2x.png"/></div>
             <div class="input-item-input">
-              <input class="item-input-content" v-model="customerMessage.MOBILE_NO" type="tel"/>
+              <input class="item-input-content" placeholder="请填写手机号码" v-model="customerMessage.MOBILE_NO" type="tel"/>
             </div>
           </div>
           <div class="customer-input-item">
             <div class="input-item-name">固定电话</div>
             <div class="input-item-input">
-              <input class="item-input-content" v-model="customerMessage.LINKTELEPHONE" type="tel"/>
+              <input class="item-input-content" placeholder="请填写固定电话" v-model="customerMessage.LINKTELEPHONE"
+                     type="tel"/>
             </div>
           </div>
         </div>
@@ -63,12 +69,12 @@
           <div class="customer-input-item">
             <div class="input-item-name">客户来源</div>
             <div class="input-item-input">
-              <input class="item-input-content" v-model="customerMessage.CUST_SRC" type="text"/>
+              <input class="item-input-content" placeholder="请填写客户来源" v-model="customerMessage.CUST_SRC" type="text"/>
             </div>
           </div>
         </div>
         <div class="customer-remarks">
-          <textarea class="remarks-text-area" v-model="customerMessage.CUST_DESC"></textarea>
+          <textarea class="remarks-text-area" placeholder="请添加备注" v-model="customerMessage.CUST_DESC"></textarea>
         </div>
       </div>
     </div>
@@ -81,14 +87,15 @@
   export default {
     data () {
       return {
-        customerTitle: '客户资料',
+        isfocus: false,
+        customerTitle: '新增未开户',
         gobackUrl: 'goBack',
         customerMessage: {
           CUST_NAM: '',
           SEX: '',
           ID_NO: '',
           BIRTH_DT: '',
-          LINKADDR: '',
+          LINKADDR: '请填写通讯地址', //地址
           LINKTELEPHONE: '',
           MOBILE_NO: '',
           CUST_SRC: '',
@@ -112,9 +119,34 @@
       }
     },
     activated () {
-      this.customerTitle = '新增客户'
+      this.customerTitle = '新增未开户'
+    },
+    watch: {
+      $route(to, from) {
+        if (from.name == 'customerInfoList') {
+          this.$store.dispatch('updateNoPotSex', '')
+
+        }
+      }
     },
     methods: {
+      clickEvent(e) {
+        e.target.setAttribute('contenteditable', true)
+        document.getElementById('input-item-input').focus()
+        if (document.getElementById('input-item-input').innerHTML == '请填写通讯地址') {
+          document.getElementById('input-item-input').innerHTML = ''
+        }
+        this.isfocus = true
+      },
+      blurEvent(e) {
+        this.customerMessage.LINKADDR = e.target.innerText
+        if (!(e.target.innerHTML.trim())) {
+          this.$nextTick(() => {
+            this.customerMessage.LINKADDR = '请填写通讯地址'
+            this.isfocus = false
+          })
+        }
+      },
       $isTel (str) { // 是否为固定电话
         return /^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/.test(str)
       },
@@ -122,10 +154,10 @@
         return /^1\d{10}$/.test(str)
       },
       checkcustomerMessage() {
-        if (!this.customerMessage.CUST_NAM || this.customerMessage.CUST_NAM.trim().length === 0) {
-          this.$toast('姓名不能为空！')
-          return false
-        }
+//        if (!this.customerMessage.CUST_NAM || this.customerMessage.CUST_NAM.trim().length === 0) {
+//          this.$toast('姓名不能为空！')
+//          return false
+//        }
 
         if (!this.customerMessage.MOBILE_NO || this.customerMessage.MOBILE_NO.trim().length === 0) {
           this.$toast('手机号码不能为空！')
@@ -137,7 +169,7 @@
           return false
         }
 
-        if (this.customerMessage.LINKTELEPHONE && !$isTel(this.customerMessage.LINKTELEPHONE)) {
+        if (this.customerMessage.LINKTELEPHONE && !this.$isTel(this.customerMessage.LINKTELEPHONE)) {
           this.$toast('固定电话格式不正确！')
           return false
         }
@@ -153,7 +185,7 @@
         this.customerMessage['MOBILE_NO'] = ''
         this.customerMessage['CUST_SRC'] = ''
         this.customerMessage['CUST_DESC'] = ''
-        this.$store.dispatch('updateNoPotSex', '0')
+        this.$store.dispatch('updateNoPotSex', '')
       },
       getSex (flag) {
         if (flag == '1') {
@@ -186,7 +218,7 @@
             gender: this.customerMessage.SEX,
             certId: this.customerMessage.ID_NO,
             birthdate: this.customerMessage.BIRTH_DT,
-            address: this.customerMessage.LINKADDR,
+            address: this.customerMessage.LINKADDR == '请填写通讯地址' ? '' : this.customerMessage.LINKADDR,
             mobilePhone: this.customerMessage.MOBILE_NO,
             phone: this.customerMessage.LINKTELEPHONE,
             investorSource: this.customerMessage.CUST_SRC,

@@ -1,0 +1,71 @@
+.customerInfo.businessDpt{
+	.common-nav{
+	    line-height: 44px;
+	}
+	.filterOption{ 
+		position: relative;
+		height: toRem(86px);
+		line-height: toRem(86px);
+		@include bottom-px1-pixel-ratio;
+	    box-shadow: 0 toRem(6px) toRem(10px) #e4e7f0;
+    	-webkit-box-shadow: 0 toRem(6px) toRem(10px) #e4e7f0;
+		.flex-item{
+			text-align: center;
+			span{
+				display: inline-block;
+				width: toRem(110px);
+				height: toRem(54px);
+				line-height: toRem(54px);
+				background-color: #f7f7fa;
+				color: #808086;
+				font-size: toRem(28px);
+			}
+		}
+		.flex-item.active{
+			span{
+				background-color: #fff;
+				color: #3366cc;
+				border: solid 1px #3366cc;
+				border-radius: toRem(8px);
+			}
+		}
+
+	}
+	.container{
+		.oneLevel{
+			.capitalPinyin{
+				padding: 0 toRem(30px);
+				height: toRem(44px);
+				line-height: toRem(44px);
+				background-color: #f7f7fa;
+				font-size: toRem(42px);
+				color: #808086;
+			}
+			.group{
+				margin: 0;
+				padding: 0;
+				.cell{
+				    position: relative;
+					padding: 0 toRem(30px);
+					height: toRem(100px);
+					line-height: toRem(100px);
+					background-image: none;
+					font-size: toRem(32px);
+					color: #1a1a1a;
+				    @include bottom-px1-pixel-ratio;
+				    .cell-footer{
+						img{
+							width:toRem(14px);
+							height:toRem(26px);
+						}
+					}
+				}
+				.cell:last-child:before{
+					border-bottom: 0;
+				}
+			}
+		}
+		
+		
+	}
+}  

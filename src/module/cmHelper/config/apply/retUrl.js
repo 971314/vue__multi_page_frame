@@ -50,6 +50,10 @@ const urlList = {
   imageView: {
     name: '图片查看',
     url: 'attachImages/'
+  },
+  intermediary: {
+    name: '获取居间人列表',
+    url: 'mediator /list/'
   }
 }
 

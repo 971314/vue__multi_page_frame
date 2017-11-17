@@ -13,23 +13,30 @@
         <router-link to="potentialCustomerAdd">新增</router-link>
       </div>
     </common-nav>
-    <div class="searchbar">
-      <i class="mintui mintui-search" :class="{'alignLeft':focusFlag || keyword}"></i>
-      <input class="searchbar-input" :class="{'inputFocus':focusFlag || keyword}" type="text" v-model="keyword"
-             placeholder="搜索" @focus="searchFocus(true)" @blur="searchFocus(false)"/>
-    </div>
-    <div class="selectDept customer-info-center">
 
+    <searchbar v-model="keyword">
+        <searchbar-placeholder>
+            <icon name="search" left size="lg"></icon><span>搜索</span>
+        </searchbar-placeholder>
+    </searchbar>
+
+    <!-- <div class="searchbar" autoblur="true">
+        <div class="searchbar-input" :class="{'inputFocus':focusFlag}">
+            <div class="searchbar-input-placeholder" style="overflow: visible;">
+                <i class="fa fa-search gap-left fa-lg"></i><span v-if="hidePlaceHolder">搜索</span></div>
+            <input type="text" v-model="keyword" class="searchbar-input-field" @focus="searchFocus()" @blur="blurEv()" :placeholder="hidePlaceHolder?'':'搜索'">
+        </div>
+    </div> -->
+
+    <div class="selectDept customer-info-center">
       <index-list v-if="currentList.length>0">
         <index-section v-for="(v, i) in currentList" :key="i" :index="v.pinyin">
           <!-- 留存客户 -->
           <a v-if="segmentedIndex==1" href="javascript:void(0);" class="mint-cell" v-for="(item, index) in v.data" :key="index">
-            <a class="mobileIcon" @click="callTel(item.MOBILE_NO)">
-              <!-- <img src="../../images/followUpRecord/img18.png"/> -->
-            </a>
+            <a class="mobileIcon" @click="callTel(item.MOBILE_NO)"></a>
             <div class="mint-list" @click="goTo(item)">
 
-              <div class="cusName" v-text="item.INVESTOR_NAM+'('+item.MOBILE_NO+')'"></div>
+              <div class="cusName" v-text="item.INVESTOR_NAM+'('+item.INVESTOR_ID+')'"></div>
               <div class="cusLevel">
                 <img class="type1" src="../../images/followUpRecord/img14.png" v-if="item.VIPTYP"
                      v-for="i in new Array(item.VIPTYP*1)"/>
@@ -43,16 +50,16 @@
           </a>
           <!-- 潜在客户 -->
           <a v-if="segmentedIndex==2" href="javascript:void(0);" class="mint-cell autoHei" v-for="(item, index) in v.data" :key="index">
-            <a class="mobileIcon" @click="callTel(item.MOBILE_NO)">
-              <!-- <img src="../../images/followUpRecord/img18.png"/> -->
-            </a>
+            <a class="mobileIcon" @click="callTel(item.MOBILE_NO)"></a>
             <div class="mint-list" @click="goTo(item)">
 
-              <div class="cusName" v-if="item.CUST_NAM" v-text="item.CUST_NAM + (item.CUST_SRC?'('+item.CUST_SRC+')':'')"></div>
+              <div class="cusName" v-if="item.CUST_NAM || item.MOBILE_NO">
+                {{item.CUST_NAM || item.MOBILE_NO}} <span>{{item.CUST_SRC ? '('+item.CUST_SRC+')' : ''}}</span>
+              </div>
             </div>
           </a>
         </index-section>
-        
+
       </index-list>
 
     </div>
@@ -62,7 +69,7 @@
 
 
 
-    
+
   </div>
 </template>
 
@@ -93,22 +100,25 @@
         deptJson: [],
         focusFlag: false,
         url: PBHttpServer.cmHelper.serverUrl,
-        count: 0    //已开户人数
+        count: 0,    //已开户人数
+        hidePlaceHolder : true
       }
     },
     activated() {
+      var _this = this;
       this.deptJson = [];
       this.currentList = [];
+      this.count = 0;
       if(this.addFollow.businessType==2 || this.pInvestor.CUST_ID){
         //获取【潜在客户列表】
         this.urlcontent = 'pInvestor'
         this.segmentedIndex = 2;
-        this.getCusList(this.urlcontent + '/list/' + this.info.userId, this.segmentedIndex);
+        this.getCusList(this.urlcontent + '/list/' + this.info.userId);
       }else if(this.addFollow.businessType==1 || this.investor.INVESTOR_ID || !this.investor.INVESTOR_ID){
         //获取【客户列表】
         this.urlcontent = 'investor'
         this.segmentedIndex = 1;
-        this.getCusList(this.urlcontent + '/list/' + this.info.userId, this.segmentedIndex);
+        this.getCusList(this.urlcontent + '/list/' + this.info.userId);
       }
     },
     mounted(){
@@ -132,11 +142,15 @@
           return item.data.length > 0
         })
         this.currentList = tempList;
+        this.$forceUpdate();
+        var hei  = document.querySelector(".selectDept").offsetHeight;
+          var sc = document.querySelector(".mint-indexlist-content");
+        setTimeout(function(){
+          if(sc){ sc.style.height = hei + 'px'; }
+        },50);
 
       },
       $route(to, from) {
-        // console.log(to, 'to')
-        // console.log(from, 'from')
         if (to.name == 'cmHelperIndex') {
          this.currentList = []
           this.urlcontent = 'investor'
@@ -150,43 +164,68 @@
         if (this.jumpFlag == 3) {
           return
         }
+        this.segmentedIndex = segmentedIndex;
+        this.deptJson = [];
+        this.currentList = [];
+        this.count = 0;
         if (segmentedIndex == 1) {
           //获取【客户列表】
           this.urlcontent = 'investor'
-          this.getCusList('investor/list/' + this.info.userId, segmentedIndex);
+          this.getCusList('investor/list/' + this.info.userId);
         } else {
           //获取【潜在客户列表】
           this.urlcontent = 'pInvestor'
-          this.getCusList('pInvestor/list/' + this.info.userId, segmentedIndex);
+          this.getCusList('pInvestor/list/' + this.info.userId);
         }
       },
       //搜索框获取焦点
-      searchFocus(flag) {
-        this.focusFlag = flag;
+      searchFocus() {
+        var _this = this;
+        _this.focusFlag = true;
+        setTimeout(function(){
+          _this.hidePlaceHolder = false;
+        },300);
+      },
+      blurEv(){
+        var _this = this;
+        _this.focusFlag = false;
+        _this.hidePlaceHolder = true;
       },
       //获取【客户列表|潜在客户列表】
-      getCusList(urlSuffix, segmentedIndex) {
+      getCusList(urlSuffix) {
         var _this = this;
         var url = this.url + urlSuffix;
-        _this.$$loading();
+        _this.$loading.toggle(' ')
         _this.$axios.get(url,{headers:{id:this.info.token}}, null).then(function (result) {
-          _this.$$loaded();
-          _this.segmentedIndex = segmentedIndex;
+
           var list = result.data.data;
           var cList = [];
           var index = 0;
+          var hasOther = null;
           _this.count = 0;
           if (list) {
             for (var i in list) {
-              cList[index] = {'pinyin': i, data: list[i]};
+              if(i=="#"){
+                hasOther = {'pinyin': i, 'data': list[i]};
+                continue;
+              }else{
+                cList[index] = {'pinyin': i, 'data': list[i]};
+              }
               index++;
               _this.count = _this.count + list[i].length;
             }
-            //console.log(cList);
+            if(hasOther){
+               cList.push(hasOther);
+            }
             _this.deptJson = util.deepClone(cList);
             _this.currentList = util.deepClone(cList);
           }
-
+//          _this.$forceUpdate();
+          setTimeout(function(){
+            var hei  = document.querySelector(".selectDept").offsetHeight;
+            document.querySelector(".mint-indexlist-content").style.height = hei + 'px';
+            _this.$loading.hide()
+          },50);
         }).catch(function (err) {
           console.log('服务器异常', err)
         });
@@ -224,7 +263,6 @@
             p.LINKTELEPHONE = o.LINKTELEPHONE;//潜在客户电话
             p.MOBILE_NO = o.MOBILE_NO;//潜在客户移动电话
             this.$store.dispatch('updatepInvestor', p);
-            //console.log(p);
             this.$router.push({
               name: 'potentialCustomer'
             })

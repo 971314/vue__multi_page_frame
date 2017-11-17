@@ -42,6 +42,23 @@ const urlList = {
   inquireApprovedPersonnel: {
     name: '查询审批人员信息',
     url: 'accountApproveMessage/detail/'
+  },
+  //领导排行榜
+  fundingRanking: {
+    name: '资金排行',
+    url: 'leader/fund/charts/'
+  },
+  numberOfClients: {
+    name: '客户数量排行',
+    url: 'leader/custNumber/charts/'
+  },
+  customerPositions: {
+    name: '客户持仓排行',
+    url: 'leader/holdcnt/charts/'
+  },
+  feeRanking: {
+    name: '手续费排行',
+    url: 'leader/charge/charts/'
   }
 }
 

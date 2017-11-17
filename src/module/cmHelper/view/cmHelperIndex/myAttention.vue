@@ -11,30 +11,12 @@
         </div>
 
         <div class="container customer-info-center">
-            
+            <div v-if="lists"><div class="text-center" v-if="lists.length <= 0" style="padding:10px 0;">无数据</div></div>
             <div class="group">
-                <a class="cell">
+                <a class="cell" v-for="(item, index) in lists">
                     <span class="cell-body">
-                        <h3>李XX<span>手机号码变更申请完成</span></h3>
-                        <h3><img src="../../images/cmHelperIndex/img14.png" v-for="s in starLevel"/><span>13:23</span></h3>
-                    </span>
-                </a>
-                <a class="cell">
-                    <span class="cell-body">
-                        <h3>李XX<span>今天生日</span></h3>
-                        <h3><img src="../../images/cmHelperIndex/img14.png" v-for="s in starLevel"/><span>13:23</span></h3>
-                    </span>
-                </a>
-                <a class="cell">
-                    <span class="cell-body">
-                        <h3>李XX<span>手机号码变更申请完成</span></h3>
-                        <h3><img src="../../images/cmHelperIndex/img14.png" v-for="s in starLevel"/><span>13:23</span></h3>
-                    </span>
-                </a>
-                <a class="cell">
-                    <span class="cell-body">
-                        <h3>李XX<span>今天生日</span></h3>
-                        <h3><img src="../../images/cmHelperIndex/img14.png" v-for="s in starLevel"/><span>13:23</span></h3>
+                        <h3>{{item.INVESTOR_NAM}}<span>{{item.REALMSG}}</span></h3>
+                        <h3><img src="../../images/cmHelperIndex/img14.png" v-for="s in starLevel"/><span>{{item.MSGTIME}}</span></h3>
                     </span>
                 </a>
             </div>
@@ -55,7 +37,8 @@
 
         data() {
             return {
-                starLevel : ['','','','','']
+                starLevel : ['','','','',''],
+                lists : null
             }
         },
         activated() {
@@ -71,10 +54,11 @@
                 var _this = this;
                 _this.$$loading();
 
-                var url = PBHttpServer.cmHelper.serverUrl + "dailyInvestorMessage/info/" + this.userId;
+                var url = PBHttpServer.cmHelper.serverUrl + "dailyInvestorMessage/info/" + this.info.userId;
 
                 _this.$axios.get(url,{headers:{id:this.info.token}}, null).then(function (result) {
                   _this.$$loaded();
+                  _this.lists = result.data.data;
                 }).catch(function (err) {
                   console.log('服务器异常', err)
                 });

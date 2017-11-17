@@ -1,5 +1,7 @@
 .pobo-potential-customer {
   @extend %common-wrapper;
+  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
 
   .pobo-customer-header {
     height: toRem(290px);
@@ -108,7 +110,6 @@
     -ms-flex: 1;
     flex: 1;
     overflow: auto;
-    -webkit-overflow-scrolling: touch;
     background-color: #f7f7fa;
 
     .followup-record-warpper {
@@ -239,7 +240,6 @@
       align-items: center;
       color: #3366cc;
       @include font(18px);
-      @include bottom-px1-pixel-ratio;
     }
     .no-potential-delete {
       height: toRem(115px);
@@ -249,7 +249,7 @@
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      color: #3366cc;
+      color: #fe0000;
       @include font(18px);
       @include bottom-px1-pixel-ratio;
     }

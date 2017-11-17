@@ -1,11 +1,13 @@
 @import '../cmHelperIndex/cmTrends.scss';
 
 /* body{
-	overflow: auto;	
+	overflow: auto;
 } */
 
 
 .cmTrends.recordList{
+  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
 	.common-nav{
 	    height: 44px;
     	line-height: 44px;
@@ -63,7 +65,7 @@
 				}
 			}
 		}
-		
+
 	}
 	.mask{
 		z-index: 1030;

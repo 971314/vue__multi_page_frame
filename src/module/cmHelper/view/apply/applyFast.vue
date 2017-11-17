@@ -21,7 +21,7 @@
     <multi-slide v-model="showEvent">
       <div class="bottom_modal">
         <div @click="modalclick(1)">模板申请</div>
-        <div @click="modalclick(2)">其他申请</div>
+        <div @click="modalclick(2)">非模板申请</div>
         <div @click="showEvent = false">取消</div>
       </div>
     </multi-slide>
@@ -45,32 +45,7 @@
     created () {
     },
     mounted () {
-      let _this = this
-      _this.$loading.toggle(' ')
-      _this.$axios.get(PBHttpServer.cmHelper.serverUrl + this.urlList.approvalModules.url + _this.info.userId, {
-        timeout: 10000,
-        headers: {
-          id: _this.info.token
-        }
-      }).then((data) => {
-        data = data.data
-        console.log(data)
-        _this.$loading.hide()
-        if (data.retHead == 0) {
-          _this.applyData = data.data
-        } else {
-          _this.$toast(data.desc)
-        }
-      }).catch((err) => {
-        _this.$loading.hide()
-        if (err.message.split(' ')[0] == 'timeout') {
-          _this.$toast('网络超时，请稍后重试！')
-        } else {
-          _this.$toast('网络异常，请稍后重试！')
-        }
-        console.log(err)
-      })
-      _this.inquireApprovedPersonnel()
+      this.templateRequest()
     },
     activated () {
     },
@@ -112,10 +87,50 @@
           if (err.message.split(' ')[0] == 'timeout') {
             _this.$toast('网络超时，请稍后重试！')
           } else {
-            _this.$toast('网络异常，请稍后重试！')
+            if(err.response && err.response.status == 401){
+              _this.$router.replace('/')
+            }else if(err.response){
+              _this.$toast(err.response.data.desc)
+            }else{
+              _this.$toast('网络超时，请稍后重试！')
+            }
           }
           console.log(err)
         })
+      },
+      templateRequest(){
+        let _this = this
+        _this.$loading.toggle(' ')
+        _this.$axios.get(PBHttpServer.cmHelper.serverUrl + this.urlList.approvalModules.url + _this.info.userId, {
+          timeout: 10000,
+          headers: {
+            id: _this.info.token
+          }
+        }).then((data) => {
+          data = data.data
+          console.log(data)
+          _this.$loading.hide()
+          if (data.retHead == 0) {
+            _this.applyData = data.data
+          } else {
+            _this.$toast(data.desc)
+          }
+        }).catch((err) => {
+          _this.$loading.hide()
+          if (err.message.split(' ')[0] == 'timeout') {
+            _this.$toast('网络超时，请稍后重试！')
+          } else {
+            if(err.response && err.response.status == 401){
+              _this.$router.replace('/')
+            }else if(err.response){
+              _this.$toast(err.response.data.desc)
+            }else{
+              _this.$toast('网络超时，请稍后重试！')
+            }
+          }
+          console.log(err)
+        })
+        _this.inquireApprovedPersonnel()
       }
     }
   }

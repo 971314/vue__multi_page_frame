@@ -30,7 +30,7 @@
             <div class="info-header-time" v-text="`${startTime} 至 ${endTime}`">
             </div>
           </div>
-          <div class="info-table-body">
+          <div class="info-table-body" style="padding-left: 19px;">
             <div class="info-table-row1">
               <div class="info-table-item">
                 <div class="info-item-title">期初权益</div>
@@ -74,10 +74,14 @@
       <div class="chicang-chart-group">
         <div class="chicang-left-chart">
           <div class="chicang-choose-time">
-            <div class="choose-time-wrapper">
-              <div class="chicang-time-show" v-text="ccTimeSet"></div>
-              <img class="chicang-time-icon" src="../../images/exhibitionPage/rili@2x.png"/>
+            <div class="choose-time-group">
               <input class="chicang-time-input" type="date" v-model="ccTimeSet"/>
+              <div class="choose-time-wrapper">
+                <div class="chicang-time-show" v-text="ccTimeSet"></div>
+                <div class="time-icon-wrapper">
+                  <img class="chicang-time-icon" src="../../images/exhibitionPage/rili@2x.png"/>
+                </div>
+              </div>
             </div>
           </div>
           <div class="chicang-tab-group">
@@ -146,6 +150,11 @@
               return `${item[0].data[0]}<br />${item[0].seriesName}: ${item[0].data[1]}`
             }
           },
+          axisPointer: { //修改提示框的颜色(包括x轴上的提示框)
+            label: {
+              backgroundColor: '#808086'
+            }
+          },
           grid: {
             top: '13%',
             left: '4%',
@@ -155,6 +164,11 @@
             show: true,
             borderColor: '#e4e7f0', //边框线设置
             borderWidth: '1'
+//            axisPointer: {
+//              label: {
+//                backgroundColor: '#808086'
+//              }
+//            }
           },
           xAxis: {
             type: 'time',
@@ -164,7 +178,7 @@
             axisLabel: {
               textStyle: {
                 color: '#808086',
-                fontSize: 12
+                fontSize: 11
               },
               formatter: function (value, index) {
                 return moment(value).format('MM-DD')
@@ -196,12 +210,12 @@
               type: "value",
               nameTextStyle: {
                 color: '#808086',
-                fontSize: 12
+                fontSize: 11
               },
               axisLabel: { //调整x轴的lable
                 textStyle: {
                   color: '#808086',
-                  fontSize: 12
+                  fontSize: 11
                 }
               },
               axisTick: {
@@ -227,24 +241,6 @@
             smooth: true,
             showSymbol: false,
             data: [
-              ['2016-07-01', 17.12],
-              ['2016-07-02', 17.92],
-              ['2016-07-03', 16.92],
-              ['2016-07-04', 15.92],
-              ['2016-07-05', 18.92],
-              ['2016-07-06', 17.22],
-              ['2016-07-07', 17.92],
-              ['2016-07-08', 17.32],
-              ['2016-07-09', 17.92],
-              ['2016-07-10', 14.92],
-              ['2016-07-11', 16.92],
-              ['2016-07-12', 19.92],
-              ['2016-07-13', 12.92],
-              ['2016-07-14', 15.92],
-              ['2016-07-15', 17.02],
-              ['2016-07-16', 18.22],
-              ['2016-07-17', 15.32],
-              ['2016-07-18', 17.02],
             ],
             areaStyle: {
               normal: {
@@ -260,39 +256,11 @@
           }]
         },
         dataValue: [
-          {
-            PRODUCT_NAM: '直接访问',
-            HOLD_CNT: 335
-          },
-          {
-            PRODUCT_NAM: '邮件营销',
-            HOLD_CNT: 310
-          },
-          {
-            PRODUCT_NAM: '联盟广告',
-            HOLD_CNT: 234
-          },
-          {
-            PRODUCT_NAM: '视频广告',
-            HOLD_CNT: 135
-          },
-          {
-            PRODUCT_NAM: '搜索引擎',
-            HOLD_CNT: 1548
-          },
-          {
-            PRODUCT_NAM: '测试1',
-            HOLD_CNT: 135
-          },
-          {
-            PRODUCT_NAM: '测试2',
-            HOLD_CNT: 1548
-          }
         ],
         basicOption1: {
           tooltip: {
             trigger: 'item',
-            formatter: "{a} <br/>{b}: {c} ({d}%)"
+            formatter: "{b}: {c} ({d}%)"
           },
           color: ['#fe8b6c', '#41c5ee', '#fbc647', '#8dddff', '#a499dc', '#f78ab7', '#5bcb9d'],
           legend: {
@@ -306,8 +274,7 @@
             textStyle: {
               color: '#808086',
               fontSize: 13
-            },
-            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎', '测试1', '测试2']
+            }
           },
           grid: {
             top: '3%',
@@ -318,7 +285,7 @@
           },
           series: [
             {
-              name: '访问来源',
+//              name: '访问来源',
               type: 'pie',
               radius: ['28%', '44%'],
               center: ['31%', '50%'],
@@ -340,16 +307,7 @@
                 normal: {
                   show: false
                 }
-              },
-              data: [
-                {value: 335, name: '直接访问'},
-                {value: 310, name: '邮件营销'},
-                {value: 234, name: '联盟广告'},
-                {value: 135, name: '视频广告'},
-                {value: 1548, name: '搜索引擎'},
-                {value: 135, name: '测试1'},
-                {value: 1548, name: '测试2'}
-              ]
+              }
             }
           ]
         }
@@ -363,13 +321,12 @@
       })
     },
     activated() {
-      console.log(this.investor,'investor')
+      console.log(this.investor, 'investor')
       this.startTime = this.$$getCurrentMonth()
       this.endTime = this.$$timeFormate({date: this.$$getCurrentTime(), format: 'Y-M-D'})
-
-      this.startTime = '2010-01-01'
-      this.endTime = '2010-05-01'
-      this.chicangTime = '2010-04-01'
+      let Today = new Date()
+      let Yesterday = new Date(Today.setDate(Today.getDate() - 1))
+      this.ccTimeSet = this.$$timeFormate({date: Yesterday, format: 'Y-M-D'})
 
       this.getFundInfo()
       this.getPositionInfo()
@@ -411,10 +368,6 @@
         })
       },
       choosePZ(type, index) {
-        if (!this.pzClick) {
-          return
-        }
-        this.pzClick = false
         this.pzIndex = index
         this.chicangType = type
         this.getPositionInfo()

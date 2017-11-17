@@ -3,7 +3,7 @@
     <common-nav :search="false" :message="false" :service="false" :goback="false"
                 :gobackUrl="gobackUrl">
       <span slot="body" v-text="customerTitle"></span>
-      <span slot="footer" style="margin-right: 15px;" @click="completeClick">完成</span>
+      <span slot="footer" style="margin-right: 15px; font-size: 15px;" @click="completeClick">完成</span>
     </common-nav>
     <div class="potential-info-center">
       <div class="customer-info-center">
@@ -123,17 +123,18 @@
         return /^1\d{10}$/.test(str)
       },
       checkcustomerMessage() {
+
         if (!this.customerMessage.MOBILE_NO || this.customerMessage.MOBILE_NO.trim().length === 0) {
-          this.$toast('电话号码不能为空！')
+          this.$toast('手机号码不能为空！')
           return false
         }
 
-        if (this.customerMessage.MOBILE_NO || !$isMobile(this.customerMessage.MOBILE_NO)) {
-          this.$toast('移动电话格式不正确！')
+        if (!this.$isMobile(this.customerMessage.MOBILE_NO)) {
+          this.$toast('手机号码格式不正确！')
           return false
         }
 
-        if (this.customerMessage.LINKTELEPHONE && !$isTel(this.customerMessage.LINKTELEPHONE)) {
+        if (this.customerMessage.LINKTELEPHONE && !this.$isTel(this.customerMessage.LINKTELEPHONE)) {
           this.$toast('固定电话格式不正确！')
           return false
         }

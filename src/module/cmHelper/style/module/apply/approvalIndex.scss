@@ -16,6 +16,7 @@
       font-size: $font33;
       &.selected {
         border-bottom: 2px solid $color1;
+        color: $color1;
       }
     }
   }

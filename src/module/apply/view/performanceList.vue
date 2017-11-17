@@ -95,8 +95,8 @@
           <img src="../images/ranking2.png" v-else-if="i == 1"/>
           <img src="../images/ranking3.png" v-else-if="i == 2"/>
           <div v-else>{{i + 1}}</div>
-          <span>{{data.name}}</span>
-          <span>{{$$transformData(data.num)}}</span>
+          <span>{{data.Name}}</span>
+          <span>{{$$transformData(data.Value)}}</span>
         </div>
         <div v-show="i < 10"
              :style="{width: i == 0? '100%':calculationPercentage(data.num,performanceList[0].num)}"></div>
@@ -120,65 +120,85 @@
       return {
         performanceList: [
           {
-            name: '北京西直门营业一部',
-            num: '987654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '987654321'
           }, {
-            name: '北京西直门营业一部',
-            num: '977654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '987654321'
           }, {
-            name: '北京西直门营业一部',
-            num: '787654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '987654321'
           }, {
-            name: '北京西直门营业一部',
-            num: '687654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '987654321'
           }, {
-            name: '北京西直门营业一部',
-            num: '587654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '987654321'
           }, {
-            name: '北京西直门营业一部',
-            num: '487654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '987654321'
           }, {
-            name: '北京西直门营业一部',
-            num: '387654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '987654321'
           }, {
-            name: '北京西直门营业一部',
-            num: '287654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '6546546'
           }, {
-            name: '北京西直门营业一部',
-            num: '187654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '465465498789'
           }, {
-            name: '北京西直门营业一部',
-            num: '117654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '987654321'
           }, {
-            name: '北京西直门营业一部',
-            num: '127654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '321564687987'
           }, {
-            name: '北京西直门营业一部',
-            num: '137654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '987654321'
           }, {
-            name: '北京西直门营业一部',
-            num: '147654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '987654321'
           }, {
-            name: '北京西直门营业一部',
-            num: '157654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '987654321'
           }, {
-            name: '北京西直门营业一部',
-            num: '167654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '987654321'
           }, {
-            name: '北京西直门营业一部',
-            num: '167654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '987654321'
           }, {
-            name: '北京西直门营业一部',
-            num: '167654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '987654321'
           }, {
-            name: '北京西直门营业一部',
-            num: '167654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '1234567998'
           }, {
-            name: '北京西直门营业一部',
-            num: '167654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '987654321'
           }, {
-            name: '北京西直门营业一部',
-            num: '167654321'
+            Order: '0',
+            Name: '北京西直门营业一部',
+            Value: '987654321'
           }
         ],
         footer: true,
@@ -186,7 +206,7 @@
         tab1: 1,
         tab2: 1,
         flag: null,//分类选择 1 营业部资金情况 2营业部客户数量 3营业部客户成交持仓 4营业部交易手续费 5客户资金情况 6客户数量 7客户成交持仓 8客户交易手续费
-        type: null,//1 营业部 2 客户经理
+        type: null,//0 营业部 1 客户
         /* flag: 1,
          type: 1,*/
         beginTime: '',
@@ -195,8 +215,7 @@
     },
     computed: {},
     created () {
-      /*this.initialRequest()
-      this.footerClick(1)*/
+
     },
     activated () {
       this.flag = this.$store.state.performanceData.flag
@@ -213,13 +232,16 @@
         this.tab1 = flag
         if (flag == 1 || flag == 2 || flag == 3 || flag == 4 || flag == 6 || flag == 8 || flag == 7 || flag == 9 || flag == 11 || flag == 12) {
           this.footer = true
+          this.footerClick(1)
         } else {
           this.footer = false
         }
+//        this.initialRequest()
       },
       //二级tab选择
       tabClick2 (flag) {
         this.tab2 = flag
+//        this.initialRequest()
       },
       //日期区间选择
       footerClick (flag) {
@@ -249,9 +271,45 @@
         }
       },
       //业绩排行榜数据
-      request () {
+      request (flag) {
+        if (flag == 3 || flag == 7) {//持仓排名
+          if (this.tab1 == 1) {//成交额
+            this.customerPositionsRequest(0)
+          } else if (this.tab1 == 2) {//成交量
+            this.customerPositionsRequest(1)
+          } else if (this.tab1 == 3) {//成交额
+            this.customerPositionsRequest(2)
+          } else if (this.tab1 == 4) {//持仓量
+            this.customerPositionsRequest(3)
+          }
+        } else if (flag == 2 || flag == 3) {//客户数量
+          if (this.tab1 == 5) {//总客户数
+            this.numberOfClientsRequest(0)
+          } else if (this.tab1 == 6) {//开户数
+            this.numberOfClientsRequest(1)
+          } else if (this.tab1 == 7) {//活跃客户数
+            this.numberOfClientsRequest(2)
+          }
+        } else if (flag == 4 || flag == 8) {//手续费排名
+          if (this.tab1 == 8) {//手续费
+            this.feeRequest(0)
+          } else if (this.tab1 == 9) {//留存手续费
+            this.feeRequest(1)
+          }
+        } else if (flag == 4 || flag == 8) {//资金情况排行
+          if (this.tab1 == 10) {//手续费
+            this.feeRequest(0)
+          } else if (this.tab1 == 11) {//留存手续费
+            this.feeRequest(1)
+          } else if (this.tab1 == 12) {//留存手续费
+            this.feeRequest(2)
+          }
+        }
+      },
+      //资金排行
+      fundingRequest (type) {
         let _this = this
-        _this.$axios.post(PBHttpServer.apply.serverUrl + this.urlList.approvalSubmit.url + _this.info.userId + '/', {
+        _this.$axios.post(PBHttpServer.apply.serverUrl + this.urlList.fundingRanking.url + _this.info.userId + '?type=' + _this.type + '&beginTime=' + _this.beginTime + '&endTime=' + _this.endTime + '&sortType=' + type, {
           timeout: 10000,
           headers: {
             id: _this.info.token
@@ -261,16 +319,106 @@
           console.log(data)
           _this.$loading.hide()
           if (data.retHead == 0) {
-            _this.$toast('提交成功')
-            setTimeout(() => {
-              _this.$router.replace('/')
-            }, 1500)
+            _this.performanceList = data.data
           } else {
             _this.$toast(data.desc)
           }
         }).catch((err) => {
           _this.$loading.hide()
-          _this.$toast('网络超时，请稍后重试！')
+          if (err.response && err.response.status == 401) {
+            _this.$router.replace('/')
+          } else if (err.response) {
+            _this.$toast(err.response.data.desc)
+          } else {
+            _this.$toast('网络超时，请稍后重试！')
+          }
+          console.log(err)
+        })
+      },
+      //客户数量排行
+      numberOfClientsRequest (type) {
+        let _this = this
+        _this.$axios.post(PBHttpServer.apply.serverUrl + this.urlList.numberOfClients.url + _this.info.userId + '?type=' + _this.type + '&beginTime=' + _this.beginTime + '&endTime=' + _this.endTime + '&sortType=' + type, {
+          timeout: 10000,
+          headers: {
+            id: _this.info.token
+          }
+        }).then((data) => {
+          data = data.data
+          console.log(data)
+          _this.$loading.hide()
+          if (data.retHead == 0) {
+            _this.performanceList = data.data
+          } else {
+            _this.$toast(data.desc)
+          }
+        }).catch((err) => {
+          _this.$loading.hide()
+          if (err.response && err.response.status == 401) {
+            _this.$router.replace('/')
+          } else if (err.response) {
+            _this.$toast(err.response.data.desc)
+          } else {
+            _this.$toast('网络超时，请稍后重试！')
+          }
+          console.log(err)
+        })
+      },
+      //持仓排行
+      customerPositionsRequest (type) {
+        let _this = this
+        _this.$axios.post(PBHttpServer.apply.serverUrl + this.urlList.customerPositions.url + _this.info.userId + '?type=' + _this.type + '&beginTime=' + _this.beginTime + '&endTime=' + _this.endTime + '&sortType=' + type, {
+          timeout: 10000,
+          headers: {
+            id: _this.info.token
+          }
+        }).then((data) => {
+          data = data.data
+          console.log(data)
+          _this.$loading.hide()
+          if (data.retHead == 0) {
+            _this.performanceList = data.data
+          } else {
+            _this.$toast(data.desc)
+          }
+        }).catch((err) => {
+          _this.$loading.hide()
+          if (err.response && err.response.status == 401) {
+            _this.$router.replace('/')
+          } else if (err.response) {
+            _this.$toast(err.response.data.desc)
+          } else {
+            _this.$toast('网络超时，请稍后重试！')
+          }
+          console.log(err)
+        })
+      },
+      //手续费排行
+      feeRequest (type) {
+        let _this = this
+        _this.$axios.post(PBHttpServer.apply.serverUrl + this.urlList.feeRanking.url + _this.info.userId + '?type=' + _this.type + '&beginTime=' + _this.beginTime + '&endTime=' + _this.endTime + '&sortType=' + type, {
+          timeout: 10000,
+          headers: {
+            id: _this.info.token
+          }
+        }).then((data) => {
+          data = data.data
+          console.log(data)
+          _this.$loading.hide()
+          if (data.retHead == 0) {
+            _this.performanceList = data.data
+          } else {
+            _this.$toast(data.desc)
+          }
+        }).catch((err) => {
+          _this.$loading.hide()
+          if (err.response && err.response.status == 401) {
+            _this.$router.replace('/')
+          } else if (err.response) {
+            _this.$toast(err.response.data.desc)
+          } else {
+            _this.$toast('网络超时，请稍后重试！')
+          }
           console.log(err)
         })
       }

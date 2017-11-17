@@ -1,6 +1,6 @@
 <template>
 
-    <div class="cmTrends approTask">
+    <div class="cmTrends approTask pobo-customer-info">
 
         <div>
             <common-nav>
@@ -9,14 +9,15 @@
                 </div>
             </common-nav>
         </div>
-
-        <div class="container">
-            
-
-            <tabbar class="no-margin" @change="changeHandle">
+        <tabbar class="no-margin" @change="changeHandle">
                 <tabbar-item>待审批</tabbar-item>
                 <tabbar-item>已审批</tabbar-item>
             </tabbar>
+
+        <div class="container customer-info-center">
+            
+
+            
 
             <div class="group">
                 <a class="cell">

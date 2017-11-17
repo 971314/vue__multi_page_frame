@@ -13,13 +13,13 @@
         女
         <img v-show="sexFlag == 2" class="gougou" slot="footer" src="../../images/exhibitionPage/gougou@2x.png">
       </cell>
-      <cell @click="setSex(3)" :hasArrow="hasArrow">
-        非人类
-        <img v-show="sexFlag == 3" class="gougou" slot="footer" src="../../images/exhibitionPage/gougou@2x.png">
-      </cell>
-      <cell @click="setSex(0)" :hasArrow="hasArrow">
+      <!--<cell @click="setSex(3)" :hasArrow="hasArrow">-->
+      <!--非人类-->
+      <!--<img v-show="sexFlag == 3" class="gougou" slot="footer" src="../../images/exhibitionPage/gougou@2x.png">-->
+      <!--</cell>-->
+      <cell @click="setSex('0')" :hasArrow="hasArrow">
         未知
-        <img v-show="sexFlag == 0" class="gougou" slot="footer" src="../../images/exhibitionPage/gougou@2x.png">
+        <img v-show="(sexFlag / 1) == 0" class="gougou" slot="footer" src="../../images/exhibitionPage/gougou@2x.png">
       </cell>
     </group>
   </div>

@@ -46,7 +46,8 @@ body{
 }
 
 .cmHelperIndex{
-
+  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
 	.headerArea{
 		.mine{
 			padding-right: toRem(30px);
@@ -68,7 +69,7 @@ body{
 					margin-right: 0;
 				}
 			}
-			
+
 		}
 		.myAttention,.cusMag{
 			.group{

@@ -1,8 +1,7 @@
 @import '../cmHelperIndex/cmTrends.scss';
 
 .cmTrends.approTask{
-	.container{
-		.tabbar{
+	.tabbar{
 		    height: toRem(100px);
 		    border:0;
 			border-bottom:solid toRem(1px) #e4e7f0;
@@ -12,6 +11,8 @@
 				line-height: toRem(100px);
 			}
 		}
+	.container{
+		
 		.group{
 			background-image: none;
 			margin-top: 0;

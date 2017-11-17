@@ -24,12 +24,12 @@
     @include border-TBottom-color23;
   }
   .tableBody {
+    position: static;
     overflow: auto;
     .borderBottom {
-      border-bottom: 1px solid $color23;
+      border-bottom: 1px solid rgba(228, 231, 240, 0.5);
     }
     .TheadWrap {
-      position: fixed;
       //height: toRem(80px);
       width: 100%;
       overflow: hidden;
@@ -57,7 +57,7 @@
       }
     }
     .TbodyInner {
-      margin-top: 39px;
+      //margin-top: 39px;
       display: flex;
       overflow: hidden;
       color: $color18;

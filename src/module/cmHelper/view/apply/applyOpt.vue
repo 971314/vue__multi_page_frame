@@ -45,7 +45,7 @@
       iconClick (data) {
         this.$alert({
           maskClosable: true,
-          message: data.tplDesc,
+          message: data.tplDesc.replace(/【/g, '<br/>【'),
           title: data.tplName
         })
       },
@@ -69,7 +69,13 @@
           }
         }).catch((err) => {
           _this.$loading.hide()
-          _this.$toast('网络超时，请稍后重试！')
+          if (err.response && err.response.status == 401) {
+            _this.$router.replace('/')
+          } else if (err.response) {
+            _this.$toast(err.response.data.desc)
+          } else {
+            _this.$toast('网络超时，请稍后重试！')
+          }
           console.log(err)
         })
       }

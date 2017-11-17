@@ -82,6 +82,26 @@ module.exports = {
       return a.date > b.date ? -1 : 1;
     });
     return arr;
-  }
+  },
+
+  //日期加减
+    addDate : function(dd,dadd){
+      var a = null;
+
+      if(dd){
+        a = new Date(dd);
+      }else{
+        a = new Date();
+      }
+
+      a = a.valueOf();
+      a = a + (dadd * 24 * 60 * 60 * 1000);
+      a = new Date(a);
+
+      var m = (a.getMonth() + 1)<10 ? '0' + (a.getMonth() + 1):(a.getMonth() + 1);
+      var d = a.getDate()<10 ? '0' + a.getDate():a.getDate();
+
+      return a.getFullYear() + '-' + m + '-' + d;
+    }
 
 }

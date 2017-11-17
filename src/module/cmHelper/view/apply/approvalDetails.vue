@@ -3,8 +3,7 @@
     <common-nav>
       <span slot="body">申请详情</span>
       <span slot="footer">
-        <span v-if="details[0].appStatus == '0'" @click="revokedClick">撤回</span>
-        <span v-else class="c4">撤回</span>
+        <span v-if="details[0] && details[0].appStatus == '0'" @click="revokedClick">撤回</span>
       </span>
     </common-nav>
     <div class="conter">
@@ -34,16 +33,16 @@
           <span>申请类型</span>
           <span>{{details[0].processName}}</span>
         </div>
-        <div>
+        <div @click="details[0].tplName != '非模板' ?iconClick(details[0]):''">
           <span>模板名称</span>
           <span class="c1">{{details[0].tplName}}</span>
         </div>
         <div>
           <span>申请期间</span>
           <span>{{$$timeFormate({
-            date: details[0].availEndDate,
+            date: details[0].availBeginDate,
             format: 'Y-M-D'
-          })}} 至 {{$$timeFormate({date: details[0].availBeginDate, format: 'Y-M-D'})}}</span>
+          })}} 至 {{$$timeFormate({date: details[0].availEndDate, format: 'Y-M-D'})}}</span>
         </div>
       </div>
       <div class="details_schedule">
@@ -62,7 +61,8 @@
       </div>
       <div class="details_annex" v-show="details[0].attachs && details[0].attachs.length > 0">
         <div>附件信息</div>
-        <a class="annex_list" v-for="data in details[0].attachs" @click="imgModal(data.url)">
+        <a class="annex_list" v-for="data in details[0].attachs"
+           @click="$router.push({path:'/preview',query: {imgurl:imgUrl + data.url}})">
           <img src="../../images/apply/icon_tuPian.png"/>
           <span>{{data.name}}</span>
           <span>{{data.size}}</span>
@@ -84,7 +84,8 @@
             appStatus: '0'
           }
         ],
-        noteShow: false
+        noteShow: false,
+        imgUrl: ''
       }
     },
     computed: {
@@ -99,6 +100,7 @@
       console.log()
     },
     activated () {
+      this.imgUrl = PBHttpServer.cmHelper.serverUrl + this.urlList.imageView.url + this.info.userId + '/'
       this.getData()
     },
     methods: {
@@ -125,7 +127,13 @@
           }
         }).catch((err) => {
           _this.$loading.hide()
-          _this.$toast('网络超时，请稍后重试！')
+          if (err.response && err.response.status == 401) {
+            _this.$router.replace('/')
+          } else if (err.response) {
+            _this.$toast(err.response.data.desc)
+          } else {
+            _this.$toast('网络超时，请稍后重试！')
+          }
           console.log(err)
         })
       },
@@ -145,7 +153,7 @@
           if (data.retHead == 0) {
             _this.details = data.data
             _this.$store.dispatch('updataTaskDetails', {
-              operatorName: data.data[0].operatorName,
+//              operatorName: data.data[0].operatorName,
               appStatusName: data.data[0].appStatusName,
               processName: data.data[0].processName,
               appDateTime: _this.$$timeFormate({date: data.data[0].appDateTime, format: 'Y-M-D h:m'})
@@ -155,8 +163,22 @@
           }
         }).catch((err) => {
           _this.$loading.hide()
-          _this.$toast('网络超时，请稍后重试！')
+          if (err.response && err.response.status == 401) {
+            _this.$router.replace('/')
+          } else if (err.response) {
+            _this.$toast(err.response.data.desc)
+          } else {
+            _this.$toast('网络超时，请稍后重试！')
+          }
           console.log(err)
+        })
+      },
+      //模板介绍模态框
+      iconClick (data) {
+        this.$alert({
+          maskClosable: true,
+          message: data.tplDesc.replace(/【/g, '<br/>【'),
+          title: data.tplName
         })
       }
     }

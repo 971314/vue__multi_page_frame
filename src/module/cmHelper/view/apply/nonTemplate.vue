@@ -8,18 +8,15 @@
       <div class="fill_group">
         <span>申请人类型</span>
         <span :class="fillData.investorType == '选择申请类型' ? 'c4':''"
-              @click="showEvent = true">{{fillData.investorType}}</span>
+              @click="apply.processModel == '1'?showEvent = false:showEvent = true">{{fillData.investorType}}</span>
+        <img src="../../images/apply/gengDuo.png" class="gengduo"/>
       </div>
       <div class="fill_group">
         <span>申请人姓名</span>
         <span :class="appObject.appObjectName == '选择申请人姓名' ? 'c4':''"
               @click="selectName">{{appObject.appObjectName}}</span>
-      </div>
-      <!--<div class="fill_group" @click="$router.push('/applyOpt')">
-        <span>模板选择</span>
-        <span>{{template.tplName}}</span>
         <img src="../../images/apply/gengDuo.png" class="gengduo"/>
-      </div>-->
+      </div>
       <div class="fill_group" v-show="apply.processhasDate == '1'">
         <span>申请起效时间</span>
         <span class="c1">{{startTime}}</span>
@@ -50,9 +47,7 @@
     <multi-slide v-model="showEvent">
       <div class="bottom_modal">
         <div @click="modalclick(1)">客户</div>
-        <div @click="modalclick(2)">客户经理</div>
         <div @click="modalclick(3)">居间人</div>
-        <div @click="modalclick(4)">法人市场咨询机构</div>
         <div @click="showEvent = false">取消</div>
       </div>
     </multi-slide>
@@ -72,21 +67,25 @@
           InvestorId: '123'//投资者编号
         },
         attachs: [],//附件
-        startTime: this.apply.processhasDate == 1 ? this.GetDateStr(0) : '',//起始时间
+        /*startTime: this.apply.processhasDate == 1 ? this.GetDateStr(0) : '',//起始时间
         endTime: this.apply.processhasDate == 1 ? this.$$timeFormate({
           date: this.getTimeByParam(12),
           format: 'Y-M-D'
-        }) : '',//终止时间
+        }) : '',//终止时间*/
+        startTime: '',
+        endTime: '',
         showEvent: false
       }
     },
     mounted () {
+      this.apply.processModel == '1' ? this.fillData.investorType = '客户' : this.fillData.investorType = '选择申请类型'
     },
     activated () {
-      this.endTime = this.$$timeFormate({
+      /*this.startTime = this.apply.processhasDate == 1 ? this.GetDateStr(0) : ''
+      this.endTime = this.apply.processhasDate == 1 ? this.$$timeFormate({
         date: this.getTimeByParam(12),
         format: 'Y-M-D'
-      })
+      }) : ''*/
     },
     computed: {
       ...mapState({
@@ -109,13 +108,26 @@
           })
           this.$store.dispatch('updataTemplate', {tplId: '', tplName: ''})
           this.fillData.note = ''
-        } else if (to.path == '/applyFill' && from.path == '/customerInfoList') {
+          this.startTime = ''
+          this.endTime = ''
+        } else if (to.path == '/nonTemplate' && from.path == '/applyFast') {
+          this.apply.processModel == '1' ? this.fillData.investorType = '客户' : this.fillData.investorType = '选择申请类型'
+        } else if (to.path == '/nonTemplate' && from.path == '/customerInfoList') {
           this.$store.dispatch('updataAppObject', {
             appObjectId: this.investor.INVESTOR_ID,
             appObjectType: '0',
             appObjectName: this.investor.INVESTOR_NAM
           })
         }
+      },
+      'startTime' (o) {
+        if (o) {
+          this.endTime = this.$$timeFormate({
+            date: this.getTimeParam(12),
+            format: 'Y-M-D'
+          })
+        }
+
       }
     },
     methods: {
@@ -134,7 +146,7 @@
           _this.$toast('请选择申请人姓名！')
           return
         }
-        if (this.attachs.length < 0) {
+        if (this.attachs.length == 0) {
           _this.$toast('请上传附件！')
           return
         }
@@ -188,7 +200,13 @@
           }
         }).catch((err) => {
           _this.$loading.hide()
-          _this.$toast('网络超时，请稍后重试！')
+          if (err.response && err.response.status == 401) {
+            _this.$router.replace('/')
+          } else if (err.response) {
+            _this.$toast(err.response.data.desc)
+          } else {
+            _this.$toast('网络超时，请稍后重试！')
+          }
           console.log(err)
         })
       },
@@ -226,7 +244,13 @@
           }
         }).catch((err) => {
           _this.$loading.hide()
-          _this.$toast('网络超时，请稍后重试！')
+          if (err.response && err.response.status == 401) {
+            _this.$router.replace('/')
+          } else if (err.response) {
+            _this.$toast(err.response.data.desc)
+          } else {
+            _this.$toast('网络超时，请稍后重试！')
+          }
           console.log(err)
         })
       },
@@ -255,14 +279,14 @@
       },
       //选择申请人姓名
       selectName () {
-        if (this.fillData.investorType != '客户经理' && this.fillData.investorType != '选择申请类型') {
+        if (this.fillData.investorType == '选择申请类型') {
+          this.$toast('请先选择申请人类型')
+          return
+        }
+        if (this.fillData.investorType == '客户') {
           this.$store.dispatch('updatepJumpFlag', 3)
           this.$store.dispatch('updateAddFollow', Object.assign(this.addFollow, {businessType: '1'}))
           this.$router.push('/customerInfoList')
-        } else {
-          if (this.fillData.investorType == '选择申请类型') {
-            this.$toast('请先选择申请人类型')
-          }
         }
       },
       //附件上传限制提示

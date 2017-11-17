@@ -88,6 +88,7 @@ if (browser.versions.mobile && store.state.env === 'production') {
   })
 }
 
+
 function getToken (store, callback) {
   Axios.post(util.getApiUrl(store.state, 'getToken'), {
     'func': 1001,

@@ -1,34 +1,27 @@
 <template>
-  <div class="pbframe staffInfo">
+  <div class="pbframe staffInfo pobo-customer-info">
         <common-nav>
             <div slot="body">
                 <span>员工资料</span>
             </div>
         </common-nav>
 
-        <div class="container">
-
-            <div class="av-dropdown-group">
+        <div class="av-dropdown-group">
                 <div class="av-dropdown-selected">
 
-                    <div class="av-selected-items">
-                        <span class="selected-items-text">分类</span>
+                    <div class="av-selected-items" :class="{'active':activeOption==1}" @click="activeOption=1">
+                        <span class="selected-items-text">总部</span>
                         <span class="down-dria"></span>
                         <div class="split-line"></div>
                     </div>
 
-                    <div class="av-selected-items">
-                        <span class="selected-items-text">区域</span>
+                    <div class="av-selected-items" :class="{'active':activeOption==2}" @click="activeOption=2">
+                        <span class="selected-items-text">员工类型</span>
                         <span class="down-dria"></span>
-                        <div class="split-line"></div>
+                        <!-- <div class="split-line"></div> -->
                     </div>
 
-                    <div class="av-selected-items">
-                        <span class="selected-items-text">排序</span>
-                        <span class="down-dria"></span>
-                    </div>
-                    
-                    <div class="filterArea" v-if="true">
+                    <div class="filterArea" v-show="activeOption==2">
                         <div class="department">
                             <ul class="area">
                                 <li>全中国</li>
@@ -64,11 +57,15 @@
                                 <li>商城路营业二部</li>
                             </ul>
                         </div>
-                        <div class="filterAreaMask"></div>
+                        <div class="filterAreaMask" @click="activeOption=0"></div>
                     </div>
 
                 </div>
             </div>
+
+        <div class="container customer-info-center">
+
+            
 
             <div class="content">
                 <div class="group">
@@ -149,7 +146,8 @@
   export default {
     data(){
       return {
-        
+        activeOption : 0,
+        showOptions : false
       }
     },
     mounted() {

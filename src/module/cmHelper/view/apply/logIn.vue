@@ -54,45 +54,56 @@
       //登录
       submit () {
         let _this = this
-        if (_this.crmAccount && _this.pwd) {
-          _this.$loading.toggle(' ')
-          _this.$axios.post(PBHttpServer.cmHelper.serverUrl + this.urlList.approvalLog.url + _this.crmAccount, {
-            pwd: _this.pwd,
-            mobilePhone: _this.mobilePhone,
-            crmAccount: _this.crmAccount
-          }, {
-            timeout: 10000,
-            headers: {
-              id: _this.info.token
-            }
-          }).then((data) => {
-            data = data.data
-            console.log(data)
-            _this.$loading.hide()
-            if (data.retHead == 0) {
-              if (pbE.isPoboApp) {
-                pbE.SYS().storePrivateData('managerInfo', JSON.stringify(data.data))
-              } else {
-                sessionStorage.managerInfo = JSON.stringify(data.data)
-              }
-              _this.$router.replace('/cmHelperIndex')
-            } else {
-              _this.$toast(data.desc)
-            }
-          }).catch((err) => {
-            _this.$loading.hide()
-            if (err.message.split(' ')[0] == 'timeout') {
-              _this.$toast('网络超时，请稍后重试！')
-            } else {
-              _this.$toast('网络异常，请稍后重试！')
-            }
-            console.log(err)
-          })
-        } else if (_this.crmAccount == '') {
+        if (_this.crmAccount == '') {
           _this.$toast('CRM用户名不能为空')
-        } else if (_this.pwd == '') {
-          _this.$toast('CRM口令不能为空')
+          return
         }
+        if (_this.pwd == '') {
+          _this.$toast('CRM口令不能为空')
+          return
+        }
+        _this.$loading.toggle(' ')
+        _this.$axios.post(PBHttpServer.cmHelper.serverUrl + this.urlList.approvalLog.url + _this.crmAccount, {
+          pwd: _this.pwd.trim(),
+          mobilePhone: _this.mobilePhone.trim(),
+          crmAccount: _this.crmAccount
+        }, {
+          timeout: 10000,
+          headers: {
+            id: _this.info.token
+          }
+        }).then((data) => {
+          data = data.data
+          console.log(data)
+          _this.$loading.hide()
+          if (data.retHead == 0) {
+            if (pbE.isPoboApp) {
+              pbE.SYS().privateClear()
+              pbE.SYS().storePrivateData('managerInfo', JSON.stringify(data.data))
+            } else {
+              sessionStorage.managerInfo = JSON.stringify(data.data)
+            }
+            if (data.data.accountType == 'C') {
+              _this.$router.replace('/cmHelperIndex')
+            }
+          } else {
+            _this.$toast(data.desc)
+          }
+        }).catch((err) => {
+          _this.$loading.hide()
+          if (err.message.split(' ')[0] == 'timeout') {
+            _this.$toast('网络超时，请稍后重试！')
+          } else {
+            if (err.response && err.response.status == 401) {
+              _this.$router.replace('/')
+            } else if (err.response) {
+              _this.$toast(err.response.data.desc)
+            } else {
+              _this.$toast('网络超时，请稍后重试！')
+            }
+          }
+          console.log(err)
+        })
       },
       //必填项判断
       check () {

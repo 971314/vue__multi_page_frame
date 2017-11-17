@@ -31,7 +31,7 @@
   .pipeline-content {
     flex: 1;
     overflow: auto;
-    -webkit-overflow-scrolling: touch;
+    //-webkit-overflow-scrolling: auto;
     background-color: #f7f7fa;
     .content-item-wrapper {
       background-color: #ffffff;
