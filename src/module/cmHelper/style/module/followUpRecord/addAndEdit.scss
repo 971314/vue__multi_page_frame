@@ -49,18 +49,26 @@ textarea[disabled="disabled"]{
 						.upload-img{
 							padding: toRem(26px) 0 toRem(34px) 0;
 							.showImgArea{
-								display: inline-block;
 								position: relative;
+								display: inline-block;
+								margin-right: toRem(10px);
+								width: toRem(86px);
+								height: toRem(86px);
 								input[type='file']{
 									width: toRem(86px);
 									height: toRem(86px);
 									position: absolute;
 									left: 0;
 									top: 0;
+									z-index: 11;
 									opacity: 0;
 								}
 								img{
-									margin-right: toRem(10px);
+									position: absolute;
+								    left: 0;
+								    top: 0;
+								    z-index: 9;
+									
 									width: toRem(86px);
 									height: toRem(86px);
 								}
@@ -74,8 +82,8 @@ textarea[disabled="disabled"]{
 									display: inline-block;
 									width: toRem(36px);
 									height: toRem(36px);
-									background-color: #fff;
-									background-image:url(../../../cmHelper/images/followUpRecord/img04.png);
+									//background-color: #fff;
+									background-image:url(../../cmHelper/images/followUpRecord/img04.png);
 							        background-size: 99% 100%;
 							        background-repeat: no-repeat;
 							        background-position: center;
@@ -106,11 +114,19 @@ textarea[disabled="disabled"]{
 			}
 			.historyFollow{
 				padding: toRem(40px) toRem(30px);
+				background-color: #f7f7fa;
 			    @include bottom-px1-pixel-ratio;
 			    font-size: toRem(28px);
 				color: #808086;
 				.hisItem{
 					margin-bottom: toRem(10px);
+					div{
+						margin-bottom: toRem(16px);
+					    word-break: break-all;
+					}
+					div:last-child{
+						margin-bottom: 0;
+					}
 				}
 				.hisItem:last-child{
 					margin-bottom: 0;

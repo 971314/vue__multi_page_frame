@@ -1,0 +1,34 @@
+body {
+	//-webkit-overflow-scrolling:touch;
+}
+.rejectTask{
+    .container{
+        .content{
+            textarea {
+                padding:toRem(20px) toRem(30px);
+                width:100%;
+                height:toRem(460px);
+                line-height:toRem(46px);
+                border:0;
+                font-size:toRem(32px);
+                outline:none;
+            }
+            textarea::-webkit-input-placeholder {
+                color:#c0c6cd;
+            }
+        }
+    }
+    .approSubmit {
+        width:100%;
+        button {
+	        padding:0;
+	        width:100%;
+	        height:toRem(98px);
+	        line-height:toRem(98px);
+	        font-size:toRem(36px);
+	        color:#fff;
+	        background-color:#36c;
+	        border-radius:0;
+	    }
+    }
+}

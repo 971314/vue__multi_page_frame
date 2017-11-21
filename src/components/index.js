@@ -15,6 +15,7 @@ import toast from '../assets/js/toast';
 import {alert} from '../assets/js/alert';
 import {alertBtn} from '../assets/js/alertBtn';
 import loading from '../assets/js/loading';
+import loadingNodispear from '../assets/js/loadingNodispear';
 import Picker from './Picker';
 import PickerOption from './PickerOption';
 import Loadmore from './Loadmore';
@@ -48,6 +49,7 @@ const install = Vue => {
   Vue.$alert = Vue.prototype.$alert = alert;
   Vue.$alertBtn = Vue.prototype.$alertBtn = alertBtn;
   Vue.$loading = Vue.prototype.$loading = loading;
+  Vue.$loadingNodispear= Vue.prototype.$loadingNodispear = loadingNodispear;
 };
 
 if (typeof window !== 'undefined' && window.Vue) {

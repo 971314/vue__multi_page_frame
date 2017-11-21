@@ -21,7 +21,7 @@
                    src="../../images/exhibitionPage/NEW@2x.png"></img>
             </div>
             <div class="info-zjzh">资金账号 {{customerInfo.INVESTOR_ID}}</div>
-            <div class="info-yingye">营业部门 {{customerInfo.DEPARTMENT_NAM}}</div>
+            <div class="info-yingye">所属部门 {{customerInfo.DEPARTMENT_NAM}}</div>
           </div>
           <div class="right-arrow"></div>
         </div>

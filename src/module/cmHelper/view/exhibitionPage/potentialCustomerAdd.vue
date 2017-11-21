@@ -3,7 +3,7 @@
     <common-nav :search="false" :message="false" :service="false" :goback="false"
                 :gobackUrl="gobackUrl">
       <span slot="body" v-text="customerTitle"></span>
-      <span slot="footer" style="margin-right: 15px;" @click="completeClick">完成</span>
+      <span slot="footer" style="margin-right: 15px; font-size: 15px" @click="completeClick">完成</span>
     </common-nav>
     <div class="potential-info-center">
       <div class="customer-info-center">
@@ -17,7 +17,7 @@
           </div>
           <div class="customer-input-item">
             <div class="input-item-name">性别</div>
-            <div class="input-item-input" @click="chooseSex">
+            <div class="input-item-input" :class="{'item-click-input': colorClick1}" @click="chooseSex">
               {{noPotSex ? sex : '--'}}
               <!--<input class="item-input-content" v-model="customerMessage.SEX" maxlength="12" type="text"/>-->
             </div>
@@ -32,7 +32,7 @@
           <div class="customer-input-item">
             <div class="input-item-name">出生日期</div>
             <div class="input-item-input">
-              <span>{{customerMessage.BIRTH_DT}}</span>
+              <span :class="{'item-click-input': colorClick2}">{{customerMessage.BIRTH_DT}}</span>
               <input class="item-input-date" v-model="customerMessage.BIRTH_DT" maxlength="12" type="date"/>
             </div>
             <img class="customer-showdetail-arrow" src="../../images/exhibitionPage/showdetail@2x.png"/>
@@ -44,7 +44,7 @@
             <div class="input-item-input" @click="clickEvent" @blur="blurEvent"
                  id="input-item-input" style="-webkit-user-select:text;display: block;"
                  v-text="customerMessage.LINKADDR"
-                 :class="{'item-input-color': !isfocus}">
+                 :class="{'item-input-color': !isfocus,'item-click-input': colorClick3}">
               <!--{{customerMessage.LINKADDR ? customerMessage.LINKADDR : "请填写通讯地址"}}-->
               <!--<input class="item-input-content" placeholder="请填写通讯地址"-->
               <!--v-model="customerMessage.LINKADDR" type="text"/>-->
@@ -87,6 +87,9 @@
   export default {
     data () {
       return {
+        colorClick1: false,
+        colorClick2: false,
+        colorClick3: false,
         isfocus: false,
         customerTitle: '新增未开户',
         gobackUrl: 'goBack',
@@ -127,6 +130,11 @@
           this.$store.dispatch('updateNoPotSex', '')
 
         }
+      },
+      'customerMessage.BIRTH_DT'(val, oldVal) {
+          if (val) {
+            this.colorClick2 = true
+          }
       }
     },
     methods: {
@@ -136,6 +144,7 @@
         if (document.getElementById('input-item-input').innerHTML == '请填写通讯地址') {
           document.getElementById('input-item-input').innerHTML = ''
         }
+        this.colorClick3 = true
         this.isfocus = true
       },
       blurEvent(e) {
@@ -146,6 +155,43 @@
             this.isfocus = false
           })
         }
+      },
+      isIdentityNum (code) {
+        code = code.toString().replace(/(^\s*)|(\s*$)/g, '')
+        let pass = false
+        if (code.length && code.length === 18) {
+          let codeArr = code.split('')
+          let factor = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2] // 加权因子
+          let parity = [1, 0, 'x', 9, 8, 7, 6, 5, 4, 3, 2] // 校验位
+          let sum = 0
+          let ai = 0
+          let wi = 0
+          for (let i = 0; i < 17; i++) {
+            ai = code[i]
+            wi = factor[i]
+            sum += ai * wi
+          }
+          let verifyNum = parity[sum % 11]
+          let lastNum = codeArr[17]
+
+          if (sum % 11 === 2) {
+            if (lastNum === 'X' || lastNum === 'x') {
+              pass = true
+            }
+          } else {
+            lastNum = parseInt(codeArr[17], 10)
+            if (lastNum === verifyNum) {
+              pass = true
+            }
+          }
+        }
+
+        if (!pass) {
+          this.$toast('身份证号格式错误')
+          return false
+        }
+
+        return true
       },
       $isTel (str) { // 是否为固定电话
         return /^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/.test(str)
@@ -158,6 +204,10 @@
 //          this.$toast('姓名不能为空！')
 //          return false
 //        }
+
+        if (this.customerMessage.ID_NO && !this.isIdentityNum(this.customerMessage.ID_NO)) {
+          return false
+        }
 
         if (!this.customerMessage.MOBILE_NO || this.customerMessage.MOBILE_NO.trim().length === 0) {
           this.$toast('手机号码不能为空！')
@@ -198,6 +248,7 @@
         return '未知'
       },
       chooseSex () {
+        this.colorClick1 = true
         this.$router.push({
           name: 'getSex'
         })

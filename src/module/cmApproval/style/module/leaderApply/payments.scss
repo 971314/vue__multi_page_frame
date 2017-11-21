@@ -1,0 +1,31 @@
+.pay-ment-content {
+  .crj-db-view {
+    background-color: #ffffff;
+    padding: toRem(40px) toRem(30px);
+    .crj-db-header {
+      line-height: 1;
+      color: $color18;
+      @include font($font26);
+    }
+    .crj-db-charts {
+      margin-top: toRem(14px);
+      height: toRem(500px);
+      z-index: 999;
+    }
+  }
+  .j-rj-view {
+    margin-top: toRem(20px);
+    background-color: #ffffff;
+    padding: toRem(40px) toRem(30px);
+    .j-rj-header {
+      line-height: 1;
+      color: $color18;
+      @include font($font26);
+    }
+    .j-rj-charts {
+      margin-top: toRem(14px);
+      height: toRem(500px);
+      z-index: 999;
+    }
+  }
+}

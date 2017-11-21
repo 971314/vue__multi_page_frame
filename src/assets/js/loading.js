@@ -8,7 +8,7 @@ let instance,
 
 
 export default {
-  show(message = '加载中') {
+  show(message = '加载中', autoClose = true) {
     if (active) return;
     /* global document:true */
     if (!instance) {
@@ -23,12 +23,14 @@ export default {
     instance.message = message;
     instance.type = 'loading';
     instance.position = 'center';
+    console.log('autoClose',autoClose);
     Vue.nextTick(() => {
       instance.show();
-
-      setTimeout(() => {
-        instance.hide();
-      }, 5000);
+      if (autoClose) {
+        setTimeout(() => {
+          instance.hide();
+        }, 5000);
+      }
     });
   },
   hide() {

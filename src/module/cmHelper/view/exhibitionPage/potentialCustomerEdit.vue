@@ -116,6 +116,43 @@
       this.getPInvestorInfo()
     },
     methods: {
+      isIdentityNum (code) {
+        code = code.toString().replace(/(^\s*)|(\s*$)/g, '')
+        let pass = false
+        if (code.length && code.length === 18) {
+          let codeArr = code.split('')
+          let factor = [7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2] // 加权因子
+          let parity = [1, 0, 'x', 9, 8, 7, 6, 5, 4, 3, 2] // 校验位
+          let sum = 0
+          let ai = 0
+          let wi = 0
+          for (let i = 0; i < 17; i++) {
+            ai = code[i]
+            wi = factor[i]
+            sum += ai * wi
+          }
+          let verifyNum = parity[sum % 11]
+          let lastNum = codeArr[17]
+
+          if (sum % 11 === 2) {
+            if (lastNum === 'X' || lastNum === 'x') {
+              pass = true
+            }
+          } else {
+            lastNum = parseInt(codeArr[17], 10)
+            if (lastNum === verifyNum) {
+              pass = true
+            }
+          }
+        }
+
+        if (!pass) {
+          this.$toast('身份证号格式错误')
+          return false
+        }
+
+        return true
+      },
       $isTel (str) { // 是否为固定电话
         return /^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/.test(str)
       },
@@ -123,6 +160,10 @@
         return /^1\d{10}$/.test(str)
       },
       checkcustomerMessage() {
+
+        if (this.customerMessage.ID_NO && !this.isIdentityNum(this.customerMessage.ID_NO)) {
+          return false
+        }
 
         if (!this.customerMessage.MOBILE_NO || this.customerMessage.MOBILE_NO.trim().length === 0) {
           this.$toast('手机号码不能为空！')

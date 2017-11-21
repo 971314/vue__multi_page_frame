@@ -1,6 +1,6 @@
 {
-  "performanceClassification": [
-    {
+  "leaderboards": {
+    "data1": {
       "name": "营业部",
       "data": [
         {
@@ -29,7 +29,7 @@
         }
       ]
     },
-    {
+    "data2": {
       "name": "客户经理",
       "data": [
         {
@@ -58,5 +58,5 @@
         }
       ]
     }
-  ]
+  }
 }

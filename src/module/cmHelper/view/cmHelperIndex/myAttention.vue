@@ -16,7 +16,7 @@
                 <a class="cell" v-for="(item, index) in lists">
                     <span class="cell-body">
                         <h3>{{item.INVESTOR_NAM}}<span>{{item.REALMSG}}</span></h3>
-                        <h3><img src="../../images/cmHelperIndex/img14.png" v-for="s in starLevel"/><span>{{item.MSGTIME}}</span></h3>
+                        <h3><img src="../../images/cmHelperIndex/img14.png" v-for="s in new Array(item.STARLEVEL*1)"/><span>{{item.MSGTIME}}</span></h3>
                     </span>
                 </a>
             </div>
@@ -37,7 +37,6 @@
 
         data() {
             return {
-                starLevel : ['','','','',''],
                 lists : null
             }
         },

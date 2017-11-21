@@ -9,10 +9,10 @@
       </div>
     </common-nav>
 
-    <searchbar v-model="keyword" :autoBlur="false">
+    <searchbar v-model="keyword">
       <searchbar-placeholder>
         <icon name="search" left size="lg"></icon>
-        搜索
+        <span>搜索</span>
       </searchbar-placeholder>
     </searchbar>
 
@@ -107,10 +107,6 @@
         this.segmentedIndex = segmentedIndex
         this.getCusList(segmentedIndex)
       },
-      //搜索框获取焦点
-      searchFocus (flag) {
-        this.focusFlag = flag
-      },
       //列表
       getCusList (type,) {
         let _this = this
@@ -133,146 +129,27 @@
                 'MOBILE_NO': '899958118-',
                 'INVESTOR_NAM': '投资者0116',
                 'VIPTYP': '0',
-                'FIRST_PINYIN': 'T',
+                'FIRST_PINYIN': 'B',
                 'OPEN_STS': '2',
                 'LINKTELEPHONE': '-'
-              }, {
-                'INVESTOR_ID': '100117',
-                'MOBILE_NO': '222703612-',
-                'INVESTOR_NAM': '投资者0117',
+              }],
+              'B': [{
+                'INVESTOR_ID': '100116',
+                'MOBILE_NO': '899958118-',
+                'INVESTOR_NAM': '投资者0116',
                 'VIPTYP': '0',
-                'FIRST_PINYIN': 'T',
+                'FIRST_PINYIN': 'B',
                 'OPEN_STS': '2',
                 'LINKTELEPHONE': '-'
-              }, {
-                'INVESTOR_ID': '100118',
-                'MOBILE_NO': '180205711-',
-                'INVESTOR_NAM': '投资者0118',
+              }],
+              'C': [{
+                'INVESTOR_ID': '100116',
+                'MOBILE_NO': '899958118-',
+                'INVESTOR_NAM': '投资者0116',
                 'VIPTYP': '0',
-                'FIRST_PINYIN': 'T',
+                'FIRST_PINYIN': 'B',
                 'OPEN_STS': '2',
                 'LINKTELEPHONE': '-'
-              }, {
-                'INVESTOR_ID': '100130',
-                'MOBILE_NO': '718768057',
-                'INVESTOR_NAM': '投资者0130',
-                'VIPTYP': '0',
-                'FIRST_PINYIN': 'T',
-                'OPEN_STS': '2'
-              }, {
-                'INVESTOR_ID': '100132',
-                'MOBILE_NO': '783667057',
-                'INVESTOR_NAM': '投资者0132',
-                'VIPTYP': '0',
-                'FIRST_PINYIN': 'T',
-                'OPEN_STS': '2'
-              }, {
-                'INVESTOR_ID': '100136',
-                'MOBILE_NO': '663818196',
-                'INVESTOR_NAM': '投资者0136',
-                'VIPTYP': '0',
-                'FIRST_PINYIN': 'T',
-                'OPEN_STS': '2'
-              }, {
-                'INVESTOR_ID': '100140',
-                'MOBILE_NO': '123568741',
-                'INVESTOR_NAM': '投资者0140',
-                'VIPTYP': '0',
-                'FIRST_PINYIN': 'T',
-                'OPEN_STS': '2'
-              }, {
-                'INVESTOR_ID': '100141',
-                'MOBILE_NO': '002588430',
-                'INVESTOR_NAM': '投资者0141',
-                'VIPTYP': '0',
-                'FIRST_PINYIN': 'T',
-                'OPEN_STS': '2'
-              }, {
-                'INVESTOR_ID': '100142',
-                'MOBILE_NO': '336606533603',
-                'INVESTOR_NAM': '投资者0142',
-                'VIPTYP': '0',
-                'FIRST_PINYIN': 'T',
-                'OPEN_STS': '2',
-                'LINKTELEPHONE': '603965333631396363'
-              }, {
-                'INVESTOR_ID': '100143',
-                'MOBILE_NO': '899806508',
-                'INVESTOR_NAM': '投资者0143',
-                'VIPTYP': '0',
-                'FIRST_PINYIN': 'T',
-                'OPEN_STS': '2'
-              }, {
-                'INVESTOR_ID': '100147',
-                'MOBILE_NO': '720905817837',
-                'INVESTOR_NAM': '投资者0147',
-                'VIPTYP': '0',
-                'FIRST_PINYIN': 'T',
-                'OPEN_STS': '2',
-                'LINKTELEPHONE': '8370-7731851571-8195'
-              }, {
-                'INVESTOR_ID': '100149',
-                'MOBILE_NO': '2078115020-',
-                'INVESTOR_NAM': '投资者0149',
-                'VIPTYP': '0',
-                'FIRST_PINYIN': 'T',
-                'OPEN_STS': '2',
-                'LINKTELEPHONE': '0-'
-              }, {
-                'INVESTOR_ID': '100153',
-                'MOBILE_NO': '235281202-',
-                'INVESTOR_NAM': '投资者0153',
-                'VIPTYP': '0',
-                'FIRST_PINYIN': 'T',
-                'OPEN_STS': '2',
-                'LINKTELEPHONE': '-'
-              }, {
-                'INVESTOR_ID': '100155',
-                'MOBILE_NO': '778238377-',
-                'INVESTOR_NAM': '投资者0155',
-                'VIPTYP': '0',
-                'FIRST_PINYIN': 'T',
-                'OPEN_STS': '2',
-                'LINKTELEPHONE': '-'
-              }, {
-                'INVESTOR_ID': '100169',
-                'MOBILE_NO': '889256898-',
-                'INVESTOR_NAM': '投资者0169',
-                'VIPTYP': '0',
-                'FIRST_PINYIN': 'T',
-                'OPEN_STS': '2',
-                'LINKTELEPHONE': '-'
-              }, {
-                'INVESTOR_ID': '100177',
-                'MOBILE_NO': '934371649-',
-                'INVESTOR_NAM': '投资者0177',
-                'VIPTYP': '0',
-                'FIRST_PINYIN': 'T',
-                'OPEN_STS': '2',
-                'LINKTELEPHONE': '-'
-              }, {
-                'INVESTOR_ID': '100189',
-                'MOBILE_NO': '874303898273',
-                'INVESTOR_NAM': '投资者0189',
-                'VIPTYP': '0',
-                'FIRST_PINYIN': 'T',
-                'OPEN_STS': '2',
-                'LINKTELEPHONE': '273-1397222905212230'
-              }, {
-                'INVESTOR_ID': '103087',
-                'MOBILE_NO': '6333202260-',
-                'INVESTOR_NAM': '投资者3087',
-                'VIPTYP': '3',
-                'FIRST_PINYIN': 'T',
-                'OPEN_STS': '2',
-                'LINKTELEPHONE': '0-'
-              }, {
-                'INVESTOR_ID': '103088',
-                'MOBILE_NO': '699500526',
-                'INVESTOR_NAM': '投资者3088',
-                'VIPTYP': '0',
-                'FIRST_PINYIN': 'T',
-                'OPEN_STS': '2'
               }]
             }
           }

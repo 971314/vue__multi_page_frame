@@ -35,7 +35,7 @@
         </div>
         <div @click="details[0].tplName != '非模板' ?iconClick(details[0]):''">
           <span>模板名称</span>
-          <span class="c1">{{details[0].tplName}}</span>
+          <span :class="details[0].tplName != '非模板'?'c1':''">{{details[0].tplName}}</span>
         </div>
         <div>
           <span>申请期间</span>

@@ -4,7 +4,7 @@
       <div class="account-info-title"><span class="info-title-left">开户信息</span></div>
       <div class="info-detail-group">
         <div class="info-detail-time">
-          开户时间<span class="detail-time-1a" v-text="customerMessage.OPENACCT_DT"></span>({{customerMessage.EXCHANGE_NAM}})
+          开户时间<span class="detail-time-1a" v-text="customerMessage.OPENACCT_DT"></span><span v-if="customerMessage.EXCHANGE_NAM">({{customerMessage.EXCHANGE_NAM}})</span>
         </div>
         <div class="info-detail-rujin">
           入金时间<span class="detail-time-1a" v-text="customerMessage.FIRST_IN_DT"></span>
@@ -271,6 +271,7 @@
             bottom: 20,
             itemWidth: 7,
             itemHeight: 7,
+            selectedMode: false,
             textStyle: {
               color: '#808086',
               fontSize: 13

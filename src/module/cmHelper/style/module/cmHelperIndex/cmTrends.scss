@@ -37,7 +37,9 @@ body{
 			padding: 0 toRem(30px);
 			
 			strong{
-				padding-left: toRem(20px);
+				position: relative;
+				top: toRem(2px);
+				padding:0 0 0 toRem(20px);
 				font-size: toRem(24px);
 				font-weight: normal;
 				color: #808086;

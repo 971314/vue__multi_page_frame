@@ -36,16 +36,14 @@
          </div>
        </div>-->
 
-      <div class="fill_group">
+      <div class="fill_group" @click="apply.processModel == '1'?showEvent = false:showEvent = true">
         <span>申请人类型</span>
-        <span :class="fillData.investorType == '选择申请类型' ? 'c4':''"
-              @click="apply.processModel == '1'?showEvent = false:showEvent = true">{{fillData.investorType}}</span>
+        <span :class="fillData.investorType == '选择申请类型' ? 'c4':''">{{fillData.investorType}}</span>
         <img src="../../images/apply/gengDuo.png" class="gengduo"/>
       </div>
-      <div class="fill_group">
+      <div class="fill_group" @click="selectName">
         <span>申请人姓名</span>
-        <span :class="appObject.appObjectName == '选择申请人姓名' ? 'c4':''"
-              @click="selectName">{{appObject.appObjectName}}</span>
+        <span :class="appObject.appObjectName == '选择申请人姓名' ? 'c4':''">{{appObject.appObjectName}}</span>
         <img src="../../images/apply/gengDuo.png" class="gengduo"/>
       </div>
       <div class="fill_group" @click="$router.push('/applyOpt')">

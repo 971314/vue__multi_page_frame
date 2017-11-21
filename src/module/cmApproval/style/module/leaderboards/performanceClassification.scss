@@ -1,0 +1,45 @@
+.performance_ranking {
+  @extend %initial;
+  position: static;
+  .performance_father {
+    background: $color15;
+    margin-top: toRem(20px);
+    div {
+      position: relative;
+      @include border-TBottom-color23;
+    }
+    div:last-child {
+      &:before {
+        border: 0;
+      }
+    }
+    .performance_header {
+      padding-left: toRem(30px);
+      color: $color18;
+      img {
+        width: toRem(8px);
+        height: toRem(28px);
+        margin-right: toRem(14px);
+      }
+      font-size: $font26;
+      height: toRem(80px);
+      line-height: toRem(80px);
+    }
+    .performance_body {
+      padding-left: toRem(30px);
+      font-size: $font33;
+      img {
+        width: toRem(50px);
+        height: toRem(50px);
+        margin-right: toRem(20px);
+      }
+      div {
+        height: toRem(100px);
+        line-height: toRem(100px);
+      }
+    }
+  }
+  .performance_father:nth-of-type(2) {
+    margin: 0;
+  }
+}

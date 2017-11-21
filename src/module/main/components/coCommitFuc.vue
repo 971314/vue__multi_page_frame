@@ -6,7 +6,7 @@
           <div class="item-warp">
             <div class="warp-item" :style="{width: swipeItemWidth}" v-for="item in items">
               <div class="item-content">
-                <toast-btn :addr="item.url" @clicks="aClick && aClick(item)">
+                <toast-btn :addr="item.url" :trade="item.trade" @clicks="aClick && aClick(item)">
                   <img :src="'images/'+item.image1">
                   <p>{{item.title}}</p>
                 </toast-btn>
@@ -52,7 +52,7 @@
       },
       maxPage: {
         type: Number,
-        default: 2
+        default: 3
       },
       swipeRow: {
         type: Number,
@@ -73,7 +73,7 @@
         showDot: false,
         showContent: [],
         swipeRefresh: true,
-        swiperInstance: null
+        swiper: null
       }
     },
     computed: {
@@ -133,31 +133,39 @@
         console.log('reload')
         if (pbE.SYS().getPrivateData('reload') == 1 || pbE.SYS().getPrivateData('reload') == '1') {
           this.swipeRefresh = false;
-          this.showContent = this.showContents();
+          //this.showContent = this.showContents();
+          this.showContents();
           pbE.SYS().storePrivateData('reload', 0)
         }
         setTimeout(() => {
           this.swipeRefresh = true;
-          this.showContent = this.showContents();
+          //this.showContent = this.showContents();
+          this.showContents();
         }, 10);
       },
       getCustomData() {//获取数据
         if (pbE.isPoboApp) {
           this.itemLists = pbE.SYS().readConfig(this.pbconfH5 + "main.json") ? JSON.parse(pbE.SYS().readConfig(this.pbconfH5 + "main.json")) : JSON.parse(pbE.SYS().readConfig(this.pbconfUrl + "main.json"));
-          this.showContent = this.showContents();
+          //this.showContent = this.showContents();
+          this.showContents();
           console.log(this.showContent)
         } else {
           this.$axios.get(this.confUrl + 'main.json').then((data) => {
             this.itemLists = data.data;
-            this.showContent = this.showContents();
+            this.showContents();
+            //this.showContent = this.showContents();
+
           }).catch((err) => {
             this.$axios.get("../"+ this.pbconfUrl + 'main.json').then((data) => {
               this.itemLists = data.data;
-              this.showContent = this.showContents();
+              //this.showContent = this.showContents();
+              this.showContents();
             });
             console.log('服务器异常', err)
           });
         }
+
+
       },
       showContents() {  //处理功能区逻辑
         var localMain = this.getCustoms;
@@ -207,6 +215,7 @@
           } else {
             pbE.SYS().writeLocalFile('main', 1, JSON.stringify(localMain = this.getCustoms))
           }
+
         }
 
         var arr = []
@@ -236,38 +245,29 @@
         if (this.isUserDefined) {
           arr.push(addObj)
         }
-        if (contentArr.length < this.maxPage) {
+        contentArr.push(arr);
+        this.showContent = contentArr;
+        setTimeout(() => {
+          this.initSwipe();
+        }, 200);
+
+        /*if (contentArr.length < this.maxPage) {
           if (arr.length == 0) {
             return contentArr;
           }
           contentArr.push(arr);
-          // //添加空白滚动页
-          // if (contentArr.length == this.maxPage) {
-          // 	return contentArr;
-          // }
-          // var conLength = contentArr.length;
-          // for(var i = 0; i < this.maxPage-conLength; i++) {
-          // 	arr = []
-          // 	contentArr.push(arr)
-          // }
+
           return contentArr;
         } else if (contentArr.length == this.maxPage) {
           return contentArr
-        }
-      }
-    },
-    watch: {
-      'showContent'(val, oldVal) {
+        }*/
+      },
+      initSwipe()
+      {
         this.showDot = false;
-        if (this.swiperInstance) {
-          setTimeout(() => {
-            this.swiperInstance.destroy(true, false);
-          }, 10);
-
-        }
-        if (val.length > 1) {
+        if (this.showContent.length > 1) {
           this.showDot = true;
-          this.swiperInstance = new Swiper('.swiper-container2', {
+          this.swiper = new Swiper('.swiper-container2', {
             pagination: '.pagination2',
             slidesPerView: 1,
             paginationClickable: true,
@@ -278,10 +278,46 @@
               swiper.update();
             }
           });
+
         }
       }
+
     },
+
+   /* watch: {
+      'showContent'(val, oldVal) {
+        this.showDot = false;
+        /!*if (this.swiper) {
+          setTimeout(() => {
+            this.swiper.destroy(true, false);
+          }, 10);
+
+        }*!/
+        if (val.length > 1) {
+          this.showDot = true;
+          this.swiper = new Swiper('.swiper-container2', {
+            pagination: '.pagination2',
+            slidesPerView: 1,
+            paginationClickable: true,
+            observer: true,
+            observeParents: true,
+            resistance: true,
+            preloadImages:true,
+            updateOnImagesReady:true,
+
+            onSlideChangeEnd: function (swiper) {
+              swiper.update();
+            }
+          });
+
+        }
+      }
+    },*/
     created() {
+      /*this.getCustomData && this.getCustomData();
+      this.initPage();*/
+    },
+    mounted(){
       this.getCustomData && this.getCustomData();
       this.initPage();
     }

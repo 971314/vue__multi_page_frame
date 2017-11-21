@@ -93,6 +93,7 @@
             x: 'left',
             itemWidth: 20,
             itemHeight: 7,
+            selectedMode: false,
             textStyle: {
               color: '#808086',
               fontSize: 10
@@ -206,6 +207,7 @@
             x: 'left',
             itemWidth: 7,
             itemHeight: 7,
+            selectedMode: false,
             textStyle: {
               color: '#808086',
               fontSize: 10
@@ -354,6 +356,7 @@
             bottom: 20,
             itemWidth: 7,
             itemHeight: 7,
+            selectedMode: false,
             textStyle: {
               color: '#808086',
               fontSize: 13
@@ -407,6 +410,7 @@
             bottom: 20,
             itemWidth: 7,
             itemHeight: 7,
+            selectedMode: false,
             textStyle: {
               color: '#808086',
               fontSize: 13

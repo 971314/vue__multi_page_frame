@@ -47,23 +47,19 @@
                     </select>
                 </a>
                 <div v-if="detail && showEditBtn">
-                  <!-- <div class="historyFollow" v-if="detail.detail.length>0">
-                      <div class="hisItem" v-if="params.businessType==1">
-                        <div>问题内容：{{detail.detail[0].PROBLEM_DESC}}</div>
-                        <div>处理结果：{{detail.detail[0].PROBLEM_PROCESS_RESULT}}</div>
-                      </div>
-                    <div class="hisItem" v-if="params.businessType!=1" v-for="i in detail.detail[0].FOLLOWDESC">{{i}}</div>
-                  </div> -->
+
                   <div class="historyFollow" v-if="params.businessType==1 && detail.detail.length>0">
                       <div class="hisItem">
-                        <div>问题内容：{{detail.detail[0].PROBLEM_DESC}}</div>
-                        <div>处理结果：{{detail.detail[0].PROBLEM_PROCESS_RESULT}}</div>
+                        <div>{{getDate(detail.detail[0].PROBLEM_PROCESS_DT) + ' ' + detail.detail[0].PROBLEM_DESC}}</div>
+                        <div>{{getDate(detail.detail[0].PROBLEM_PROCESS_DT) + ' ' + detail.detail[0].PROBLEM_PROCESS_RESULT}}</div>
                       </div>
                   </div>
 
                   <div v-if="params.businessType==2 && detail.detail.length>0">
-                      <div v-if="detail.detail[0].FOLLOWDESC" class="historyFollow" >
-                        <div class="hisItem" v-if="params.businessType!=1" v-for="i in detail.detail[0].FOLLOWDESC">{{i}}</div>
+                      <div v-if="detail.detail[0].FOLLOWDESC" class="historyFollow">
+                        <div class="hisItem" v-if="params.businessType!=1" >
+                          <div v-for="i in detail.detail[0].FOLLOWDESC">{{i}}</div>
+                        </div>
                       </div>
                   </div>
 
@@ -137,7 +133,8 @@
                 params : {},
                 showEditBtn : "", //是否否显示【编辑】按钮
                 detail : null,
-                isEdit : false
+                isEdit : false,
+                submitFlag : false
             }
         },
         computed: {
@@ -149,11 +146,12 @@
           })
         },
         activated() {
-            //console.log(this.addFollow);
+            console.log(this.addFollow);
             this.params = util.deepClone(this.addFollow);
             this.showEditBtn = this.showEditBtnFlag;
             this.isEdit = this.isEditFlag;
             this.imgSrcArr = this.addFollow.attach;
+            this.submitFlag = false;
             if(this.params.businessType==2 && this.isEdit){
               //查询某个潜在客户跟进
               this.pInvestorFollow();
@@ -287,7 +285,10 @@
 
             submit(){
                 var _this = this;
-
+                if(_this.submitFlag){ 
+                  //防止重复提交
+                  return; 
+                }
                 if(!_this.params.InvestorId){
                     _this.$toast('请选择客户！')
                     return;
@@ -298,6 +299,7 @@
                     _this.$toast('请输入跟进内容！')
                     return;
                 }
+                _this.submitFlag = true;
                 _this.$$loading();
                 _this.params.userId = this.info.userId;
                 _this.params.attach = _this.imgSrcArr;
@@ -344,7 +346,7 @@
                             msg = "失败！";
                           }
                           _this.$store.dispatch('updateAddFollow', follow);
-                          //_this.$toast(msg)
+                          _this.$toast(msg)
                           // _this.$alert({
                           //   maskClosable: true,
                           //   btns: [{
@@ -356,9 +358,9 @@
                           //   title: '<span class="text-default">提示</span>',
                           //   message: msg,
                           // });
-                          // setTimeout(() => {
-                          //     _this.$router.back()
-                          // }, 3000)
+                          setTimeout(() => {
+                              _this.$router.back()
+                          }, 3000)
                       }).
                       catch(function(err) {
                           console.log('服务器异常', err)
@@ -373,7 +375,7 @@
                             msg = "失败！";
                           }
                           _this.$store.dispatch('updateAddFollow', follow);
-                          //_this.$toast(msg)
+                          _this.$toast(msg)
                           // _this.$alert({
                           //   maskClosable: true,
                           //   btns: [{
@@ -385,9 +387,9 @@
                           //   title: '<span class="text-default">提示</span>',
                           //   message: msg,
                           // });
-                          // setTimeout(() => {
-                          //     _this.$router.back()
-                          // }, 3000)
+                          setTimeout(() => {
+                              _this.$router.back()
+                          }, 3000)
                       }).
                       catch(function(err) {
                           console.log('服务器异常', err)
@@ -445,6 +447,7 @@
                         _this.imgSrcArr.push(data.attach[i].FILEDATA);
                       }
                     }
+                    console.log('data---', data);
                     _this.detail = data;
                 }).
                 catch(function(err) {
@@ -466,6 +469,7 @@
                     _this.params.followDesc = data.detail[0].PROBLEM_DESC
                     _this.params.followNote = data.detail[0].PROBLEM_PROCESS_RESULT
                     if(data.attach.length>0){
+                      _this.imgSrcArr = [];
                       for(var i in data.attach){
                         _this.imgSrcArr.push(data.attach[i].FILEDATA);
                       }
@@ -477,8 +481,8 @@
                 });
             },
             //图片预览
-            imgPreview(){
-
+            getDate(t){
+              return util.getDate(t);
             }
 
         }

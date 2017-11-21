@@ -1,0 +1,31 @@
+.inviolable-rights-content {
+  .qy-bzj-view {
+    background-color: #ffffff;
+    padding: toRem(40px) toRem(30px);
+    .qy-bzj-header {
+      line-height: 1;
+      color: $color18;
+      @include font($font26);
+    }
+    .qy-bzj-charts {
+      margin-top: toRem(14px);
+      height: toRem(500px);
+      z-index: 999;
+    }
+  }
+  .khqy-db-view {
+    margin-top: toRem(20px);
+    background-color: #ffffff;
+    padding: toRem(40px) toRem(30px);
+    .khqy-db-header {
+      line-height: 1;
+      color: $color18;
+      @include font($font26);
+    }
+    .khqy-db-charts {
+      margin-top: toRem(14px);
+      height: toRem(500px);
+      z-index: 999;
+    }
+  }
+}

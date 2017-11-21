@@ -64,11 +64,7 @@
 
     </div>
 
-    <div v-if="count && segmentedIndex==1" class="haveOpen text-center">{{count}}位已开户客户</div>
-
-
-
-
+    <div v-if="count" class="haveOpen text-center">{{count}}位{{segmentedIndex==1?'已':'未'}}开户客户</div>
 
   </div>
 </template>
@@ -76,6 +72,7 @@
 <script>
   import {mapState} from 'vuex'
   import {IndexList, IndexSection} from 'mint-ui'
+  import {Indicator} from 'mint-ui'
   import util from '../../utils/util';
 
   export default {
@@ -149,14 +146,8 @@
           if(sc){ sc.style.height = hei + 'px'; }
         },50);
 
-      },
-      $route(to, from) {
-        if (to.name == 'cmHelperIndex') {
-         this.currentList = []
-          this.urlcontent = 'investor'
-          this.segmentedIndex = 1
-        }
       }
+
     },
     methods: {
       //切换开户状态
@@ -178,24 +169,11 @@
           this.getCusList('pInvestor/list/' + this.info.userId);
         }
       },
-      //搜索框获取焦点
-      searchFocus() {
-        var _this = this;
-        _this.focusFlag = true;
-        setTimeout(function(){
-          _this.hidePlaceHolder = false;
-        },300);
-      },
-      blurEv(){
-        var _this = this;
-        _this.focusFlag = false;
-        _this.hidePlaceHolder = true;
-      },
       //获取【客户列表|潜在客户列表】
       getCusList(urlSuffix) {
         var _this = this;
         var url = this.url + urlSuffix;
-        _this.$loading.toggle(' ')
+        _this.$loadingNodispear.toggle(' ');
         _this.$axios.get(url,{headers:{id:this.info.token}}, null).then(function (result) {
 
           var list = result.data.data;
@@ -214,19 +192,32 @@
               index++;
               _this.count = _this.count + list[i].length;
             }
+            //按照字母顺序排序
+            cList.sort(function(m,n){    
+                var s = m.pinyin;    
+                var e = n.pinyin;    
+                if(s>e){    
+                    return 1    
+                }else if(s<e){    
+                    return -1;    
+                }else{    
+                    return 0;    
+                }    
+            }); 
             if(hasOther){
                cList.push(hasOther);
             }
             _this.deptJson = util.deepClone(cList);
             _this.currentList = util.deepClone(cList);
           }
-//          _this.$forceUpdate();
           setTimeout(function(){
             var hei  = document.querySelector(".selectDept").offsetHeight;
             document.querySelector(".mint-indexlist-content").style.height = hei + 'px';
-            _this.$loading.hide()
+            _this.$loadingNodispear.hide()
           },50);
         }).catch(function (err) {
+          _this.$loadingNodispear.hide()
+          _this.$toast('服务器异常!')
           console.log('服务器异常', err)
         });
       },

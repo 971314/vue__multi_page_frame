@@ -1,0 +1,45 @@
+.common-main-header {
+  height: 44px;
+  line-height: normal;
+  position: relative;
+
+  @include bottom-px1-pixel-ratio;
+
+  .common-header-left {
+    position: absolute;
+    left: toRem(30px);
+    top: 0;
+    line-height: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding-left: toRem(22px);
+    color: #1a1a1a;
+    background-image: url(../images/biaoqian@2x.png);
+    background-repeat: no-repeat;
+    background-size: toRem(6px) toRem(31px);
+    background-position: left center;
+    font-size: 16px;
+  }
+
+  .common-header-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    line-height: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    padding-right: 13px;
+    color: #808086;
+    background-image: url(../images/moredefaultactive@2x.png);
+    background-repeat: no-repeat;
+    background-size: toRem(12px) toRem(23px);
+    background-position: right center;
+    font-size: 13px;
+    font-weight: normal;
+  }
+}

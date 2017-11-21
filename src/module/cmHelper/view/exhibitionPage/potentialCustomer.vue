@@ -41,7 +41,9 @@
             <div class="item-right" v-text="recordItem.FOLLOWDESC"></div>
             <img class="record-arrow" src="../../images/exhibitionPage/showdetail@2x.png">
           </div>
-          <div v-if="recordList.length <= 0" class="record-item" style="justify-content: center; font-size: 16px;">暂无数据</div>
+          <div v-if="recordList.length <= 0" class="record-item" style="justify-content: center; font-size: 16px;">
+            暂无数据
+          </div>
         </div>
       </div>
     </div>
@@ -73,8 +75,7 @@
       return {
         gobackUrl: 'goBack',
         showEvent: false,
-        recordList: [
-        ]
+        recordList: []
       }
     },
     computed: {
@@ -156,10 +157,24 @@
               return;
             }
             response.map((item) => {
-              let tempObj = {}
-              tempObj['FOLLOWDESC'] = item['FOLLOWDESC']
-              tempObj['UPDT'] = this.$$timeFormate({date: item['UPDT'], format: 'Y-M-D'})
-              this.recordList.push(tempObj)
+              let tempArray = ''
+              let tempStr = ''
+              console.log(item['FOLLOWDESC'])
+              tempStr = item['FOLLOWDESC'].replace(/\\n/g, '|')
+              console.log(tempStr)
+              tempArray = tempStr.split('|')
+              console.log(tempArray)
+              tempArray.map((item, index) => {
+                if (index == 0) {
+                  return
+                }
+                let jArray = []
+                let tempObj = {}
+                jArray = item.split(' ')
+                tempObj['FOLLOWDESC'] = jArray[1]
+                tempObj['UPDT'] = this.$$timeFormate({date: jArray[0], format: 'Y-M-D'})
+                this.recordList.push(tempObj)
+              })
             })
             console.log('response', response);
           })

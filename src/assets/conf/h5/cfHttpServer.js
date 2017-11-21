@@ -9,7 +9,7 @@ var PBHttpServer = {
   },
   mine: {
     serverUrl: 'http://101.226.207.143:58080',
-    infoUrl:'http://58.246.171.3:58102/pobocertification_rest/1_0/'
+    infoUrl: 'http://58.246.171.3:58102/pobocertification_rest/1_0/'
   },
   condition: {
     serverUrl: 'http://101.226.207.149/cloud_trade/1_0',//测试部测试
@@ -36,10 +36,14 @@ var PBHttpServer = {
     shareUrl: 'http://180.169.30.6:8080/share/active.html'   //http://180.169.30.6:8080/poboactivityws/active.html
   },
   cmHelper: {
-    // 'serverUrl': 'http://192.168.6.119:8080/pobocmhelperapp/0.0.1/pc/'
-    "serverUrl":'http://180.169.30.6:8080/pobocmhelperapp/0.0.1/pc/'
+    // 'serverUrl': 'http://192.168.6.49:8280/pobocmhelperapp/0.0.1/pc/'
+    "serverUrl": 'http://180.169.30.6:8080/pobocmhelperapp/0.0.1/pc/'
+  },
+  cmApproval: {
+    'serverUrl': 'http://192.168.6.49:8080/pobocmhelperapp/0.0.1/pc/'
+    // "serverUrl": 'http://180.169.30.6:8080/pobocmhelperapp/0.0.1/pc/'
   },
   reg: {
-    "serverUrl":'https://pbmobile.pobo.net.cn/pobocertification_WebService/'
+    "serverUrl": 'https://pbmobile.pobo.net.cn/pobocertification_WebService/'
   }
 }

@@ -21,7 +21,10 @@
             <div v-if="lists"><div class="text-center" v-if="lists.length <= 0" style="padding:10px 0;">无数据</div></div>
             <div class="cmTrendsGroup" v-for="(item, index) in lists">
                 <div class="group-title setHeight">
-                    <i>&nbsp;</i><strong>{{item.MSGTIME}}</strong>
+                    <i>&nbsp;</i>
+                    <strong v-if="item.MSGTIME==date">今天</strong>
+                    <strong v-else-if="item.MSGTIME==yesToday">昨天</strong>
+                    <strong v-else>{{item.MSGTIME}}</strong>
                 </div>
                 <div class="group">
                     <a class="cell">
@@ -56,6 +59,7 @@
                 begin : 1,
                 size : 10,
                 date : util.getDate(),
+                yesToday : util.addDate(null,-1),
                 //客户端类型（ios || android）
                 isIos : browser.versions.ios || browser.versions.iPhone || browser.versions.iPad
             }

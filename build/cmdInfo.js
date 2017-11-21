@@ -4,10 +4,10 @@
 
 module.exports = { //自定义打包模块数量
   conf: {
-    cmd: ['condition','alerted','stopProfit','main','mine','account','eCalendar','mrkHot','indNews','jgdx','activity','analysis','adequacy', 'adequacySignature']
+    cmd: ['condition', 'alerted', 'stopProfit', 'main', 'mine', 'account', 'eCalendar', 'mrkHot', 'indNews', 'jgdx', 'activity', 'analysis', 'adequacy', 'adequacySignature']
   },
   wq: {
-    cmd: ['indNews','activity']
+    cmd: ['cmHelper', 'cmApproval', 'cmLogin']
   },
   condition: {
     cmd: ['condition', 'alerted', 'stopProfit', 'main', 'mine', 'account']
@@ -15,5 +15,5 @@ module.exports = { //自定义打包模块数量
   sdx: {
     cmd: ['adequacy', 'adequacySignature']
   }
-};
+}
 
