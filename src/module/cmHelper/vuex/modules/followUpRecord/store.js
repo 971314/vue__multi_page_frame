@@ -3,6 +3,8 @@ export default{
     jumpFlag : 1,//1：跳转客户信息详情 2：跳转新建跟进 3：跳转其他
     showEditBtn : false, //是否显示【新建跟进】页面的【编辑】按钮
     isEdit : false, //是否是【编辑跟进】
+    segmentedIndex : '',// 客户列表页面【''已开户 1已开户 2未开户】
+    cusListPageTitle : '', //客户列表 页面标题
     //跟进情况
     addFollow: {
       businessType : '',//1:留存客户跟进   2:潜在客户跟进
@@ -52,7 +54,14 @@ export default{
     },
     updatepIsEdit(state, payload) {
       state.isEdit = payload.isEdit
+    },
+    updatepSegmentedIndex(state, payload) {
+      state.segmentedIndex = payload.segmentedIndex
+    },
+    updatepCusListPageTitle(state, payload) {
+      state.cusListPageTitle = payload.cusListPageTitle
     }
+
 
   },
   actions: {
@@ -74,7 +83,15 @@ export default{
     },
     updatepIsEdit({commit}, isEdit) {
       commit({type: 'updatepIsEdit', isEdit: isEdit})
+    },
+    updatepSegmentedIndex({commit}, segmentedIndex) {
+      commit({type: 'updatepSegmentedIndex', segmentedIndex: segmentedIndex})
+    },
+    updatepCusListPageTitle({commit}, cusListPageTitle) {
+      commit({type: 'updatepCusListPageTitle', cusListPageTitle: cusListPageTitle})
     }
+
+    
   },
   getters: {}
 }

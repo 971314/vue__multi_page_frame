@@ -236,38 +236,52 @@
     }
   }
 
+
   //开仓均价保留到价格精度加上一位
   pbUtils.decimalDec = function (decimal, price) {
-    price = price + '';
-    var decIndex = price.indexOf('.');
-    var length = price.length;
-    if (decIndex >= 0) {
-      if (length - 1 - decIndex >= decimal + 1) {
-        price = price.substr(0, price.indexOf('.') + decimal + 2);
-      } else {
-        price = (price - 0).toFixed(decimal + 1);
-      }
+    if (decimal == 0) {
+      return pbUtils.floatToFixed(price, 1);
     } else {
+      price = price + '';
+      var decIndex = price.indexOf('.');
+      var length = price.length;
+      // if (decIndex >= 0) {
+      //   if (length - 1 - decIndex >= decimal + 1) {
+      //     price = price.substr(0, price.indexOf('.') + decimal + 2);
+      //   } else {
+      //     price = (price - 0).toFixed(decimal + 1);
+      //   }
+      // } else {
+      //   price = (price - 0).toFixed(decimal + 1);
+      // }
       price = (price - 0).toFixed(decimal + 1);
+      return price;
     }
-    return price;
   }
 
   //最新价保留到价格精度
   pbUtils.decimalDecPrice = function (decimal, price) {
-    price = price + '';
-    var decIndex = price.indexOf('.');
-    var length = price.length;
-    if (decIndex >= 0) {
-      if (length - 1 - decIndex >= decimal) {
-        price = price.substr(0, price.indexOf('.') + decimal + 1);
-      } else {
-        price = (price - 0).toFixed(decimal);
-      }
-    } else {
-      price = (price - 0).toFixed(decimal);
+    if (decimal == 0) {
+      if (price == "0.0000")
+        return "--";
+      return price;
     }
-    return price;
+    else {
+      price = price + '';
+      var decIndex = price.indexOf('.');
+      var length = price.length;
+      // if (decIndex >= 0) {
+      //   if (length - 1 - decIndex >= decimal) {
+      //     price = price.substr(0, price.indexOf('.') + decimal + 1);
+      //   } else {
+      //     price = (price - 0).toFixed(decimal);
+      //   }
+      // } else {
+      //   price = (price - 0).toFixed(decimal);
+      // }
+      price = (price - 0).toFixed(decimal);
+      return price;
+    }
   }
 
   /*日期格式化*/

@@ -14,7 +14,7 @@
           <div class="process_cell" v-for=" (datas,i) in processData">
             <div>
               <span>{{i == 0 ? datas.operateTime ? $$dateInterception(datas.operateTime, 5, 16) : '当前' : $$dateInterception(datas.operateTime, 5, 16)}}</span>
-              <!--<i
+              <i
                 v-if="i == 0 && datas.auditInfoList[0] && datas.auditInfoList[0].operateTypeId == '0' || i == 0 && datas.auditInfoList[0]  && datas.auditInfoList[0].operateTypeId == '1' || i == 0 && datas.auditInfoList[0]  && datas.auditInfoList[0].operateTypeId == '5' "
                 class="by1"></i>
               <i v-else-if=" i == 0  && datas.auditInfoList[0] && datas.auditInfoList[0].operateTypeId == '2'"
@@ -22,19 +22,19 @@
               <i
                 v-else-if="i == 0  && datas.auditInfoList[0] && datas.auditInfoList[0].operateTypeId == '4' || i == 0  && datas.auditInfoList[0] && datas.auditInfoList[0].operateTypeId == '3'"
                 class="by2"></i>
-              <i v-else class="by"></i>-->
-              <i v-if="i == 0" class="by1"></i>
               <i v-else class="by"></i>
+              <!--<i v-if="i == 0" class="by1"></i>
+              <i v-else class="by"></i>-->
               <span class="line"></span>
             </div>
             <div v-if="i == 0">
-              <!--<div class="paddingDiv"
+              <div class="paddingDiv"
                    :class="{'c1':i == 0 && datas.auditInfoList[0].operateTypeId == '1' || i == 0 && datas.auditInfoList[0].operateTypeId == '5','c2':i == 0 && datas.auditInfoList[0].operateTypeId == '2','c3':i == 0 && datas.auditInfoList[0].operateTypeId == '3' || i == 0 && datas.auditInfoList[0].operateTypeId == '4'}">
                 {{datas.auditInfoList[0].operateType}}
-              </div>-->
-              <div class="paddingDiv c1">
-                {{datas.auditInfoList[0].operateType}}
               </div>
+             <!-- <div class="paddingDiv c1">
+                {{datas.auditInfoList[0].operateType}}
+              </div>-->
               <div v-for="data in datas.auditInfoList">{{data.operatorName}} {{data.departName}} {{data.operateType}}
               </div>
             </div>

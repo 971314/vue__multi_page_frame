@@ -8,8 +8,7 @@ var PBHttpServer = {
     serverUrl: 'http://101.226.207.143:58080' //http://101.226.207.143:58080 http://101.230.0.69:30003
   },
   mine: {
-    serverUrl: 'http://101.226.207.143:58080',
-    infoUrl: 'http://58.246.171.3:58102/pobocertification_rest/1_0/'
+    infoUrl:'http://180.169.30.6:8080/pobocertification_rest2/1_0/'
   },
   condition: {
     serverUrl: 'http://101.226.207.149/cloud_trade/1_0',//测试部测试
@@ -37,13 +36,15 @@ var PBHttpServer = {
   },
   cmHelper: {
     // 'serverUrl': 'http://192.168.6.49:8280/pobocmhelperapp/0.0.1/pc/'
-    "serverUrl": 'http://180.169.30.6:8080/pobocmhelperapp/0.0.1/pc/'
+    "serverUrl":'http://180.169.30.6:8080/pobocmhelperapp/0.0.1/pc/'
   },
   cmApproval: {
-    'serverUrl': 'http://192.168.6.49:8080/pobocmhelperapp/0.0.1/pc/'
-    // "serverUrl": 'http://180.169.30.6:8080/pobocmhelperapp/0.0.1/pc/'
+    // 'serverUrl': 'http://192.168.6.49:8280/pobocmhelperapp/0.0.1/pc/'
+    "serverUrl":'http://180.169.30.6:8080/pobocmhelperapp/0.0.1/pc/'
   },
   reg: {
-    "serverUrl": 'https://pbmobile.pobo.net.cn/pobocertification_WebService/'
+    "serverUrl":'https://pbmobile.pobo.net.cn/pobocertification_WebService/'
+    //"serverUrl":'http://180.169.30.6:8080/pobocertification_rest2/old/'
+
   }
 }

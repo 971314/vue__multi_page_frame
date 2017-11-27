@@ -9,12 +9,10 @@
       padding: 0 toRem(62px);
       font-size: $font33;
       justify-content: space-between;
-      height: 40px;
-      line-height: 40px;
+      height: toRem(86px);
       position: relative;
       @include border-TBottom-color23;
       & > div {
-        position: relative;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -23,10 +21,9 @@
         & > div {
           flex: 1;
           display: flex;
+          align-items: center;
         }
         span {
-          position: absolute;
-          bottom: 0;
           width: toRem(150px);
           border-bottom: toRem(4px) solid $color15;
           &.selected {
@@ -42,14 +39,15 @@
   }
   //二级tab
   .performance_tab2 {
+    position: static;
     background: $color15;
     & > div {
       display: flex;
       color: $color17;
       font-size: $font10;
-      height: 40px;
-      line-height: 40px;
+      height: toRem(86px);
       position: relative;
+      align-items: center;
       @include border-TBottom-color23;
       span {
         display: inline-block;
@@ -67,13 +65,11 @@
     & > div {
       display: flex;
       font-size: $font33;
-      height: 40px;
-      line-height: 40px;
+      height: toRem(86px);
       position: relative;
       @include border-TBottom-color23;
       & > div {
         flex: 1;
-        position: relative;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -87,8 +83,6 @@
           align-items: center;
         }
         span {
-          position: absolute;
-          bottom: 0;
           width: toRem(150px);
           border-bottom: toRem(4px) solid $color15;
           &.selected {
@@ -103,9 +97,9 @@
 
   }
   .performance_list {
-    position: absolute;
-    top: 84px;
-    bottom: toRem(98px);
+    position: static;
+    /* top: 84px;
+     bottom: toRem(98px);*/
     overflow: auto;
     .group_list {
       background: $color15;
@@ -146,7 +140,6 @@
         background: $color29;
         opacity: 0.09;
         height: 100%;
-        width: 90%;
       }
     }
   }
@@ -156,9 +149,10 @@
     bottom: 0;
     width: 100%;
     margin-top: toRem(15px);
-    @include border-TTop-color23;
+    @include border-Bbottom-color23;
     padding: 0 toRem(30px);
     height: 49px;
+    z-index: 1;
     & > div {
       position: relative;
       @include border-color23;
@@ -171,7 +165,7 @@
         display: inline-block;
         width: 25%;
         font-size: $font26;
-        color: $color47;
+        color: $color17;
         text-align: center;
         position: relative;
         @include border-R-color23;

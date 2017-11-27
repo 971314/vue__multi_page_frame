@@ -10,10 +10,7 @@
 	.padding1{
 		padding: toRem(40px) toRem(30px);
 	}
-	.common-nav{
-		height: toRem(88px);
-		line-height: toRem(88px); 
-	}
+	
 	.container{
 		margin-top: 0;
 		.group{
@@ -71,22 +68,48 @@
 		    }
 		}
 		.applyInfo{
-			padding-top: toRem(40px);
+			padding-top: toRem(26px);
 			background-color: #fff;
 			.applyIitle{
-				margin-bottom: toRem(34px);
+				margin-bottom: toRem(26px);
 				padding: 0 toRem(30px);
 				@extend .font1;
 			}
 			.group{
+				position: relative;
 				margin-top: 0;
+				@include bottom-px1-pixel-ratio;
 				.cell{
-					margin-bottom: toRem(34px);
+				    position: relative;
+					margin-bottom: toRem(26px);
 					padding: 0 toRem(30px);
 					@extend .font2;
 					.mark{
 						line-height: toRem(46px);
+				    	word-break: break-all;
 					}
+					.cell-footer.access{
+						font-size: toRem(26px);
+						color: #3366cc;
+					}
+					
+				}
+				.cell.canGO{
+					position: relative;
+					padding: 0 toRem(60px) 0 toRem(30px);
+					.toDetail{
+						position: absolute;
+						right: toRem(30px);
+						top: 50%;
+						z-index: 2;
+						width: toRem(16px);
+						height: toRem(30px);
+						transform: translate(0,-50%);
+						-webkit-transform: translate(0,-50%);
+					}
+				}
+				.canGO.noTPL{
+					padding: 0 toRem(30px) 0 toRem(30px);
 				}
 				.cell.accMana{
 					position: relative;
@@ -98,17 +121,24 @@
 						@extend .font2;
 					}
 				}
+				.cell:last-child:before{
+					border-bottom: 0;
+				}
+			}
+			.group.borderBottom0:before{
+				border-bottom: 0;
 			}
 		}
 
 		.enclosure{
-			margin-top: toRem(20px);
-			margin-bottom: toRem(100px);
-			padding-left: toRem(30px);
+			margin-top: 0;
+			margin-bottom: 0;
+			padding: 0;
 			background-color: #fff;
 			.enclosureIitle{
 				position: relative;
 				margin-bottom: 0;
+				padding: 0 toRem(30px) 0 toRem(30px);
 				height: toRem(76px);
 				line-height: toRem(76px);
 				@extend .font1;
@@ -119,7 +149,7 @@
 				padding: 0;
 				.cell{
 					position: relative;
-					padding: 0 toRem(60px) 0 0;
+					padding: 0 toRem(30px) 0 toRem(30px);
 					height: toRem(86px);
 					line-height: toRem(86px);
 					@include bottom-px1-pixel-ratio;
@@ -129,18 +159,14 @@
 						position: absolute;
 						right: toRem(30px);
 						top: 50%;
-						z-index: 2;
+						z-index: 2; 
 						width: toRem(16px);
 						height: toRem(30px);
 						transform: translate(0,-50%);
 						-webkit-transform: translate(0,-50%);
-						/* img{
-							width: 100%;
-							height: 100%;
-						    vertical-align: top;
-						} */
 					}
 					.cell-body{
+						font-size: toRem(28px);
 						text-overflow: ellipsis;
 					    white-space: nowrap;
 					    overflow: hidden;
@@ -154,22 +180,25 @@
 						padding-left: 0.5rem;
 						@extend .font2;
 					}
+					.cell-footer.access{
+						font-size: toRem(26px);
+						color: #3366cc;
+					}
 				}
-				.cell:last-child{
+				.cell.canGO{
+					padding: 0 toRem(60px) 0 toRem(30px);
+				}
+				.cell:last-child:before{
 					border:0;
 				}
 			}
 		}
-
+		.enclosure.margin1{
+			margin-bottom: toRem(20px); 
+		}
 	}
 
 	.approSubmit{
-			/* overflow: hidden;
-		    position: fixed;
-		    bottom: 0;
-		    left: 0;
-		    z-index: 11;
-		    width: 100%; */
 			button{
 				float: left;
 				padding: 0;
@@ -189,4 +218,26 @@
 			}
 		}
 
+}
+
+.alert .alert-modal {
+  width: toRem(640px);
+  padding: toRem(52px) toRem(60px) !important;
+  border-radius: toRem(20px);
+  .alert-title {
+    display: block !important;
+    color: $color18;
+    font-size: $font33;
+    font-weight: normal;
+  }
+  .alert-message {
+    padding: 0 0 0 0;
+    line-height: toRem(44px);
+    color: $color17;
+    font-size: $font23;
+    text-align: justify;
+  }
+  .alert-footer {
+    display: none;
+  }
 }

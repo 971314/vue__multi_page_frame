@@ -53,9 +53,10 @@
     },
     methods: {
       shareClick() {
-        if(this.isShare){
+        /*if(this.isShare){
           location.href = 'pobo:uncheck=1&pageId=800012&type=1';
-        }
+        }*/
+        location.href = 'pobo:uncheck=1&pageId=800012&type=1';
       },
       getActiveBar: function () {
         var path = this.$route.path;

@@ -1,0 +1,96 @@
+
+
+        //操作提示及其所有子栏目下的文章json串
+        var _caozuo = [
+            {"title":"宁波杉立期货早会通报-2014.8.29","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/29-3e6402ecbaf04202bf528d463d51f3b7.html","date":"2014-08-29","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.28","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/28-2a8a7e7215bc4fdabe21f0c93015d8ae.html","date":"2014-08-28","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.27","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/27-c403ace4e2974730b2272098ae1d52ae.html","date":"2014-08-27","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.26","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/26-df43a9c9055a4362a7ddbdc26bd3ffba.html","date":"2014-08-26","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.25","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/25-36ba5f8d0fbe4ebaa72eae4457015f8d.html","date":"2014-08-25","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.22","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/22-bae5f5cb6e634894ae214eed1892d5d4.html","date":"2014-08-22","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.21","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/21-4b64b6e0c8e84a229b77289652519e4a.html","date":"2014-08-21","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.20","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/20-b612edc5cc564e5ca81a9a279c7c3613.html","date":"2014-08-20","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.19","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/19-4cf4d1e5cc014cfba741f597089dcf80.html","date":"2014-08-19","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.18","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/18-5b3b778266da480591d2ff932151078a.html","date":"2014-08-18","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.15","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/15-a033775f8e1e46438e8cab680f077074.html","date":"2014-08-15","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.14","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/14-a4e4715182d64450b568bc06a8e65228.html","date":"2014-08-14","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.13","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/13-3f7075e37735454f8232fd6d6774284b.html","date":"2014-08-13","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.12","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/12-be6ba969ec364c4dbb7ed9901d05c2f2.html","date":"2014-08-12","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.11","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/11-50bb3adf7e414704bdbcfecfd9142872.html","date":"2014-08-11","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.8","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/8-485f9c6cffd140b9b6f9de064accfbba.html","date":"2014-08-08","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.7","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/7-2a09d98836734aa9a9990971b27d3187.html","date":"2014-08-07","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.6","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/6-6379d2064c1d468fa09cff54b4708114.html","date":"2014-08-06","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.5","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/5-4a63737de26a43d390e888828c6a0626.html","date":"2014-08-05","parentTitle":"热点品种"},
+            {"title":"宁波杉立期货早会通报-2014.8.4","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/8/4-edb1da8886144d7eb8e5fc05a5d4d0b0.html","date":"2014-08-04","parentTitle":"热点品种"}
+        ];
+        //日常报告及其所有子栏目下的文章json串
+        var _day = [
+            {"title":"巴西农户开始种植大豆，产量有望创下历史最高纪录","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/9/29-21bab880690e40b78f9843f28762371e.html","date":"2014-09-29","parentTitle":"能源化工"},
+            {"title":"加拿大农业部：2014/15年度大豆产量调低至590万吨","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/9/29-60dc754ac0274ffc98deee93f295e450.html","date":"2014-09-29","parentTitle":"农产品"},
+            {"title":"美国现货大豆玉米升贴水持稳至走低，农户销售缓慢","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/9/29-678b33c152ff4f2d806621dfc6a9d5d4.html","date":"2014-09-29","parentTitle":"农产品"},
+            {"title":"宁波杉立期货钢铁炉料周评-2014.09.26","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140928221011857.pdf","date":"2014-09-28","parentTitle":"周报"},
+            {"title":"宁波杉立期货动力煤周评-2014.09.26","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140928221442949.pdf","date":"2014-09-28","parentTitle":"周报"},
+            {"title":"宁波杉立期货玻璃周评-2014.09.26","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140928234753401.pdf","date":"2014-09-28","parentTitle":"周报"},
+            {"title":"宁波杉立期货橡胶周评-2014.09.26","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140928235346731.pdf","date":"2014-09-28","parentTitle":"周报"},
+            {"title":"宁波杉立期货玻璃周评-2014.09.26","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140928234753401.pdf","date":"2014-09-28","parentTitle":"周报"},
+            {"title":"宁波杉立期货LLDPE周评-2014.09.26","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140926163646432.pdf","date":"2014-09-26","parentTitle":"周报"},
+            {"title":"宁波杉立期货塑料日评-2014.09.25","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/9/25-75ab735c2d3448969868d502e7056f3e.html","date":"2014-09-25","parentTitle":"日报"},
+            {"title":"宁波杉立期货动力煤日评-2014.09.25","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/9/25-d2ad39b03bdc4aee9320b625ad5cd8fb.html","date":"2014-09-25","parentTitle":"日报"},
+            {"title":"宁波杉立期货玻璃日评-2014.09.25","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/9/25-866fcfd631ad438a86a653c61108ac2c.html","date":"2014-09-25","parentTitle":"日报"},
+            {"title":"宁波杉立期货橡胶日评-2014.09.25","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/9/25-2f213b81e86b463fbef8eee9d39acea9.html","date":"2014-09-25","parentTitle":"日报"},
+            {"title":"宁波杉立期货钢铁炉料日评-2014.09.25","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/9/25-224ca23e2a83400eb5a005ae31be2ed9.html","date":"2014-09-25","parentTitle":"日报"},
+            {"title":"宁波杉立期货塑料日评-2014.09.24","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/9/24-6d09c30be7b9489c9cfe031fb220aa5b.html","date":"2014-09-24","parentTitle":"日报"},
+            {"title":"宁波杉立期货橡胶日评-2014.09.24","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/9/24-0e187954a29348b39d6d02830173f5a7.html","date":"2014-09-24","parentTitle":"日报"},
+            {"title":"宁波杉立期货玻璃日评-2014.09.24","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/9/24-7082653a342c4839a28416fe4c7e1c31.html","date":"2014-09-24","parentTitle":"日报"},
+            {"title":"宁波杉立期货动力煤日评-2014.09.24","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/9/24-c52fc228826c4a698f05a570d4f6286b.html","date":"2014-09-24","parentTitle":"日报"},
+            {"title":"宁波杉立期货钢铁炉料日评-2014.09.24","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/9/24-1d145fd7d7bf46b2a189616415ae4336.html","date":"2014-09-24","parentTitle":"日报"},
+            {"title":"宁波杉立期货动力煤日评-2014.09.23","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/9/23-27bc2719ffd3486fa6c43d70129575c9.html","date":"2014-09-23","parentTitle":"日报"}
+        ];
+        //策略报告及其所有子栏目下的文章json串
+        var _celue = [
+            {"title":"专题策略：2014年春节期间相关品种留单建议-2014.01.27","url":"http://www.cifutures.com.cn/xyqihuo/contents/2014/1/27-e82975be45984b31ae332f75a237ade9.html","date":"2014-01-27","parentTitle":"策略报告"},
+            {"title":"专题策略：常见期权交易策略说明-2014.01.16","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140116132540678.pdf","date":"2014-01-16","parentTitle":"策略报告"},
+            {"title":"专题策略：2014年天然橡胶投资策略2014.01.09","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140109105513942.pdf","date":"2014-01-09","parentTitle":"策略报告"},
+            {"title":"专题策略：油脂行情展望2013.12.17","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20131217130643353.pdf","date":"2013-12-17","parentTitle":"策略报告"},
+            {"title":"专题策略：某房地产项目建筑用钢保值方案设计-2013.12.4","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20131204104437590.pdf","date":"2013-12-04","parentTitle":"策略报告"},
+            {"title":"专题策略：能化链投资策略及案例分析-2013.11.14","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20131114133145452.pdf","date":"2013-11-14","parentTitle":"策略报告"},
+            {"title":"专题策略：从航运看宏观经济系列之一-2013.11.7","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20131107150659705.pdf","date":"2013-11-07","parentTitle":"策略报告"},
+            {"title":"专题策略：现货企业如何利用沪铜期货-2013.10.30","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20131030102641434.pdf","date":"2013-10-30","parentTitle":"策略报告"},
+            {"title":"专题资料：天然橡胶供给分析-2013.10.24","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20131024110900910.pdf","date":"2013-10-24","parentTitle":"策略报告"},
+            {"title":"专题策略：从煤焦钢产业链各环节定价能力看行情-2013.10.18","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20131018145318366.pdf","date":"2013-10-18","parentTitle":"策略报告"},
+            {"title":"专题策略：原油供需监测指标说明-2013.10.17","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20131017130552281.pdf","date":"2013-10-17","parentTitle":"策略报告"},
+            {"title":"专题策略：山西在建煤矿整顿停产影响及后市分析-2013.10.16","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20131016094707820.pdf","date":"2013-10-16","parentTitle":"策略报告"},
+            {"title":"专题策略：如何把握天气因素对行情的影响-2013.10.10","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20131010093848156.pdf","date":"2013-10-10","parentTitle":"策略报告"},
+            {"title":"专题策略：美国政府关门及债务上限问题潜在影响分析-2013.10.8","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20131008142348630.pdf","date":"2013-10-08","parentTitle":"策略报告"},
+            {"title":"专题策略：动力煤期货相关规则说明-2013.9.27","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20130927141307489.pdf","date":"2013-09-27","parentTitle":"策略报告"},
+            {"title":"专题策略：动力煤分析基础-2013.9.25","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20130925112258823.pdf","date":"2013-09-25","parentTitle":"策略报告"},
+            {"title":"专题策略：期货相关交易规则及应用-2013.9.9","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20130909152206381.pdf","date":"2013-09-09","parentTitle":"策略报告"},
+            {"title":"专题策略：国债期货基础应用策略-2013.8.27","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20130829103936628.pdf","date":"2013-08-29","parentTitle":"策略报告"},
+            {"title":"专题策略：豆类油脂行情分析及后市展望-2013.8.26","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20130827103655907.pdf","date":"2013-08-27","parentTitle":"策略报告"},
+            {"title":"专题策略：2013年端午期间相关品种留单建议","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20130606105856749.pdf","date":"2013-06-06","parentTitle":"策略报告"}
+        ];
+        //产业分析及其所有子栏目下的文章json串
+        var _analysis = [
+            {"title":"宁波杉立期货LLDPE产业日报-2014.08.25","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140825172911572.pdf","date":"2014-08-25","parentTitle":"能源化工"},
+            {"title":"宁波杉立期货动力煤产业日报-2014.08.25","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140825174048481.pdf","date":"2014-08-25","parentTitle":"能源化工"},
+            {"title":"宁波杉立期货玻璃产业日报-2014.08.25","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140825224812744.pdf","date":"2014-08-25","parentTitle":"能源化工"},
+            {"title":"宁波杉立期货油脂产业周报-2014.8.21","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140822092759849.pdf","date":"2014-08-21","parentTitle":"农产品"},
+            {"title":"宁波杉立期货原油产业日报-2014.08.21","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140821164040662.pdf","date":"2014-08-21","parentTitle":"能源化工"},
+            {"title":"宁波杉立期货橡胶产业日报-2014.08.21","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140821190734249.pdf","date":"2014-08-21","parentTitle":"能源化工"},
+            {"title":"宁波杉立期货豆类产业日报-2014.8.18","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140819081504674.pdf","date":"2014-08-19","parentTitle":"农产品"},
+            {"title":"宁波杉立期货LLDPE产业日报-2014.08.18","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140818172728124.pdf","date":"2014-08-18","parentTitle":"能源化工"},
+            {"title":"宁波杉立期货玻璃产业日报-2014.08.18","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140818232351992.pdf","date":"2014-08-18","parentTitle":"能源化工"},
+            {"title":"宁波杉立期货动力煤产业日报-2014.08.18","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140818182319439.pdf","date":"2014-08-18","parentTitle":"能源化工"},
+            {"title":"宁波杉立期货油脂产业周报-2014.8.11","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140811214413331.pdf","date":"2014-08-11","parentTitle":"农产品"},
+            {"title":"宁波杉立期货玻璃产业日报-2014.08.11","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140811180002202.pdf","date":"2014-08-11","parentTitle":"能源化工"},
+            {"title":"宁波杉立期货LLDPE产业日报-2014.08.11","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140811171533816.pdf","date":"2014-08-11","parentTitle":"能源化工"},
+            {"title":"宁波杉立期货豆类产业日报-2014.8.7","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140807172732754.pdf","date":"2014-08-07","parentTitle":"农产品"},
+            {"title":"宁波杉立期货橡胶产业日报-2014.08.07","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140807185313605.pdf","date":"2014-08-07","parentTitle":"能源化工"},
+            {"title":"宁波杉立期货动力煤产业日报-2014.08.07","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140807182330779.pdf","date":"2014-08-07","parentTitle":"能源化工"},
+            {"title":"宁波杉立期货原油产业日报-2014.08.07","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140807171223556.pdf","date":"2014-08-07","parentTitle":"能源化工"},
+            {"title":"宁波杉立期货油脂产业周报-2014.8.4","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140804230028188.pdf","date":"2014-08-04","parentTitle":"农产品"},
+            {"title":"宁波杉立期货LLDPE产业日报-2014.08.04","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140804164117113.pdf","date":"2014-08-04","parentTitle":"能源化工"},
+            {"title":"宁波杉立期货豆类产业日报-2014.7.31","url":"http://www.cifutures.com.cn/_UploadFiles/Files/20140731231204834.pdf","date":"2014-07-31","parentTitle":"农产品"}
+        ];
+
+

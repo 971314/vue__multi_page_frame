@@ -52,67 +52,30 @@ module.exports = {
     return dest;
   },
 
-  //跟进类型名称 映射成 跟进code
-  followTypeToCode : function(type){
-    switch(type){
-      case "日常事务": return "01";
-      case "行情推送": return "02";
-      case "答疑解惑": return "03";
-      case "经验指导": return "04";
-      case "持仓异常查询": return "05";
-      case "下单错误投诉": return "06";
-    }
-  },
-
-  //跟进code 映射成 跟进类型名称
-  followCodeToType : function(code){
-    switch(code){
-      case "01": return "日常事务";
-      case "02": return "行情推送";
-      case "03": return "答疑解惑";
-      case "04": return "经验指导";
-      case "05": return "持仓异常查询";
-      case "06": return "下单错误投诉";
-    }
-  },
-
-  //按照日期（从大到小）进行排序
-  dateSort : function(arr){
+  //按照日期（从小到大）进行排序
+  dateSort : function(arr, attr){
     arr.sort(function(a, b){
-      return a.date > b.date ? -1 : 1;
+      return a[attr] < b[attr] ? -1 : 1;
     });
     return arr;
   },
 
-  //日期加减
-    addDate : function(dd,dadd){
-      var a = null;
-
-      if(dd){
-        a = new Date(dd);
-      }else{
-        a = new Date();
-      }
-
-      a = a.valueOf();
-      a = a + (dadd * 24 * 60 * 60 * 1000);
-      a = new Date(a);
-
-      var m = (a.getMonth() + 1)<10 ? '0' + (a.getMonth() + 1):(a.getMonth() + 1);
-      var d = a.getDate()<10 ? '0' + a.getDate():a.getDate();
-
-      return a.getFullYear() + '-' + m + '-' + d;
-    },
     //获取'月日' 和 '时分'
     getDateDIY : function(date){
+
       var d = null;
       if(date){
         //将日期中的 - 替换成 / ，因为ios浏览器不支持 带 - 日期格式的转换
         date = date.replace(/-/g,"/")
+        if(date.indexOf('.') >= 0){
+          date = date.substring(0,date.indexOf('.'));
+        }
+        console.log(date);
         d = new Date(date);
       }else{
         d = new Date();
       }
+
       var m = (d.getMonth() + 1)<10 ? '0' + (d.getMonth() + 1):(d.getMonth() + 1);
       var date2 = d.getDate()<10 ? '0' + d.getDate():d.getDate();
       var getHours = d.getHours()<10 ? '0' + d.getHours():d.getHours();
@@ -120,6 +83,40 @@ module.exports = {
       var DIY1 = m + '-' + date2;
       var DIY2 = getHours + ':' + getMinutes;
       return [DIY1, DIY2];
+    },
+
+    //按照字母排序，并且'#'放最后
+    sortGroupDIY(list){
+          var cList = [];
+          var index = 0;
+          var hasOther = null;
+          if (list) {
+            for (var i in list) {
+              if(i=="#"){
+                hasOther = {'pinyin': i, 'data': list[i]};
+                continue;
+              }else{
+                cList[index] = {'pinyin': i, 'data': list[i]};
+              }
+              index++;
+            }
+            //按照字母顺序排序
+            cList.sort(function(m,n){    
+                var s = m.pinyin;    
+                var e = n.pinyin;    
+                if(s>e){    
+                    return 1    
+                }else if(s<e){    
+                    return -1;    
+                }else{    
+                    return 0;    
+                }    
+            }); 
+            if(hasOther){
+               cList.push(hasOther);
+            }
+            return cList;
+          }
     }
 
 }

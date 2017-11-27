@@ -165,7 +165,7 @@
           appObjectType: _this.appObject.appObjectType,
           appObjectId: _this.appObject.appObjectId,
           appObjectName: _this.appObject.appObjectName,
-          tplId: _this.template.tplId,
+          tplId: '0000000',
           availBeginDate: _this.$$timeFormate({date: _this.startTime, format: 'Y-M-D h:m:s'}),
           availEndDate: _this.$$timeFormate({date: _this.endTime, format: 'Y-M-D h:m:s'}),
           note: _this.fillData.note,
@@ -285,6 +285,8 @@
           this.$store.dispatch('updatepJumpFlag', 3)
           this.$store.dispatch('updateAddFollow', Object.assign(this.addFollow, {businessType: '1'}))
           this.$router.push('/customerInfoList')
+        } else if (this.fillData.investorType == '居间人') {
+          this.$router.push('/intermediary')
         }
       },
       //附件上传限制提示

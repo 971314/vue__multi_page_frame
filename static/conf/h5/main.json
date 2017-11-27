@@ -1,8 +1,8 @@
 {
-  "appSetting":{
-    "appName":"博易大师",
-    "baseColor":"#3366CC",
-    "isShare":false
+  "appSetting": {
+    "appName": "博易大师",
+    "baseColor": "#3366CC",
+    "isShare": false
   },
   "banners": {
     "version": 1,
@@ -16,8 +16,8 @@
   },
   "coNoticeAdv": {
     "arrowRight": "../images/arrow-right.png",
-        "noticeDelay": 3000,
-        "noticeImage": "images/zuixingonggao.png"
+    "noticeDelay": 3000,
+    "noticeImage": "images/zuixingonggao.png"
   },
   "customs": {
     "isShow": true,
@@ -132,50 +132,65 @@
     ]
   },
   "my": {
-    "isShowH":true,
-    "data":[
+    "isShowH": true,
+    "newUserDetail": false,
+    "data": [
       {
-        "name":"我的云条件单",
-        "img":"images/icon-yunTiaoJianDan.png",
-        "url":"pobo:uncheck=0&pageId=900005&url=condition/index.html#/mobileList/1",
-        "isLogin":true,
-        "isShow":true
-      },{
-        "name":"我的云止损",
-        "img":"images/icon-yunZhiSun.png",
-        "url":"pobo:uncheck=0&pageId=900005&url=stopProfit/index.html#/mobileList/1",
-        "isLogin":true,
-        "isShow":true
-      },{
-        "name":"我的预警",
-        "img":"images/icon-yunJing.png",
-        "url":"pobo:uncheck=0&pageId=900005&url=alerted/index.html#/mobileList/1",
-        "isShow":true
-      },{
-        "name":"交易设置",
-        "img":"images/icon-jiaoYiSheZhi.png",
-        "url":"pobo:uncheck=1&pageId=805006",
-        "isShow":true
-      },{
-        "name":"系统设置",
-        "img":"images/icon-xiTongSheZhi.png",
-        "url":"pobo:uncheck=1&pageId=805007",
-        "isShow":true
-      },{
-        "name":"系统地址",
-        "img":"images/icon-xiTongDiZhi.png",
-        "url":"pobo:uncheck=1&pageId=805008",
-        "isShow":true
-      },{
-        "name":"账号管理",
-        "img":"images/icon-zhangHuGuanLi.png",
-        "url":"pobo:uncheck=0&pageId=900005&url=account/index.html#/",
-        "isShow":true
-      },{
-        "name":"版本说明",
-        "img":"images/icon-guanYu.png",
-        "url":"pobo:uncheck=1&pageId=805009",
-        "isShow":true
+        "name": "我的云条件单",
+        "img": "images/icon-yunTiaoJianDan.png",
+        "url": "pobo:uncheck=0&pageId=900005&url=condition/index.html#/mobileList/1",
+        "isLogin": true,
+        "isShow": true
+      },
+      {
+        "name": "我的云止损",
+        "img": "images/icon-yunZhiSun.png",
+        "url": "pobo:uncheck=0&pageId=900005&url=stopProfit/index.html#/mobileList/1",
+        "isLogin": true,
+        "isShow": true
+      },
+      {
+        "name": "我的预警",
+        "img": "images/icon-yunJing.png",
+        "url": "pobo:uncheck=0&pageId=900005&url=alerted/index.html#/mobileList/1",
+        "isShow": true
+      },
+      {
+        "name": "交易设置",
+        "img": "images/icon-jiaoYiSheZhi.png",
+        "url": "pobo:uncheck=1&pageId=805006",
+        "isShow": true
+      },
+      {
+        "name": "系统设置",
+        "img": "images/icon-xiTongSheZhi.png",
+        "url": "pobo:uncheck=1&pageId=805007",
+        "isShow": true
+      },
+      {
+        "name": "系统地址",
+        "img": "images/icon-xiTongDiZhi.png",
+        "url": "pobo:uncheck=1&pageId=805008",
+        "isShow": true
+      },
+      {
+        "name": "账号管理",
+        "img": "images/icon-zhangHuGuanLi.png",
+        "url": "pobo:uncheck=0&pageId=900005&url=account/index.html#/",
+        "isShow": true
+      },
+      {
+        "name": "版本说明",
+        "img": "images/icon-guanYu.png",
+        "url": "pobo:uncheck=1&pageId=805009",
+        "isShow": true
+      },
+      {
+        "name": "掌上德索",
+        "img": "images/zsds.png",
+        "url": "pobo:uncheck=1&pageId=900005&url=cmLogin/index.html",
+        "isShow": true,
+        "isCm": true
       }
     ],
     "msg": false
@@ -209,36 +224,32 @@
       }
     ]
   },
-
   "news2": {
     "name": "热点关注",
-    "func":"10105",
-    "moreLink" : "",
-    "templateType" : 1
+    "func": "10105",
+    "moreLink": "",
+    "templateType": 1
   },
-
   "news3": {
     "name": "研究报告",
-    "func":"10101",
+    "func": "10101",
     "infoType": "004",
-    "pageSize":"3",
-    "moreLink" : "indNews/index.html#/firm?infoId=",
-    "templateType" : 1
+    "pageSize": "3",
+    "moreLink": "indNews/index.html#/firm?infoId=",
+    "templateType": 1
   },
-
   "news4": {
     "name": "公司公告",
-    "func":"10101",
-    "infoType" : "001",
-    "pageSize":"3",
-    "moreLink" : "indNews/index.html#/firm?infoId=",
-    "templateType" : 2
+    "func": "10101",
+    "infoType": "001",
+    "pageSize": "3",
+    "moreLink": "indNews/index.html#/firm?infoId=",
+    "templateType": 2
   },
-
   "gf_yfzx": {
     "webService": "http://58.62.1.235:30033/index.php/Api/indexData",
-    "infoTitle" : "研发资讯",
-    "moreInfo" : "pobo:pageId=900004&title=研发资讯&url=/content/list.html#/13",
+    "infoTitle": "研发资讯",
+    "moreInfo": "pobo:pageId=900004&title=研发资讯&url=/content/list.html#/13",
     "data": {
       "img": "face_img",
       "title": "title",
@@ -250,8 +261,8 @@
   },
   "ht_GG": {
     "webService": "http://app.htfutures.com:28084/index.php/Api/indexData",
-    "infoTitle" : "公告",
-    "moreInfo" : "pobo:uncheck=1&pageId=900004&title=公告&url=http://app.htfutures.com:28084/html/gonggaoList.html",
+    "infoTitle": "公告",
+    "moreInfo": "pobo:uncheck=1&pageId=900004&title=公告&url=http://app.htfutures.com:28084/html/gonggaoList.html",
     "data": {
       "img": "face_img",
       "title": "title",
@@ -263,8 +274,8 @@
   },
   "ht_hd": {
     "webService": "http://app.htfutures.com:28084/index.php/Api/indexData",
-    "infoTitle" : "活动",
-    "moreInfo" : "pobo:uncheck=1&pageId=900004&title=活动&url=http://app.htfutures.com:28084/html/huodongList.html",
+    "infoTitle": "活动",
+    "moreInfo": "pobo:uncheck=1&pageId=900004&title=活动&url=http://app.htfutures.com:28084/html/huodongList.html",
     "data": {
       "img": "face_img",
       "title": "title",
@@ -277,36 +288,35 @@
   "infoAll": [
     {
       "coType": "advert",
-      "coInstance":"banners"
+      "coInstance": "banners"
     },
     {
       "coType": "notice",
-      "coInstance":""
+      "coInstance": ""
     },
     {
       "coType": "commitfuc",
-      "coInstance":"customs"
+      "coInstance": "customs"
     },
     {
       "coType": "infolist",
-      "coInstance":"news"
+      "coInstance": "news"
     },
     {
       "coType": "infolist2",
-      "coInstance":"news2"
+      "coInstance": "news2"
     },
     {
       "coType": "main-active",
-      "coInstance":""
+      "coInstance": ""
     },
     {
       "coType": "infolist2",
-      "coInstance":"news4"
+      "coInstance": "news4"
     },
     {
       "coType": "infolist2",
-      "coInstance":"news3"
+      "coInstance": "news3"
     }
-
   ]
 }

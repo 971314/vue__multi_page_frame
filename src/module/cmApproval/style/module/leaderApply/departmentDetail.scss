@@ -121,17 +121,31 @@
           color: #1a1a1a;
           @include font(16px);
         }
+        .selected-line {
+          //position: absolute;
+          //bottom: 0;
+          width: toRem(100px);
+          height: toRem(4px);
+          background-color: #3366cc;
+          opacity: 0;
+        }
+        .zhanwei-line {
+          width: toRem(100px);
+          height: toRem(4px);
+          opacity: 0;
+        }
       }
 
       .selected-record {
         color: #3366cc;
 
         .selected-line {
-          position: absolute;
-          bottom: 0;
+          //position: absolute;
+          //bottom: 0;
           width: toRem(100px);
           height: toRem(4px);
           background-color: #3366cc;
+          opacity: 1;
         }
       }
     }

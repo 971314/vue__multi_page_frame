@@ -2,10 +2,7 @@
   <div class="customerInfo pobo-customer-info intermediary">
     <common-nav :search="false" :message="false" :service="false" :goback="false" :gobackcom="true">
       <div slot="body">
-        <div class="segmentedCtrl">
-          <div :class="{'active':segmentedIndex==1}" @click="changeHandle(1)">自然居间人</div>
-          <div :class="{'active':segmentedIndex==2}" @click="changeHandle(2)">法人居间人</div>
-        </div>
+        居间人
       </div>
     </common-nav>
 
@@ -20,7 +17,7 @@
       <index-list v-if="currentList.length>0">
         <index-section v-for="(v, i) in currentList" :key="i" :index="v.pinyin">
           <a href="javascript:void(0);" class="mint-cell" v-for="(item, index) in v.data"
-             :key="index" v-text="item.INVESTOR_NAM+'('+item.MOBILE_NO+')'" @click="chooseToclick(item)">
+             :key="index" v-text="item.INVESTOR_NAM" @click="chooseToclick(item)">
           </a>
         </index-section>
 
@@ -65,7 +62,7 @@
       }
     },
     activated () {
-      this.changeHandle(1)
+      this.getCusList()
     },
     mounted () {
 
@@ -102,81 +99,34 @@
       }
     },
     methods: {
-      //切换开户状态
-      changeHandle (segmentedIndex) {
-        this.segmentedIndex = segmentedIndex
-        this.getCusList(segmentedIndex)
-      },
       //列表
-      getCusList (type,) {
+      getCusList () {
         let _this = this
-        /*_this.$$loading()
-        _this.$axios.get(PBHttpServer.cmHelper.serverUrl + this.urlList.intermediary.url + '/' + this.info.userId + '/' + type, {
+        _this.$$loading()
+        _this.$axios.get(PBHttpServer.cmHelper.serverUrl + this.urlList.intermediary.url + '/' + this.info.userId, {
+          timeout: 10000,
           headers: {
-            id: this.info.token,
-            timeout: 10000,
+            id: this.info.token
           }
-        },).then(function (result) {*/
-        let result = {
-          data: {
-            'retHead': '0',
-            'desc': '正常',
-            'custom': null,
-            'timstamp': '20171116150113611',
-            'data': {
-              'T': [{
-                'INVESTOR_ID': '100116',
-                'MOBILE_NO': '899958118-',
-                'INVESTOR_NAM': '投资者0116',
-                'VIPTYP': '0',
-                'FIRST_PINYIN': 'B',
-                'OPEN_STS': '2',
-                'LINKTELEPHONE': '-'
-              }],
-              'B': [{
-                'INVESTOR_ID': '100116',
-                'MOBILE_NO': '899958118-',
-                'INVESTOR_NAM': '投资者0116',
-                'VIPTYP': '0',
-                'FIRST_PINYIN': 'B',
-                'OPEN_STS': '2',
-                'LINKTELEPHONE': '-'
-              }],
-              'C': [{
-                'INVESTOR_ID': '100116',
-                'MOBILE_NO': '899958118-',
-                'INVESTOR_NAM': '投资者0116',
-                'VIPTYP': '0',
-                'FIRST_PINYIN': 'B',
-                'OPEN_STS': '2',
-                'LINKTELEPHONE': '-'
-              }]
-            }
+        },).then(function (result) {
+          _this.$loading.hide()
+          let list = result.data.data
+
+          let lists = _this.sortGroupDIY(list)
+          _this.deptJson = lists
+          _this.currentList = lists
+
+        }).catch(function (err) {
+          _this.$loading.hide()
+          if (err.response && err.response.status == 401) {
+            _this.$router.replace('/')
+          } else if (err.response) {
+            _this.$toast(err.response.data.desc)
+          } else {
+            _this.$toast('网络超时，请稍后重试！')
           }
-        }
-        let list = result.data.data,
-          cList = [],
-          index = 0
-        console.log(result)
-        _this.count = 0
-        if (list) {
-          for (var i in list) {
-            cList[index] = {'pinyin': i, data: list[i]}
-            index++
-            _this.count = _this.count + list[i].length
-          }
-          _this.deptJson = util.deepClone(cList)
-          _this.currentList = util.deepClone(cList)
-        }
-        _this.$forceUpdate()
-        setTimeout(function () {
-          var hei = document.querySelector('.selectDept').offsetHeight
-          document.querySelector('.mint-indexlist-content').style.height = hei + 'px'
-//            _this.$$loaded()
-        }, 50)
-        /* }).catch(function (err) {
-           console.log('服务器异常', err)
-         })*/
+          console.log(err)
+        })
       },
       //选择点击
       chooseToclick (item) {

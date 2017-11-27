@@ -50,6 +50,13 @@
     methods: {
       //保存时间
       parseParams () {
+        if (this.$$timeFormate({
+            date: this.rankingTime.startTime,
+            format: 'YMD'
+          }) > this.$$timeFormate({date: this.rankingTime.endTime, format: 'YMD'})) {
+          this.$toast('起始时间不能大于终止时间！')
+          return
+        }
         let Time = {
           startTime: this.rankingTime.startTime,
           endTime: this.rankingTime.endTime

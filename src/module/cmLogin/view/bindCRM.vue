@@ -47,9 +47,9 @@
     computed: {},
     created () {
       this.mobilePhone = pbE.isPoboApp ? pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_LoginName') : '18292320745'
-      if (!this.mobilePhone) {
+      /*if (!this.mobilePhone) {
         location.href = 'pobo:uncheck=1&pageId=900005&url=reg/index.html'
-      }
+      }*/
       this.crmAccount = ''//工号
       this.pwd = ''//密码
       this.name = ''//用户姓名

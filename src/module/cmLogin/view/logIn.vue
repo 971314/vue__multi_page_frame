@@ -46,9 +46,9 @@
     },
     mounted () {
       this.mobilePhone = pbE.isPoboApp ? pbE.SYS().getAppCertifyInfo('PbKey_H5_Home_Auth_LoginName') : '18292320745'
-      if (!this.mobilePhone) {
+      /*if (!this.mobilePhone) {
         location.href = 'pobo:uncheck=1&pageId=900005&url=reg/index.html'
-      }
+      }*/
     },
     methods: {
       //登录
@@ -65,8 +65,8 @@
         _this.$loading.toggle(' ')
         _this.$axios.post(PBHttpServer.cmHelper.serverUrl + this.urlList.approvalLog.url + _this.crmAccount, {
           pwd: _this.pwd.trim(),
-          mobilePhone: _this.mobilePhone.trim(),
-          crmAccount: _this.crmAccount
+          mobilePhone: _this.mobilePhone,
+          crmAccount: _this.crmAccount.trim()
         }, {
           timeout: 10000
         }).then((data) => {

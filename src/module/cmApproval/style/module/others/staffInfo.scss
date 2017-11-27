@@ -57,13 +57,13 @@
             .av-selected-items {
                 height: 43px;
                 line-height: 43px;
-                width: 50%;
+                width: 100%;
                 float: left;
                 font-size: 0;
                 text-align: center;
                 position: relative;
                 .selected-items-text {
-                    font-size: 14px;
+                    font-size: toRem(28px);
                     color: #1a1a1a;
                     vertical-align: middle;
                 }
@@ -119,11 +119,13 @@
             .group{
                 margin: 0;
                 padding: 0;
+                background-image:none;
                 .cell{
                     position: relative;
                     margin-left: toRem(30px);
                     padding: 0;
                     height: toRem(134px);
+                    background-image:none;
                     @include bottom-px1-pixel-ratio;
                     .cell-body{
                         p{
@@ -139,7 +141,7 @@
                         }
                     }
                 }
-                .cell:last-child{
+                .cell:last-child:before{
                     border: 0;
                 }
             }

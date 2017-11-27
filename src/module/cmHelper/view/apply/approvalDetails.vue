@@ -37,7 +37,7 @@
           <span>模板名称</span>
           <span :class="details[0].tplName != '非模板'?'c1':''">{{details[0].tplName}}</span>
         </div>
-        <div>
+        <div v-show="details[0].availBeginDate">
           <span>申请期间</span>
           <span>{{$$timeFormate({
             date: details[0].availBeginDate,

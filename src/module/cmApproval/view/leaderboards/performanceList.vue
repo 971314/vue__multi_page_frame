@@ -47,6 +47,7 @@
     <div class="performance_tab2"
          v-show="flag == 2&& tab1 == 5 || flag == 2&& tab1 == 6||flag == 6&& tab1 == 5 || flag == 6&& tab1 == 6">
       <div>
+        <span @click="tabClick2(0)" :class="tab2 == 0?'selected':''">全部</span>
         <span @click="tabClick2(1)" :class="tab2 == 1?'selected':''">股指客户</span>
         <span @click="tabClick2(2)" :class="tab2 == 2?'selected':''">期权客户</span>
       </div>
@@ -87,19 +88,18 @@
     </div>
 
     <!--列表-->
-    <div class="performance_list" id="performance_list"
-         :style="{top:flag == 2&& tab1 == 5 || flag == 2&& tab1 == 6||flag == 6&& tab1 == 5 || flag == 6&& tab1 == 6?'125px':'85px',bottom:footer?'49px':'0px'}">
-      <div class="group_list" v-for="(data,i) in performanceList">
+    <div class="performance_list" id="performance_list" :style="{marginBottom:footer?'48px':''}">
+      <div class="group_list" v-for="(data,i) in performanceList" @click="jump(data)">
         <div>
           <img src="../../images/leaderboards/ranking1.png" v-if="i == 0"/>
           <img src="../../images/leaderboards/ranking2.png" v-else-if="i == 1"/>
           <img src="../../images/leaderboards/ranking3.png" v-else-if="i == 2"/>
           <div v-else>{{data.SEQ_NO}}</div>
           <span>{{data.INVESTOR_NAM}}</span>
-          <span>{{ data.DAY_ORDER || data.DAY_ORDER > 0 ? $$transformData(data.DAY_ORDER) : data.DAY_ORDER ? data.DAY_ORDER : '--'}}</span>
+          <span>{{ data.DAY_ORDER > 0 || data.DAY_ORDER < 0 ? $$transformData(data.DAY_ORDER) : data.DAY_ORDER == 0 ? data.DAY_ORDER : '--'}}</span>
         </div>
         <div v-show="i < 10"
-             :style="{width: i == 0? '100%':calculationPercentage(data.num,performanceList[0].num)}"></div>
+             :style="{width: data.DAY_ORDER == 0 || !data.DAY_ORDER || data.DAY_ORDER < 0 || data.DAY_ORDER == '-'?'0':i == 0? '100%':calculationPercentage(data.DAY_ORDER,performanceList[0].DAY_ORDER)}"></div>
       </div>
     </div>
 
@@ -152,21 +152,22 @@
         document.getElementById('performance_list').scrollTop = 0
         this.tab1 = flag
         this.footerFlag = 0
-        if (flag == 1 || flag == 2 || flag == 3 || flag == 4 || flag == 6 || flag == 8 || flag == 7 || flag == 9 || flag == 11 || flag == 12) {
-          this.footer = true
-        } else {
-          this.footer = false
+        if (flag == 5 || flag == 6) {//客户数量一级tab切换默认二级tab
+          this.tab2 = 0
         }
-//        this.initialRequest()
+        if (flag == 1 || flag == 2 || flag == 3 || flag == 4 || flag == 6 || flag == 8 || flag == 7 || flag == 9 || flag == 11 || flag == 12) {
+          this.footer = true//时间区间显示
+        } else {
+          this.footer = false//时间区间不显示
+        }
         this.performanceList = []
         this.request()
       },
-      //二级tab选择
+      //客户数量二级tab选择
       tabClick2 (flag) {
         this.tab2 = flag
         this.performanceList = []
         this.request()
-//        this.initialRequest()
       },
       //日期区间选择
       footerClick (flag) {
@@ -190,7 +191,7 @@
           this.tabClick(10)
         } else if (this.flag == 2 || this.flag == 6) {
           this.tabClick(5)
-          this.tabClick2(1)
+          this.tabClick2(0)
         } else if (this.flag == 3 || this.flag == 7) {
           this.tabClick(1)
         } else if (this.flag == 4 || this.flag == 8) {
@@ -212,13 +213,17 @@
           }
         } else if (flag == 2 || flag == 6) {//客户数量
           if (this.tab1 == 5) {//总客户数
-            if (this.tab2 == 1) {
+            if (this.tab2 == 0) {
+              this.numberOfClientsRequest('00')
+            }else if (this.tab2 == 1) {
               this.numberOfClientsRequest('01')
             } else if (this.tab2 == 2) {
               this.numberOfClientsRequest('02')
             }
           } else if (this.tab1 == 6) {//开户数
-            if (this.tab2 == 1) {
+            if (this.tab2 == 0) {
+              this.numberOfClientsRequest('10')
+            }if (this.tab2 == 1) {
               this.numberOfClientsRequest('11')
             } else if (this.tab2 == 2) {
               this.numberOfClientsRequest('12')
@@ -246,7 +251,7 @@
       fundingRequest (type) {
         let _this = this
         _this.$loading.toggle(' ')
-        _this.$axios.get(PBHttpServer.cmApproval.serverUrl + this.urlList.fundingRanking.url + _this.info.userId + '?timeSpeed=' + _this.footerFlag + '&sortType=' + type, {
+        _this.$axios.get(PBHttpServer.cmApproval.serverUrl + this.urlList.fundingRanking.url + _this.info.userId + '?timeSpeed=' + _this.footerFlag + '&sortType=' + type + '&userType=' + this.performanceData.type, {
           timeout: 10000,
           headers: {
             id: _this.info.token
@@ -276,7 +281,7 @@
       numberOfClientsRequest (type) {
         let _this = this
         _this.$loading.toggle(' ')
-        _this.$axios.get(PBHttpServer.cmApproval.serverUrl + this.urlList.numberOfClients.url + _this.info.userId + '?timeSpeed=' + _this.footerFlag + '&sortType=' + type, {
+        _this.$axios.get(PBHttpServer.cmApproval.serverUrl + this.urlList.numberOfClients.url + _this.info.userId + '?timeSpeed=' + _this.footerFlag + '&sortType=' + type + '&userType=' + this.performanceData.type, {
           timeout: 10000,
           headers: {
             id: _this.info.token
@@ -306,7 +311,7 @@
       customerPositionsRequest (type) {
         let _this = this
         _this.$loading.toggle(' ')
-        _this.$axios.get(PBHttpServer.cmApproval.serverUrl + this.urlList.customerPositions.url + _this.info.userId + '?timeSpeed=' + _this.footerFlag + '&sortType=' + type, {
+        _this.$axios.get(PBHttpServer.cmApproval.serverUrl + this.urlList.customerPositions.url + _this.info.userId + '?timeSpeed=' + _this.footerFlag + '&sortType=' + type + '&userType=' + this.performanceData.type, {
           timeout: 10000,
           headers: {
             id: _this.info.token
@@ -336,7 +341,7 @@
       feeRequest (type) {
         let _this = this
         _this.$loading.toggle(' ')
-        _this.$axios.get(PBHttpServer.cmApproval.serverUrl + this.urlList.feeRanking.url + _this.info.userId + '?timeSpeed=' + _this.footerFlag + '&sortType=' + type, {
+        _this.$axios.get(PBHttpServer.cmApproval.serverUrl + this.urlList.feeRanking.url + _this.info.userId + '?timeSpeed=' + _this.footerFlag + '&sortType=' + type + '&userType=' + this.performanceData.type, {
           timeout: 10000,
           headers: {
             id: _this.info.token
@@ -361,6 +366,17 @@
           }
           console.log(err)
         })
+      },
+      //跳转
+      jump (data) {
+        if (this.performanceData.type == 0) {
+          this.$store.dispatch('updataDepartId', data.INVESTOR_ID)
+          this.$store.dispatch('updataDepartName', data.INVESTOR_NAM)
+          this.$router.push({name: 'departmentDetail'})
+        } else if (this.performanceData.type == 1) {
+          this.$store.dispatch('updataPersonnelId', data.INVESTOR_ID)
+          this.$router.push({name: 'staffInfoDetail'})
+        }
       }
     }
   }

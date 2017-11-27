@@ -9,7 +9,7 @@
     <div class="performance-index-center">
       <div class="index-header-grid">
         <div class="index-header-top">
-          <div class="header-top-number" v-text="PerformancBase.RI_AMT"></div>
+          <div class="header-top-number" v-text="$$comma(PerformancBase.RI_AMT)"></div>
           <div class="header-top-title">客户权益(万) {{PerformancBase.TX_DT ? this.$$timeFormate({
             date: PerformancBase.TX_DT,
             format: 'M-D'
@@ -80,7 +80,7 @@
           tooltip: {
             trigger: 'axis',
             axisPointer: {
-              type: 'cross'
+              type: 'line'
             }
           },
           axisPointer: { //修改提示框的颜色(包括x轴上的提示框)
@@ -199,7 +199,7 @@
           tooltip: {
             trigger: 'axis',
             axisPointer: {
-              type: 'cross'
+              type: 'line'
             }
           },
           legend: {
@@ -213,7 +213,11 @@
               fontSize: 10
             },
             formatter: function (name) {
-              return `${name}(万)`
+              if (name == '权益') {
+                return `${name}(万)`
+              } else {
+                return name
+              }
             }
           },
           axisPointer: { //修改提示框的颜色(包括x轴上的提示框)

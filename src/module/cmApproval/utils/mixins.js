@@ -7,15 +7,14 @@ Vue.mixin({
   data () {
     return {
       mixinTest: 'mixin测试',
-      testUserId: 'sysadmin',
-      testDepartId: '0000000',
       info: {
         userId: '',
-        crmAccount: '',//工号
+        crmAccount: '',//.工号
         userName: '',//姓名
         departName: '',//营业部
         token: '',
-        accountType:''//登录账户类型 客户经理C、部门经理M、总经理M departID:0000000
+        departId: '',
+        accountType: ''
       },
       urlList: urlList,
       cPbeUrl: 'conf/h5/',
@@ -71,7 +70,6 @@ Vue.mixin({
         }
         return true
       }
-
       getUrl = join.length > 0 ? `${hostUrl}${urlList[restUrl].url}${joinString}` : `${hostUrl}${urlList[restUrl].url}`
       return new Promise((resolve, reject) => {
         if (isEmptyObject(options)) {
@@ -132,14 +130,15 @@ Vue.mixin({
     getInfo () {
       let info = pbE.isPoboApp ? pbE.SYS().getPrivateData('managerInfo') ? JSON.parse(pbE.SYS().getPrivateData('managerInfo')) : '' : sessionStorage.managerInfo ? JSON.parse(sessionStorage.managerInfo) : ''
       // let info = JSON.parse(pbE.isPoboApp ? pbE.SYS().getPrivateData('managerInfo') : sessionStorage.managerInfo)
-      // this.info['userId'] = info.userId
-      this.info['userId'] = '80000001'
+      this.info['userId'] = info.userId
+      // this.info['userId'] = '80000001'
       this.info['crmAccount'] = info.crmAccount //工号
       this.info['userName'] = info.name //姓名
       this.info['departName'] = info.departName  //营业部
       this.info['token'] = info.token
-      this.info['accountType'] = 'C'
-      //this.info['accountType'] = info.accountType//登录账户类型
+      this.info['departId'] = info.departId
+      // this.info['accountType'] = 'C'
+      this.info['accountType'] = info.accountType//登录账户类型
     },
     /*
      * 获取par前个月日期*/
@@ -170,6 +169,9 @@ Vue.mixin({
       if (Object.prototype.toString.call(date) === '[object String]'
       ) {
         date = date.replace(/-/g, '/') //解决ios上不兼容new Date('2017-01-01')
+      }
+      if(date.indexOf('.') >= 0){
+        date = date.substring(0,date.indexOf('.')); //过滤掉 小数点以及 小数点后面的 字符
       }
       date = new Date(date);
       [wk, wk1] = [['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'][date.getDay()], ['周天', '周一', '周二', '周三', '周四', '周五', '周六'][date.getDay()]]
@@ -324,6 +326,16 @@ Vue.mixin({
      * 保留n位小数*/
     decimalPlaceReserved (data, n) {
       return Number(data).toFixed(n)
+    },
+    /*
+     * 姓名截取5位 字符，后面显示...*/
+    cutName (s) {
+      if(!s){ return ""; }
+      if(s.length > 5){
+        return s.substring(0,5) + '...';
+      }else{
+        return s;
+      }
     }
   }
 })

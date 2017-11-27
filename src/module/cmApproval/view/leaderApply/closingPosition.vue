@@ -1,12 +1,23 @@
 <template>
   <div class="close-position-content">
+    <div class="cj-cj-view">
+      <div class="cj-cj-header">成交统计</div>
+      <div v-show="echarts1" ref="chart" class="cj-cj-charts"></div>
+      <div class="pobo-no-data1" v-show="!echarts1">
+        <span class="no-data1-msg">暂无数据</span>
+      </div>
+    </div>
+
     <div class="cj-cc-view">
-      <div class="cj-cc-header">成交持仓</div>
-      <div ref="chart" class="cj-cc-charts"></div>
+      <div class="cj-cc-header">持仓统计</div>
+      <div v-show="echarts1" ref="chart2" class="cj-cc-charts"></div>
+      <div class="pobo-no-data1" v-show="!echarts1">
+        <span class="no-data1-msg">暂无数据</span>
+      </div>
     </div>
     <div class="cc-jg-view">
       <div class="cc-jg-header">持仓结构</div>
-      <div class="cc-jg-group">
+      <div class="cc-jg-group" v-show="echarts2">
         <div class="cc-left-chart">
           <div class="cc-tab-group">
             <div class="cc-tab-wrapper">
@@ -23,11 +34,15 @@
           <div ref="chart1" class="cc-jg-charts"></div>
         </div>
       </div>
+      <div class="pobo-no-data1" v-show="!echarts2">
+        <span class="no-data1-msg">暂无数据</span>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   import echarts from 'echarts/lib/echarts';
   import moment from "moment";
   // 引入折线图
@@ -44,30 +59,42 @@
   export default{
     data() {
       return {
+        echarts1: true,
+        echarts2: true,
         myCharts: null,
         myCharts1: null,
         nowIndex: 2,
         isclick: true,
         type: 'P',
         basicOption: {
-          color: ['#fe8b6c', '#fe8b6c', '#41c5ee', '#41c5ee'],
+          color: ['#fe8b6c', '#41c5ee'],
           tooltip: {
             trigger: 'axis',
             axisPointer: {
-              type: 'cross'
+              type: 'line'
+            }
+          },
+          axisPointer: { //修改提示框的颜色(包括x轴上的提示框)
+            label: {
+              backgroundColor: '#808086'
             }
           },
           legend: {
-            data: ['本月成交金额', '本月成交量', '', '本月持仓金额', '本月持仓量'],
+            data: ['成交金额', '成交量'],
             x: 'left',
             itemWidth: 20,
             itemHeight: 7,
+            selectedMode: false,
             textStyle: {
               color: '#808086',
               fontSize: 10
             },
             formatter: function (name) {
-              return `${name}`
+              if (name == '成交金额') {
+                return `${name}(万)`
+              } else {
+                return name
+              }
             }
           },
           grid: {
@@ -86,7 +113,7 @@
                 fontSize: 8
               },
               formatter: function (value, index) {
-                return moment(value).format('YYYY-MM-DD')
+                return moment(value).format('YYYY-MM')
               }
             },
             axisLine: {
@@ -168,7 +195,7 @@
               }
             }],
           series: [{
-            name: '本月成交金额',
+            name: '成交金额',
             type: 'line',
             symbol: 'circle',
             yAxisIndex: 0,
@@ -180,7 +207,7 @@
             }
           },
             {
-              name: '本月成交量',
+              name: '成交量',
               type: 'bar',
               barGap: 0,
               itemStyle: {
@@ -189,9 +216,139 @@
                 }
               },
               yAxisIndex: 1
+            }]
+        },
+        basicOption2: {
+          color: ['#fe8b6c', '#41c5ee'],
+          tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+              type: 'line'
+            }
+          },
+          axisPointer: { //修改提示框的颜色(包括x轴上的提示框)
+            label: {
+              backgroundColor: '#808086'
+            }
+          },
+          legend: {
+            data: ['持仓金额', '持仓量'],
+            x: 'left',
+            itemWidth: 20,
+            itemHeight: 7,
+            selectedMode: false,
+            textStyle: {
+              color: '#808086',
+              fontSize: 10
+            },
+            formatter: function (name) {
+              if (name == '持仓金额') {
+                return `${name}(万)`
+              } else {
+                return name
+              }
+            }
+          },
+          grid: {
+            top: '22%',
+            left: '0',
+            right: '0',
+            bottom: '0',
+            containLabel: true
+          },
+          xAxis: {
+            type: 'category',
+            boundaryGap: true,
+            axisLabel: {
+              textStyle: {
+                color: '#808086',
+                fontSize: 8
+              },
+              formatter: function (value, index) {
+                return moment(value).format('YYYY-MM')
+              }
+            },
+            axisLine: {
+              show: false,
+              lineStyle: {
+                color: '#e4e7f0'
+              }
+            },
+            axisTick: {
+              show: false
+            },
+            splitLine: {
+              show: false,
+              lineStyle: {
+                color: ['#e4e7f0'],
+                type: 'dashed'
+              }
+            }
+          },
+          yAxis: [
+            {
+              type: "value",
+              nameTextStyle: {
+                showL: false,
+                color: '#808086',
+                fontSize: 8
+              },
+              axisLabel: {
+                textStyle: {
+                  color: '#808086',
+                  fontSize: 8
+                }
+              },
+              axisTick: {
+                show: false
+              },
+              axisLine: {
+                show: false,
+                lineStyle: {
+                  color: '#e4e7f0'
+                }
+              },
+              splitLine: {
+                show: true,
+                lineStyle: {
+                  color: ['#e4e7f0'],
+                  type: 'solid'
+                }
+              }
             },
             {
-              name: '本月持仓金额',
+              type: "value",
+              nameTextStyle: {
+                showL: false,
+                color: '#808086',
+                fontSize: 8
+              },
+              axisLabel: {
+                textStyle: {
+                  color: '#808086',
+                  fontSize: 8
+                }
+              },
+              axisTick: {
+                show: false
+              },
+              axisLine: {
+                show: false,
+                lineStyle: {
+                  color: '#e4e7f0'
+                }
+              },
+              splitLine: {
+                show: false,
+                lineStyle: {
+                  color: ['#e4e7f0'],
+                  type: 'solid'
+                }
+              }
+            }],
+          series: [
+            {
+              name: '持仓金额',
               type: 'line',
               yAxisIndex: 0,
               symbol: 'circle',
@@ -203,7 +360,7 @@
               }
             },
             {
-              name: '本月持仓量',
+              name: '持仓量',
               type: 'bar',
               barGap: 0,
               itemStyle: {
@@ -217,7 +374,7 @@
         basicOption1: {
           tooltip: {
             trigger: 'item',
-            formatter: "{a} <br/>{b}: {c} ({d}%)"
+            formatter: "{b}: {c} ({d}%)"
           },
           color: ['#fe8b6c', '#41c5ee', '#fbc647', '#8dddff', '#a499dc', '#f78ab7', '#5bcb9d'],
           legend: {
@@ -227,9 +384,15 @@
             bottom: 20,
             itemWidth: 7,
             itemHeight: 7,
+            selectedMode: false,
             textStyle: {
               color: '#808086',
               fontSize: 13
+            }
+          },
+          axisPointer: { //修改提示框的颜色(包括x轴上的提示框)
+            label: {
+              backgroundColor: '#808086'
             }
           },
           grid: {
@@ -269,11 +432,15 @@
         }
       }
     },
-    mounted() {
-      this.myCharts = echarts.init(this.$refs.chart)
-      this.myCharts.setOption(this.basicOption)
-      this.myCharts1 = echarts.init(this.$refs.chart1)
-      this.myCharts1.setOption(this.basicOption1)
+    computed: {
+      ...mapState({
+        departId: ({others}) => others.departId
+      })
+    },
+    activated() {
+      this.echarts1 = true
+      this.echarts2 = true
+      this.$parent.nowIndex = 4
       this.getLeaderDepartPosition()
       this.getLeaderDepartPositionInfo()
     },
@@ -290,29 +457,31 @@
       getLeaderDepartPosition() { //leaderDepartPosition查询部门成交持仓
         this.$$axios({
           restUrl: 'leaderDepartPosition',
-          join: [this.testUserId, this.testDepartId]
+          join: [this.info.userId, this.departId],
+          loading: true
         })
           .then((response) => {
-//            if (response.length <= 0 || !response[0]) {
-//              return
-//            }
+            if (response.length <= 0 || !response[0]) {
+              this.echarts1 = false
+              return
+            }
+            this.$forceUpdate()
+            this.echarts1 = true
+            this.myCharts = echarts.init(this.$refs.chart)
+            this.myCharts.setOption(this.basicOption)
+            this.myCharts2 = echarts.init(this.$refs.chart2)
+            this.myCharts2.setOption(this.basicOption2)
             let xArray = []
             let yArray1 = []
             let yArray2 = []
             let yArray3 = []
             let yArray4 = []
-            response['HOLD_SUM'].map((item) => { //持仓金额
+            response.map((item) => {
               xArray.push(item.TX_DT)
-              yArray1.push((item.DAY_ORDER / 10000).toFixed(2))
-            })
-            response['TURNVOLUME'].map((item) => { //成交金额
-              yArray2.push((item.DAY_ORDER / 10000).toFixed(2))
-            })
-            response['HOLD_CNT'].map((item) => {  //持仓量
-              yArray3.push(item.DAY_ORDER)
-            })
-            response['VOLUME'].map((item) => {  //成交手数
-              yArray4.push(item.DAY_ORDER)
+              yArray1.push(item.HOLD_AMT.toFixed(2))
+              yArray2.push(item.BARGAIN_COUNT)
+              yArray3.push(item.HOLD_CNT)
+              yArray4.push(item.BARGAIN_AMT.toFixed(2))
             })
             let currentOption = {
               xAxis: {
@@ -320,11 +489,18 @@
               },
               series: [
                 {
-                  data: yArray2
-                },
-                {
                   data: yArray4
                 },
+                {
+                  data: yArray2
+                }
+              ]
+            }
+            let currentOption1 = {
+              xAxis: {
+                data: xArray
+              },
+              series: [
                 {
                   data: yArray1
                 },
@@ -334,21 +510,28 @@
               ]
             }
             this.myCharts.setOption(currentOption)
+            this.myCharts2.setOption(currentOption1)
           })
           .catch((res) => {
+            this.echarts1 = false
             console.log(res)
           })
       },
       getLeaderDepartPositionInfo() { //leaderDepartPositionInfo查询部门成交持仓结构
         this.$$axios({
           restUrl: 'leaderDepartPositionInfo',
-          join: [this.testUserId, [this.testDepartId, ['type', this.type]]]
+          join: [this.info.userId, [this.departId, ['type', this.type]]]
         })
           .then((response) => {
             this.isclick = true
             if (response.length <= 0 || !response[0]) {
+              this.echarts2 = false
               return
             }
+            this.$forceUpdate()
+            this.echarts2 = true
+            this.myCharts1 = echarts.init(this.$refs.chart1)
+            this.myCharts1.setOption(this.basicOption1)
             console.log(response, 'response')
             let xArray = []
             let yArray = []
@@ -402,9 +585,22 @@
             this.myCharts1.setOption(currentOption)
           })
           .catch((res) => {
+            this.echarts2 = false
             console.log(res)
           })
       }
+    },
+    beforeRouteLeave(to, from, next) {
+      if (this.myCharts) {
+        this.myCharts.clear()
+      }
+      if (this.myCharts1) {
+        this.myCharts1.clear()
+      }
+      if (this.myCharts2) {
+        this.myCharts2.clear()
+      }
+      next()
     }
   }
 </script>

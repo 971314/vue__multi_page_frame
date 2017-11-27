@@ -9,8 +9,8 @@
     .bg-qx-blue {
       background-color: #3366cc;
       height: toRem(233px);
-      border-bottom-left-radius: 50%;
-      border-bottom-right-radius: 50%;;
+      border-bottom-left-radius: 15%;
+      border-bottom-right-radius: 15%;;
     }
     .lunbo-wrapper-content {
       position: absolute;
@@ -107,7 +107,7 @@
                     line-height: 1;
                     color: $color18;
                     @include font(32px);
-                    font-weight: bolder;
+                    font-weight: 400;
                     margin-top: toRem(16px);
                     opacity: 0.95;
                   }
@@ -153,7 +153,7 @@
                         line-height: 1;
                         color: $color18;
                         @include font($font35);
-                        font-weight: bolder;
+                        font-weight: 400;
                         opacity: 0.95;
                         margin-top: toRem(18px);
                       }
@@ -194,15 +194,15 @@
                       color: $color18;
                       @include font(16px);
                       opacity: 0.95;
-                      font-weight: bolder;
+                      font-weight: 400;
                     }
                     .footer-left-color2 {
                       color: $color2;
-                      font-weight: bolder;
+                      font-weight: 400;
                     }
                     .footer-left-color3 {
                       color: $color3;
-                      font-weight: bolder;
+                      font-weight: 400;
                     }
 
                   }
@@ -235,15 +235,15 @@
                       color: $color18;
                       @include font(16px);
                       opacity: 0.95;
-                      font-weight: bolder;
+                      font-weight: 400;
                     }
                     .footer-center-color2 {
                       color: $color2;
-                      font-weight: bolder;
+                      font-weight: 400;
                     }
                     .footer-center-color3 {
                       color: $color3;
-                      font-weight: bolder;
+                      font-weight: 400;
                     }
 
                   }
@@ -274,15 +274,15 @@
                       color: $color18;
                       @include font(16px);
                       opacity: 0.95;
-                      font-weight: bolder;
+                      font-weight: 400;
                     }
                     .footer-right-color2 {
                       color: $color2;
-                      font-weight: bolder;
+                      font-weight: 400;
                     }
                     .footer-right-color3 {
                       color: $color3;
-                      font-weight: bolder;
+                      font-weight: 400;
                     }
                   }
                 }
@@ -340,7 +340,7 @@
               line-height: 1;
               color: $color18;
               @include font($font10);
-              font-weight: bolder;
+              font-weight: 400;
             }
             .item-left-text {
               margin-top: toRem(14px);
@@ -387,7 +387,7 @@
               line-height: 1;
               color: $color18;
               @include font($font10);
-              font-weight: bolder;
+              font-weight: 400;
             }
             .item-left-text {
               margin-top: toRem(14px);

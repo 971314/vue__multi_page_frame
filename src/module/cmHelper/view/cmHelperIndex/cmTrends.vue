@@ -18,7 +18,12 @@
         </div>
 
         <div class="container customer-info-center">
-            <div v-if="lists"><div class="text-center" v-if="lists.length <= 0" style="padding:10px 0;">无数据</div></div>
+            <div v-if="lists" class="no-data text-center">
+                <div class="text-center" v-if="lists.length <= 0">
+                    <img src="../../images/cmHelperIndex/img19.png"/>
+                </div>
+                暂无数据
+            </div>
             <div class="cmTrendsGroup" v-for="(item, index) in lists">
                 <div class="group-title setHeight">
                     <i>&nbsp;</i>

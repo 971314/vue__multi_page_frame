@@ -1,0 +1,166 @@
+@import './swiper.min.scss';
+
+.flexbody {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.xyFinance {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .pb-common-nav {
+    position: static;
+    height: 44px;
+  }
+  .content {
+    flex: 1;
+    overflow-y:scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+  .border {
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #FFFFFF;
+  }
+
+  .info-header {
+    padding-left: 15px;
+    height: 43px;
+    line-height: 44px;
+    border-bottom: 1px solid #e4e7f0;
+    background-color: #fff;
+  }
+  .info-header b {
+    font-size: 16px;
+    font-weight: bold;
+    border-left: 5px #2868E8 solid;
+    padding-left: 7px;
+    text-shadow: 1px 1px 2px #fff;
+  }
+
+  .info-header a {
+    display: inline-block;
+    font-size: 13px;
+    padding: 0px 5px;
+    float: right;
+    position: relative;
+    color: #808086;
+    text-decoration: none;
+  }
+  .info-header a .more {
+    position: relative;
+    float: none;
+    top: -3px;
+    margin-left: 5px;
+    margin-right: 15px;
+    display: inline-block;
+    width: 7px;
+    height: 14px;
+    vertical-align: middle;
+    font-size: 13px;
+  }
+
+  .swipe, .swiper-container {
+    img {
+      width: 100%;
+    }
+  }
+  .parent-wrap .pagination .swiper-pagination-bullet-active {
+    background: #fff;
+  }
+
+  .parent-wrap .pagination .swiper-pagination-bullet {
+    background: #CBCBCB;
+    width: 5px;
+    height: 5px;
+  }
+
+  .func {
+    background: #fff;
+    margin-bottom: 10px;
+    padding: 22px 0;
+
+    a {
+      display: inline-block;
+      width: 32.56%;
+      height: 76px;
+
+      color: $color-bg-text;
+
+      img {
+        width: 65px;
+        margin: 0 auto;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      span {
+        text-align: center;
+        display: block;
+        font-size: 14px;
+      }
+    }
+  }
+  .banner {
+    height: 80px;
+
+    img {
+      width: 100%;
+    }
+
+  }
+
+  .news {
+    background: #fff;
+    font-size: 16px;
+    padding-bottom: 20px;
+    .list {
+      padding-left: 10px;
+      height: 40px;
+      padding-top: 20px;
+      width: 100%;
+      display: flex;
+      display: -webkit-flex; /* Safari */
+
+      .date {
+        width: 100px;
+      }
+
+      .type {
+        width: 80px;
+
+
+        span {
+          border-radius: 4px;
+          display: block;
+          border: solid 1px #EDF1FA;
+          width: 75px;
+          padding: 2px 4px;
+          color: #3366cc;
+          background-color: #EDF1FA;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          text-align: center;
+          font-size: 13px;
+        }
+      }
+
+      .title {
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        flex: 1 1 0%;
+        padding-right: 5px;
+      }
+    }
+  }
+
+}

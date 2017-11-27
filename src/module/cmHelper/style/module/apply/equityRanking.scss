@@ -26,6 +26,7 @@
   .tableBody {
     position: static;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
     .borderBottom {
       border-bottom: 1px solid rgba(228, 231, 240, 0.5);
     }

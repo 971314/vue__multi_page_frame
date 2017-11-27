@@ -2,23 +2,25 @@
 
     .searchArea{
         position: relative;
-        padding: toRem(14px) toRem(100px) toRem(14px) toRem(14px);
-        height: toRem(88px);
-        line-height: toRem(88px);
+        padding: 7px 50px 7px 7px;
+        height: 44px;
+        line-height: 44px;
         background-color: #3366cc;
         .searchInput{
-            height: toRem(60px);
-            line-height: toRem(60px);
+            height: 30px;
+            line-height: 30px;
+            background-color: #fff;
+            border-radius: 4px;
             input{
-                float: left;
-                padding:0 0 0 toRem(66px);
+                padding:0 0 0 33px;
                 width: 100%;
-                font-size: toRem(28px);
+                height: 20px;
+                line-height: 20px;
+                font-size: 14px;
                 border:0;
-                border-radius: toRem(8px);
-                background:url("../cmApproval/images/others/img09.png") center center no-repeat #fff;
-                background-size: toRem(26px);
-                background-position-x: toRem(20px);
+                background:url("../cmApproval/images/others/img09.png") center center no-repeat transparent;
+                background-size: 13px;
+                background-position-x: 10px;
                 background-position-y: center;
             }
         }
@@ -42,6 +44,7 @@
                     margin-left: toRem(30px);
                     padding: 0;
                     height: toRem(134px);
+                    background-image: none;
                     @include bottom-px1-pixel-ratio;
                     .cell-body{
                         p{
@@ -57,7 +60,7 @@
                         }
                     }
                 }
-                .cell:last-child{
+                .cell:last-child:before{
                     border: 0;
                 }
             }

@@ -3,7 +3,7 @@
     <div class="index-header-navbar">
       <navbarspec></navbarspec>
     </div>
-    <div class="index-content-wrapper" :class="{'is-Androd-ok': isAndroid}" id="index-content-wrapper">
+    <div  class="index-content-wrapper" :style="{marginTop:getMarginTop()}" id="index-content-wrapper">
       <div v-for="com in rootCop">
         <component :is="com.name" :co-instance="com.coInstance"></component>
       </div>
@@ -41,6 +41,24 @@
       infolist2
     },
     methods: {
+      getMarginTop()
+      {
+        if (pbE.isPoboApp) {
+          let bar = 0, base = 44;
+          if (this.isAndroid())
+            bar = 22;
+          else
+            bar =20;
+
+          if (pbE.SYS().getStatusBarHeight)
+            bar = pbE.SYS().getStatusBarHeight();
+
+          bar = bar + base;
+          return "-" + bar + 'px';
+        }
+        else
+          return '-84px';
+      },
       isAndroid () {
         if (pbE.isPoboApp) {
           var DeviceJsonInfo = JSON.parse(pbE.SYS().getDeviceJsonInfo());

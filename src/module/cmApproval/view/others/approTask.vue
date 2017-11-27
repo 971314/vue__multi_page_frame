@@ -14,27 +14,33 @@
                 <tabbar-item>已审批</tabbar-item>
             </tabbar>
 
-        <div class="container fzj-zy-content">
+        <div class="container fzj-zy-content" v-if="lists">
             
 
-            
+            <div class="pobo-no-data1" v-if="lists.length <= 0">
+                <div class="text-center" >
+                    <img src="../../images/others/img19.png"/>
+                </div>
+                <span>暂无数据</span>
+            </div>
 
-            <div class="group" v-infinite-scroll="loadMore"  infinite-scroll-distance="10">
-                <a class="cell" v-for="(item, i) in lists" @click="goTaskDetail(item.businessKeyId)">
+            <div class="group" v-if="lists.length > 0" v-infinite-scroll="loadMore"  infinite-scroll-distance="10">
+                <a class="cell" v-for="(item, i) in lists" @click="goTaskDetail(item)">
                     <span class="cell-body">
-                        <h3>{{item.appObjectName}} {{item.processName}}</h3>
-                        <h3>客户经理 {{item.operatorName}}({{item.departName}})</h3>
+                        <h3>{{cutName(item.appObjectName)}} | {{item.processName}}</h3>
+                        <h3>{{item.operatorName}} ({{item.departName}})</h3>
                     </span>
-                    <div class="date" v-if="qrytype==1">
-                        <p>{{item.appDate ? getDateDIY(item.appDate)[0] : ''}}</p>
-                        <p>{{item.appDate ? getDateDIY(item.appDate)[1] : ''}}</p>
+                    <div class="date" v-if="qrytype==1 && item.appDate">
+                        <p>{{item.appDate ? $$timeFormate({date: item.appDate, format: 'M-D'}) : ''}}</p>
+                        <p>{{item.appDate ? $$timeFormate({date: item.appDate, format: 'h:m'}) : ''}}</p>
                     </div>
                     <div class="date" v-if="qrytype==2">
-                        <p :class="{'fontType1':item.appStatus!='3','fontType2':item.appStatus=='3'}">{{item.appStatusName}}</p>
-                        <p>{{item.appDate ? getDateDIY(item.appDate)[0] + ' ' +getDateDIY(item.appDate)[1] : ''}}</p>
+                        <p :class="{'fontType1':item.appStatus!='3','fontType2':item.appStatus=='3'}">{{item.result}}</p>
+                        <p v-if="item.appDate">{{getDateDIY(item.appDate) + ' ' +$$timeFormate({date: item.appDate, format: 'h:m'})}}</p>
                     </div>
                 </a>
             </div>
+            <div class="countNum" v-if="lists.length > 0"><span>共{{lists.length}}条</span></div>
 
         </div>
 
@@ -57,7 +63,7 @@
                 begin : 1,
                 size : 10,
                 qrytype : 1, //1未完成 2已完成
-                lists : [],
+                lists : null,
                 loadMoreFlag : false
             }
         },
@@ -67,6 +73,8 @@
           })
         },
         activated() {
+            this.lists = [];
+            this.begin = 1;
             //查看我要处理的审批
             this.getLeaderApprove();
         },
@@ -78,7 +86,7 @@
 
             //切换tab
             changeHandle(val) {
-                this.lists = [];
+                this.lists = null;
                 this.begin = 1;
                 this.loadMoreFlag = false;
                 this.qrytype = val + 1;
@@ -94,6 +102,7 @@
                 })
                 .then((response) => { 
                     if(response.length == 0){
+                        _this.lists = [];
                         return;
                     }else if(response.length > 0 && response.length < _this.size){
                         _this.loadMoreFlag = false;
@@ -101,7 +110,10 @@
                         _this.begin += 1;
                         _this.loadMoreFlag = true;
                     }
-                    this.lists = this.lists.concat(response);
+                    if(!_this.lists){ _this.lists = []; }
+                    //response = util.dateSort(response, 'appDate')
+                    _this.lists = util.dateSort(_this.lists.concat(response),'appDate');
+
                 })
                 .catch((res) => {
                     console.log('res', res);
@@ -114,15 +126,30 @@
                 }
             },
             //跳转任务详情
-            goTaskDetail(businessKeyId){
+            goTaskDetail(o){
                 var process = this.process;
-                process.businessKeyId = businessKeyId;
+                process.businessKeyId = o.businessKeyId;
+                process.processId = o.processId;
+                process.taskId = o.taskId;
+                process.taskFlag = this.qrytype;
                 this.$store.dispatch('updataProcess', process);
                 this.$router.push({ name: 'approProcess' })
             },
             //日期格式化
             getDateDIY(d){
-                return util.getDateDIY(d);
+                if(!d){ return ""; }
+                if(d.indexOf('.') >= 0){
+                   d = d.substring(0,d.indexOf('.')); //过滤掉 小数点以及 小数点后面的 字符
+                }
+                var ddd = new Date();
+                var ddd2 = new Date(d);
+                var y = ddd.getFullYear();
+                var y2 = ddd2.getFullYear();
+                if(y==y2){
+                    return this.$$timeFormate({date: d, format: 'M-D'})
+                }else{
+                    return this.$$timeFormate({date: d, format: 'Y-M-D'})
+                }
             }
         }
     }

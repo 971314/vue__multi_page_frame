@@ -50,14 +50,14 @@
             </div>
             <div class="info-table-row2">
               <div class="info-table-item">
-                <div class="info-item-title">上日结存</div>
+                <div class="info-item-title">净入金</div>
                 <div class="info-item-num"
-                     v-text="fundsTips.PRE_RI_AMT == '0' || fundsTips.PRE_RI_AMT == '-0' ? '-' : $$transformData(fundsTips.PRE_RI_AMT)"></div>
+                     v-text="fundsTips.DEPOSIT == '0' || fundsTips.DEPOSIT == '-0' ? '-' : $$transformData(fundsTips.DEPOSIT)"></div>
               </div>
               <div class="info-table-item">
-                <div class="info-item-title">本日结存</div>
+                <div class="info-item-title">成交额</div>
                 <div class="info-item-num"
-                     v-text="fundsTips.TODAY_RI_AMT == '0' || fundsTips.TODAY_RI_AMT == '-0' ? '-' : $$transformData(fundsTips.TODAY_RI_AMT)"></div>
+                     v-text="fundsTips.VOLUME == '0' || fundsTips.VOLUME == '-0' ? '-' : $$transformData(fundsTips.VOLUME)"></div>
               </div>
               <div class="info-table-item">
                 <div class="info-item-title">盈亏</div>
@@ -131,8 +131,8 @@
         chicangType: 'P', //持仓类型
         fundsTips: {
           MARGIN_AMT: '',
-          PRE_RI_AMT: '',
-          TODAY_RI_AMT: '',
+          DEPOSIT: '',
+          VOLUME: '',
           PROFITLOSS: '',
           BEGINEQUITY: '',
           ENDEQUITY: ''
@@ -144,7 +144,7 @@
           tooltip: {
             trigger: 'axis',
             axisPointer: {
-              type: 'cross'
+              type: 'line'
             },
             formatter: function (item) {
               return `${item[0].data[0]}<br />${item[0].seriesName}: ${item[0].data[1]}`
@@ -415,8 +415,8 @@
             this.zjClick = true
             if (response['detail'].length <= 0) {
               this.fundsTips['MARGIN_AMT'] = '0'
-              this.fundsTips['PRE_RI_AMT'] = '0'
-              this.fundsTips['TODAY_RI_AMT'] = '0'
+              this.fundsTips['DEPOSIT'] = '0'
+              this.fundsTips['VOLUME'] = '0'
               this.fundsTips['PROFITLOSS'] = '0'
               this.fundsTips['BEGINEQUITY'] = '0'
               this.fundsTips['ENDEQUITY'] = '0'
@@ -434,8 +434,8 @@
             document.getElementById('no-message-tips').style.display = 'none'
 
             this.fundsTips['MARGIN_AMT'] = response['total'][0]['MARGIN_AMT']   //保证金
-            this.fundsTips['PRE_RI_AMT'] = response['total'][0]['PRE_RI_AMT']  //上日结存
-            this.fundsTips['TODAY_RI_AMT'] = response['total'][0]['TODAY_RI_AMT']  //本日结存
+            this.fundsTips['DEPOSIT'] = response['total'][0]['DEPOSIT']  //上日结存
+            this.fundsTips['VOLUME'] = response['total'][0]['VOLUME']  //本日结存
             this.fundsTips['PROFITLOSS'] = response['total'][0]['PROFITLOSS']  //盈亏
             this.fundsTips['BEGINEQUITY'] = response['total'][0]['BEGINEQUITY']  //期初权益
             this.fundsTips['ENDEQUITY'] = response['total'][0]['ENDEQUITY'] //期末权益
@@ -494,6 +494,9 @@
                       currentValue = item.HOLD_CNT / 1
                     }
                   })
+                  if(total == 0) {
+                    return `${name} 0`
+                  }
                   let percent = ((currentValue / total) * 100).toFixed(2)
                   return `${name} ${percent}%`
                 },

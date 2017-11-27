@@ -6,8 +6,8 @@
           <div :class="{'active':segmentedIndex==1}" @click="changeHandle(1)">已开户</div>
           <div :class="{'active':segmentedIndex==2}" @click="changeHandle(2)">未开户</div>
         </div>
-        <div v-if="addFollow.businessType==1" class="page-title">已开户</div>
-        <div v-if="addFollow.businessType==2" class="page-title">未开户</div>
+        <div v-if="addFollow.businessType==1" class="page-title">{{cusListPageTitle?cusListPageTitle:'已开户'}}</div>
+        <div v-if="addFollow.businessType==2" class="page-title">{{cusListPageTitle?cusListPageTitle:'未开户'}}</div>
       </div>
       <div slot="footer" v-if="segmentedIndex==2" class="addInvestor">
         <router-link to="potentialCustomerAdd">新增</router-link>
@@ -85,7 +85,9 @@
         addFollow: ({followUpRecord}) => followUpRecord.addFollow,
         investor: ({followUpRecord}) => followUpRecord.investor,
         pInvestor: ({followUpRecord}) => followUpRecord.pInvestor,
-        jumpFlag: ({followUpRecord}) => followUpRecord.jumpFlag
+        jumpFlag: ({followUpRecord}) => followUpRecord.jumpFlag,
+        storeSegmentedIndex: ({followUpRecord}) => followUpRecord.segmentedIndex,
+        cusListPageTitle: ({followUpRecord}) => followUpRecord.cusListPageTitle
       })
     },
     data() {
@@ -106,12 +108,23 @@
       this.deptJson = [];
       this.currentList = [];
       this.count = 0;
-      if(this.addFollow.businessType==2 || this.pInvestor.CUST_ID){
+      // if(this.addFollow.businessType==2 || this.pInvestor.CUST_ID){
+      //   //获取【潜在客户列表】
+      //   this.urlcontent = 'pInvestor'
+      //   this.segmentedIndex = 2;
+      //   this.getCusList(this.urlcontent + '/list/' + this.info.userId);
+      // }else if(this.addFollow.businessType==1 || this.investor.INVESTOR_ID || !this.investor.INVESTOR_ID){
+      //   //获取【客户列表】
+      //   this.urlcontent = 'investor'
+      //   this.segmentedIndex = 1;
+      //   this.getCusList(this.urlcontent + '/list/' + this.info.userId);
+      // }
+      if(this.addFollow.businessType==2 || this.storeSegmentedIndex==2){
         //获取【潜在客户列表】
         this.urlcontent = 'pInvestor'
         this.segmentedIndex = 2;
         this.getCusList(this.urlcontent + '/list/' + this.info.userId);
-      }else if(this.addFollow.businessType==1 || this.investor.INVESTOR_ID || !this.investor.INVESTOR_ID){
+      }else{
         //获取【客户列表】
         this.urlcontent = 'investor'
         this.segmentedIndex = 1;
@@ -177,6 +190,13 @@
         _this.$axios.get(url,{headers:{id:this.info.token}}, null).then(function (result) {
 
           var list = result.data.data;
+          if(!list){
+            _this.$loadingNodispear.hide()
+            return;
+          }else if(list && list.length <= 0){
+            _this.$loadingNodispear.hide()
+            return;
+          }
           var cList = [];
           var index = 0;
           var hasOther = null;

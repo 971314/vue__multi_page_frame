@@ -4,6 +4,7 @@ import InviolableRights from '../../view/leaderApply/inviolableRights.vue'
 import Payments from '../../view/leaderApply/payments.vue'
 import Poundage from '../../view/leaderApply/poundage.vue'
 import ClosingPosition from '../../view/leaderApply/closingPosition.vue'
+import GlancePer from '../../view/leaderApply/glancePer.vue'
 
 const routes = [
   {
@@ -37,6 +38,11 @@ const routes = [
         component: ClosingPosition
       }
     ]
+  },
+  {
+    path: '/glancePer',
+    name: 'glancePer',
+    component: GlancePer
   }
 ]
 

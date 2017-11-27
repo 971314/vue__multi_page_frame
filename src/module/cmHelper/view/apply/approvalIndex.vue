@@ -6,7 +6,7 @@
     <div class="approval_tab">
       <span :class="qrytype == 0?'selected':''" @click="tabClick(0)">全部</span>
       <span :class="qrytype == 1?'selected':''" @click="tabClick(1)">审批中</span>
-      <span :class="qrytype == 2?'selected':''" @click="tabClick(2)">已完成</span>
+      <span :class="qrytype == 2?'selected':''" @click="tabClick(2)">审批通过</span>
     </div>
     <div class="approval_conter">
       <div class="approval_cell" @click="jumpClick(data)" v-for="data in approvalData">

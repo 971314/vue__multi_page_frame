@@ -43,6 +43,16 @@ const urlList = {
     name: '查询部门持仓构成',
     url: 'leader/depart/positionInfo',
     type: 'Get'
+  },
+  workPerformancInfo: {
+    name: '客户权益结构',
+    url: 'leader/workPerformanc/info',
+    type: 'Get'
+  },
+  workPerformancList: {
+    name: '个人业绩近一年历史',
+    url: 'leader/workPerformanc/list',
+    type: 'Get'
   }
 }
 

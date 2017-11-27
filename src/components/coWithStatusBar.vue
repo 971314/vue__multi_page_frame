@@ -1,7 +1,7 @@
 <template>
-  <div class="with-status-bar" :class="{ 'andriod-status-bar': isAndroid }" id="withStatusBar">
-    <div class="status-bar-bgc"></div>
-    <div class="navbar-bgc">
+  <div class="with-status-bar" :style="{height:barHeight + 44+ 'px'}" id="withStatusBar">
+    <div :style="{height: barHeight + 'px'}"></div>
+    <div class="navbar-bgc" >
       <slot></slot>
     </div>
   </div>
@@ -13,22 +13,13 @@ export default {
   data() {
     return {
       appName:"",
-      color:""
+      color:"",
+      //barHeight:pbE.isPoboApp?pbE.SYS().getStatusBarHeight():0
+      barHeight:this.getBarHeight()
     }
   },
   computed: {
-    isAndroid () {
-      if (pbE.isPoboApp) {
-        var DeviceJsonInfo = JSON.parse(pbE.SYS().getDeviceJsonInfo());
-        if (DeviceJsonInfo['255']) {  //平台
-          var platNum = DeviceJsonInfo['255'];
-          if (platNum == '3') {
-            return true;
-          }
-        }
-      }
-      return false;
-    }
+
   },
   created(){
     var _this = this;
@@ -85,6 +76,29 @@ export default {
     }
   },
   methods: {
+    isAndroid () {
+      if (pbE.isPoboApp) {
+        var DeviceJsonInfo = JSON.parse(pbE.SYS().getDeviceJsonInfo());
+        if (DeviceJsonInfo['255']) {  //平台
+          var platNum = DeviceJsonInfo['255'];
+          if (platNum == '3') {
+            return true;
+          }
+        }
+      }
+      return false;
+    },
+    getBarHeight()
+    {
+
+      let bar = 20;
+      if(this.isAndroid())
+          bar = 22;
+      if (pbE.isPoboApp && pbE.SYS().getStatusBarHeight)
+        bar = pbE.SYS().getStatusBarHeight();
+
+      return bar;
+    },
     RGB2RGBA(rgb,alp){
       //注：rgb_color的格式为#FFFFFFF，alp为透明度
       var r = parseInt("0x" + rgb.substr(1,2));

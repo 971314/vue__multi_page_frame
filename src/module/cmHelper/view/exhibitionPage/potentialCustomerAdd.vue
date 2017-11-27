@@ -11,14 +11,14 @@
           <div class="customer-input-item">
             <div class="input-item-name">姓名</div>
             <div class="input-item-input">
-              <input class="item-input-content" placeholder="请填写姓名" v-model="customerMessage.CUST_NAM" maxlength="12"
+              <input class="item-input-content" placeholder="请填写姓名" v-model="customerMessage.CUST_NAM" maxlength="80"
                      type="text"/>
             </div>
           </div>
           <div class="customer-input-item">
             <div class="input-item-name">性别</div>
             <div class="input-item-input" :class="{'item-click-input': colorClick1}" @click="chooseSex">
-              {{noPotSex ? sex : '--'}}
+              {{noPotSex ? sex : ''}}
               <!--<input class="item-input-content" v-model="customerMessage.SEX" maxlength="12" type="text"/>-->
             </div>
             <img class="customer-showdetail-arrow" src="../../images/exhibitionPage/showdetail@2x.png"/>
@@ -26,7 +26,8 @@
           <div class="customer-input-item">
             <div class="input-item-name">身份证号码</div>
             <div class="input-item-input">
-              <input class="item-input-content" placeholder="请填写身份证号码" v-model="customerMessage.ID_NO" type="text"/>
+              <input class="item-input-content" placeholder="请填写身份证号码" v-model="customerMessage.ID_NO" maxlength="20"
+                     type="text"/>
             </div>
           </div>
           <div class="customer-input-item">
@@ -54,14 +55,15 @@
             <div class="input-item-name">手机号码<img class="user-must-icon"
                                                   src="../../images/exhibitionPage/musticon@2x.png"/></div>
             <div class="input-item-input">
-              <input class="item-input-content" placeholder="请填写手机号码" v-model="customerMessage.MOBILE_NO" type="tel"/>
+              <input class="item-input-content" placeholder="请填写手机号码" v-model="customerMessage.MOBILE_NO" maxlength="40"
+                     type="tel"/>
             </div>
           </div>
           <div class="customer-input-item">
             <div class="input-item-name">固定电话</div>
             <div class="input-item-input">
               <input class="item-input-content" placeholder="请填写固定电话" v-model="customerMessage.LINKTELEPHONE"
-                     type="tel"/>
+                     maxlength="40" type="tel"/>
             </div>
           </div>
         </div>
@@ -69,12 +71,14 @@
           <div class="customer-input-item">
             <div class="input-item-name">客户来源</div>
             <div class="input-item-input">
-              <input class="item-input-content" placeholder="请填写客户来源" v-model="customerMessage.CUST_SRC" type="text"/>
+              <input class="item-input-content" placeholder="请填写客户来源" v-model="customerMessage.CUST_SRC" maxlength="50"
+                     type="text"/>
             </div>
           </div>
         </div>
         <div class="customer-remarks">
-          <textarea class="remarks-text-area" placeholder="请添加备注" v-model="customerMessage.CUST_DESC"></textarea>
+          <textarea class="remarks-text-area" placeholder="请添加备注" maxlength="500"
+                    v-model="customerMessage.CUST_DESC"></textarea>
         </div>
       </div>
     </div>
@@ -132,9 +136,9 @@
         }
       },
       'customerMessage.BIRTH_DT'(val, oldVal) {
-          if (val) {
-            this.colorClick2 = true
-          }
+        if (val) {
+          this.colorClick2 = true
+        }
       }
     },
     methods: {
@@ -230,12 +234,15 @@
         this.customerMessage['SEX'] = ''
         this.customerMessage['ID_NO'] = ''
         this.customerMessage['BIRTH_DT'] = ''
-        this.customerMessage['LINKADDR'] = ''
+        this.customerMessage['LINKADDR'] = '请填写通讯地址'
         this.customerMessage['LINKTELEPHONE'] = ''
         this.customerMessage['MOBILE_NO'] = ''
         this.customerMessage['CUST_SRC'] = ''
         this.customerMessage['CUST_DESC'] = ''
         this.$store.dispatch('updateNoPotSex', '')
+        document.getElementById('input-item-input').innerHTML = ''
+        this.isfocus = false
+        this.colorClick3 = false
       },
       getSex (flag) {
         if (flag == '1') {
@@ -280,6 +287,7 @@
             console.log('response', response)
             this.$toast('添加成功!')
             setTimeout(() => {
+              this.$store.dispatch('updatepSegmentedIndex', 2)
               this.$router.back()
               this.clear()
             }, 1500)
@@ -288,6 +296,10 @@
             console.log('res', res)
           })
       }
+    },
+    beforeRouteLeave(to, from, next) {
+      this.clear()
+      next()
     }
   }
 </script>

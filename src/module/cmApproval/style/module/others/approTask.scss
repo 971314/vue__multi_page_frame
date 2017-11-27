@@ -1,5 +1,7 @@
 @import '../../../../cmHelper/style/module/cmHelperIndex/cmTrends.scss';
-
+// .approTask.pobo-main-index .fzj-zy-content{
+//     -webkit-overflow-scrolling: auto;
+// }
 .cmTrends.approTask{
 	.tabbar{
 		    height: toRem(100px);
@@ -12,7 +14,12 @@
 			}
 		}
 	.container{
-		
+		.countNum{ 
+		    text-align: center;
+		    padding: toRem(34px) 0;
+		    color: #808086;
+		    font-size: toRem(26px);
+		}
 		.group{
 			background-image: none;
 			margin-top: 0;
@@ -61,4 +68,20 @@
 		}
 		
 	}
+}
+.pobo-no-data1{
+	text-align: center;
+	img{
+		margin: toRem(234px) 0 0 0;
+		width:toRem(255px);
+		height:toRem(248px);	
+	}
+	span{
+		text-align: center;
+	    display: inline-block;
+	    margin: toRem(40px) 0;
+	    color: #808086;
+	    font-size: toRem(26px);
+	}
+	
 }

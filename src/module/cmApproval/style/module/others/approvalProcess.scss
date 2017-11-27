@@ -1,0 +1,116 @@
+.approval_process {
+  @extend %initial;
+  .center {
+    overflow: auto;
+    .process_header {
+      background: $color15;
+      padding: toRem(40px) 0 toRem(40px) toRem(30px);
+      div {
+        line-height: 1;
+        padding-bottom: toRem(28px);
+        font-size: $font26;
+        color: $color17;
+        &:nth-of-type(1) {
+          span {
+            &:nth-of-type(2) {
+              color: $color1;
+            }
+          }
+        }
+        &:nth-of-type(3) {
+          padding: 0;
+        }
+        span {
+          &:nth-of-type(1) {
+            padding-right: toRem(30px);
+          }
+        }
+      }
+    }
+    .process_bottom {
+      margin-top: toRem(20px);
+      background: $color15;
+      padding: toRem(44px) 0;
+      .process_cell {
+        padding-top: toRem(70px);
+        color: $color17;
+        font-size: $font11;
+        display: flex;
+        align-items: flex-start;
+        position: relative;
+        & > div {
+          &:nth-of-type(1) {
+            width: toRem(116px);
+            text-align: right;
+            i {
+              padding: toRem(14px) toRem(14px);
+              position: absolute;
+              top: 0;
+              left: toRem(136px);
+              z-index: 1;
+              &.by {
+
+                background: url("../cmApproval/images/others/by.png") no-repeat;
+                background-position: 0 0;
+                background-size: toRem(28px);
+              }
+              &.by1 {
+                background: url("../cmApproval/images/others/by1.png") no-repeat;
+                background-position: 0 0;
+                background-size: toRem(28px);
+              }
+              &.by2 {
+                background: url("../cmApproval/images/others/by2.png") no-repeat;
+                background-position: 0 0;
+                background-size: toRem(28px);
+              }
+            }
+            .line {
+              width: 1px;
+              position: absolute;
+              left: toRem(150px);
+              top: toRem(28px);
+              bottom: 0;
+              margin-bottom: toRem(-70px);
+              background: $color23;
+            }
+          }
+          &:nth-of-type(2) {
+            padding-left: toRem(76px);
+            div {
+              &.paddingDiv {
+                line-height: 1;
+                padding-bottom: toRem(24px);
+              }
+            }
+          }
+        }
+      }
+      .process_cell {
+        &:not(:first-child) {
+          & > div {
+            i {
+              top: toRem(70px);
+            }
+            .line {
+              top: toRem(98px);
+            }
+          }
+        }
+      }
+      .process_cell:nth-of-type(1) {
+        padding: 0;
+      }
+      .process_cell:last-child {
+        & > div {
+          &:nth-of-type(1) {
+            .line {
+              bottom: auto;
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

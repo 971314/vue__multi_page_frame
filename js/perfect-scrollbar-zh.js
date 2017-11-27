@@ -470,8 +470,8 @@ function bindMouseScrollXHandler(element, i) {
   var mouseMoveHandler = function (e) {
     updateScrollLeft(e.pageX - currentPageX);
     updateGeometry(element);
-    e.stopPropagation();
-    e.preventDefault();
+    /*e.stopPropagation();
+    e.preventDefault();*/
   };
 
   var mouseUpHandler = function () {
@@ -487,8 +487,8 @@ function bindMouseScrollXHandler(element, i) {
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
     i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
 
-    e.stopPropagation();
-    e.preventDefault();
+    /*e.stopPropagation();
+    e.preventDefault();*/
   });
 }
 
@@ -515,8 +515,8 @@ function bindMouseScrollYHandler(element, i) {
   var mouseMoveHandler = function (e) {
     updateScrollTop(e.pageY - currentPageY);
     updateGeometry(element);
-    e.stopPropagation();
-    e.preventDefault();
+    /*e.stopPropagation();
+    e.preventDefault();*/
   };
 
   var mouseUpHandler = function () {
@@ -532,8 +532,8 @@ function bindMouseScrollYHandler(element, i) {
     i.event.bind(i.ownerDocument, 'mousemove', mouseMoveHandler);
     i.event.once(i.ownerDocument, 'mouseup', mouseUpHandler);
 
-    e.stopPropagation();
-    e.preventDefault();
+    /*e.stopPropagation();
+    e.preventDefault();*/
   });
 }
 
@@ -671,7 +671,7 @@ function bindKeyboardHandler(element, i) {
 
     shouldPrevent = shouldPreventDefault(deltaX, deltaY);
     if (shouldPrevent) {
-      e.preventDefault();
+      /*e.preventDefault();*/
     }
   });
 }
@@ -809,8 +809,8 @@ function bindMouseWheelHandler(element, i) {
 
     shouldPrevent = (shouldPrevent || shouldPreventDefault(deltaX, deltaY));
     if (shouldPrevent) {
-      e.stopPropagation();
-      e.preventDefault();
+      /*e.stopPropagation();
+      e.preventDefault();*/
     }
   }
 
@@ -1077,8 +1077,8 @@ function bindTouchHandler(element, i, supportsTouch, supportsIePointer) {
       }
 
       if (shouldPreventDefault(differenceX, differenceY)) {
-        e.stopPropagation();
-        e.preventDefault();
+        /*e.stopPropagation();
+        e.preventDefault();*/
       }
     }
   }

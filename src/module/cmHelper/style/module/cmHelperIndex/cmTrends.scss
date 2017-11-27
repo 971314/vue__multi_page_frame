@@ -90,5 +90,15 @@ body{
 				border-bottom: 0;
 			}
 		}
+		.no-data{
+			font-size: toRem(32px);
+			color:#1a1a1a;
+			img{
+				margin: toRem(234px) 0 toRem(56px) 0;
+				width:toRem(255px);
+				height:toRem(248px);	
+			}
+			
+		}
 	}
 }

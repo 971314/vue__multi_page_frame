@@ -72,6 +72,7 @@
         if(this.toWhere=="customerInfoList" || this.toWhere=="applyFast"){
           var p = this.addFollow;
           p.businessType = '';
+          this.$store.dispatch('updatepSegmentedIndex', '');
           this.$store.dispatch('updateAddFollow', p);
         }
         if (this.jumpType) {

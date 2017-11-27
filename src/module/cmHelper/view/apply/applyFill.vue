@@ -325,7 +325,7 @@
           this.$store.dispatch('updateAddFollow', Object.assign(this.addFollow, {businessType: '1'}))
           this.$router.push('/customerInfoList')
         } else if (this.fillData.investorType == '居间人') {
-//          this.$router.push('/intermediary')
+          this.$router.push('/intermediary')
         }
       },
       //附件上传限制提示

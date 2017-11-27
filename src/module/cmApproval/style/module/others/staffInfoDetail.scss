@@ -5,16 +5,18 @@
   .container {
 
     .group.cusInfo {
+      height: toRem(202px);
       background: url(../cmApproval/images/others/img20.png) no-repeat center center;
       background-size: 100% 100%;
       .cell {
-        padding: toRem(18px) toRem(30px) toRem(58px);
+        padding: toRem(18px) toRem(30px) toRem(50px);
         background-color: transparent;
         .cell-body {
           .media {
             background-color: transparent;
             .media-body {
               h3 {
+                margin-bottom: toRem(14px);
                 color: #fff;
               }
               p {
@@ -26,14 +28,18 @@
         }
       }
     }
+    .group.cusInfo:before{
+      border-bottom: 0;
+    }
     .applyInfo {
-      padding-top: 0;
+      padding-top: toRem(20px);
       overflow: hidden;
       background-color: transparent;
       .applyIitle {
         margin: 0;
         padding: toRem(40px) toRem(30px) toRem(34px) toRem(30px);
         background-color: #fff;
+        font-size: toRem(30px);
       }
       .applyIitle:before {
         border-bottom: 0;
@@ -43,10 +49,10 @@
         background-color: transparent;
         .cell {
           margin: 0;
-          padding: 0 toRem(30px) toRem(34px);
+          padding: 0 toRem(30px) toRem(30px);
         }
         .cell.accMana {
-          padding: toRem(40px) toRem(30px);
+          padding: toRem(30px) toRem(30px);
           .toDetail {
             position: absolute;
             right: .4rem;
@@ -59,6 +65,7 @@
           }
           span.color1 {
             color: #808086;
+            font-size: toRem(26px);
           }
           span.color2 {
             font-size: toRem(32px);
@@ -69,7 +76,7 @@
           padding-bottom: toRem(40px);
           @include bottom-px1-pixel-ratio;
         }
-        .cell.accMana:before {
+        .cell.accMana:before, .cell.mailNo:before {
           border: 0;
         }
         .mt20 {
