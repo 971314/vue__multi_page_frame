@@ -2,6 +2,7 @@ export default {
   state: {
     test: 111,
     czType: 0, //操作类型 0 查看客户资料  1 编辑客户资料 2 新增潜在客户
+    czSex: true,
     customerMessage: {
       OPENACCT_DT: '',
       FIRST_IN_DT: '',
@@ -25,6 +26,9 @@ export default {
     },
     updateNoPotSex(state, payload) {
       state.noPotSex = payload.noPotSex
+    },
+    updateCzSex(state, payload) {
+      state.czSex = payload.czSex
     }
   },
   actions: {
@@ -42,6 +46,9 @@ export default {
     },
     updateNoPotSex({commit}, noPotSex) {
       commit({type: 'updateNoPotSex', noPotSex: noPotSex})
+    },
+    updateCzSex({commit}, czSex) {
+      commit({type: 'updateCzSex', czSex: czSex})
     }
   },
   getters: {}

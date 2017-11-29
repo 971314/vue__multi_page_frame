@@ -75,6 +75,7 @@
       </div>
 
       <div class="cusTrends">
+        <div class="cusTrendsNOdata" v-if="lists.length <= 0">暂无数据</div>
         <div class="group" @click="goToCmTrends()">
           <a class="cell" v-for="item in lists">
             <span class="cell-body"><i>&nbsp;</i>{{item.INVESTOR_NAM

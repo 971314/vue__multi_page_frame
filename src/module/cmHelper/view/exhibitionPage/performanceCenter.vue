@@ -10,10 +10,7 @@
       <div class="index-header-grid">
         <div class="index-header-top">
           <div class="header-top-number" v-text="$$comma(PerformancBase.RI_AMT)"></div>
-          <div class="header-top-title">客户权益(万) {{PerformancBase.TX_DT ? this.$$timeFormate({
-            date: PerformancBase.TX_DT,
-            format: 'M-D'
-          }) : ''}}
+          <div class="header-top-title">客户权益(万) {{PerformancBase.TX_DT ? PerformancBase.TX_DT : ''}}
           </div>
         </div>
         <div class="index-header-footer">
@@ -118,7 +115,7 @@
                 fontSize: 8
               },
               formatter: function (value, index) {
-                return moment(value).format('YYYY-MM-DD')
+                return moment(value).format('YYYY-MM')
               }
             },
             axisLine: {
@@ -540,10 +537,10 @@
 
           response.map((item) => {
             xArray.push(item.S_NAM)
-            yArray1.push((item.RI_AMT / 10000).toFixed(0))
+            yArray1.push((item.RI_AMT).toFixed(0))
             yArray2.push(item.CUST_CNT)
             yArrayPie1.push({
-              value: (item.RI_AMT / 10000).toFixed(0),
+              value: (item.RI_AMT).toFixed(0),
               name: item.S_NAM
             })
             yArrayPie2.push({

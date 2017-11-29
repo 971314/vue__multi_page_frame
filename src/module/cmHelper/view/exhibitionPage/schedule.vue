@@ -49,7 +49,7 @@
               let tempObj = {}
               tempObj['INVESTOR_NAM'] = item['INVESTOR_NAM']
               tempObj['OPENSTATUS'] = item['OPENSTATUS']
-              tempObj['OPDT'] = this.$$timeFormate({date: item['OPDT'], format: 'Y-M-D h:m:s'})
+              tempObj['OPDT'] = this.$$timeFormate({date: item['OPDT'], format: 'Y-M-D h:m'})
               this.scheduleList.push(tempObj)
             })
           })

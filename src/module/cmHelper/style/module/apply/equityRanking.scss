@@ -20,8 +20,7 @@
     font-size: $font11;
     height: toRem(58px);
     line-height: toRem(57px);
-    position: relative;
-    @include border-TBottom-color23;
+    border-bottom: 1px solid $color23;
   }
   .tableBody {
     position: static;

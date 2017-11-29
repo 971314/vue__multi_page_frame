@@ -67,12 +67,12 @@
           </div>
         </div>
         <div class="customer-input-item">
-          <div class="input-item-name">计费软件名称</div>
+          <div class="input-item-name">计费软件</div>
           <div class="input-item-input" v-text="customerMessage.VENDOR_NAM">
           </div>
         </div>
         <div class="customer-input-item customer-breakword-item">
-          <div class="input-item-name">居间人名称</div>
+          <div class="input-item-name">居间人</div>
           <div class="input-item-input" v-text="customerMessage.BROKER_NAM">
           </div>
         </div>

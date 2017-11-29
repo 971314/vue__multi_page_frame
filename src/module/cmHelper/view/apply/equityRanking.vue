@@ -137,9 +137,9 @@
       this.isShow = true
       this.getData()
     },
-    updated: function () {
-      Ps.update(document.getElementById('ranking'))
-    },
+//    updated: function () {
+//      Ps.update(document.getElementById('ranking'))
+//    },
     methods: {
       //日期区间处理
       selectTimeInterval (num) {

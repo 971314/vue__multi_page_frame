@@ -87,8 +87,37 @@
       </div>
     </div>
 
+    <!--表头-->
+    <div class="header">
+      <div>
+        <span>{{flag == 1 || flag == 2 || flag == 3 || flag == 4 ? '营业部名称' : '客户经理'}}</span>
+        <!--成交持仓-->
+        <span v-if="flag == 3 && tab1 == 1 || flag == 7 && tab1 == 1">成交额</span>
+        <span v-if="flag == 3 && tab1 == 2 || flag == 7 && tab1 == 2">成交量</span>
+        <span v-if="flag == 3 && tab1 == 3 || flag == 7 && tab1 == 3">持仓额</span>
+        <span v-if="flag == 3 && tab1 == 4 || flag == 7 && tab1 == 4">持仓量</span>
+        <!--客户数量-->
+        <span v-if="flag == 2 && tab1 == 5 && tab2 == 0 || flag == 6 && tab1 == 5 && tab2 == 0">客户总数</span>
+        <span v-if="flag == 2 && tab1 == 5  && tab2 == 1|| flag == 6 && tab1 == 5 && tab2 == 1">股指客户数</span>
+        <span v-if="flag == 2 && tab1 == 5  && tab2 == 2|| flag == 6 && tab1 == 5 && tab2 == 2">期权客户数</span>
+
+        <span v-if="flag == 2 && tab1 == 6 && tab2 == 0 || flag == 6 && tab1 == 6 && tab2 == 0">开户总数</span>
+        <span v-if="flag == 2 && tab1 == 6  && tab2 == 1|| flag == 6 && tab1 == 6 && tab2 == 1">股指开户数</span>
+        <span v-if="flag == 2 && tab1 == 6  && tab2 == 2|| flag == 6 && tab1 == 6 && tab2 == 2">期权开户数</span>
+
+        <span v-if="flag == 2 && tab1 == 7 || flag == 6 && tab1 == 7">活跃客户数</span>
+        <!--手续费-->
+        <span v-if="flag == 4 && tab1 == 8 || flag == 8 && tab1 == 8">手续费</span>
+        <span v-if="flag == 4 && tab1 == 9 || flag == 8 && tab1 == 9">留存手续费</span>
+        <!--资金情况-->
+        <span v-if="flag == 1 && tab1 == 10 || flag == 5 && tab1 == 10">期末权益</span>
+        <span v-if="flag == 1 && tab1 == 11 || flag == 5 && tab1 == 11">日均权益</span>
+        <span v-if="flag == 1 && tab1 == 12 || flag == 5 && tab1 == 12">净入金</span>
+      </div>
+    </div>
+
     <!--列表-->
-    <div class="performance_list" id="performance_list" :style="{marginBottom:footer?'48px':''}">
+    <div class="performance_list" id="performance_list" :style="{paddingBottom:footer?'48px':''}">
       <div class="group_list" v-for="(data,i) in performanceList" @click="jump(data)">
         <div>
           <img src="../../images/leaderboards/ranking1.png" v-if="i == 0"/>
@@ -191,7 +220,6 @@
           this.tabClick(10)
         } else if (this.flag == 2 || this.flag == 6) {
           this.tabClick(5)
-          this.tabClick2(0)
         } else if (this.flag == 3 || this.flag == 7) {
           this.tabClick(1)
         } else if (this.flag == 4 || this.flag == 8) {
@@ -215,7 +243,7 @@
           if (this.tab1 == 5) {//总客户数
             if (this.tab2 == 0) {
               this.numberOfClientsRequest('00')
-            }else if (this.tab2 == 1) {
+            } else if (this.tab2 == 1) {
               this.numberOfClientsRequest('01')
             } else if (this.tab2 == 2) {
               this.numberOfClientsRequest('02')
@@ -223,7 +251,8 @@
           } else if (this.tab1 == 6) {//开户数
             if (this.tab2 == 0) {
               this.numberOfClientsRequest('10')
-            }if (this.tab2 == 1) {
+            }
+            if (this.tab2 == 1) {
               this.numberOfClientsRequest('11')
             } else if (this.tab2 == 2) {
               this.numberOfClientsRequest('12')

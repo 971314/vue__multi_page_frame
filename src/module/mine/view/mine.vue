@@ -126,6 +126,8 @@
       //校验展业显示
       isShowExhibitionIndustry () {
         let _this = this
+        if(!PBHttpServer.cmHelper)
+            return;
         _this.$axios.get(PBHttpServer.cmHelper.serverUrl + 'account/paly/' + _this.marketAccount).then((data) => {
           data = data.data
           if (data.retHead == 0) {

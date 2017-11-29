@@ -51,7 +51,7 @@
       <div class="message-footer">
         <img class="message-icon" src="../../images/exhibitionPage/message@2x.png"/>
       </div>
-      <div class="mobile-phone-footer" @click="callTel">
+      <div class="mobile-phone-footer" @click="showSelected1">
         <img class="mobile-phone-icon" src="../../images/exhibitionPage/mobilePhone@2x.png"/>
       </div>
       <div class="new-follow-footer" @click="addAndEdit">
@@ -65,6 +65,17 @@
         <div class="no-potential-cancel" @click="cancelSelected">取消</div>
       </div>
     </multi-slide>
+    <multi-slide v-model="showEvent1">
+      <div class="no-potential-group">
+        <div v-show="pInvestor.MOBILE_NO" class="no-potential-tel" @click="goToTel(pInvestor.MOBILE_NO)">
+          {{pInvestor.MOBILE_NO}}
+        </div>
+        <div v-show="pInvestor.LINKTELEPHONE" class="no-potential-tel" @click="goToTel(pInvestor.LINKTELEPHONE)">
+          {{pInvestor.LINKTELEPHONE}}
+        </div>
+        <div class="no-potential-cancel" @click="cancelSelected1">取消</div>
+      </div>
+    </multi-slide>
   </div>
 </template>
 
@@ -74,6 +85,7 @@
     data() {
       return {
         gobackUrl: 'goBack',
+        showEvent1: false,
         showEvent: false,
         recordList: []
       }
@@ -89,6 +101,10 @@
       this.pInvestorFollowList()
     },
     methods: {
+      goToTel(str) {
+        this.showEvent1 = false
+        this.callTel(str)
+      },
       goToRecord() {
         var p = this.addFollow;//获取store中的 跟进情况
         p.InvestorId = this.pInvestor.CUST_ID;//客户代码
@@ -100,8 +116,8 @@
           name: 'addAndEdit'
         })
       },
-      callTel() {
-        window.location.href = `pobo:uncheck=1&pageId=800007&tel=${this.pInvestor.MOBILE_NO}`
+      callTel(tel) {
+        window.location.href = `pobo:uncheck=1&pageId=800007&tel=${tel}`
       },
       addAndEdit() { //新建客户跟进
         var p = this.addFollow;//获取store中的 跟进情况
@@ -117,6 +133,13 @@
       },
       showSelected() {
         this.showEvent = !this.showEvent
+      },
+      showSelected1() {
+        if (!this.pInvestor.LINKTELEPHONE && !this.pInvestor.MOBILE_NO) {
+          this.$toast('手机号不存在!')
+          return
+        }
+        this.showEvent1 = !this.showEvent1
       },
       gotoDetail() {
         this.$store.dispatch('updateCzType', 0)
@@ -136,6 +159,9 @@
       },
       cancelSelected() {
         this.showEvent = false
+      },
+      cancelSelected1() {
+        this.showEvent1 = false
       },
       pInvestorDelete() { //删除潜在客户
         this.$$axios({restUrl: 'pInvestorDelete', join: [this.info.userId, this.pInvestor.CUST_ID]})

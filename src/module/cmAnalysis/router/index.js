@@ -5,10 +5,11 @@ Vue.use(VueRouter)
 
 //引入模块下的路由结构
 import tradeAna from './tradeAna'
+import basicAss from './basicAss'
 
 let routes = []
 
-routes = routes.concat(tradeAna)
+routes = routes.concat(tradeAna,basicAss)
 
 const router = new VueRouter({
   routes

@@ -2,68 +2,25 @@
   <div class="pbframe staffInfo pobo-main-index">
         <common-nav>
             <div slot="body">
-                <span>员工资料</span>
+                <span>{{departName}}员工</span>
             </div>
-            <div slot="footer" @click="$router.push({ name: 'staffInfoSearch' })">
+            <!-- <div slot="footer" @click="$router.push({ name: 'staffInfoSearch' })">
                 <img src="../../images/others/img10.png"/>
-            </div>
+            </div> -->
         </common-nav>
 
-        <div class="av-dropdown-group">
-                <div class="av-dropdown-selected">
+        <searchbar v-model="keyword">
+            <searchbar-placeholder >
+                <icon name="search" left size="lg"></icon>
+                <span>搜索</span>
+            </searchbar-placeholder>
+            <searchbar-btn>
+                <span>取消</span>
+            </searchbar-btn>
+        </searchbar>
 
-                    <div class="av-selected-items" @click="goDepartPage">
-                        <span class="selected-items-text">{{departName || '组织架构'}}</span>
-                        <span class="down-dria"></span>
-                    </div>
-
-                    <!-- <div class="av-selected-items" :class="{'active':activeOption==2}" @click="activeOption=2">
-                        <span class="selected-items-text">员工类型</span>
-                        <span class="down-dria"></span>
-                        <div class="split-line"></div>
-                    </div>
-
-                    <div class="filterArea" v-show="activeOption==2">
-                        <div class="department">
-                            <ul class="area">
-                                <li>全中国</li>
-                                <li>北京</li>
-                                <li>天津</li>
-                                <li class="active">上海</li>
-                                <li>山西</li>
-                                <li>内蒙古</li>
-                                <li>内蒙古</li>
-                                <li>内蒙古</li>
-                                <li>内蒙古</li>
-                                <li>内蒙古</li>
-                                <li>内蒙古</li>
-                                <li>内蒙古</li>
-                                <li>内蒙古</li>
-                            </ul>
-                            <ul class="yingye">
-                                <li>商城路营业一部</li>
-                                <li>商城路营业二部</li>
-                                <li>商城路营业一部</li>
-                                <li>商城路营业二部</li>
-                                <li>商城路营业一部</li>
-                                <li>商城路营业二部</li>
-                                <li>商城路营业一部</li>
-                                <li>商城路营业二部</li>
-                                <li>商城路营业一部</li>
-                                <li>商城路营业二部</li>
-                                <li>商城路营业一部</li>
-                                <li>商城路营业二部</li>
-                                <li>商城路营业一部</li>
-                                <li>商城路营业二部</li>
-                                <li>商城路营业一部</li>
-                                <li>商城路营业二部</li>
-                            </ul>
-                        </div>
-                        <div class="filterAreaMask" @click="activeOption=0"></div>
-                    </div> -->
-
-                </div>
-            </div>
+        <div class="searchMask" v-show="searching" @click="searching=false"></div>
+        <mask-layer :clickable="true" v-show="searching"/>
 
         <div class="container fzj-zy-content" v-if="lists">
 
@@ -91,16 +48,21 @@
 </template>
 <script>
 
-    import {mapState} from 'vuex'
+    import {mapState} from 'vuex';
+    import util from '../../utils/util';
 
     export default {
         data() {
             return {
                 //activeOption: 0,
                 //showOptions: false
+                keyword : '',
                 lists : null,
+                deptList : null,
                 departId : '',
-                departName : ''
+                departName : '',
+                hasRequest : false,
+                searching : false
             }
         },
         computed: {
@@ -110,11 +72,33 @@
             })
         },
         activated() {
+            this.keyword = '';
+            this.hasRequest = false;
             this.departId = this.storeDepartId || '';
             this.departName = this.storeDepartName || '';
             this.getStaffList();
         },
         mounted() {
+
+        },
+        watch: {
+          keyword: function (val, oldVal) {
+            if (!val) {
+              this.lists = util.deepClone(this.deptList);
+              return;
+            }
+            var l = util.deepClone(this.deptList);
+            var list = [];
+            for(var i = 0 ; i < l.length ; i++){
+                if( new RegExp(val).test(l[i].STAFF_NAM) || 
+                    new RegExp(val.toUpperCase()).test(l[i].STAFF_NAM) || 
+                    new RegExp(val).test(l[i].STAFF_ID) || 
+                    new RegExp(val.toUpperCase()).test(l[i].STAFF_ID)){
+                    list.push(l[i]);
+                }
+            }
+            this.lists = list;
+          }
 
         },
         methods: {
@@ -128,6 +112,11 @@
                 })
                 .then((response) => {
                     this.lists = response;
+                    this.deptList = response;
+                    if(!this.hasRequest){
+                        this.addEventListener();
+                    }
+                    this.hasRequest = true;
                 })
                 .catch((res) => {
                     console.log('res', res);
@@ -145,7 +134,29 @@
                 this.$store.dispatch('updataPersonnelName', o.STAFF_NAM);
                 this.$store.dispatch('updataDepartName', o.DEPARTMENT_NAM);
                 this.$router.push({ name: 'staffInfoDetail' })
-            }
+            },
+            // closeSearch(){
+            //     console.log('closeSearch');
+            //     this.searching=false;
+            // },
+            addEventListener(){
+                var _this = this;
+                var s = document.querySelector('.searchbar');
+                var d = document.querySelector('.searchbar-input');
+                var b = document.querySelector('.searchbar-btn');
+                d.addEventListener("click",function(){
+                    _this.searching = true;
+                    s.setAttribute("class","searchbar active");
+                    
+                });
+                b.addEventListener("click",function(){
+                    _this.searching = false;
+                    _this.keyword = '';
+                    s.setAttribute("class","searchbar");
+                    
+                });
+
+            },
 
         }
     }

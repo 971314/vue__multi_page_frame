@@ -18,6 +18,9 @@ module.exports = { //自定义打包模块数量
   V3_3: {
     cmd: ['main','mine','eCalendar','mrkHot','indNews','jgdx','activity','adequacy', 'adequacySignature']
   },
+  tjd: {
+    cmd: ['main','mine','eCalendar','mrkHot','indNews','jgdx','activity','adequacy', 'adequacySignature','condition', 'alerted', 'stopProfit','account']
+  },
   fzj: {
     cmd: ['cmApproval', 'cmHelper', 'cmLogin']
   }

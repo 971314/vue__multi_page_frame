@@ -5,7 +5,7 @@
       <a slot="footer" class="share-b-link" @click="changeFont">
         <img class="font-btn-icon" src="../images/fontchange@2x.png"/>
       </a>
-      <a slot="footer" class="share-a-link" @click="sharePage">
+      <a slot="footer" class="share-a-link" @click="sharePage" v-show="isShare">
         <img class="share-btn-icon" src="../images/sharedefault@2x.png"/>
       </a>
     </common-nav>

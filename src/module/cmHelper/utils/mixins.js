@@ -22,7 +22,7 @@ Vue.mixin({
       urlList: urlList
     }
   },
-  created() {
+  created () {
     this.getInfo()
   },
   methods: {
@@ -64,7 +64,7 @@ Vue.mixin({
         }
       }
 
-      function isEmptyObject(obj) {
+      function isEmptyObject (obj) {
         for (let key in obj) {
           return false
         }
@@ -320,42 +320,51 @@ Vue.mixin({
     },
     /*
      * 保留n位小数*/
-    decimalPlaceReserved(data, n){
+    decimalPlaceReserved (data, n) {
       return Number(data).toFixed(n)
     },
 
-
     //按照字母排序，并且'#'放最后
-    sortGroupDIY(list){
-      var cList = [];
-      var index = 0;
-      var hasOther = null;
+    sortGroupDIY (list) {
+      var cList = []
+      var index = 0
+      var hasOther = null
       if (list) {
         for (var i in list) {
-          if(i=="#"){
-            hasOther = {'pinyin': i, 'data': list[i]};
-            continue;
-          }else{
-            cList[index] = {'pinyin': i, 'data': list[i]};
+          if (i == '#') {
+            hasOther = {'pinyin': i, 'data': list[i]}
+            continue
+          } else {
+            cList[index] = {'pinyin': i, 'data': list[i]}
           }
-          index++;
+          index++
         }
         //按照字母顺序排序
-        cList.sort(function(m,n){
-          var s = m.pinyin;
-          var e = n.pinyin;
-          if(s>e){
+        cList.sort(function (m, n) {
+          var s = m.pinyin
+          var e = n.pinyin
+          if (s > e) {
             return 1
-          }else if(s<e){
-            return -1;
-          }else{
-            return 0;
+          } else if (s < e) {
+            return -1
+          } else {
+            return 0
           }
-        });
-        if(hasOther){
-          cList.push(hasOther);
+        })
+        if (hasOther) {
+          cList.push(hasOther)
         }
-        return cList;
+        return cList
+      }
+    },
+    /*
+         * 姓名截取5位 字符，后面显示...*/
+    cutName (s) {
+      if (!s) { return '' }
+      if (s.length > 5) {
+        return s.substring(0, 5) + '...'
+      } else {
+        return s
       }
     }
   }

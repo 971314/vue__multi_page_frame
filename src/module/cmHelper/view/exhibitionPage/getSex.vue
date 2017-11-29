@@ -46,6 +46,10 @@
         this.$store.dispatch('updateNoPotSex', this.sexFlag)
         this.$router.back()
       }
+    },
+    beforeRouteLeave(to, from, next) {
+      this.$store.dispatch('updateCzSex', false)
+      next()
     }
   }
 </script>

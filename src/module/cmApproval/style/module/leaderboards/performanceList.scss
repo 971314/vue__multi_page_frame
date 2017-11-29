@@ -9,7 +9,7 @@
       padding: 0 toRem(62px);
       font-size: $font33;
       justify-content: space-between;
-      height: toRem(86px);
+      height: toRem(92px);
       position: relative;
       @include border-TBottom-color23;
       & > div {
@@ -45,7 +45,7 @@
       display: flex;
       color: $color17;
       font-size: $font10;
-      height: toRem(86px);
+      height: toRem(80px);
       position: relative;
       align-items: center;
       @include border-TBottom-color23;
@@ -65,7 +65,7 @@
     & > div {
       display: flex;
       font-size: $font33;
-      height: toRem(86px);
+      height: toRem(92px);
       position: relative;
       @include border-TBottom-color23;
       & > div {
@@ -96,6 +96,28 @@
     }
 
   }
+  .header {
+    background: $color15;
+    margin-top: toRem(14px);
+    & > div {
+      padding: 0 toRem(62px);
+      display: flex;
+      align-items: center;
+      color: $color17;
+      font-size: $font26;
+      position: relative;
+      height: toRem(80px);
+      @include border-TBottom-color23;
+      span {
+        flex: 1;
+        height: toRem(80px);
+        line-height: toRem(79px);
+        &:last-child {
+          text-align: right;
+        }
+      }
+    }
+  }
   .performance_list {
     position: static;
     /* top: 84px;
@@ -105,15 +127,15 @@
       background: $color15;
       height: toRem(100px);
       line-height: toRem(100px);
-      font-size: $font10;
+      font-size: $font33;
       padding-left: toRem(30px);
       position: relative;
       @include border-TBottom-color23;
       div:nth-of-type(1) {
         img {
-          width: toRem(37px);
-          height: toRem(48px);
-          margin-right: toRem(30px);
+          width: toRem(34px);
+          height: toRem(44px);
+          margin-right: toRem(26px);
         }
         div:nth-of-type(1) {
           //transform: translate(0px, toRem(25px));

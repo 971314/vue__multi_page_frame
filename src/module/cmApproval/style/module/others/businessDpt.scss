@@ -1,36 +1,35 @@
 .customerInfo.businessDpt{
 	.common-nav{
 	    line-height: 44px;
+	    .navbar-footer{ 
+            position: relative;
+            img{
+                width: toRem(38px);
+                height: toRem(38px);
+                position: absolute;
+                top: 50%;
+                right: toRem(30px);
+                z-index: 1;
+                transform: translate(0,-50%);
+                -webkit-transform: translate(0,-50%);
+            }
+        }
 	}
-	// .filterOption{ 
-	// 	position: relative;
-	// 	height: toRem(86px);
-	// 	line-height: toRem(86px);
-	// 	@include bottom-px1-pixel-ratio;
-	//     box-shadow: 0 toRem(6px) toRem(10px) #e4e7f0;
- //    	-webkit-box-shadow: 0 toRem(6px) toRem(10px) #e4e7f0;
-	// 	.flex-item{
-	// 		text-align: center;
-	// 		span{
-	// 			display: inline-block;
-	// 			width: toRem(110px);
-	// 			height: toRem(54px);
-	// 			line-height: toRem(54px);
-	// 			background-color: #f7f7fa;
-	// 			color: #808086;
-	// 			font-size: toRem(28px);
-	// 		}
-	// 	}
-	// 	.flex-item.active{
-	// 		span{
-	// 			background-color: #fff;
-	// 			color: #3366cc;
-	// 			border: solid 1px #3366cc;
-	// 			border-radius: toRem(8px);
-	// 		}
-	// 	}
 
-	// }
+	.mask{
+        z-index: 2;
+        position: absolute;
+    }
+    .searchMask{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        left: 0;
+        top: 0;
+        z-index: 3;
+        background-color: transparent;
+    }
 
 	.container{
 		.mint-indexlist{
@@ -95,6 +94,7 @@
 	.searchbar{
 		height: toRem(88px);
 		background-color: #e6e6ec;
+		z-index: 4;
 		.searchbar-btn{
 			span{
 				font-size: toRem(28px);

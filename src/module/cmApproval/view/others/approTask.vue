@@ -102,8 +102,14 @@
                 })
                 .then((response) => { 
                     if(response.length == 0){
-                        _this.lists = [];
-                        return;
+                        if(_this.loadMoreFlag){
+                            _this.loadMoreFlag = false;
+                            return;    
+                        }else{
+                            _this.lists = [];
+                            return;    
+                        }
+                        
                     }else if(response.length > 0 && response.length < _this.size){
                         _this.loadMoreFlag = false;
                     }else if(response.length >= _this.size){
@@ -111,8 +117,8 @@
                         _this.loadMoreFlag = true;
                     }
                     if(!_this.lists){ _this.lists = []; }
-                    //response = util.dateSort(response, 'appDate')
-                    _this.lists = util.dateSort(_this.lists.concat(response),'appDate');
+                    //_this.lists = util.dateSort(_this.lists.concat(response),'appDate');
+                    _this.lists = _this.lists.concat(response);
 
                 })
                 .catch((res) => {

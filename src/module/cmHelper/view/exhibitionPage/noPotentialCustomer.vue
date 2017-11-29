@@ -69,7 +69,7 @@
       <div class="message-footer">
         <img class="message-icon" src="../../images/exhibitionPage/message@2x.png"/>
       </div>
-      <div class="mobile-phone-footer" @click="callTel">
+      <div class="mobile-phone-footer" @click="showSelected1">
         <img class="mobile-phone-icon" src="../../images/exhibitionPage/mobilePhone@2x.png"/>
       </div>
       <div class="new-follow-footer" @click="addAndEdit">
@@ -83,6 +83,17 @@
     <!--<div class="no-potential-cancel" @click="cancelSelected">取消</div>-->
     <!--</div>-->
     <!--</multi-slide>-->
+    <multi-slide v-model="showEvent1">
+      <div class="no-potential-group">
+        <div v-show="investor.MOBILE_NO" class="no-potential-tel" @click="goToTel(investor.MOBILE_NO)">
+          {{investor.MOBILE_NO}}
+        </div>
+        <div v-show="investor.LINKTELEPHONE" class="no-potential-tel" @click="goToTel(investor.LINKTELEPHONE)">
+          {{investor.LINKTELEPHONE}}
+        </div>
+        <div class="no-potential-cancel" @click="cancelSelected1">取消</div>
+      </div>
+    </multi-slide>
   </div>
 
 </template>
@@ -93,6 +104,7 @@
     data() {
       return {
         showEvent: false,
+        showEvent1: false,
         gobackUrl: 'goBack',
         nowIndex: 1,
         customerInfo: {
@@ -130,6 +142,20 @@
 //      document.getElementById('pobo-customer-center').onscroll = this.domScroll
     },
     methods: {
+      goToTel(str) {
+        this.showEvent1 = false
+        this.callTel(str)
+      },
+      showSelected1() {
+        if (!this.investor.LINKTELEPHONE && !this.investor.MOBILE_NO) {
+          this.$toast('手机号不存在!')
+          return
+        }
+        this.showEvent1 = !this.showEvent1
+      },
+      cancelSelected1() {
+        this.showEvent1 = false
+      },
       domScroll() {
         let distance = document.getElementById('pobo-customer-center').getElementsByClassName('customer-info-grid')[0].offsetHeight + 10
         if (document.getElementById('pobo-customer-center').scrollTop > distance) {
@@ -141,8 +167,8 @@
           document.getElementById('zhanwei-div').style.display = 'none'
         }
       },
-      callTel() {
-        window.location.href = `pobo:uncheck=1&pageId=800007&tel=${this.investor.MOBILE_NO}`
+      callTel(tel) {
+        window.location.href = `pobo:uncheck=1&pageId=800007&tel=${tel}`
       },
       addAndEdit() { //新建客户跟进
         var p = this.addFollow;//获取store中的 跟进情况

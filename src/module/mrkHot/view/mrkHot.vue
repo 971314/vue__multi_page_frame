@@ -5,7 +5,7 @@
         <!--<span class="select" @click="show">{{selected}}&nbsp;&nbsp;<img src="../../assets/images/select.png" width="10"></span>-->
         <span class="select">{{selected}}</span>
       </div>
-      <div slot="footer" class="navFooter">
+      <div v-show="isShare" slot="footer" class="navFooter">
         <i  @click="shareClick"></i>
       </div>
     </common-nav>

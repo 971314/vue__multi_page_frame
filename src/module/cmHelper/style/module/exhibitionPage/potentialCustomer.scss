@@ -230,6 +230,20 @@
   }
   .no-potential-group {
     background-color: #ffffff;
+    .no-potential-tel {
+      height: toRem(115px);
+      position: relative;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      color: #1a1a1a;
+      @include font(18px);
+      &:nth-last-child(2) {
+        @include bottom-px1-pixel-ratio;
+      }
+    }
     .no-potential-edit {
       height: toRem(115px);
       position: relative;

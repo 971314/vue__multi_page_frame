@@ -30,17 +30,17 @@
             </div>
 
             <div class="applyInfo" v-if="result">
-                <p class="applyIitle">基本资料</p>
+                <p class="applyIitle" v-if="result.MOBILE || (result.EMAIL && result.EMAIL !== '-') || (result.ICFQC && result.ICFQC !== '-')">基本资料</p>
                 <div class="group">
-                    <a class="cell">
+                    <a class="cell" v-if="result.MOBILE">
                         <span class="cell-body">电话号码</span>
                         <span class="cell-footer">{{result.MOBILE || ''}}</span>
                     </a>
-                    <a class="cell">
+                    <a class="cell" v-if="result.EMAIL && result.EMAIL !== '-'">
                         <span class="cell-body">邮箱号码</span>
                         <span class="cell-footer" v-if="result.EMAIL">{{result.EMAIL=="-"?'':result.EMAIL}}</span>
                     </a>
-                    <a class="cell">
+                    <a class="cell" v-if="result.ICFQC && result.ICFQC !== '-'">
                         <span class="cell-body color1">资格证号</span>
                         <span class="cell-footer color1">{{result.ICFQC=="-"?'':result.ICFQC}}</span>
                     </a>

@@ -19,12 +19,19 @@
 
         <div class="content">
             <div class="group" v-if="currentList.length > 0 && keyword">
+                <!-- 员工列表 -->
                 <a class="cell" v-for="item in currentList" @click="goStaffDetailPage(item)">
                     <span class="cell-body">
                         <p>{{item.STAFF_NAM}}({{item.STAFF_ID}})</p>
                         <p>{{item.DEPARTMENT_NAM}}</p>
                     </span>
                 </a>
+                <!-- 部门列表 -->
+                <!-- <a v-if="searchType==2" class="cell" v-for="item in currentList" @click="goDptDetailPage(item)">
+                    <span class="cell-body">
+                        <p>{{item.DEPARTMENT_NAM}}</p>
+                    </span>
+                </a> -->
             </div>
         </div>
     </div>
@@ -43,6 +50,11 @@
         deptJson : [],
         currentList : []
       }
+    },
+    computed: {
+        ...mapState({
+            searchType: ({others}) => others.searchType
+        })
     },
     activated(){
         this.getStaffList();
@@ -92,6 +104,12 @@
             this.$store.dispatch('updataPersonnelId', o.STAFF_ID);
             this.$store.dispatch('updataDepartName', o.DEPARTMENT_NAM);
             this.$router.push({ name: 'staffInfoDetail' })  
+        },
+        //跳转去【部门基本信息】
+        goDptDetailPage(o){
+            this.$store.dispatch('updataDepartId', o.DEPARTMENT_ID);
+            this.$store.dispatch('updataDepartName', o.DEPARTMENT_NAM);
+            this.$router.push({ name: 'departmentDetail' });
         }
     }
   }

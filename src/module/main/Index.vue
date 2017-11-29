@@ -1,11 +1,19 @@
 <template>
-  <div class="index">
-    <div class="index-header-navbar">
-      <navbarspec></navbarspec>
-    </div>
-    <div  class="index-content-wrapper" :style="{marginTop:getMarginTop()}" id="index-content-wrapper">
-      <div v-for="com in rootCop">
-        <component :is="com.name" :co-instance="com.coInstance"></component>
+  <div>
+   <!-- <div class="bg" :style="{height:barHeight + 44+ 'px', backgroundColor: color}">
+      <div :style="{height: barHeight + 'px'}"></div>
+
+      <div class="name">{{appName}}</div>
+
+    </div>-->
+    <div class="index">
+      <div class="index-header-navbar">
+        <navbarspec></navbarspec>
+      </div>
+      <div  class="index-content-wrapper" :style="{marginTop:getMarginTop()}" id="index-content-wrapper">
+        <div v-for="com in rootCop">
+          <component :is="com.name" :co-instance="com.coInstance"></component>
+        </div>
       </div>
     </div>
   </div>
@@ -28,6 +36,9 @@
     data () {
       return {
         rootCop: [],//组件数组
+        barHeight:this.getBarHeight(),
+        appName:"",
+        color:""
       }
     },
     components: {
@@ -41,6 +52,17 @@
       infolist2
     },
     methods: {
+      getBarHeight()
+      {
+
+        let bar = 20;
+        if(this.isAndroid())
+          bar = 22;
+        if (pbE.isPoboApp && pbE.SYS().getStatusBarHeight)
+          bar = pbE.SYS().getStatusBarHeight();
+
+        return bar;
+      },
       getMarginTop()
       {
         if (pbE.isPoboApp) {
@@ -57,7 +79,7 @@
           return "-" + bar + 'px';
         }
         else
-          return '-84px';
+          return '-64px';
       },
       isAndroid () {
         if (pbE.isPoboApp) {
@@ -139,6 +161,124 @@
       // .catch((error) => {
       //   console.log(error);
       // });
+    },
+    mounted(){
+      if (pbE.isPoboApp) {
+        var confObj =  pbUtils.getModuleConfig("main.json","main")
+        let conf = confObj["appSetting"];
+        this.appName = conf["appName"];
+        this.color = conf["baseColor"];
+      }
+
+      document.body.ontouchmove = function (e) {
+        e.preventDefault();
+
+
+
+
+
+      };
+
+      var startX = 0, startY = 0;
+      //touchstart事件
+      function touchSatrtFunc(evt) {
+        try
+        {
+          //evt.preventDefault(); //阻止触摸时浏览器的缩放、滚动条滚动等
+
+          var touch = evt.touches[0]; //获取第一个触点
+          var x = Number(touch.pageX); //页面触点X坐标
+          var y = Number(touch.pageY); //页面触点Y坐标
+          //记录触点初始位置
+          startX = x;
+          startY = y;
+
+        } catch (e) {
+          alert('touchSatrtFunc：' + e.message);
+        }
+      }
+      document.addEventListener('touchstart', touchSatrtFunc, false);
+
+
+
+      var _ss = document.getElementById('index-content-wrapper');
+      //var startY;
+      _ss.ontouchmove = function (ev) {
+        var _point = ev.touches[0],
+          _top = _ss.scrollTop;
+        // 什么时候到底部
+        var _bottomFaVal = _ss.scrollHeight - _ss.offsetHeight;
+        // 到达顶端
+        if (_top === 0) {
+          // 阻止向下滑动
+          if (_point.clientY > startY) {
+            ev.preventDefault();
+          } else {
+            // 阻止冒泡
+            // 正常执行
+            ev.stopPropagation();
+          }
+        } else if (_top === _bottomFaVal) {
+          // 到达底部
+          // 阻止向上滑动
+          if (_point.clientY < startY) {
+            ev.preventDefault();
+          } else {
+            // 阻止冒泡
+            // 正常执行
+            ev.stopPropagation();
+          }
+        } else if (_top > 0 && _top < _bottomFaVal) {
+          ev.stopPropagation();
+        } else {
+          ev.preventDefault();
+        }
+      };
+
+/*
+      this.divBody =  document.getElementById(
+        'index-content-wrapper',
+      );
+
+
+      this.divBody.addEventListener('touchmove', function(e){
+        var status = '11',
+          e = e || window.event, // 使用 || 运算取得event对象
+          ele = this,
+          currentY = e.touches[0].clientY,
+          startY = startMoveYmap[ele.id],
+          scrollTop = ele.scrollTop,
+          offsetHeight = ele.offsetHeight,
+          scrollHeight = ele.scrollHeight;
+
+        if (scrollTop === 0) {
+          // 如果内容小于容器则同时禁止上下滚动
+          status = offsetHeight >= scrollHeight ? '00' : '01';
+        } else if (scrollTop + offsetHeight >= scrollHeight) {
+          // 已经滚到底部了只能向上滚动
+          status = '10';
+        }
+        if (status != '11') {
+          // 判断当前的滚动方向
+          var direction = currentY - startY > 0 ? '10' : '01';
+          // console.log(direction);
+          // 操作方向和当前允许状态求与运算，运算结果为0，就说明不允许该方向滚动，则禁止默认事件，阻止滚动
+          if (!(parseInt(status, 2) & parseInt(direction, 2))) {
+            e.preventDefault();
+            e.stopPropagation();
+            return;
+          }
+        }
+        /!*this.startY = event.touches[0].pageY;
+        this.startTopScroll = this.divBody.scrollTop;
+
+        if(this.startTopScroll <= 0)
+          this.divBody.scrollTop = 1;
+
+        if(this.startTopScroll + this.divBody.offsetHeight >= this.divBody.scrollHeight)
+          this.divBody.scrollTop = this.divBody.scrollHeight - this.divBody.offsetHeight - 1;*!/
+      }, false);*/
     }
+
   }
 </script>

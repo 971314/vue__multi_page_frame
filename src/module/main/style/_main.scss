@@ -5,8 +5,27 @@
 //.index {
 //    background: $color-bg-grounding;
 //}
+.bg {
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 70px;
+  width: 100%;
+  background-color: #3366CC;
+
+  .name
+  {
+      line-height: 44px;
+      text-align: center;
+      color: $color-text-nav-text;
+      font-size: 18px;
+  }
+
+}
 
 .index {
+  z-index: 100;
   position: fixed;
   left: 0;
   top: 0;

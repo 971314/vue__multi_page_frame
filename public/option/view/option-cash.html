@@ -114,8 +114,8 @@
 
   function queryRecord() {
     var data = {
-      '171': $("#start").val(),
-      '172': $("#end").val()
+      '171': $("#start").val().replace(/-/g,''),
+      '172': $("#end").val().replace(/-/g,'')
     };
     console.log(data);
     pbE.WT().wtGeneralRequest(CID, 6093, JSON.stringify(data));
@@ -127,11 +127,11 @@
     for (var i = 0; i < records.length; i++) {
       var item = records[i];
       console.log(item);
-      var date1 = item["202"] || "";
-      var date2 = item["201"] || "";
-      var zhaiyao = item["211"] || "";
-      var balance = item["91"]|| "";
-      var amount = item["209"]|| "";
+      var date1 = item["202"] || "--";
+      var date2 = item["201"] || "--";
+      var zhaiyao = item["211"] || "--";
+      var balance = item["91"]|| "--";
+      var amount = item["209"]|| "--";
 
 
       html += "<tr><td><div>" + zhaiyao + "</div></td> <td><div>" + date1 + "</div><div>" + date2 + "</div></td><td><div>" + amount + "</div><div>" + balance + "</div></td></tr></tr>";

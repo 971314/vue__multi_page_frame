@@ -18,6 +18,9 @@ export default {
       processName : '',  //申请内容
       appDateTime : ''   //提交时间
     },
+    departIdArr : [],    //当前查询的部门层级，的查询id
+    pageTitle : ['营业部'],
+    searchType : ''      //1：搜员工  2：搜部门
   },
   mutations: {
     updataProcess (state, payload) {
@@ -40,8 +43,16 @@ export default {
     },
     updataProHis (state, payload) {
       state.proHis = payload.proHis
+    },
+    updatadePartIdArr (state, payload) {
+      state.departIdArr = payload.departIdArr
+    },
+    updataPageTitle (state, payload) {
+      state.pageTitle = payload.pageTitle
+    },
+    updataSearchType (state, payload) {
+      state.searchType = payload.searchType
     }
-
   },
   actions: {
     updataProcess ({commit}, process) {
@@ -64,6 +75,16 @@ export default {
     },
     updataProHis ({commit}, proHis) {
       commit({type: 'updataProHis', proHis: proHis})
+    },
+    
+    updatadePartIdArr ({commit}, departIdArr) {
+      commit({type: 'updatadePartIdArr', departIdArr: departIdArr})
+    },
+    updataPageTitle ({commit}, pageTitle) {
+      commit({type: 'updataPageTitle', pageTitle: pageTitle})
+    },
+    updataSearchType ({commit}, searchType) {
+      commit({type: 'updataSearchType', searchType: searchType})
     }
   },
   getters: {}

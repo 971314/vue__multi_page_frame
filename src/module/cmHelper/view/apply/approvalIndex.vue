@@ -11,8 +11,8 @@
     <div class="approval_conter">
       <div class="approval_cell" @click="jumpClick(data)" v-for="data in approvalData">
         <div>
-          <span>{{data.appObjectName}} | {{data.processName}}</span>
-          <span>{{$$dateInterception(data.appDate, 0, data.appDate.length - 2)}}</span>
+          <span>{{cutName(data.appObjectName)}} | {{data.processName}}</span>
+          <span>{{$$dateInterception(data.appDate, 0, data.appDate.length - 5)}}</span>
         </div>
         <span
           :class="{'c3':data.appStatus== '3'}">{{data.appStatusName}}</span>

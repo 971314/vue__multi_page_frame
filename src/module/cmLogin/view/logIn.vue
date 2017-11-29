@@ -30,7 +30,10 @@
       }
     },
     watch: {
-      crmAccount () {
+      crmAccount (nVal, oVal) {
+        if (nVal != oVal) {
+          this.pwd = ''
+        }
         this.check()
       },
       pwd () {

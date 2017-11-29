@@ -32,12 +32,12 @@
       <index-list v-if="currentList.length>0">
         <index-section v-for="(v, i) in currentList" :key="i" :index="v.pinyin">
           <!-- 留存客户 -->
-          <a v-if="segmentedIndex==1" href="javascript:void(0);" class="mint-cell" v-for="(item, index) in v.data" :key="index">
-            <a class="mobileIcon" @click="callTel(item.MOBILE_NO)"></a>
+          <a v-if="segmentedIndex==1" href="javascript:void(0);" class="mint-cell" :class="{'autoHei':jumpFlag==3}" v-for="(item, index) in v.data" :key="index">
+            <a class="mobileIcon" @click="showSelected1(item)" v-if="jumpFlag!=3"></a>
             <div class="mint-list" @click="goTo(item)">
 
               <div class="cusName" v-text="item.INVESTOR_NAM+'('+item.INVESTOR_ID+')'"></div>
-              <div class="cusLevel">
+              <div class="cusLevel" v-if="jumpFlag!=3">
                 <img class="type1" src="../../images/followUpRecord/img14.png" v-if="item.VIPTYP"
                      v-for="i in new Array(item.VIPTYP*1)"/>
                 <img class="type2" src="../../images/followUpRecord/img16.png" v-if="item.OPEN_STS=='1'"/>
@@ -50,7 +50,7 @@
           </a>
           <!-- 潜在客户 -->
           <a v-if="segmentedIndex==2" href="javascript:void(0);" class="mint-cell autoHei" v-for="(item, index) in v.data" :key="index">
-            <a class="mobileIcon" @click="callTel(item.MOBILE_NO)"></a>
+            <a class="mobileIcon" @click="showSelected1(item)"></a>
             <div class="mint-list" @click="goTo(item)">
 
               <div class="cusName" v-if="item.CUST_NAM || item.MOBILE_NO">
@@ -65,6 +65,18 @@
     </div>
 
     <div v-if="count" class="haveOpen text-center">{{count}}位{{segmentedIndex==1?'已':'未'}}开户客户</div>
+
+    <multi-slide v-model="showEvent1">
+      <div class="no-potential-group">
+        <div v-show="MOBILE_NO" class="no-potential-tel" @click="goToTel(MOBILE_NO)">
+          {{MOBILE_NO}}
+        </div>
+        <div v-show="LINKTELEPHONE" class="no-potential-tel" @click="goToTel(LINKTELEPHONE)">
+          {{LINKTELEPHONE}}
+        </div>
+        <div class="no-potential-cancel" @click="cancelSelected1">取消</div>
+      </div>
+    </multi-slide>
 
   </div>
 </template>
@@ -100,7 +112,10 @@
         focusFlag: false,
         url: PBHttpServer.cmHelper.serverUrl,
         count: 0,    //已开户人数
-        hidePlaceHolder : true
+        hidePlaceHolder : true,
+        showEvent1: false,
+        MOBILE_NO : false,
+        LINKTELEPHONE : false
       }
     },
     activated() {
@@ -226,6 +241,7 @@
             }); 
             if(hasOther){
                cList.push(hasOther);
+               _this.count += hasOther.data.length;
             }
             _this.deptJson = util.deepClone(cList);
             _this.currentList = util.deepClone(cList);
@@ -260,10 +276,12 @@
             p.OPEN_STS = o.OPEN_STS;//新开户情况：1-新开户未入金 2-新开户有入金
             p.VIPTYP = o.VIPTYP;  //星级
             this.$store.dispatch('updateInvestor', p);
+            this.$store.dispatch('updatepSegmentedIndex', 1);
 
             this.$router.push({
               name: 'noPotentialCustomer'
             })
+
           } else {
             //未开户
             var p = this.pInvestor;//获取store中的 潜在客户信息
@@ -274,6 +292,7 @@
             p.LINKTELEPHONE = o.LINKTELEPHONE;//潜在客户电话
             p.MOBILE_NO = o.MOBILE_NO;//潜在客户移动电话
             this.$store.dispatch('updatepInvestor', p);
+            this.$store.dispatch('updatepSegmentedIndex', 2);
             this.$router.push({
               name: 'potentialCustomer'
             })
@@ -303,6 +322,23 @@
       //打电话
       callTel(MOBILE_NO) {
         window.location.href = "pobo:uncheck=1&pageId=800007&tel=" + MOBILE_NO;
+      },
+      goToTel(str) {
+        this.showEvent1 = false
+        this.callTel(str)
+      },
+      showSelected1(o) {
+        if (!o.LINKTELEPHONE && !o.MOBILE_NO) {
+          this.$toast('手机号不存在!')
+          return
+        }
+        console.log(o.LINKTELEPHONE +' '+ o.MOBILE_NO);
+        this.MOBILE_NO = o.MOBILE_NO;
+        this.LINKTELEPHONE = o.LINKTELEPHONE;
+        this.showEvent1 = !this.showEvent1
+      },
+      cancelSelected1() {
+        this.showEvent1 = false
       }
     }
   }

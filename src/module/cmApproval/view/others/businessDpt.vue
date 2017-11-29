@@ -1,15 +1,14 @@
 <template>
     <div class="customerInfo businessDpt pobo-main-index">
         <common-nav>
-            <div slot="body">{{pageTitle || '组织架构'}}</div>
+            <div slot="body">
+                {{pageTitle[pageTitle.length-1] || ''}}
+            </div>
+            <!-- <div slot="footer" @click="$router.push({ name: 'staffInfoSearch' })">
+                <img src="../../images/others/img10.png"/>
+            </div> -->
         </common-nav>
-        <!-- <div class="flex filterOption">
-            <div class="flex-item" :class="{'active':activeOption==1}" @click="activeOption=1"><span>A-F</span></div>
-            <div class="flex-item" :class="{'active':activeOption==2}" @click="activeOption=2"><span>G-L</span></div>
-            <div class="flex-item" :class="{'active':activeOption==3}" @click="activeOption=3"><span>M-R</span></div>
-            <div class="flex-item" :class="{'active':activeOption==4}" @click="activeOption=4"><span>S-X</span></div>
-            <div class="flex-item" :class="{'active':activeOption==5}" @click="activeOption=5"><span>Y-Z/#</span></div>
-        </div> -->
+        
         <searchbar v-model="keyword">
             <searchbar-placeholder >
                 <icon name="search" left size="lg"></icon>
@@ -19,6 +18,10 @@
                 <span>取消</span>
             </searchbar-btn>
         </searchbar>
+
+        <div class="searchMask" v-show="searching" @click="searching=false"></div>
+        <mask-layer :clickable="true" v-show="searching"/>
+
         <div class="container fzj-zy-content">
             <index-list v-if="currentList.length>0">
                 <index-section v-for="(v, i) in currentList" :key="i" :index="v.pinyin">
@@ -57,42 +60,37 @@
                 keyword : '',
                 departIdArr : [],//当前部门层级，的查询id
                 hasNext : false,
-                pageTitle : ''
+                pageTitle : ['营业部'],
+                hasRequest : false,
+                searching : false
             }
         },
         computed: {
             ...mapState({
-                departPageReturn: ({others}) => others.departPageReturn
+                departPageReturn: ({others}) => others.departPageReturn,
+                storeDepartIdArr: ({others}) => others.departIdArr,
+                storePageTitle: ({others}) => others.pageTitle
             })
         },
         activated() {
-            this.departIdArr = [];
-            this.departIdArr.push(this.info.departId);
+            var _this = this;
+            //this.departIdArr = storeDepartIdArr;
+            //this.pageTitle = storePageTitle;
+            this.hasRequest = false;
+            if(this.departIdArr.length==0){
+                this.departIdArr.push(this.info.departId);
+            }
             this.currentList = [];
             this.deptJson = [];
             this.keyword = '';
-            this.pageTitle = '';
+            
             this.getBusinessDpt();
+
+            history.pushState(null, null, location.href)
+            window.addEventListener("popstate", _this.pushStateListen, false);    
         },
         mounted() {
 
-        },
-        beforeRouteLeave(to, from, next) {
-          if(this.departIdArr.length == 1){
-            next()
-          }else if(this.departIdArr.length != 1 || !this.hasNext){
-            if(to=="staffInfo" || to=="departmentDetail"){
-                next()
-            }else{
-                console.log('!this.hasNext');
-                this.departIdArr = this.departIdArr.splice(-1);
-                this.getBusinessDpt();    
-            }
-          }else{
-            console.log('beforeRouteLeave else');
-            this.departIdArr = this.departIdArr.splice(-1);
-            this.getBusinessDpt();
-          }
         },
         watch: {
           keyword: function (val, oldVal) {
@@ -123,14 +121,31 @@
                 var id = _this.departIdArr[_this.departIdArr.length-1];
                 _this.$$axios({
                     restUrl: 'getDepartList',
-                    join: [ [ _this.info.userId, ['departId', id ] ] ],
+                    join: [ [ _this.info.userId, ['departId', id+"" ] ] ],
                     loading : true
                 })
                 .then((response) => { 
                     
                     if(!response){ return; }
                     var l = util.sortGroupDIY(response);
-                    console.log(l);
+                    
+                    //过滤掉 接口返回的 重复部门
+                    if( (l.length ==1 && (l[0].data).length>1 ) || l.length > 1){
+                        var id = _this.departIdArr[_this.departIdArr.length-1];
+                        for (var i = 0; i < l.length; i++) {
+                            var tempList = l[i].data;
+                            for (var j = 0; j < tempList.length; j++) {
+                                if(tempList[j].DEPARTMENT_ID == id){
+                                    tempList.splice(j,1);
+                                    console.log(l);
+                                }
+                            }
+                            if(tempList.length ==0){
+                               l.splice(i,1);
+                            }
+                        }
+                    }
+
                     this.deptJson = l;
                     this.currentList = l;
                     //有下级 部门
@@ -139,8 +154,10 @@
                     }else{
                         this.hasNext = false;
                     }
-                    // console.log(this.hasNext);
-                    this.addEventListener();
+                    if(!this.hasRequest){
+                        this.addEventListener();
+                    }
+                    this.hasRequest = true;
                 })
                 .catch((res) => {
                     console.log('res', res);
@@ -148,42 +165,69 @@
             },
             //点击列表
             goReturn(o){
+                
+                var _this = this;
+                var id = _this.departIdArr[_this.departIdArr.length-1];
+                if(o.DEPARTMENT_ID==id && _this.currentList.length > 1){ return; }
                 //有下级部门，继续查询 下级部门
-                console.log(this.hasNext);
                 if(this.hasNext){
-                    this.pageTitle = o.DEPARTMENT_NAM;
                     this.departIdArr.push(o.DEPARTMENT_ID);
+                    this.pageTitle.push(o.DEPARTMENT_NAM);
+                    var departIdArr2 = this.departIdArr;
+                    var pageTitleArr = this.pageTitle;
+                    this.$store.dispatch('updatadePartIdArr', departIdArr2);
+                    this.$store.dispatch('updataPageTitle', pageTitleArr);
                     this.getBusinessDpt();
                 }else{
-                //没有下级部门，跳转
+                    //没有下级部门，跳转
+                    window.removeEventListener("popstate", this.pushStateListen, false);
                     this.$store.dispatch('updataDepartId', o.DEPARTMENT_ID);
                     this.$store.dispatch('updataDepartName', o.DEPARTMENT_NAM);
                     if(this.departPageReturn==1){
                         //跳转【员工列表】页面
+                        //this.$router.push({ name: 'staffInfo' })
                         this.$router.replace({ name: 'staffInfo' })
                     }else{
                         //跳转【营业部详情】页面
-                        this.$router.push({ name: 'departmentDetail' })
+                        //this.$router.push({ name: 'departmentDetail' })
+                        this.$router.replace({ name: 'departmentDetail' })
                     }
                 }
                 
             },
             addEventListener(){
+                var _this = this;
                 var s = document.querySelector('.searchbar');
                 var d = document.querySelector('.searchbar-input');
                 var b = document.querySelector('.searchbar-btn');
                 d.addEventListener("click",function(){
+                     _this.searching = true;
                     s.setAttribute("class","searchbar active");
                 });
                 b.addEventListener("click",function(){
+                    _this.searching = false;
+                    _this.keyword = '';
                     s.setAttribute("class","searchbar");
                 });
-                // window.addEventListener("popstate", function(e) { 
-                //     e.preventDefault();
-                //     history.pushState(null, null,  location.href);
-                //     console.log("我监听到了浏览器的返回按钮事件啦");
-                    
-                // }, false);
+
+            },
+            pushStateListen(e){
+                var _this = this;
+                if(_this.departIdArr.length <= 1){
+                    window.removeEventListener("popstate", _this.pushStateListen, false);
+                    //_this.$router.replace( {name :'mainIndex'} );
+                    //_this.$router.back();
+                    history.back();
+                }else{
+                    history.pushState(null, null, location.href)
+                    _this.departIdArr.pop();//删除最后一个元素
+                    _this.pageTitle.pop();//删除最后一个元素
+                    var departIdArr2 = _this.departIdArr;
+                    var pageTitleArr = _this.pageTitle;
+                    _this.$store.dispatch('updatadePartIdArr', departIdArr2);
+                    _this.$store.dispatch('updataPageTitle', pageTitleArr);
+                    _this.getBusinessDpt();
+                }
             }
 
         }

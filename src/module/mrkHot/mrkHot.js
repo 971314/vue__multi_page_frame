@@ -17,7 +17,7 @@ Vue.use(Impression)
 Vue.use(pbUI)
 Vue.use(VueRouter)
 
-//Vue.prototype.isShare = pbE.isPoboApp ? pbE.SYS().readConfig('conf/h5/main.json') ? JSON.parse(pbE.SYS().readConfig('conf/h5/main.json')).appSetting.isShare : false : false
+Vue.prototype.isShare = pbE.isPoboApp ? pbE.SYS().readConfig('conf/h5/main.json') ? JSON.parse(pbE.SYS().readConfig('conf/h5/main.json')).appSetting.isShare : false : false
 /*Vue.use(Axios)*/
 
 const routers = new VueRouter({

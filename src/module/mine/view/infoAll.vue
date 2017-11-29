@@ -125,6 +125,7 @@
       UserLogOut() {
         if (pbE.isPoboApp) {
           pbE.SYS().clearAuthData();
+          pbE.MSG().ytzCloudRequestBindingEquipment(2);//云通知解绑
           location.href = 'pobo:uncheck=0&pageId=800011&url=mine/index.html#/';
         }
       },

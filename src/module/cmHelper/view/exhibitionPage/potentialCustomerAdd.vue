@@ -44,7 +44,7 @@
             <div class="input-item-name">通讯地址</div>
             <div class="input-item-input" @click="clickEvent" @blur="blurEvent"
                  id="input-item-input" style="-webkit-user-select:text;display: block;"
-                 v-text="customerMessage.LINKADDR"
+                 v-html="customerMessage.LINKADDR"
                  :class="{'item-input-color': !isfocus,'item-click-input': colorClick3}">
               <!--{{customerMessage.LINKADDR ? customerMessage.LINKADDR : "请填写通讯地址"}}-->
               <!--<input class="item-input-content" placeholder="请填写通讯地址"-->
@@ -112,7 +112,8 @@
     },
     computed: {
       ...mapState({
-        noPotSex: ({exhibitionPage}) => exhibitionPage.noPotSex
+        noPotSex: ({exhibitionPage}) => exhibitionPage.noPotSex,
+        czSex: ({exhibitionPage}) => exhibitionPage.czSex
       }),
       sex: function () {
         if (this.noPotSex) {
@@ -127,12 +128,18 @@
     },
     activated () {
       this.customerTitle = '新增未开户'
+      console.log(this.czSex, 'this.czSex')
+      document.getElementById('input-item-input').innerHTML = this.customerMessage.LINKADDR
+      if (this.czSex) {
+        this.isfocus = false
+        this.colorClick3 = false
+      }
     },
     watch: {
       $route(to, from) {
         if (from.name == 'customerInfoList') {
           this.$store.dispatch('updateNoPotSex', '')
-
+          this.$store.dispatch('updatepSegmentedIndex', 2)
         }
       },
       'customerMessage.BIRTH_DT'(val, oldVal) {
@@ -243,6 +250,7 @@
         document.getElementById('input-item-input').innerHTML = ''
         this.isfocus = false
         this.colorClick3 = false
+        this.$forceUpdate()
       },
       getSex (flag) {
         if (flag == '1') {
@@ -298,8 +306,13 @@
       }
     },
     beforeRouteLeave(to, from, next) {
-      this.clear()
-      next()
+      if (to.name == 'getSex') {
+        next()
+      } else {
+        this.$store.dispatch('updateCzSex', true)
+        this.clear()
+        next()
+      }
     }
   }
 </script>

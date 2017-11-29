@@ -3,7 +3,7 @@
     <common-nav :goback="false">
       <div slot="footer" class="navFooter">
         <i @click="changeFont"></i>
-        <i @click="shareClick"></i>
+        <i  v-show="isShare" @click="shareClick"></i>
       </div>
     </common-nav>
     <div class="content" :style="{paddingBottom:this.$route.query.type == 1?'20px':'70px'}">
