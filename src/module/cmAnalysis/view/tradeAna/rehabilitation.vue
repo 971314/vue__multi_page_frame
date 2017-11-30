@@ -1,25 +1,21 @@
 <template>
-  <div class="pobo-yield-curve">
+  <div class="pobo-rehab-funds">
     <div class="yield-curve-header">
       <common-nav :search="false" :message="false" :service="false" :goback="false"
                   :gobackUrl="gobackUrl">
         <span slot="body" v-text="yieldTitle"></span>
       </common-nav>
       <div class="_pobo-select-group">
-        <div class="left-select-item">
-          <span>近半年</span>
-          <img src="../../images/tradeAna/xiala@2x.png"/>
+        <div class="time-select-timeline">
+          数据日期:<span class="curve-time-line">2017/02/12-2017/07/12</span>
         </div>
-        <div class="right-select-item">
-          <span>白糖</span>
+        <div class="left-select-time">
+          <span>自定义</span>
           <img src="../../images/tradeAna/xiala@2x.png"/>
         </div>
       </div>
     </div>
     <div class="yield-curve-center">
-      <div class="yield-curve-time">
-        数据日期:<span class="curve-time-line">2017/10/05-1017/11/05</span>
-      </div>
       <div class="yield-curve-view">
         <div v-show="echarts" class="yield-curve-chart" ref="chart"></div>
         <div class="pobo-no-data1" v-show="!echarts">
@@ -29,33 +25,27 @@
       <div class="yield-curve-pointer">
         <div class="curve-pointer-item">
           <div class="pointer-item-cicle pointer-item-color1"></div>
-          <span class="pointer-item-text">累计收益率</span>
+          <span class="pointer-item-text">出入金</span>
         </div>
-        <div class="zhanwei-pointer"></div>
         <div class="curve-pointer-item">
           <div class="pointer-item-cicle pointer-item-color2"></div>
-          <span class="pointer-item-text">本期盈亏</span>
+          <span class="pointer-item-text">累计出入金</span>
+        </div>
+        <div class="curve-pointer-item">
+          <div class="pointer-item-cicle pointer-item-color3"></div>
+          <span class="pointer-item-text">原始资金</span>
         </div>
       </div>
-      <div class="yield-data-list">
-        <div class="yield-data-header">
-          关键指标
+      <div class="yield-curve-pointer">
+        <div class="curve-pointer-item">
+          <div class="pointer-item-cicle pointer-item-color4"></div>
+          <span class="pointer-item-text">复权资金</span>
         </div>
-        <div class="yield-data-item">
-          <div class="data-item-title">最高收益率</div>
-          <div class="data-item-data">17.52%</div>
-        </div>
-        <div class="yield-data-item">
-          <div class="data-item-title">最大回撤率</div>
-          <div class="data-item-data">17.52%</div>
-        </div>
-        <div class="yield-data-item">
-          <div class="data-item-title">最大回撤(万)</div>
-          <div class="data-item-data">12,117.52</div>
-        </div>
-        <div class="yield-data-item">
-          <div class="data-item-title">累计盈亏(万)</div>
-          <div class="data-item-data">12,117.52</div>
+      </div>
+      <div class="yield-curve-explain">
+        <div class="curve-explain-item">
+          <img src="../../images/tradeAna/dengpaotishi@2x.png" class="explain-item-img" />
+          <span class="explain-item-text">复权资金: 根据投资者盈亏和累计出入金情况, 对投资者的资金进行复权。<br />如投资者为净入金, 则投资者起始资金调整为初始资金 + 累计进入金;<br />如投资者为净出金,则每日资金调整为当日资金+累计出入金;<br />如客户频繁出入金, 根据客户盈亏情况和出入金情况综合判断, 给客户人工设置一个初始资金。</span>
         </div>
       </div>
     </div>
@@ -67,8 +57,7 @@
   import moment from "moment";
   // 引入折线图
   require('echarts/lib/chart/line');
-  //引入柱状图
-  require('echarts/lib/chart/bar');
+
   // 引入提示框和标题组件
   require('echarts/lib/component/tooltip');
   require('echarts/lib/component/legend');
@@ -78,11 +67,11 @@
     data() {
       return {
         gobackUrl: 'goBack',
-        yieldTitle: '收益率曲线',
+        yieldTitle: '复权资金曲线',
         echarts: true,
         myCharts: null,
         basicOption: {
-          color: ['#fe8b6c', '#41c5ee'],
+          color: ['#fe8b6c', '#41c5ee', '#fbc647', '#8dddff'],
           tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -94,24 +83,6 @@
               backgroundColor: '#808086'
             }
           },
-//          legend: {
-//            data: ['成交金额', '成交量'],
-//            x: 'left',
-//            itemWidth: 20,
-//            itemHeight: 7,
-//            selectedMode: false,
-//            textStyle: {
-//              color: '#808086',
-//              fontSize: 10
-//            },
-//            formatter: function (name) {
-//              if (name == '成交金额') {
-//                return `${name}(万)`
-//              } else {
-//                return name
-//              }
-//            }
-//          },
           grid: {
             top: '12%',
             left: '0',
@@ -150,7 +121,7 @@
           },
           yAxis: [
             {
-                name: '万',
+              name: '万',
               type: "value",
               nameTextStyle: {
                 showL: false,
@@ -179,43 +150,11 @@
                   type: 'solid'
                 }
               }
-            },
-            {
-              name: '%',
-              type: "value",
-              nameTextStyle: {
-                showL: false,
-                color: '#808086',
-                fontSize: 8
-              },
-              axisLabel: {
-                textStyle: {
-                  color: '#808086',
-                  fontSize: 8
-                }
-              },
-              axisTick: {
-                show: false
-              },
-              axisLine: {
-                show: false,
-                lineStyle: {
-                  color: '#e4e7f0'
-                }
-              },
-              splitLine: {
-                show: false,
-                lineStyle: {
-                  color: ['#e4e7f0'],
-                  type: 'solid'
-                }
-              }
             }],
           series: [{
-            name: '成交金额',
+            name: '出入金',
             type: 'line',
             symbol: 'circle',
-            yAxisIndex: 0,
             showSymbol: false,
             lineStyle: {
               normal: {
@@ -224,15 +163,37 @@
             }
           },
             {
-              name: '成交量',
-              type: 'bar',
-              barGap: 0,
-              itemStyle: {
+              name: '累计出入金',
+              type: 'line',
+              symbol: 'circle',
+              showSymbol: false,
+              lineStyle: {
                 normal: {
-                  opacity: 0.5
+                  width: 1
                 }
-              },
-              yAxisIndex: 1
+              }
+            },
+            {
+              name: '原始资金',
+              type: 'line',
+              symbol: 'circle',
+              showSymbol: false,
+              lineStyle: {
+                normal: {
+                  width: 1
+                }
+              }
+            },
+            {
+              name: '复权资金',
+              type: 'line',
+              symbol: 'circle',
+              showSymbol: false,
+              lineStyle: {
+                normal: {
+                  width: 1
+                }
+              }
             }]
         },
       }
@@ -240,28 +201,28 @@
     mounted() {
       this.myCharts = echarts.init(this.$refs.chart)
       let currentOption = {
-          xAxis: {
-            data: [
-              '2016-07-01',
-              '2016-07-02',
-              '2016-07-03',
-              '2016-07-04',
-              '2016-07-05',
-              '2016-07-06',
-              '2016-07-07',
-              '2016-07-08',
-              '2016-07-09',
-              '2016-07-10',
-              '2016-07-11',
-              '2016-07-12',
-              '2016-07-13',
-              '2016-07-14',
-              '2016-07-15',
-              '2016-07-16',
-              '2016-07-17',
-              '2016-07-18'
-            ]
-          },
+        xAxis: {
+          data: [
+            '2016-07-01',
+            '2016-07-02',
+            '2016-07-03',
+            '2016-07-04',
+            '2016-07-05',
+            '2016-07-06',
+            '2016-07-07',
+            '2016-07-08',
+            '2016-07-09',
+            '2016-07-10',
+            '2016-07-11',
+            '2016-07-12',
+            '2016-07-13',
+            '2016-07-14',
+            '2016-07-15',
+            '2016-07-16',
+            '2016-07-17',
+            '2016-07-18'
+          ]
+        },
         series: [
           {
             data: [
@@ -305,6 +266,50 @@
               18.22,
               15.32,
               17.02,
+            ]
+          },
+          {
+            data: [
+              -17.12,
+              10.92,
+              13.92,
+              -6.92,
+              8.92,
+              15.22,
+              19.92,
+              18.32,
+              12.92,
+              11.92,
+              14.92,
+              18.92,
+              19.92,
+              -17.92,
+              12.02,
+              13.22,
+              11.32,
+              10.02,
+            ]
+          },
+          {
+            data: [
+              19.12,
+              11.92,
+              16.92,
+              10.92,
+              18.92,
+              12.22,
+              17.92,
+              19.32,
+              9.92,
+              8.92,
+              16.92,
+              18.92,
+              -12.92,
+              -15.92,
+              -17.02,
+              14.22,
+              19.32,
+              -17.02,
             ]
           }
         ]

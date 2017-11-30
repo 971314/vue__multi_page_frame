@@ -1,0 +1,53 @@
+.home {
+	.container{
+		.navTitle{
+			position: relative;
+			padding: 0 toRem(30px);
+			height: toRem(80px);
+			line-height: toRem(80px);
+		    background-color: #fff;
+			font-size: toRem(28px);
+			color: #1a1a1a;
+			@include bottom-px1-pixel-ratio;
+			span{
+				position: relative;
+				padding: 0 toRem(22px);
+				i{
+					position: absolute;
+				    top: 50%;
+				    left: 0;
+				    z-index: 1;
+					display: inline-block;
+					width: toRem(8px);
+					height: toRem(28px);
+					border-radius: toRem(2px);
+					background-color: #2868e8;
+					transform: translate(0,-50%);
+				    -webkit-transform: translate(0,-50%);
+				}
+			}
+		}
+		.menuArea{
+			margin-bottom: toRem(20px);
+			padding: toRem(30px) 0; 
+			background-color: #fff;
+			> div{
+				float:left;
+				margin:0 0 toRem(46px) 0;
+				padding: 0;
+				width:25%; 
+				text-align: center;
+				img{
+					margin-bottom: toRem(14px);
+					width: toRem(64px);
+					height: toRem(64px);
+				}
+				span{
+					font-size:toRem(28px);
+					color: #1a1a1a;
+				}
+			}
+		}
+		
+	}
+}

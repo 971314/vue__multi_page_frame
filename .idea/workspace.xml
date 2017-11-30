@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="470a25d4-2f62-4e97-aff3-8fd6fc115bc2" name="Default" comment="" />
+    <list default="true" readonly="true" id="470a25d4-2f62-4e97-aff3-8fd6fc115bc2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/cmApproval/images/leaderboards/ranking1.png" afterPath="$PROJECT_DIR$/static/cmApproval/images/leaderboards/ranking1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/cmApproval/images/leaderboards/ranking2.png" afterPath="$PROJECT_DIR$/static/cmApproval/images/leaderboards/ranking2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/cmApproval/images/leaderboards/ranking3.png" afterPath="$PROJECT_DIR$/static/cmApproval/images/leaderboards/ranking3.png" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -15,23 +19,10 @@
   <component name="ChangesViewManager" show_ignored="true" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="equityRanking.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/equityRanking.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="39" column="15" lean-forward="false" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
-              <folding>
-                <element signature="e#53#416#0" expanded="false" />
-                <element signature="e#433#634#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="performanceList.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/module/cmApproval/view/leaderboards/performanceList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
+            <state relative-caret-position="32">
               <caret line="98" column="6" lean-forward="false" selection-start-line="98" selection-start-column="6" selection-end-line="98" selection-end-column="6" />
               <folding>
                 <element signature="n#common-nav#0;n#div#0;n#template#0;n#!!top" expanded="false" />
@@ -157,17 +148,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GT2S`MP1}N(DOXB]A_N{VAT.png" pinned="false" current-in-tab="true">
-        <entry file="file://$USER_HOME$/AppData/Roaming/Tencent/TIM/Temp/GT2S`MP1}N(DOXB]A_N{VAT.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
+      <file leaf-file-name="Index.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/module/cmLogin/Index.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/module/cmLogin/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="11" column="55" lean-forward="false" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="addAndEdit.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/followUpRecord/addAndEdit.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
+            <state relative-caret-position="3776">
               <caret line="118" column="12" lean-forward="false" selection-start-line="118" selection-start-column="12" selection-end-line="118" selection-end-column="12" />
               <folding />
             </state>
@@ -177,7 +181,7 @@
       <file leaf-file-name="schedule.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/exhibitionPage/schedule.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="1632">
               <caret line="51" column="93" lean-forward="false" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="93" />
               <folding />
             </state>
@@ -187,7 +191,7 @@
       <file leaf-file-name="nonTemplate.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/apply/nonTemplate.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
+            <state relative-caret-position="5376">
               <caret line="168" column="32" lean-forward="false" selection-start-line="168" selection-start-column="32" selection-end-line="168" selection-end-column="32" />
               <folding />
             </state>
@@ -207,7 +211,7 @@
       <file leaf-file-name="customerInfo.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/exhibitionPage/customerInfo.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
+            <state relative-caret-position="2208">
               <caret line="69" column="43" lean-forward="false" selection-start-line="69" selection-start-column="43" selection-end-line="69" selection-end-column="43" />
               <folding />
             </state>
@@ -227,7 +231,7 @@
       <file leaf-file-name="performanceList.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/module/cmApproval/style/module/leaderboards/performanceList.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
+            <state relative-caret-position="1920">
               <caret line="110" column="12" lean-forward="false" selection-start-line="110" selection-start-column="12" selection-end-line="110" selection-end-column="12" />
               <folding>
                 <element signature="e#363#810#0" expanded="false" />
@@ -451,6 +455,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -501,42 +506,7 @@
               <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="cmHelper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="cmHelper" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="cmHelper" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="cmHelperIndex" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="cmHelper" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="exhibitionPage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DevelopV3.1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="module" type="462c0819:PsiDirectoryNode" />
-              <item name="cmHelper" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="followUpRecord" type="462c0819:PsiDirectoryNode" />
+              <item name="cmLogin" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="DevelopV3.1" type="b2602c69:ProjectViewProjectNode" />
@@ -560,7 +530,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -607,11 +576,22 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="svn" revision="4737">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\basicAss\settSheet.vue</PATH>
-          <PATH vcs="svn" revision="4737">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\cmAnalysis.js</PATH>
-          <PATH vcs="svn" revision="4737">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\tool\mixin.scss</PATH>
-          <PATH vcs="svn" revision="4737">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\basicAss\settSheet.scss</PATH>
-          <PATH vcs="svn" revision="4737">E:\svn\PbRes\DevelopV3.1\src\module\cmApproval\style\tool\mixin.scss</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\basicAss\index.scss</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\mine\view\mine.vue</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\jgdx\view\variety.vue</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\jgdx\style\zx.scss</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module\exhibitionPage\potentialCustomerInfo.scss</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module\exhibitionPage\potentialCustomer.scss</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\potentialCustomerAdd.vue</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\potentialCustomer.vue</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\accountOverView.vue</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\potentialCustomerEdit.vue</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\tradeAna\yieldCurve.vue</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\router\basicAss\index.js</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\router\tradeAna\index.js</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\index.scss</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\yieldCurve.scss</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmApproval\style\module\leaderApply\mainIndex.scss</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -619,7 +599,42 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="svn" revision="4737">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img09.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\rehabilitation.scss</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img11.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img30.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img21.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img22.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img23.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img31.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img32.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\tradeAna\varietyProfit.vue</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\tradeAna\rateReturnFunds.vue</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\tradeAna\riskAnalysis.vue</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\tradeAna\rehabilitation.vue</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\tradeAna\breakEven.vue</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\tradeAna\breakEvenB.vue</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\basicAss\home.vue</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\breakEvenB.scss</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\varietyProfit.scss</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\rateReturnFunds.scss</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\riskAnalysis.scss</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\breakEven.scss</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\basicAss\home.scss</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img20.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img12.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img13.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img14.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img15.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img17.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img19.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img16.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img27.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img25.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img18.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img29.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img24.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img26.png</PATH>
+          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img28.png</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -787,7 +802,8 @@
       <workItem from="1511485006162" duration="11490000" />
       <workItem from="1511743108623" duration="13379000" />
       <workItem from="1511830123007" duration="10489000" />
-      <workItem from="1511916474032" duration="11919000" />
+      <workItem from="1511916474032" duration="12519000" />
+      <workItem from="1512002956638" duration="1621000" />
     </task>
     <task id="LOCAL-00096" summary="展业修改">
       <created>1511256239749</created>
@@ -1136,7 +1152,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="650420000" />
+    <option name="totallyTimeSpent" value="652641000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1145,13 +1161,12 @@
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17492098" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23618636" sideWeight="0.5410959" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.48103267" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23618636" sideWeight="0.54320335" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5695469" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23618636" sideWeight="0.45890412" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23618636" sideWeight="0.45679662" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997833" sideWeight="0.49789253" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1160,6 +1175,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.48103267" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1211,21 +1227,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/tool/mixin.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="89" column="25" lean-forward="false" selection-start-line="89" selection-start-column="25" selection-end-line="89" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/cmApproval/view/others/businessDpt.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1248">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/information.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1328,7 +1329,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1336,7 +1336,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="9" column="10" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1344,7 +1343,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4384">
           <caret line="137" column="10" lean-forward="false" selection-start-line="137" selection-start-column="10" selection-end-line="137" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1352,7 +1350,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2400">
           <caret line="75" column="29" lean-forward="false" selection-start-line="75" selection-start-column="29" selection-end-line="75" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1360,7 +1357,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="704">
           <caret line="191" column="10" lean-forward="false" selection-start-line="191" selection-start-column="10" selection-end-line="191" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1368,7 +1364,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3520">
           <caret line="112" column="37" lean-forward="false" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1425,14 +1420,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4352">
           <caret line="136" column="6" lean-forward="false" selection-start-line="136" selection-start-column="6" selection-end-line="136" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <marker date="1511837601592" expanded="true" signature="4372:11163" ph="{...}" />
-            <marker date="1511837601592" expanded="true" signature="5334:5421" ph="{...}" />
-            <marker date="1511837601592" expanded="true" signature="11030:11052" ph="{...}" />
-            <marker date="1511837601592" expanded="true" signature="11030:11159" ph="{...}" />
-            <marker date="1511837601592" expanded="true" signature="11058:11153" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1447,7 +1434,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2944">
           <caret line="92" column="77" lean-forward="false" selection-start-line="92" selection-start-column="77" selection-end-line="92" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1465,7 +1451,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="6" column="55" lean-forward="false" selection-start-line="4" selection-start-column="2" selection-end-line="6" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1473,11 +1458,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
           <caret line="66" column="17" lean-forward="false" selection-start-line="66" selection-start-column="17" selection-end-line="66" selection-end-column="17" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#2786#3248#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1485,35 +1465,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="928">
           <caret line="119" column="5" lean-forward="false" selection-start-line="119" selection-start-column="5" selection-end-line="119" selection-end-column="5" />
-          <folding>
-            <element signature="e#60#442#0" expanded="false" />
-            <element signature="e#92#208#0" expanded="false" />
-            <element signature="e#212#241#0" expanded="false" />
-            <element signature="e#490#646#0" expanded="false" />
-            <element signature="e#518#598#0" expanded="false" />
-            <element signature="e#609#642#0" expanded="false" />
-            <element signature="e#692#1322#0" expanded="false" />
-            <element signature="e#771#1301#0" expanded="false" />
-            <element signature="e#915#1055#0" expanded="false" />
-            <element signature="e#939#1012#0" expanded="false" />
-            <element signature="e#1059#1293#0" expanded="false" />
-            <element signature="e#1109#1283#0" expanded="false" />
-            <element signature="e#1185#1269#0" expanded="false" />
-            <element signature="e#1376#1475#0" expanded="false" />
-            <element signature="e#1405#1453#0" expanded="false" />
-            <element signature="e#1529#2269#0" expanded="false" />
-            <element signature="e#1566#1817#0" expanded="false" />
-            <element signature="e#1689#1754#0" expanded="false" />
-            <element signature="e#1821#1854#0" expanded="false" />
-            <element signature="e#2454#2703#0" expanded="false" />
-            <element signature="e#2480#2582#0" expanded="false" />
-            <element signature="e#2586#2666#0" expanded="false" />
-            <element signature="e#2763#3073#0" expanded="false" />
-            <element signature="e#2868#2924#0" expanded="false" />
-            <element signature="e#2936#2994#0" expanded="false" />
-            <element signature="e#2998#3055#0" expanded="false" />
-            <element signature="e#3101#3153#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1521,98 +1472,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1248">
           <caret line="361" column="11" lean-forward="false" selection-start-line="361" selection-start-column="4" selection-end-line="361" selection-end-column="11" />
-          <folding>
-            <element signature="e#80#164#0" expanded="false" />
-            <element signature="e#230#578#0" expanded="false" />
-            <element signature="e#243#574#0" expanded="false" />
-            <element signature="e#367#544#0" expanded="false" />
-            <element signature="e#593#617#0" expanded="false" />
-            <element signature="e#708#3535#0" expanded="false" />
-            <element signature="e#865#957#0" expanded="false" />
-            <element signature="e#908#949#0" expanded="false" />
-            <element signature="e#1098#1133#0" expanded="false" />
-            <element signature="e#1162#1770#0" expanded="false" />
-            <element signature="e#1192#1762#0" expanded="false" />
-            <element signature="e#1264#1699#0" expanded="false" />
-            <element signature="e#1317#1687#0" expanded="false" />
-            <element signature="e#1393#1611#0" expanded="false" />
-            <element signature="e#1426#1496#0" expanded="false" />
-            <element signature="e#1502#1571#0" expanded="false" />
-            <element signature="e#1617#1673#0" expanded="false" />
-            <element signature="e#1705#1752#0" expanded="false" />
-            <element signature="e#1807#1900#0" expanded="false" />
-            <element signature="e#1838#1872#0" expanded="false" />
-            <element signature="e#2068#3528#0" expanded="false" />
-            <element signature="e#2106#2796#0" expanded="false" />
-            <element signature="e#2206#2470#0" expanded="false" />
-            <element signature="e#2291#2370#0" expanded="false" />
-            <element signature="e#2479#2785#0" expanded="false" />
-            <element signature="e#2536#2591#0" expanded="false" />
-            <element signature="e#2802#3520#0" expanded="false" />
-            <element signature="e#2930#3194#0" expanded="false" />
-            <element signature="e#3015#3094#0" expanded="false" />
-            <element signature="e#3203#3509#0" expanded="false" />
-            <element signature="e#3260#3315#0" expanded="false" />
-            <element signature="e#3554#3610#0" expanded="false" />
-            <element signature="e#3628#3680#0" expanded="false" />
-            <element signature="e#3706#3807#0" expanded="false" />
-            <element signature="e#3813#3831#0" expanded="false" />
-            <element signature="e#3847#4511#0" expanded="false" />
-            <element signature="e#4517#4539#0" expanded="false" />
-            <element signature="e#4565#4672#0" expanded="false" />
-            <element signature="e#4678#4698#0" expanded="false" />
-            <element signature="e#4722#4829#0" expanded="false" />
-            <element signature="e#4835#4863#0" expanded="false" />
-            <element signature="e#4893#5185#0" expanded="false" />
-            <element signature="e#5191#5210#0" expanded="false" />
-            <element signature="e#5290#6466#0" expanded="false" />
-            <element signature="e#5390#5472#0" expanded="false" />
-            <element signature="e#5656#6295#0" expanded="false" />
-            <element signature="e#6340#6440#0" expanded="false" />
-            <element signature="e#6472#6492#0" expanded="false" />
-            <element signature="e#6521#7336#0" expanded="false" />
-            <element signature="e#6902#7022#0" expanded="false" />
-            <element signature="e#7102#7206#0" expanded="false" />
-            <element signature="e#7256#7330#0" expanded="false" />
-            <element signature="e#7342#7358#0" expanded="false" />
-            <element signature="e#7403#7452#0" expanded="false" />
-            <element signature="e#7458#7485#0" expanded="false" />
-            <element signature="e#7512#8265#0" expanded="false" />
-            <element signature="e#7844#7890#0" expanded="false" />
-            <element signature="e#7924#8038#0" expanded="false" />
-            <element signature="e#8058#8151#0" expanded="false" />
-            <element signature="e#8200#8239#0" expanded="false" />
-            <element signature="e#8271#8406#0" expanded="false" />
-            <element signature="e#8434#10116#0" expanded="false" />
-            <element signature="e#8826#8872#0" expanded="false" />
-            <element signature="e#8926#8968#0" expanded="false" />
-            <element signature="e#9005#9047#0" expanded="false" />
-            <element signature="e#9099#9159#0" expanded="false" />
-            <element signature="e#9214#9263#0" expanded="false" />
-            <element signature="e#9269#9329#0" expanded="false" />
-            <element signature="e#9618#9671#0" expanded="false" />
-            <element signature="e#9677#9731#0" expanded="false" />
-            <element signature="e#9914#9963#0" expanded="false" />
-            <element signature="e#9993#10039#0" expanded="false" />
-            <element signature="e#10045#10090#0" expanded="false" />
-            <element signature="e#10122#10174#0" expanded="false" />
-            <element signature="e#10215#10262#0" expanded="false" />
-            <element signature="e#10268#10289#0" expanded="false" />
-            <element signature="e#10309#10542#0" expanded="false" />
-            <element signature="e#10329#10535#0" expanded="false" />
-            <element signature="e#10548#10566#0" expanded="false" />
-            <element signature="e#10602#10646#0" expanded="false" />
-            <element signature="e#10695#11398#0" expanded="false" />
-            <element signature="e#10810#11029#0" expanded="false" />
-            <element signature="e#10836#10924#0" expanded="false" />
-            <element signature="e#10930#11001#0" expanded="false" />
-            <element signature="e#11084#11297#0" expanded="false" />
-            <element signature="e#11161#11195#0" expanded="false" />
-            <element signature="e#11212#11247#0" expanded="false" />
-            <element signature="e#11253#11287#0" expanded="false" />
-            <element signature="e#11321#11363#0" expanded="false" />
-            <element signature="e#11564#11590#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1620,7 +1479,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
           <caret line="13" column="77" lean-forward="false" selection-start-line="13" selection-start-column="77" selection-end-line="13" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1628,9 +1486,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="25" column="19" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="26" selection-end-column="38" />
-          <folding>
-            <element signature="e#54#474#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1638,96 +1493,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1088">
           <caret line="329" column="4" lean-forward="false" selection-start-line="329" selection-start-column="4" selection-end-line="338" selection-end-column="5" />
-          <folding>
-            <element signature="e#80#164#0" expanded="false" />
-            <element signature="e#230#553#0" expanded="false" />
-            <element signature="e#243#549#0" expanded="false" />
-            <element signature="e#285#463#0" expanded="false" />
-            <element signature="e#568#592#0" expanded="false" />
-            <element signature="e#683#3514#0" expanded="false" />
-            <element signature="e#840#935#0" expanded="false" />
-            <element signature="e#886#927#0" expanded="false" />
-            <element signature="e#1078#1113#0" expanded="false" />
-            <element signature="e#1142#1750#0" expanded="false" />
-            <element signature="e#1172#1742#0" expanded="false" />
-            <element signature="e#1244#1679#0" expanded="false" />
-            <element signature="e#1297#1667#0" expanded="false" />
-            <element signature="e#1373#1591#0" expanded="false" />
-            <element signature="e#1406#1476#0" expanded="false" />
-            <element signature="e#1482#1551#0" expanded="false" />
-            <element signature="e#1597#1653#0" expanded="false" />
-            <element signature="e#1685#1732#0" expanded="false" />
-            <element signature="e#1787#1880#0" expanded="false" />
-            <element signature="e#1818#1852#0" expanded="false" />
-            <element signature="e#2047#3507#0" expanded="false" />
-            <element signature="e#2085#2775#0" expanded="false" />
-            <element signature="e#2185#2449#0" expanded="false" />
-            <element signature="e#2270#2349#0" expanded="false" />
-            <element signature="e#2458#2764#0" expanded="false" />
-            <element signature="e#2515#2570#0" expanded="false" />
-            <element signature="e#2781#3499#0" expanded="false" />
-            <element signature="e#2909#3173#0" expanded="false" />
-            <element signature="e#2994#3073#0" expanded="false" />
-            <element signature="e#3182#3488#0" expanded="false" />
-            <element signature="e#3239#3294#0" expanded="false" />
-            <element signature="e#3533#3589#0" expanded="false" />
-            <element signature="e#3607#3659#0" expanded="false" />
-            <element signature="e#3685#3786#0" expanded="false" />
-            <element signature="e#3792#3810#0" expanded="false" />
-            <element signature="e#3826#4572#0" expanded="false" />
-            <element signature="e#4578#4600#0" expanded="false" />
-            <element signature="e#4626#4733#0" expanded="false" />
-            <element signature="e#4739#4760#0" expanded="false" />
-            <element signature="e#4784#4891#0" expanded="false" />
-            <element signature="e#4897#4925#0" expanded="false" />
-            <element signature="e#4955#5247#0" expanded="false" />
-            <element signature="e#5253#5272#0" expanded="false" />
-            <element signature="e#5352#6644#0" expanded="false" />
-            <element signature="e#5452#5534#0" expanded="false" />
-            <element signature="e#5567#5650#0" expanded="false" />
-            <element signature="e#5834#6473#0" expanded="false" />
-            <element signature="e#6518#6618#0" expanded="false" />
-            <element signature="e#6650#6670#0" expanded="false" />
-            <element signature="e#6699#7514#0" expanded="false" />
-            <element signature="e#7080#7200#0" expanded="false" />
-            <element signature="e#7280#7384#0" expanded="false" />
-            <element signature="e#7434#7508#0" expanded="false" />
-            <element signature="e#7520#7536#0" expanded="false" />
-            <element signature="e#7581#7630#0" expanded="false" />
-            <element signature="e#7636#7663#0" expanded="false" />
-            <element signature="e#7690#8443#0" expanded="false" />
-            <element signature="e#8022#8068#0" expanded="false" />
-            <element signature="e#8102#8216#0" expanded="false" />
-            <element signature="e#8236#8329#0" expanded="false" />
-            <element signature="e#8378#8417#0" expanded="false" />
-            <element signature="e#8449#8584#0" expanded="false" />
-            <element signature="e#8612#10294#0" expanded="false" />
-            <element signature="e#9004#9050#0" expanded="false" />
-            <element signature="e#9104#9146#0" expanded="false" />
-            <element signature="e#9183#9225#0" expanded="false" />
-            <element signature="e#9277#9337#0" expanded="false" />
-            <element signature="e#9392#9441#0" expanded="false" />
-            <element signature="e#9447#9507#0" expanded="false" />
-            <element signature="e#9796#9849#0" expanded="false" />
-            <element signature="e#9855#9909#0" expanded="false" />
-            <element signature="e#10092#10141#0" expanded="false" />
-            <element signature="e#10171#10217#0" expanded="false" />
-            <element signature="e#10223#10268#0" expanded="false" />
-            <element signature="e#10300#10352#0" expanded="false" />
-            <element signature="e#10393#10440#0" expanded="false" />
-            <element signature="e#10446#10467#0" expanded="false" />
-            <element signature="e#10487#10720#0" expanded="false" />
-            <element signature="e#10507#10713#0" expanded="false" />
-            <element signature="e#10726#10744#0" expanded="false" />
-            <element signature="e#10780#10824#0" expanded="false" />
-            <element signature="e#10981#11008#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/module/cmHelper/style/module/apply/equityRanking.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
+        <state relative-caret-position="608">
           <caret line="39" column="15" lean-forward="false" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
           <folding>
             <element signature="e#53#416#0" expanded="false" />
@@ -1740,7 +1511,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1754,7 +1524,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/module/cmApproval/style/module/leaderboards/performanceList.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
+        <state relative-caret-position="1920">
           <caret line="110" column="12" lean-forward="false" selection-start-line="110" selection-start-column="12" selection-end-line="110" selection-end-column="12" />
           <folding>
             <element signature="e#363#810#0" expanded="false" />
@@ -1785,9 +1555,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/followUpRecord/staffInfoF.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1024">
+          <caret line="32" column="38" lean-forward="false" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/exhibitionPage/customerInfo.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2208">
+          <caret line="69" column="43" lean-forward="false" selection-start-line="69" selection-start-column="43" selection-end-line="69" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/apply/nonTemplate.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5376">
+          <caret line="168" column="32" lean-forward="false" selection-start-line="168" selection-start-column="32" selection-end-line="168" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/exhibitionPage/schedule.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1632">
+          <caret line="51" column="93" lean-forward="false" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/followUpRecord/addAndEdit.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3776">
+          <caret line="118" column="12" lean-forward="false" selection-start-line="118" selection-start-column="12" selection-end-line="118" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Roaming/Tencent/TIM/Temp/GT2S`MP1}N(DOXB]A_N{VAT.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/module/cmApproval/view/leaderboards/performanceList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
+        <state relative-caret-position="32">
           <caret line="98" column="6" lean-forward="false" selection-start-line="98" selection-start-column="6" selection-end-line="98" selection-end-column="6" />
           <folding>
             <element signature="n#common-nav#0;n#div#0;n#template#0;n#!!top" expanded="false" />
@@ -1912,49 +1727,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/followUpRecord/staffInfoF.vue">
+    <entry file="file://$PROJECT_DIR$/src/module/cmLogin/Index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1024">
-          <caret line="32" column="38" lean-forward="false" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/exhibitionPage/customerInfo.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="69" column="43" lean-forward="false" selection-start-line="69" selection-start-column="43" selection-end-line="69" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/apply/nonTemplate.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="168" column="32" lean-forward="false" selection-start-line="168" selection-start-column="32" selection-end-line="168" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/exhibitionPage/schedule.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="51" column="93" lean-forward="false" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/followUpRecord/addAndEdit.vue">
+    <entry file="file://$PROJECT_DIR$/src/module/cmLogin/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
-          <caret line="118" column="12" lean-forward="false" selection-start-line="118" selection-start-column="12" selection-end-line="118" selection-end-column="12" />
+          <caret line="11" column="55" lean-forward="false" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Roaming/Tencent/TIM/Temp/GT2S`MP1}N(DOXB]A_N{VAT.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
       </provider>
     </entry>
   </component>

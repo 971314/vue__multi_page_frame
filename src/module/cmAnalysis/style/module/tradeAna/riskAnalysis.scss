@@ -1,8 +1,9 @@
-.pobo-yield-curve {
+.pobo-risk-analysis {
   @extend %common-wrapper;
 
   .yield-curve-header {
     ._pobo-select-group {
+      padding: 0 toRem(30px);
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -11,13 +12,24 @@
       height: toRem(86px);
       background-color: #ffffff;
       box-shadow: 0 0 toRem(20px) #e2e0e0;
-      .left-select-item,
-      .right-select-item {
+      .time-select-timeline {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        line-height: 1;
+        @include font(13px);
+        color: $color17;
+        background-color: #ffffff;
+        .curve-time-line {
+          margin-left: toRem(20px);
+        }
+      }
+      .left-select-time {
         flex: 1;
         display: flex;
         height: toRem(86px);
         flex-direction: row;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
         line-height: 1;
         @include font($font26);
@@ -27,10 +39,6 @@
           height: toRem(13px);
           width: toRem(21px);
         }
-      }
-      .left-select-item {
-        position: relative;
-        @include border-specR-color23;
       }
     }
   }
@@ -46,25 +54,10 @@
     background-color: #f7f7fa;
     margin-top: toRem(20px);
 
-    .yield-curve-time {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      line-height: 1;
-      padding: toRem(20px) toRem(30px) 0;
-      @include font($font13);
-      color: $color17;
-      background-color: #ffffff;
-      .curve-time-line {
-        margin-left: toRem(20px);
-      }
-    }
-
     .yield-curve-view {
       background-color: #ffffff;
       padding: 0 toRem(30px);
       .yield-curve-chart {
-        margin-top: toRem(28px);
         height: toRem(500px);
         z-index: 999;
         padding-bottom: toRem(30px);
@@ -87,49 +80,6 @@
         font-size: toRem(26px);
         color: #1a1a1a;
         opacity: 0.9;
-      }
-    }
-
-    .yield-curve-pointer {
-      padding-bottom: toRem(30px);
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      background-color: #ffffff;
-      .zhanwei-pointer {
-        height: toRem(60px);
-        width: toRem(80px);
-        opacity: 0;
-      }
-      .curve-pointer-item {
-        box-sizing: content-box;
-        height: toRem(60px);
-        width: toRem(200px);
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        border-radius: toRem(8px);
-        background-color: $color22;
-        .pointer-item-cicle {
-          height: toRem(12px);
-          width: toRem(12px);
-          border-radius: 50%;
-        }
-        .pointer-item-color1 {
-          background-color: #fe8b6c;
-        }
-        .pointer-item-color2 {
-          background-color: #41c5ee;
-        }
-
-        .pointer-item-text {
-          margin-left: toRem(14px);
-          color: #1a1a1a;
-          @include font($font11);
-          opacity: 0.85;
-        }
       }
     }
 
@@ -169,5 +119,27 @@
 
     }
 
+    .yield-curve-explain {
+      margin-top: toRem(36px);
+      padding: 0 toRem(30px) toRem(60px);
+      .curve-explain-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .explain-item-img {
+          height: toRem(22px);
+          width: toRem(16px);
+        }
+        .explain-item-text {
+          color: #808086;
+          @include font($font13);
+          line-height: 1;
+          margin-left: toRem(14px);
+        }
+      }
+    }
+    .curve-explain-margin {
+      margin-top: toRem(26px);
+    }
   }
 }

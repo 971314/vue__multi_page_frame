@@ -98,7 +98,8 @@
     computed: {
       ...mapState({
         noPotSex: ({exhibitionPage}) => exhibitionPage.noPotSex,
-        pInvestor: ({followUpRecord}) => followUpRecord.pInvestor
+        pInvestor: ({followUpRecord}) => followUpRecord.pInvestor,
+        czSex: ({exhibitionPage}) => exhibitionPage.czSex
       }),
       sex: function () {
         if (this.noPotSex) {
@@ -113,7 +114,9 @@
     },
     activated() {
       this.customerTitle = '编辑资料'
-      this.getPInvestorInfo()
+      if (this.czSex) {
+        this.getPInvestorInfo()
+      }
     },
     methods: {
       isIdentityNum (code) {
@@ -247,6 +250,14 @@
           .catch((res) => {
             console.log('res', res);
           })
+      }
+    },
+    beforeRouteLeave(to, from, next) {
+      if (to.name == 'getSex') {
+        next()
+      } else {
+        this.$store.dispatch('updateCzSex', true)
+        next()
       }
     }
   }

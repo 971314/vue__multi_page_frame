@@ -59,7 +59,7 @@
         _this.info = '请用手机号码登录'
       }
       this.isShowExhibitionIndustry()
-//      this.initial()
+      this.initial()
     },
     methods: {
       readConfig (conf) {

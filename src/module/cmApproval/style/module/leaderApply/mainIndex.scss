@@ -107,7 +107,7 @@
                     line-height: 1;
                     color: $color18;
                     @include font(32px);
-                    font-weight: 400;
+                    font-weight: 500;
                     margin-top: toRem(16px);
                     opacity: 0.95;
                   }
@@ -153,7 +153,7 @@
                         line-height: 1;
                         color: $color18;
                         @include font($font35);
-                        font-weight: 400;
+                        font-weight: 500;
                         opacity: 0.95;
                         margin-top: toRem(18px);
                       }
@@ -194,15 +194,15 @@
                       color: $color18;
                       @include font(16px);
                       opacity: 0.95;
-                      font-weight: 400;
+                      font-weight: 500;
                     }
                     .footer-left-color2 {
                       color: $color2;
-                      font-weight: 400;
+                      font-weight: 500;
                     }
                     .footer-left-color3 {
                       color: $color3;
-                      font-weight: 400;
+                      font-weight: 500;
                     }
 
                   }
@@ -235,15 +235,15 @@
                       color: $color18;
                       @include font(16px);
                       opacity: 0.95;
-                      font-weight: 400;
+                      font-weight: 500;
                     }
                     .footer-center-color2 {
                       color: $color2;
-                      font-weight: 400;
+                      font-weight: 500;
                     }
                     .footer-center-color3 {
                       color: $color3;
-                      font-weight: 400;
+                      font-weight: 500;
                     }
 
                   }
@@ -274,15 +274,15 @@
                       color: $color18;
                       @include font(16px);
                       opacity: 0.95;
-                      font-weight: 400;
+                      font-weight: 500;
                     }
                     .footer-right-color2 {
                       color: $color2;
-                      font-weight: 400;
+                      font-weight: 500;
                     }
                     .footer-right-color3 {
                       color: $color3;
-                      font-weight: 400;
+                      font-weight: 500;
                     }
                   }
                 }
@@ -340,7 +340,7 @@
               line-height: 1;
               color: $color18;
               @include font($font10);
-              font-weight: 400;
+              font-weight: 500;
             }
             .item-left-text {
               margin-top: toRem(14px);
@@ -387,7 +387,7 @@
               line-height: 1;
               color: $color18;
               @include font($font10);
-              font-weight: 400;
+              font-weight: 500;
             }
             .item-left-text {
               margin-top: toRem(14px);

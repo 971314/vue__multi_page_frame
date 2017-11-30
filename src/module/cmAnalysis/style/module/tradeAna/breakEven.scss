@@ -1,4 +1,4 @@
-.pobo-yield-curve {
+.pobo-break-even {
   @extend %common-wrapper;
 
   .yield-curve-header {
@@ -91,10 +91,10 @@
     }
 
     .yield-curve-pointer {
-      padding-bottom: toRem(30px);
+      padding: 0 toRem(30px) toRem(30px) toRem(30px);
       display: flex;
       flex-direction: row;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
       background-color: #ffffff;
       .zhanwei-pointer {
@@ -118,10 +118,13 @@
           border-radius: 50%;
         }
         .pointer-item-color1 {
-          background-color: #fe8b6c;
+          background-color: #41c5ee;
         }
         .pointer-item-color2 {
-          background-color: #41c5ee;
+          background-color: #fe8b6c;
+        }
+        .pointer-item-color3 {
+          background-color: #5bcb9d;
         }
 
         .pointer-item-text {

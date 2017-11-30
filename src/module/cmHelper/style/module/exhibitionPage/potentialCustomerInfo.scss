@@ -13,6 +13,7 @@
     .customer-input-group {
       background-color: #ffffff;
       padding-left: toRem(30px);
+      position: relative;
       &:not(:first-child) {
         margin-top: toRem(20px);
       }
@@ -113,6 +114,14 @@
             width: 100%;
             @include font(16px);
             background-color: transparent;
+          }
+          .input-close-click {
+            position: absolute;
+            right: toRem(-28px);
+            top: 50%;
+            height: toRem(28px);
+            width: toRem(28px);
+            margin-top: toRem(-14px);
           }
         }
         .item-input-color {

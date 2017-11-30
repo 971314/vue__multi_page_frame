@@ -59,7 +59,7 @@
         <div class="tr font-23 text-color17"
              style="padding-left:15px;padding-right:15px;font-size: 12px;background-color: #F7F7FA;">
           <!--<div class="th th1">序号</div>-->
-          <div class="th">公司简称</div>
+          <div class="th flex3">公司简称</div>
           <div class="th text-right" @click="multiSort(typeId.title+'cc','volume')">{{typeId.name}}持仓<span
             class="multi-icon"
             :class="{'multi-icon-down': multiArrow[typeId.title+'cc'] == 2,'multi-icon-up': multiArrow[typeId.title+'cc'] == 1}"></span>
@@ -76,7 +76,7 @@
         <div v-if="productRanking.length != 0" class="tr font-26 text-color18"
              style="padding-left:15px;padding-right:15px;background-image: url(../images/fivestar@2x.png);background-repeat: no-repeat;background-size: 26px 17px;">
           <!--<div class="td td1 text-center"></div>-->
-          <div class="td text-center">{{zxjtInfoMsg.name ? zxjtInfoMsg.name : '--'}}</div>
+          <div class="td text-center flex3">{{zxjtInfoMsg.name ? zxjtInfoMsg.name : '--'}}</div>
           <div class="td text-right th-padding8p">{{zxjtInfoMsg.volume || zxjtInfoMsg.volume == 0 ? zxjtInfoMsg.volume : '--'}}</div>
           <div class="td text-right th-padding8p"
                :class="{'text-color2':zxjtInfoMsg.change > 0,'text-color3':zxjtInfoMsg.change < 0}"
@@ -86,7 +86,7 @@
         <div class="tr font-26 text-color18" :class="index < 3 ? 'range' + (index+1) : ''" v-for="(product,index) in productRanking" v-if="index >= 0"
              style="padding-left:15px;padding-right:15px;">
           <!--<div class="td td1 text-center" :class="index<4?'order'+(index-1):'order'" v-text="index<4?'':index"></div>-->
-          <div class="td text-center" v-text="product.name ? product.name: '--'"></div>
+          <div class="td text-center flex3" v-text="product.name ? product.name: '--'"></div>
           <div class="td text-right th-padding8p" v-text="product.volume||product.volume == 0 ? product.volume: '--'">1808</div>
           <div class="td text-right th-padding8p" :class="{'text-color2':product.change > 0,'text-color3':product.change < 0}"
                v-text="product.change||product.change == 0 ? product.change: '--'"></div>

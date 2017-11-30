@@ -55,8 +55,11 @@
             <div class="input-item-name">手机号码<img class="user-must-icon"
                                                   src="../../images/exhibitionPage/musticon@2x.png"/></div>
             <div class="input-item-input">
-              <input class="item-input-content" placeholder="请填写手机号码" v-model="customerMessage.MOBILE_NO" maxlength="40"
+              <input class="item-input-content" @focus="cellPhoneFocus" @blur="cellPhoneBlur" placeholder="请填写手机号码"
+                     v-model="customerMessage.MOBILE_NO" maxlength="40"
                      type="tel"/>
+              <img v-show="showClickBtn" @click="clearCellPhone" class="input-close-click"
+                   src="../../images/exhibitionPage/closeclick@2x.png"/>
             </div>
           </div>
           <div class="customer-input-item">
@@ -91,6 +94,7 @@
   export default {
     data () {
       return {
+        showClickBtn: false,
         colorClick1: false,
         colorClick2: false,
         colorClick3: false,
@@ -146,9 +150,28 @@
         if (val) {
           this.colorClick2 = true
         }
+      },
+      'customerMessage.MOBILE_NO'(val, oldVal) {
+        if (val) {
+          this.showClickBtn = true
+        } else {
+          this.showClickBtn = false
+        }
       }
     },
     methods: {
+      cellPhoneFocus() {
+        if (this.customerMessage.MOBILE_NO) {
+          this.showClickBtn = true
+        }
+      },
+      cellPhoneBlur() {
+        this.showClickBtn = false
+      },
+      clearCellPhone() {
+        this.showClickBtn = false
+        this.customerMessage.MOBILE_NO = ''
+      },
       clickEvent(e) {
         e.target.setAttribute('contenteditable', true)
         document.getElementById('input-item-input').focus()

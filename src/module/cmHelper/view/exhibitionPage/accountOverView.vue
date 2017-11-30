@@ -203,7 +203,7 @@
           },
           yAxis: [
             {
-              name: '(k)',  //资金变动
+              name: '万',  //资金变动
               scale: true,
               splitNumber: 5,
 //              boundaryGap: ['20%', '20%'],
@@ -443,7 +443,7 @@
             response['detail'].map((item) => {
               let tempArrayList = []
               tempArrayList.push(item.TX_DT)
-              tempArrayList.push((item.TODAY_RI_AMT / 1000).toFixed(2))
+              tempArrayList.push((item.TODAY_RI_AMT).toFixed(2))
               dataList.push(tempArrayList)
             })
             let currentOption = {

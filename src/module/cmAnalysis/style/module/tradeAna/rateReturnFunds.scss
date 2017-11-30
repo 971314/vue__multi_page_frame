@@ -1,4 +1,4 @@
-.pobo-yield-curve {
+.rate-return-funds {
   @extend %common-wrapper;
 
   .yield-curve-header {
@@ -89,85 +89,27 @@
         opacity: 0.9;
       }
     }
-
-    .yield-curve-pointer {
-      padding-bottom: toRem(30px);
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      background-color: #ffffff;
-      .zhanwei-pointer {
-        height: toRem(60px);
-        width: toRem(80px);
-        opacity: 0;
-      }
-      .curve-pointer-item {
-        box-sizing: content-box;
-        height: toRem(60px);
-        width: toRem(200px);
+    .yield-curve-explain {
+      margin-top: toRem(36px);
+      padding: 0 toRem(30px) toRem(60px);
+      .curve-explain-item {
         display: flex;
         flex-direction: row;
-        justify-content: center;
         align-items: center;
-        border-radius: toRem(8px);
-        background-color: $color22;
-        .pointer-item-cicle {
-          height: toRem(12px);
-          width: toRem(12px);
-          border-radius: 50%;
+        .explain-item-img {
+          height: toRem(22px);
+          width: toRem(16px);
         }
-        .pointer-item-color1 {
-          background-color: #fe8b6c;
-        }
-        .pointer-item-color2 {
-          background-color: #41c5ee;
-        }
-
-        .pointer-item-text {
+        .explain-item-text {
+          color: #808086;
+          @include font($font13);
+          line-height: 1;
           margin-left: toRem(14px);
-          color: #1a1a1a;
-          @include font($font11);
-          opacity: 0.85;
         }
       }
     }
-
-    .yield-data-list {
-      background-color: #ffffff;
-      position: relative;
-      @include px1-pixel-ratio;
-      .yield-data-header {
-        height: toRem(88px);
-        padding: 0 toRem(30px);
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        color: $color18;
-        @include font($font10);
-      }
-      .yield-data-item {
-        height: toRem(86px);
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 toRem(30px);
-        &:nth-of-type(even) {
-          background-color: rgba(247, 247, 250, 0.6);
-        }
-        .data-item-title {
-          color: rgba(26, 26, 26, 0.85);
-          @include font($font26);
-
-        }
-        .data-item-data {
-          color: rgba(26, 26, 26, 0.85);
-          @include font($font26);
-        }
-      }
-
+    .curve-explain-margin {
+      margin-top: toRem(26px);
     }
-
   }
 }

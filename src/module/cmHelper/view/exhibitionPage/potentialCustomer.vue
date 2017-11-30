@@ -80,6 +80,7 @@
 </template>
 
 <script>
+  import {MessageBox} from 'mint-ui'
   import {mapState} from 'vuex'
   export default{
     data() {
@@ -97,7 +98,6 @@
       })
     },
     activated() {
-      console.log(this.pInvestor, 'pInvestor')
       this.pInvestorFollowList()
     },
     methods: {
@@ -155,7 +155,9 @@
       },
       deleteInfo() {
         this.showEvent = false
-        this.pInvestorDelete()
+        MessageBox.confirm('确认删除该用户?').then(action => {
+          this.pInvestorDelete()
+        })
       },
       cancelSelected() {
         this.showEvent = false
