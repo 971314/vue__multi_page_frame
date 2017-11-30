@@ -58,8 +58,8 @@
               <input class="item-input-content" @focus="cellPhoneFocus" @blur="cellPhoneBlur" placeholder="请填写手机号码"
                      v-model="customerMessage.MOBILE_NO" maxlength="40"
                      type="tel"/>
-              <img v-show="showClickBtn" @click="clearCellPhone" class="input-close-click"
-                   src="../../images/exhibitionPage/closeclick@2x.png"/>
+              <!--<img v-show="showClickBtn" @click="clearCellPhone" class="input-close-click"
+                   src="../../images/exhibitionPage/closeclick@2x.png"/>-->
             </div>
           </div>
           <div class="customer-input-item">
