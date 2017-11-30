@@ -5,6 +5,8 @@ import VarietyProfit from '../../view/tradeAna/varietyProfit.vue'
 import RiskAnalysis from '../../view/tradeAna/riskAnalysis.vue'
 import Rehabilitation from '../../view/tradeAna/rehabilitation.vue'
 import RateReturnFunds from '../../view/tradeAna/rateReturnFunds.vue'
+import BailBunds from '../../view/tradeAna/bailBunds.vue'
+import SpanProfit from '../../view/tradeAna/spanProfit.vue'
 
 const routes = [
   {
@@ -41,6 +43,16 @@ const routes = [
     path: '/rateReturnFunds',    //资金回报率
     name: 'rateReturnFunds',
     component: RateReturnFunds
+  },
+  {
+    path: '/bailBunds',    //保证金回报率
+    name: 'bailBunds',
+    component: BailBunds
+  },
+  {
+    path: '/spanProfit',    //跨度盈亏
+    name: 'spanProfit',
+    component: SpanProfit
   }
 ]
 

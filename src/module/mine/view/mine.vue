@@ -13,7 +13,7 @@
       </a>
     </div>
     <div class="groupp">
-      <a v-for="data in group" v-if="data.isShow" target="_blank" :href="data.url">
+      <a v-for="data in group" v-show="data.isShow" target="_blank" :href="data.url">
         <div>
           <img :src="data.img">
           {{data.name}}
@@ -58,7 +58,7 @@
       } else {
         _this.info = '请用手机号码登录'
       }
-      this.isShowExhibitionIndustry()
+
       this.initial()
     },
     methods: {
@@ -87,15 +87,18 @@
               } else {
                 conf[y].isShow = false
               }
+
             }
+
             if (conf[y].isCm) {
-              if (this.isShowCRm) {
+              conf[y].isShow = false;
+            /*  if (this.isShowCRm) {
                 conf[y].isShow = true
               }else if(!this.marketAccount){
                 conf[y].isShow = false
               } else {
                 conf[y].isShow = false
-              }
+              }*/
             }
           } else {
             conf[y].isShow = false
@@ -121,7 +124,8 @@
           this.info = '请用手机号码登录'
         }
         /*this.readConfig(pbE.SYS().readConfig(this.confUrlH5 + 'main.json') ? pbE.SYS().readConfig(this.confUrlH5 + 'main.json') : pbE.SYS().readConfig(this.confUrlPbe + 'main.json'))*/
-        this.isShowExhibitionIndustry()
+
+        this.initial();
       },
       //校验展业显示
       isShowExhibitionIndustry () {
@@ -140,10 +144,13 @@
             _this.isShowCRm = false
 //            _this.$toast(data.desc)
           }
-          _this.initial()
+
+          for (let y = 0; y < _this.group.length; y++) {
+            if (_this.group[y].isCm) {
+              _this.group[y].isShow = _this.isShowCRm;
+            }
+          }
         }).catch((err) => {
-          _this.isShowCRm = false
-          _this.initial()
           console.log(err)
         })
       },
@@ -181,6 +188,7 @@
             console.log('服务器异常', err)
           })
         }
+        this.isShowExhibitionIndustry();
       }
     }
   }

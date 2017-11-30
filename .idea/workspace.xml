@@ -173,7 +173,7 @@
         <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/exhibitionPage/potentialCustomerAdd.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="464">
-              <caret line="68" column="48" lean-forward="true" selection-start-line="68" selection-start-column="48" selection-end-line="68" selection-end-column="48" />
+              <caret line="68" column="48" lean-forward="false" selection-start-line="68" selection-start-column="48" selection-end-line="68" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -182,8 +182,8 @@
       <file leaf-file-name="mine.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/module/mine/view/mine.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-288">
-              <caret line="70" column="34" lean-forward="true" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
+            <state relative-caret-position="1152">
+              <caret line="97" column="38" lean-forward="false" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -379,7 +379,6 @@
         <option value="$PROJECT_DIR$/src/assets/conf/h5/main.json" />
         <option value="$PROJECT_DIR$/src/module/cmHelper/style/module/apply/approvalDetails.scss" />
         <option value="$PROJECT_DIR$/src/module/cmHelper/view/apply/intermediary.vue" />
-        <option value="$PROJECT_DIR$/src/module/mine/view/mine.vue" />
         <option value="$PROJECT_DIR$/src/module/cmLogin/view/logIn.vue" />
         <option value="$PROJECT_DIR$/src/module/cmHelper/utils/mixins.js" />
         <option value="$PROJECT_DIR$/src/module/cmHelper/view/apply/approvalIndex.vue" />
@@ -391,6 +390,7 @@
         <option value="$PROJECT_DIR$/src/module/cmHelper/view/exhibitionPage/schedule.vue" />
         <option value="$PROJECT_DIR$/src/module/cmHelper/view/followUpRecord/addAndEdit.vue" />
         <option value="$PROJECT_DIR$/src/module/cmHelper/view/exhibitionPage/potentialCustomerAdd.vue" />
+        <option value="$PROJECT_DIR$/src/module/mine/view/mine.vue" />
       </list>
     </option>
   </component>
@@ -567,22 +567,13 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\basicAss\index.scss</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\mine\view\mine.vue</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\jgdx\view\variety.vue</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\jgdx\style\zx.scss</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module\exhibitionPage\potentialCustomerInfo.scss</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\style\module\exhibitionPage\potentialCustomer.scss</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\potentialCustomerAdd.vue</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\potentialCustomer.vue</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\accountOverView.vue</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\view\exhibitionPage\potentialCustomerEdit.vue</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\tradeAna\yieldCurve.vue</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\router\basicAss\index.js</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\router\tradeAna\index.js</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\index.scss</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\yieldCurve.scss</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmApproval\style\module\leaderApply\mainIndex.scss</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\mine\view\infoAll.vue</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\mine\view\mine.vue</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\router\basicAss\index.js</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\router\tradeAna\index.js</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\index.scss</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\basicAss\index.scss</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\basicAss\home.vue</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -590,42 +581,34 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\rehabilitation.scss</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img11.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img30.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img21.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img22.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img23.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img31.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img32.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\tradeAna\varietyProfit.vue</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\tradeAna\rateReturnFunds.vue</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\tradeAna\riskAnalysis.vue</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\tradeAna\rehabilitation.vue</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\tradeAna\breakEven.vue</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\tradeAna\breakEvenB.vue</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\basicAss\home.vue</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\breakEvenB.scss</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\varietyProfit.scss</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\rateReturnFunds.scss</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\riskAnalysis.scss</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\breakEven.scss</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\basicAss\home.scss</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img20.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img12.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img13.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img14.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img15.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img17.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img19.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img16.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img27.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img25.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img18.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img29.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img24.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img26.png</PATH>
-          <PATH vcs="svn" revision="4745">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img28.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmHelper\images\exhibitionPage\closeclick@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\�ʽ�ر���@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\���նȷ���@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\��������@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\�ֲ�ͳ��@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\��Ȩ�ʽ�@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\ӯ������@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\�˻�����@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\�����ʷ���@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\����@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\���ӯ��@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\ӯ���ȷ���@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\��֤��ر���@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\Ʒ��ӯ��@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\����@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\spanProfit.scss</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\tradeAna\bailBunds.scss</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\style\module\basicAss\capitalStatus.scss</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\basicAss\img33.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\����@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\dengpaotishi@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\�ر�-���@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\������@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\չ������@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\images\tradeAna\�ر�@2x.png</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\tradeAna\bailBunds.vue</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\tradeAna\spanProfit.vue</PATH>
+          <PATH vcs="svn" revision="4748">E:\svn\PbRes\DevelopV3.1\src\module\cmAnalysis\view\basicAss\capitalStatus.vue</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -794,7 +777,7 @@
       <workItem from="1511743108623" duration="13379000" />
       <workItem from="1511830123007" duration="10489000" />
       <workItem from="1511916474032" duration="12519000" />
-      <workItem from="1512002956638" duration="2708000" />
+      <workItem from="1512002956638" duration="4146000" />
     </task>
     <task id="LOCAL-00096" summary="展业修改">
       <created>1511256239749</created>
@@ -1143,7 +1126,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="653728000" />
+    <option name="totallyTimeSpent" value="655166000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1156,18 +1139,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17492098" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23618636" sideWeight="0.54320335" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.48103267" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5695469" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5695469" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23618636" sideWeight="0.45679662" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23618636" sideWeight="0.45679662" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997833" sideWeight="0.49789253" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1909,15 +1891,15 @@
     <entry file="file://$PROJECT_DIR$/src/module/cmHelper/view/exhibitionPage/potentialCustomerAdd.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="464">
-          <caret line="68" column="48" lean-forward="true" selection-start-line="68" selection-start-column="48" selection-end-line="68" selection-end-column="48" />
+          <caret line="68" column="48" lean-forward="false" selection-start-line="68" selection-start-column="48" selection-end-line="68" selection-end-column="48" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/module/mine/view/mine.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-288">
-          <caret line="70" column="34" lean-forward="true" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
+        <state relative-caret-position="1152">
+          <caret line="97" column="38" lean-forward="false" selection-start-line="97" selection-start-column="38" selection-end-line="97" selection-end-column="38" />
           <folding />
         </state>
       </provider>

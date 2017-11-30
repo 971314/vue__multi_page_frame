@@ -11,7 +11,7 @@
 
             <div class="navTitle"><span><i>&nbsp;</i>信息查询</span></div>
             <div class="menuArea">
-                <div><div><img src="../../images/basicAss/img11.png"/></div><span>资金状态</span></div>
+                <div @click="forward('capitalStatus')"><div><img src="../../images/basicAss/img11.png"/></div><span>资金状态</span></div>
                 <div><div><img src="../../images/basicAss/img12.png"/></div><span>出入金</span></div>
                 <div><div><img src="../../images/basicAss/img13.png"/></div><span>委托成交</span></div>
                 <div><div><img src="../../images/basicAss/img14.png"/></div><span>持仓汇总</span></div>

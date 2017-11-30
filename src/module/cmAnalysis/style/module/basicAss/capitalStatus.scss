@@ -1,0 +1,82 @@
+.capitalStatus {
+	.dateFilter{
+		position: relative;
+	    margin-bottom: toRem(20px);
+		height: toRem(86px);
+		line-height: toRem(86px);
+		font-size: toRem(28px);
+		color: #1a1a1a; 
+		@include bottom-px1-pixel-ratio;
+		-webkit-box-shadow: 0 0 toRem(20px) #e4e7f0;
+		box-shadow: 0 0 toRem(20px) #e4e7f0;
+		.flex-item{ 
+			span{
+				margin-right: toRem(20px);
+			}
+			.calendar{
+				position: relative; 
+				display: inline-block;
+				img{
+				    position: relative;
+				    top: toRem(-4px);
+				    z-index: 2;
+					width: toRem(36px);
+					height: toRem(35px);
+				}	
+				input[type=date]{
+					-webkit-appearance:none;
+					display: inline-block;
+				    width: 18px;
+				    border: 0;
+				    position: absolute;
+				    top: 0;
+				    left: 0;
+				    background-color: transparent;
+				    color: transparent;
+				    z-index: 3;
+				}
+			}
+			
+		}
+		.flex-item:first-child{
+			text-align: right;
+		}
+		.flex-item:last-child{
+			text-align: left; 
+		}
+		> span{
+			margin: 0 toRem(30px);
+		}
+	}
+	.container{
+		.group {
+			position: relative;
+		    margin: 0;
+		    padding: 0 0 0 toRem(30px);
+		    background-image: none;
+		    @include bottom-px1-pixel-ratio;
+		    .cell{
+		    	position: relative;
+			    padding: 0 toRem(30px) 0 0;
+			    height: toRem(86px);
+			    line-height: toRem(86px);
+			    background-image: none;
+			    font-size: toRem(28px);
+			    color: #1a1a1a;
+			    .cell-body{
+			    	span{ 
+				    	opacity: .85;
+				    }
+			    }
+			    .cell-footer{
+			    	span.red1{ 
+				    	color: #fe0000; 
+				    }
+				    span.green1{
+				    	color: #1dbf60;
+				    }
+			    }
+			}
+		}
+	}
+}
